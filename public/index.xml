@@ -1,0 +1,940 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GID Webpage</title>
+    <link>https://gdetor.github.io/</link>
+    <description>Recent content on GID Webpage</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>GID - 2021</copyright>
+    <lastBuildDate>Tue, 13 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://gdetor.github.io/posts/welcome/</link>
+      <pubDate>Tue, 13 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/posts/welcome/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>Research Demos</title>
+      <link>https://gdetor.github.io/posts/demos/</link>
+      <pubDate>Tue, 13 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/posts/demos/</guid>
+      <description>The following videos demonstrate a computation model of primary somatosensory cortex undergoing self-organization. The model relies on Neural Field [1]. The complete mathematical/computational model as well as all the details and results are given in [2] and [3].
+ Self-organization of receptive fields (RFs)    Evolution of a single RF during self-organization    Evolution of multiple RFs during self-organization    References  Dynamics of pattern formation in lateral-inhibition type neural fields A Neural Field Model of the Somatosensory Cortex: Formation, Maintenance and Reorganization of Ordered Topographic Maps Structure of receptive fields in a computational model of area 3b of primary sensory cortex  </description>
+      <content>&lt;p&gt;The following videos demonstrate a computation model of primary somatosensory
+cortex undergoing self-organization. The model relies on Neural Field [1].
+The complete mathematical/computational model as well as all the details
+and results are given in [2] and [3].&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;self-organization-of-receptive-fields-rfs&#34;&gt;Self-organization of receptive fields (RFs)&lt;/h3&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/JU0PKFpagUo&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+&lt;h3 id=&#34;evolution-of-a-single-rf-during-self-organization&#34;&gt;Evolution of a single RF during self-organization&lt;/h3&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/UzosJK8YOU0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+&lt;h3 id=&#34;evolution-of-multiple-rfs-during-self-organization&#34;&gt;Evolution of multiple RFs during self-organization&lt;/h3&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/F8JOQs2MYN4&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://link.springer.com/article/10.1007/BF00337259&#34;&gt;Dynamics of pattern formation in lateral-inhibition type neural fields&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0040257&#34;&gt;A Neural Field Model of the Somatosensory Cortex: Formation, Maintenance and Reorganization of Ordered Topographic Maps&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.frontiersin.org/articles/10.3389/fncom.2014.00076/full&#34;&gt;Structure of receptive fields in a computational model of area 3b of primary sensory cortex&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    </item>
+    
+    <item>
+      <title>Tweets</title>
+      <link>https://gdetor.github.io/posts/news/</link>
+      <pubDate>Tue, 13 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/posts/news/</guid>
+      <description>&amp;quot;I, Pencil&amp;quot; An essay published in 1958 which beautifully describes the amount of human coordination, cooperation and trade that needs to happen for the creation of a seemingly simple object, a lead pencil. ✏️
+It&amp;#39;s a great read: https://t.co/P4Ha7HpoGp pic.twitter.com/vPPZuCZ5cB
+&amp;mdash; Fermat&amp;#39;s Library (@fermatslibrary) April 6, 2021  </description>
+      <content>&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;&amp;quot;I, Pencil&amp;quot; &lt;br&gt;&lt;br&gt;An essay published in 1958 which beautifully describes the amount of human coordination, cooperation and trade that needs to happen for the creation of a seemingly simple object, a lead pencil.  ✏️&lt;br&gt;&lt;br&gt;It&amp;#39;s a great read: &lt;a href=&#34;https://t.co/P4Ha7HpoGp&#34;&gt;https://t.co/P4Ha7HpoGp&lt;/a&gt; &lt;a href=&#34;https://t.co/vPPZuCZ5cB&#34;&gt;pic.twitter.com/vPPZuCZ5cB&lt;/a&gt;&lt;/p&gt;&amp;mdash; Fermat&amp;#39;s Library (@fermatslibrary) &lt;a href=&#34;https://twitter.com/fermatslibrary/status/1379424914445377536?ref_src=twsrc%5Etfw&#34;&gt;April 6, 2021&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+
+</content>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://gdetor.github.io/staticart/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/staticart/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://gdetor.github.io/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/about/</guid>
+      <description>Hi, my name is Georgios Is. Detorakis, and I’m a computational neuroscientist (🧠) and machine learning engineer (🤖). On this website, you can find information about my research, any software I have developed, and some artwork related to neuroscience I have created over the years.
+Currently, I am working as a full-time machine learning engineer developing algorithms for time-series analysis and forecasting (with applications in biosignals and financial data).
+Here you can find my complete academic CV, industry CV (or a less extensive résumé).</description>
+      <content>&lt;p&gt;Hi, my name is Georgios Is. Detorakis, and I’m a computational neuroscientist (🧠)
+and machine learning engineer (🤖). On this website, you can find information about
+my research, any software I have developed, and some artwork related to
+neuroscience I have created over the years.&lt;/p&gt;
+&lt;p&gt;Currently, I am working as a full-time machine learning engineer developing
+algorithms for time-series analysis and forecasting (with applications in
+biosignals and financial data).&lt;/p&gt;
+&lt;p&gt;Here you can find my complete &lt;a href=&#34;https://gdetor.github.io/cv/gid_academic_cv.pdf&#34;&gt;academic CV&lt;/a&gt;, &lt;a href=&#34;https://gdetor.github.io/cv/gid_industry_cv.pdf&#34;&gt;industry CV&lt;/a&gt;
+(or a less extensive &lt;a href=&#34;https://gdetor.github.io/cv/gid_resume.pdf&#34;&gt;résumé&lt;/a&gt;).&lt;/p&gt;
+&lt;div style=&#34;text-align: center;&#34;&gt;
+     Live long and prosper 🖖 
+&lt;/div&gt;
+
+</content>
+    </item>
+    
+    <item>
+      <title>Artwork</title>
+      <link>https://gdetor.github.io/artwork/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/artwork/</guid>
+      <description>   Basal Ganglia Circuitry Extracellular Recordings Neural Populations              Closed-loop DBS on Basal Ganglia Crossbar Array Ball and Stick Neuron&amp;rsquo;s Model           </description>
+      <content>&lt;!-- raw HTML omitted --&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Basal Ganglia Circuitry&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Extracellular Recordings&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Neural Populations&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/bg.svg&#34;&gt;
+  &lt;img src=&#34;https://gdetor.github.io/staticart/img/bg.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;
+
+&lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/extracellular.svg&#34;&gt;
+  &lt;img src=&#34;https://gdetor.github.io/staticart/img/extracellular.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;
+
+&lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/np.svg&#34;&gt;
+  &lt;img src=&#34;https://gdetor.github.io/staticart/img/np.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;
+
+&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Closed-loop DBS on Basal Ganglia&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Crossbar Array&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Ball and Stick Neuron&amp;rsquo;s Model&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/closed_dbs.svg&#34;&gt;
+  &lt;img src=&#34;https://gdetor.github.io/staticart/img/closed_dbs.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;
+
+&lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/crossbar.svg&#34;&gt;
+  &lt;img src=&#34;https://gdetor.github.io/staticart/img/crossbar.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;
+
+&lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/ball-stick.svg&#34;&gt;
+  &lt;img src=&#34;https://gdetor.github.io/staticart/img/ball-stick.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;
+
+&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+</content>
+    </item>
+    
+    <item>
+      <title>Publications</title>
+      <link>https://gdetor.github.io/publications/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/publications/</guid>
+      <description>Research Articles (peer-reviewed)  Randomized Self Organizing Map
+N. P. Rougier and G. Is. Detorakis
+Neural Computation, XX(XX), 2021, DOI:
+[Article]
+  Stability analysis of a neural field self-organizing map
+G. Detorakis, A. Chaillet and N.P. Rougier
+The Journal of Mathematical Neuroscience, 10(20), 2020, DOI:https://doi.org/10.1186/s13408-020-00097-6
+[Article]
+  GAIM: A C++ library for Genetic Algorithms and Island Models
+G. Detorakis, A. Burton
+The Journal of Open Source Software, 4(44), 1839, 2019, DOI:https://doi.</description>
+      <content>&lt;h2 id=&#34;research-articles-peer-reviewed&#34;&gt;Research Articles (peer-reviewed)&lt;/h2&gt;
+&lt;ol start=&#34;38&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Randomized Self Organizing Map&lt;/strong&gt;&lt;br&gt;
+N. P. Rougier and G. Is. Detorakis&lt;br&gt;
+Neural Computation, XX(XX), 2021, DOI:&lt;br&gt;
+[Article]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Stability analysis of a neural field self-organizing map&lt;/strong&gt;&lt;br&gt;
+G. Detorakis, A. Chaillet and N.P. Rougier&lt;br&gt;
+The Journal of Mathematical Neuroscience, 10(20), 2020, DOI:https://doi.org/10.1186/s13408-020-00097-6&lt;br&gt;
+&lt;a href=&#34;https://mathematical-neuroscience.springeropen.com/articles/10.1186/s13408-020-00097-6&#34;&gt;[Article]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;GAIM: A C++ library for Genetic Algorithms and Island Models&lt;/strong&gt;&lt;br&gt;
+G. Detorakis, A. Burton&lt;br&gt;
+The Journal of Open Source Software, 4(44), 1839, 2019, DOI:https://doi.org/10.21105/joss.01839&lt;br&gt;
+&lt;a href=&#34;https://www.theoj.org/joss-papers/joss.01839/10.21105.joss.01839.pdf&#34;&gt;[Article]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Memory-efficient Synaptic Connectivity for Spike-Timing-Dependent Plasticity&lt;/strong&gt;&lt;br&gt;
+B. U. Pedroni, S. Joshi, S. Deiss, S. Sheik, G. Detorakis, S. Paul, C. Augustine, E. O. Neftci, G. Cauwenberghs&lt;br&gt;
+Frontiers in Neuroscience, DOI: &lt;a href=&#34;https://doi.org/10.3389/fnins.2019.00357&#34;&gt;https://doi.org/10.3389/fnins.2019.00357&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.frontiersin.org/articles/10.3389/fnins.2019.00357/full&#34;&gt;[Article]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Contrastive Hebbian Learning with Random Feedback Weights&lt;/strong&gt;&lt;br&gt;
+G. Detorakis, T. Bartley, E. Neftci&lt;br&gt;
+Neural Networks 114, 2019, doi: &lt;a href=&#34;https://doi.org/10.1016/j.neunet.2019.01.008&#34;&gt;https://doi.org/10.1016/j.neunet.2019.01.008&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.sciencedirect.com/science/article/abs/pii/S089360801930019X&#34;&gt;[Article]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Neural and Synaptic Array Transceiver: A Brain-Inspired Computing Framework for Embedded Learning&lt;/strong&gt;&lt;br&gt;
+G. Detorakis, S. Sheik, C. Augustine, S. Paul, B.U. Pedroni, N. Dutt, J. Krichmar, G. Cauwenberghs, E. Neftci&lt;br&gt;
+Frontiers in Neuroscience, 2018&lt;br&gt;
+&lt;a href=&#34;https://www.frontiersin.org/articles/10.3389/fnins.2018.00583/full&#34;&gt;[Article]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Event-Driven Random Back-Propagation: Enabling Neuromorphic Deep Learning Machines&lt;/strong&gt;&lt;br&gt;
+E. Neftci, S. Paul, C. Augustine, G. Detorakis&lt;br&gt;
+Frontiers in Neuroscience 11, 2017, doi: &lt;a href=&#34;https://doi.org/10.3389/fnins.2017.00324&#34;&gt;https://doi.org/10.3389/fnins.2017.00324&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.frontiersin.org/articles/10.3389/fnins.2017.00324/full&#34;&gt;[Article]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Robust stabilization of delayed neural fields with partial measurement and actuation&lt;/strong&gt;&lt;br&gt;
+A. Chaillet, G. Is. Detorakis, S. Palfi and S. Senova&lt;br&gt;
+Automatica 83, 2017, doi: &lt;a href=&#34;https://doi.org/10.1016/j.automatica.2017.05.011&#34;&gt;https://doi.org/10.1016/j.automatica.2017.05.011&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.sciencedirect.com/science/article/abs/pii/S0005109817302868&#34;&gt;[Article]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Closed-loop stimulation of a delayed neural fields model of parkinsonian STN-GPe network: a theoretical and computational study&lt;/strong&gt;&lt;br&gt;
+G. Is. Detorakis, A. Chaillet, S. Palfi and S. Senova&lt;br&gt;
+Frontiers in Neuroscience 9(237), 2015, doi: &lt;a href=&#34;https://doi.org/10.3389/fnins.2015.00237&#34;&gt;https://doi.org/10.3389/fnins.2015.00237&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.frontiersin.org/articles/10.3389/fnins.2015.00237/full&#34;&gt;[Article]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Structure of Receptive Fields in a Computational Model of Area 3b of Primary Sensory Cortex&lt;/strong&gt;&lt;br&gt;
+G. Is. Detorakis and N. P. Rougier&lt;br&gt;
+Frontiers in Computational Neuroscience, 8, 2014, doi: &lt;a href=&#34;https://doi.org/10.3389/fncom.2014.00076&#34;&gt;https://doi.org/10.3389/fncom.2014.00076&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://www.frontiersin.org/articles/10.3389/fncom.2014.00076/full&#34;&gt;[Article]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;A Neural Field Model of the Somatosensory Cortex: Formation, Maintenance, and Reorganization of Ordered Topographic Maps&lt;/strong&gt;&lt;br&gt;
+G. Is. Detorakis and N.P. Rougier&lt;br&gt;
+PLoS ONE 7(7):e40257, doi: &lt;a href=&#34;https://doi.org/10.1371/journal.pone.0040257&#34;&gt;https://doi.org/10.1371/journal.pone.0040257&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0040257&#34;&gt;[Article]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;reproducible-science-articles-peer-reviewed&#34;&gt;Reproducible Science Articles (peer-reviewed)&lt;/h2&gt;
+&lt;ol start=&#34;18&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Sustainable computational science: the ReScience initiative&lt;/strong&gt;&lt;br&gt;
+N.P. Rougier, K. Hinsen, F. Alexandre, T. Arildsen, L. Barba, F.C. Y. Benureau, C. Titus Brown, Pierre de Buyl,
+O. Caglayan, A.P. Davison, M.A. Delsuc, G. Detorakis, A.K. Diem, D. Drix, P. Enel, B. Girard, O. Guest, M.G. Hall,
+R.N. Henriques, X. Hinaut, K.S. Jaron, M. Khamassi, A. Klein, T. Manninen, P. Marchesi, D. McGlinn, C. Metzner,
+O.L. Petchey, H.E. Plesser, T. Poisot, K. Ram, Y. Ram, E. Roesch, C. Rossant, V. Rostami, A. Shifman, J. Stachelek,
+M. Stimberg, F. Stollmeier, F. Vaggi, G. Viejo, J. Vitay, A. Vostinar, R. Yurchak, T. Zito&lt;br&gt;
+PeerJ Computer Science, 3, e142, 2017&lt;br&gt;
+&lt;a href=&#34;https://peerj.com/articles/cs-142/&#34;&gt;[Article]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;[Re] A Generalized Linear Integrate-And-Fire Neural Model Produces Diverse Spiking Behaviors&lt;/strong&gt;&lt;br&gt;
+G. Is. Detorakis&lt;br&gt;
+The ReScience Journal, 2017, DOI: &lt;a href=&#34;https://doi.org/10.5281/zenodo.1003214&#34;&gt;https://doi.org/10.5281/zenodo.1003214&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://rescience.github.io/bibliography/detorakis_2017.html&#34;&gt;[Article]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;[Re] Multiple dynamical modes of thalamic relay neurons: rhythmic bursting and intermittent phase-locking&lt;/strong&gt;&lt;br&gt;
+G. Is. Detorakis&lt;br&gt;
+The ReScience Journal, 2:1, 2016, DOI: &lt;a href=&#34;https://doi.org/10.5281/zenodo.61697&#34;&gt;https://doi.org/10.5281/zenodo.61697&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://rescience.github.io/bibliography/detorakis_2016.html&#34;&gt;[Article]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;international-conferences-peer-reviewed&#34;&gt;International Conferences (peer-reviewed)&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Inherent Weight Normalization in Stochastic Neural Networks&lt;/strong&gt;&lt;br&gt;
+G. Detorakis, S. Dutta, A. Khanna, M. Jerry, S. Datta, and E. Neftci&lt;br&gt;
+33rd Conference on Neural Information Processing Systems (NeurIPS 2019), Vancouver, Canada.&lt;br&gt;
+&lt;a href=&#34;https://proceedings.neurips.cc/paper/2019/file/dfce06801e1a85d6d06f1fdd4475dacd-Paper.pdf&#34;&gt;[Article]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;A Recurrent Neural Network Based Model of Predictive Smooth Pursuit Eye Movement in Primates&lt;/strong&gt;&lt;br&gt;
+H. Kashyap, G. Detorakis, N. Dutt, J. Krichmar,and E. Neftci&lt;br&gt;
+IJCNN 2018, Rio de Janeiro, Brazil.&lt;br&gt;
+&lt;a href=&#34;https://ieeexplore.ieee.org/document/8489652&#34;&gt;[Article]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Incremental Stability of Spatiotemporal Delayed Dynamics and Application to Neural Fields&lt;/strong&gt;&lt;br&gt;
+G. Detorakis and A. Chaillet&lt;br&gt;
+IEEE CDC 2017, Melbourne, Australia.&lt;br&gt;
+&lt;a href=&#34;https://ieeexplore.ieee.org/document/8264558&#34;&gt;[Article]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Event-Driven Random Backpropagation: Enabling Neuromorphic Deep Learning Machines&lt;/strong&gt;&lt;br&gt;
+E. Neftci, C. Augustine, S. Paul, G. Detorakis,&lt;br&gt;
+IEEE ISCAS 2017, Baltimore, MD, USA.&lt;br&gt;
+&lt;a href=&#34;https://ieeexplore.ieee.org/document/8050529&#34;&gt;[Article]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Forward Table-Based Presynaptic Event-Triggered Spike-Timing-Dependent Plasticity&lt;/strong&gt;&lt;br&gt;
+B. U. Pedroni, S. Sheik, S. Joshi, G. Detorakis, S. Paul, C. Augustine, E. Neftci, G. Cauwenberghs,&lt;br&gt;
+IEEE BioCAS 2016, Shanghai, China.&lt;br&gt;
+&lt;a href=&#34;https://ieeexplore.ieee.org/document/7833861&#34;&gt;[Article]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;SPySort: Neuronal Spike Sorting with Python&lt;/strong&gt;&lt;br&gt;
+C. Pouzat and G.Is. Detorakis,&lt;br&gt;
+Euroscipy 2014, Cambridge, United Kingdom.&lt;br&gt;
+&lt;a href=&#34;https://arxiv.org/abs/1412.6383&#34;&gt;[Article]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Self-Organizing Dynamic Neural Fields&lt;/strong&gt;&lt;br&gt;
+N. P. Rougier and G. Is. Detorakis&lt;br&gt;
+3rd International Conference on Cognitive Neurodynamics, Hokkaido, Japan, 2011.&lt;br&gt;
+&lt;a href=&#34;https://link.springer.com/chapter/10.1007/978-94-007-4792-0_38&#34;&gt;[Article]&lt;/a&gt;
+&lt;a href=&#34;https://hal.inria.fr/inria-00587508/document&#34;&gt;[pdf]&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;international-conferences&#34;&gt;International Conferences&lt;/h2&gt;
+&lt;ol start=&#34;22&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;A neural network model of predictive smooth pursuit eye movement in primates&lt;/strong&gt;&lt;br&gt;
+H.J. Kashyap, G. Detorakis, N. Dutt, J.L. Krichmar, E. Neftci&lt;br&gt;
+SfN, San Diego (CA, USA)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Random Contrastive Hebbian Learning as a Biologically Plausible Learning Scheme&lt;/strong&gt;&lt;br&gt;
+G. Detorakis, T. Bartley, and E. Neftci&lt;br&gt;
+OCNS, Seattle (WA, USA), 2018&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Three-factor embedded learning on neuromorphic systems&lt;/strong&gt;&lt;br&gt;
+G. Detorakis, T. Bartley, R. Parise, S. Sheik, C. Augustine, S. Paul, B. U. Pedroni, N. Dutt, J.Krichmar, G. Cauwenberghs, and E. Neftci&lt;br&gt;
+COSYNE, Denver (CO, USA), 2018&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Embedded Learning on Neuromorphic Systems: Towards a Unified Computing Framework&lt;/strong&gt;&lt;br&gt;
+G. Detorakis, T. Bartley, R. Parise, S. Sheik, C. Augustine, S. Paul, B. Pedroni, N. Dutt, J. Krichmar, G. Cauwenberghs and E. Neftci&lt;br&gt;
+NICE, Portland (OR, USA), 2018&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Embedded learning on neuromorphic systems: Towards a unified computing framework&lt;/strong&gt;&lt;br&gt;
+G. Detorakis, T. Bartley, R. Parise, C. Augustine, S. Paul, E. Neftci&lt;br&gt;
+IEED ICCAD HALO Workshop, Irvine (CA, USA), 2017&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;NeuroLachesis: A Neuromorphic Framework&lt;/strong&gt;&lt;br&gt;
+G. Detorakis, D. Barsever, E. Neftci&lt;br&gt;
+Scipy 2017, Austin (TX, USA)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Robust stabilization of delayed neural fields by proportional feedback using input-to-state stability and small gain theorem&lt;/strong&gt;&lt;br&gt;
+A. Chaillet, G. Is. Detorakis, S. Palfi, S. Senova&lt;br&gt;
+ICMNS 2016, Juan-les-Pins, France&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Closed-loop disruption of oscillations in a targeted frequency band for a delayed neural field STN-GPe model&lt;/strong&gt;&lt;br&gt;
+G.Is. Detorakis and A. Chaillet&lt;br&gt;
+FENS Featured Regional Meeting 2015, Thessaloniki, Greece&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Incremental stability of delayed neural fields: a unifying framework for endogenous and exogenous sources of pathological oscillations&lt;/strong&gt;&lt;br&gt;
+G.Is. Detorakis and A. Chaillet&lt;br&gt;
+CNS, Prague, Czech Republic, 2015&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Closed-loop regulation of the activity of delayed neural fields with only partial measurement and stimulation&lt;/strong&gt;&lt;br&gt;
+G.Is. Detorakis and A. Chaillet&lt;br&gt;
+ICMNS, Antibes - Juan les Pins, France, 2015&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;A global stability analysis for delayed neural fields&lt;/strong&gt;&lt;br&gt;
+G.Is. Detorakis, A. Chaillet and I. Haidar&lt;br&gt;
+BCCN 2014, Göttingen, Germany&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;A computational view of the primary somatosensory cortex&lt;/strong&gt;
+G.Is. Detorakis and N.P. Rougier&lt;br&gt;
+CNS Annual Meeting, Paris, France, 2013&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Neural Fields and Cortical Plasticity&lt;/strong&gt;&lt;br&gt;
+G.Is. Detorakis and N.P. Rougier&lt;br&gt;
+BCCN, Freiburg, Germany, 2011&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;minor-conferences&#34;&gt;Minor Conferences&lt;/h2&gt;
+&lt;ol start=&#34;35&#34;&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Embedded learning on neuromorphic systems: Towards a unified computing framework&lt;/strong&gt;&lt;br&gt;
+G. Detorakis, C. Augustine, S. Paul, E. Neftci&lt;br&gt;
+24th Joint Symposium on Neural Computation, San Diego(CA, USA), 2017&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;On the relation between neuronal size and extracellular spike amplitude and its consequence on extracellular recordings interpretation&lt;/strong&gt;&lt;br&gt;
+C. Pouzat and G. Is. Detorakis&lt;br&gt;
+MathStatNeuro Workshop, Nice(France), 2015&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;SPySort&lt;/strong&gt;&lt;br&gt;
+C. Pouzat and G. Is. Detorakis&lt;br&gt;
+GDR Multielectrode systems and signal processing for Neuroscience, Gif-sur-Yvette(France), 2014&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Skin Topographic Maps in SI&lt;/strong&gt;&lt;br&gt;
+G.Is. Detorakis and N.P. Rougier&lt;br&gt;
+Progress in Neural Field Theory, Reading, United Kingdom, 2012&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;Skin Topographic Maps in SI&lt;/strong&gt;&lt;br&gt;
+G.Is. Detorakis and N.P. Rougier&lt;br&gt;
+Workshop on Cognitive and Dynamics in Neural Systems: Mathematical and Computational Modeling (CONAS), Lyon, France, 2012&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;book-chapters&#34;&gt;Book Chapters&lt;/h2&gt;
+&lt;ol start=&#34;21&#34;&gt;
+&lt;li&gt;&lt;strong&gt;ISS-stabilization of delayed neural fields by small-gain arguments&lt;/strong&gt;&lt;br&gt;
+A. Chaillet, G. Is. Detorakis, S. Palfi, and S. Senova&lt;br&gt;
+Delays and Interconnections: Methodology, Algorithms and Applications, Springer, 2019&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;popular-science&#34;&gt;Popular Science&lt;/h2&gt;
+&lt;ol start=&#34;40&#34;&gt;
+&lt;li&gt;&lt;strong&gt;Optogenetics to unravel the mechanisms of Parkinsonian symptoms and to optimize deep brain stimulation&lt;/strong&gt;&lt;br&gt;
+A. Chaillet, D. Da Silva, G. Detorakis, C. Pouzat, S. Senova&lt;br&gt;
+ERCIM News, Special issue on cyber-physical systems, number 97, April 2014&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    </item>
+    
+    <item>
+      <title>Research</title>
+      <link>https://gdetor.github.io/research/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/research/</guid>
+      <description>Neuromorphic Computing He was involved in developing neuromorphic devices capable of embedded and online learning. He was one of the core developers of the software simulator for the Neural and Synaptic Array Transceiver Framework (in collaboration with Intel Corporation Research Labs, the Universities of California Irvine, and San Diego). He investigated how natural mechanisms of biological brains can lead to more efficient and biologically plausible machine learning algorithms suitable for neuromorphic devices.</description>
+      <content>&lt;h2 id=&#34;neuromorphic-computing&#34;&gt;Neuromorphic Computing&lt;/h2&gt;
+&lt;p&gt;He was involved in developing neuromorphic devices capable of embedded and online
+learning. He was one of the core developers of the software simulator for the
+Neural and Synaptic Array Transceiver Framework (in collaboration with Intel
+Corporation Research Labs, the Universities of California Irvine, and San Diego).
+He investigated how natural mechanisms of biological brains can lead to more
+efficient and biologically plausible machine learning algorithms suitable for
+neuromorphic devices.&lt;/p&gt;
+&lt;h2 id=&#34;parkinsons-disease&#34;&gt;Parkinson&amp;rsquo;s Disease&lt;/h2&gt;
+&lt;p&gt;Another research interest of his is Parkinson&amp;rsquo;s disease (PD). He has combined
+neuroscience and control theory to study PD and propose potential treatments.
+He has developed computational models based on neural fields theory for the
+basal ganglia and PD and has investigated closed-loop deep brain stimulation
+(DBS) with applications on PD treatments.&lt;/p&gt;
+&lt;h2 id=&#34;cortical-plasticity--self-organizing-maps&#34;&gt;Cortical Plasticity &amp;amp; Self-organizing Maps&lt;/h2&gt;
+&lt;p&gt;His research as a Ph.D. student focused on cortical plasticity and self-organization.
+He proposed a mathematical/computational model for studying self-organization
+in the primary somatosensory cortex. The model relied on the neural field&amp;rsquo;s theory.
+Simulation of his model showed how the cerebral cortex builds up topographic maps.
+Furthermore, he demonstrated how the brain maintains topographic maps and how they
+get reorganized in the face of a lesion.&lt;/p&gt;
+&lt;h2 id=&#34;rhythmical-motor-control&#34;&gt;Rhythmical Motor Control&lt;/h2&gt;
+&lt;p&gt;Finally, as a Master&amp;rsquo;s student, he studied rhythmical motor control and human
+tremor. He has applied signal processing theory and analysis on neurophysiological
+signals like EEG and EMG, trying to determine the role of human tremor.
+Furthermore, he has investigated Central Pattern Generators (CPGs) and their
+role in biped locomotion.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;He also has some experience in:&lt;/p&gt;
+&lt;h3 id=&#34;natural-language-processing-nlp&#34;&gt;Natural Language Processing (NLP)&lt;/h3&gt;
+&lt;p&gt;He has worked as Data Science Architect for adNomus Inc. focusing
+mainly on Natural Language Processing (NLP). He is developing NLP algorithms
+with applications on Recommendation Systems and Content Analysis.&lt;/p&gt;
+&lt;h3 id=&#34;recording-techniques&#34;&gt;Recording Techniques&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Electroencephalogram (EEG) &lt;a href=&#34;https://en.wikipedia.org/wiki/Electroencephalography&#34;&gt;?&lt;/a&gt;,&lt;/li&gt;
+&lt;li&gt;Electromyogram (EMG) &lt;a href=&#34;https://en.wikipedia.org/wiki/Electromyography&#34;&gt;?&lt;/a&gt;,&lt;/li&gt;
+&lt;li&gt;And minor experience in intracellular and extracellular in vivo recordings &lt;a href=&#34;https://en.wikipedia.org/wiki/Electrophysiology&#34;&gt;?&lt;/a&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    </item>
+    
+    <item>
+      <title>Software</title>
+      <link>https://gdetor.github.io/software/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/software/</guid>
+      <description>Machine/Deep Learning Pytorch-Time2Vec Time2Vec is an algorithm that provides a learning representation of time, which is model agnostic and can be used to encode temporal dynamics in many different applications (e.g., in Transformers for time series).
+ Original Paper: &amp;ldquo;Time2Vec: Learning a vector representation of time&amp;rdquo;, Kazemi et al., arXiv, 2019 Programming Language: Python (Pytorch, Numpy, Matplotlib) Source Code:  .inline-svg { display: inline-block; height: 1.0rem; width: 1.0rem; top: 0.1rem; position: relative; }      Neural Sampling Machines NSMs or Neural Sampling Machines is a Pytorch implementation of the algorithms proposed in</description>
+      <content>&lt;h2 id=&#34;machinedeep-learning&#34;&gt;Machine/Deep Learning&lt;/h2&gt;
+&lt;h3 id=&#34;pytorch-time2vec&#34;&gt;Pytorch-Time2Vec&lt;/h3&gt;
+&lt;p&gt;Time2Vec is an algorithm that provides a learning representation of time, which
+is model agnostic and can be used to encode temporal dynamics in many different
+applications (&lt;em&gt;e.g.&lt;/em&gt;, in Transformers for time series).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Original Paper: &lt;a href=&#34;https://arxiv.org/abs/1907.05321&#34;&gt;&amp;ldquo;Time2Vec: Learning a vector representation of time&amp;rdquo;,
+Kazemi et al., arXiv, 2019&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Programming Language: Python (Pytorch, Numpy, Matplotlib)&lt;/li&gt;
+&lt;li&gt;Source Code: &lt;a href=&#34;https://github.com/gdetor/pytorch_time2vec&#34;&gt;&lt;style&gt;
+    .inline-svg {
+      display: inline-block;
+      height: 1.0rem;
+      width: 1.0rem;
+      top: 0.1rem;
+      position: relative;
+    }
+&lt;/style&gt;
+
+&lt;span class=&#34;inline-svg&#34; &gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 448 512&#34;&gt;&lt;!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+
+
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;neural-sampling-machines&#34;&gt;Neural Sampling Machines&lt;/h3&gt;
+&lt;p&gt;NSMs or Neural Sampling Machines is a Pytorch implementation of the algorithms
+proposed in&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Original Paper: &lt;a href=&#34;https://papers.nips.cc/paper/2019/hash/dfce06801e1a85d6d06f1fdd4475dacd-Abstract.html&#34;&gt;&amp;ldquo;Inherent Weight Normalization in Stochastic Neural Networks&amp;rdquo;, Detorakis et al.,
+NeurIPS 2019&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Programming Language: Python (Pytorch, Numpy, Matplotlib)&lt;/li&gt;
+&lt;li&gt;Source Code: &lt;a href=&#34;https://github.com/nmi-lab/neural_sampling_machines&#34;&gt;&lt;style&gt;
+    .inline-svg {
+      display: inline-block;
+      height: 1.0rem;
+      width: 1.0rem;
+      top: 0.1rem;
+      position: relative;
+    }
+&lt;/style&gt;
+
+&lt;span class=&#34;inline-svg&#34; &gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 448 512&#34;&gt;&lt;!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+
+
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;random-contrastive-hebbian-learning-rchl&#34;&gt;Random Contrastive Hebbian Learning (rCHL)&lt;/h3&gt;
+&lt;p&gt;rCHL is a learning algorithm that relies on the contrastive Hebbian learning
+algorithm. The major difference is that the feedback pathway
+does not use any kind of learnable weights. Instead, it exploits fixed random
+weights.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Original Paper: &lt;a href=&#34;https://www.sciencedirect.com/science/article/abs/pii/S089360801930019X&#34;&gt;&amp;ldquo;Contrastive Hebbian Learning with Random Feedback Weights&amp;rdquo;, Detorakis et al.,
+Neural Networks, 2019&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Programming Language: C and Python&lt;/li&gt;
+&lt;li&gt;Source Code: &lt;a href=&#34;https://gitlab.com/gdetor/rCHL&#34;&gt;&lt;style&gt;
+    .inline-svg {
+      display: inline-block;
+      height: 1.0rem;
+      width: 1.0rem;
+      top: 0.1rem;
+      position: relative;
+    }
+&lt;/style&gt;
+
+&lt;span class=&#34;inline-svg&#34; &gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 512 512&#34;&gt;&lt;!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M105.2 24.9c-3.1-8.9-15.7-8.9-18.9 0L29.8 199.7h132c-.1 0-56.6-174.8-56.6-174.8zM.9 287.7c-2.6 8 .3 16.9 7.1 22l247.9 184-226.2-294zm160.8-88l94.3 294 94.3-294zm349.4 88l-28.8-88-226.3 294 247.9-184c6.9-5.1 9.7-14 7.2-22zM425.7 24.9c-3.1-8.9-15.7-8.9-18.9 0l-56.6 174.8h132z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+
+
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;restricted-bolzmann-machine-in-c&#34;&gt;Restricted Bolzmann Machine (in C)&lt;/h3&gt;
+&lt;p&gt;Restricted Boltzmann Machine is an artificial neural network with generative
+capabilities. Usually, it consists of two layers and can learn a probability
+distribution over its set of inputs through a contrastive divergence algorithm.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Original Paper: &lt;a href=&#34;http://people.stat.sfu.ca/~dac5/BoltzmannMachines.pdf&#34;&gt;&amp;ldquo;Bolzmann Machines&amp;rdquo;, Hinton 2014&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Programming Language: C and Python&lt;/li&gt;
+&lt;li&gt;Source Code: &lt;a href=&#34;https://github.com/gdetor/cRBM&#34;&gt;&lt;style&gt;
+    .inline-svg {
+      display: inline-block;
+      height: 1.0rem;
+      width: 1.0rem;
+      top: 0.1rem;
+      position: relative;
+    }
+&lt;/style&gt;
+
+&lt;span class=&#34;inline-svg&#34; &gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 448 512&#34;&gt;&lt;!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+
+
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;annealed-importance-sampling-pyais&#34;&gt;Annealed Importance Sampling (pyAIS)&lt;/h3&gt;
+&lt;p&gt;When one has to compute the partition function Z of a probability distribution
+(Z = \sum_{x}f(x), where p(x) = \frac{1}{Z}f(x)) often applies an Importance
+Sampling (IS) method. The issue with IS is the choice of its single
+hyperparameter, namelly the proposal distribution. Annealed Importance Sampling
+overcomes that problem by creating intermediate distributions. AIS does this
+by &amp;ldquo;moving&amp;rdquo; the proposal distribution until one gets a fair approximation of the
+target (original) distribution.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Original Papers:
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://arxiv.org/abs/physics/9803008&#34;&gt;&amp;ldquo;Annealed Importance Sampling&amp;rdquo;, R.M. Neal, 1998&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.cs.toronto.edu/~rsalakhu/papers/bm.pdf&#34;&gt;&amp;ldquo;Learning and Evaluating Boltzmann Machines&amp;rdquo;, R. Salakhutdinov, 2008&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Programming Language: Python&lt;/li&gt;
+&lt;li&gt;Source Code: &lt;a href=&#34;https://github.com/gdetor/pyAIS&#34;&gt;&lt;style&gt;
+    .inline-svg {
+      display: inline-block;
+      height: 1.0rem;
+      width: 1.0rem;
+      top: 0.1rem;
+      position: relative;
+    }
+&lt;/style&gt;
+
+&lt;span class=&#34;inline-svg&#34; &gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 448 512&#34;&gt;&lt;!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+
+
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;self-organizing-maps-dx-dy-representations&#34;&gt;Self-organizing maps Dx-Dy representations&lt;/h3&gt;
+&lt;p&gt;SOM-DyDx, is a python script that implements Demartines dy-dx representation
+method. This method is useful to inspect if a self-organized map
+is well-organized.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Original Paper: &amp;ldquo;Organization measures and representations of the Kohonen maps&amp;rdquo;, P. Demartines, 1992&lt;/li&gt;
+&lt;li&gt;Programming Language: Python (Numpy)&lt;/li&gt;
+&lt;li&gt;Source Code:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;neuromorphic-computing&#34;&gt;Neuromorphic Computing&lt;/h2&gt;
+&lt;h3 id=&#34;neural-and-synaptic-array-transceiver-nsat&#34;&gt;Neural and Synaptic Array Transceiver (NSAT)&lt;/h3&gt;
+&lt;p&gt;Neural and Synaptic Array Transceiver is a Neuromorphic Computational Framework
+facilitating flexible and efficient embedded learning by matching algorithmic
+requirements and neural and synaptic dynamics. NSAT supports event-driven
+supervised, unsupervised and reinforcement learning algorithms.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Original Paper: &lt;a href=&#34;https://www.frontiersin.org/articles/10.3389/fnins.2018.00583/full&#34;&gt;Neural and Synaptic Array Transceiver: A Brain-Inspired
+Computing Framework for Embedded Learning&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Programming Language: C/Python&lt;/li&gt;
+&lt;li&gt;Source Code: &lt;a href=&#34;https://github.com/nmi-lab/NSAT&#34;&gt;&lt;style&gt;
+    .inline-svg {
+      display: inline-block;
+      height: 1.0rem;
+      width: 1.0rem;
+      top: 0.1rem;
+      position: relative;
+    }
+&lt;/style&gt;
+
+&lt;span class=&#34;inline-svg&#34; &gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 448 512&#34;&gt;&lt;!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+
+
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;nsatcarl&#34;&gt;NSATCarl&lt;/h3&gt;
+&lt;p&gt;NSATCarl is a simple C++ library that brings together the Neural and Synaptic
+Array Transceiver (NSAT) and the neural simulator &lt;a href=&#34;https://www.socsci.uci.edu/~jkrichma/CARLsim/&#34;&gt;CARLsim&lt;/a&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Programming Language: C++&lt;/li&gt;
+&lt;li&gt;Source Code: &lt;a href=&#34;https://github.com/gdetor/NSATcarl&#34;&gt;&lt;style&gt;
+    .inline-svg {
+      display: inline-block;
+      height: 1.0rem;
+      width: 1.0rem;
+      top: 0.1rem;
+      position: relative;
+    }
+&lt;/style&gt;
+
+&lt;span class=&#34;inline-svg&#34; &gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 448 512&#34;&gt;&lt;!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+
+
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;optimization&#34;&gt;Optimization&lt;/h2&gt;
+&lt;h3 id=&#34;genetic-algorithms-and-island-models-gaim&#34;&gt;Genetic Algorithms and Island Models (GAIM)&lt;/h3&gt;
+&lt;p&gt;Genetic Algorithms (GAs) are optimization metaheuristics inspired by the theory
+of evolution and the process of natural selection. GAs belong to a larger class
+of heuristics called evolutionary algorithms (EA). Island Model (IM) is a
+collection of algorithms that enable many populations to evolve over the same
+optimization problem providing faster convergence to a solution than a simple GA.
+Furthermore, IMs can overcome the problem of local minima due to a migration
+policy between islands (different populations).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Original Paper: &lt;a href=&#34;https://joss.theoj.org/papers/10.21105/joss.01839&#34;&gt;&amp;ldquo;GAIM: A C++ library for Genetic Algorithms and
+Island Models, G. Is. Detorakis and A. Burton, JOSS, 2019&amp;rdquo;&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Programming Language: C++/Python&lt;/li&gt;
+&lt;li&gt;Source Code: &lt;a href=&#34;https://github.com/gdetor/gaim&#34;&gt;&lt;style&gt;
+    .inline-svg {
+      display: inline-block;
+      height: 1.0rem;
+      width: 1.0rem;
+      top: 0.1rem;
+      position: relative;
+    }
+&lt;/style&gt;
+
+&lt;span class=&#34;inline-svg&#34; &gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 448 512&#34;&gt;&lt;!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+
+
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;dynamical-systems&#34;&gt;Dynamical Systems&lt;/h2&gt;
+&lt;h3 id=&#34;empirical-dynamic-modeling-empyred&#34;&gt;Empirical Dynamic Modeling (empyred)&lt;/h3&gt;
+&lt;p&gt;Empirical Dynamic Modeling (EDM) is an equation-free framework for modeling
+non-linear dynamic systems. EDM relies on Takens&#39; (1981) theorem of temporal
+embeddings and reconstruction of system attractors from temporal embeddings.
+&lt;strong&gt;Empyred&lt;/strong&gt; is a pure Python implementation of the EDM methods: Simplex and SMAP.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Original Papers:
+&lt;ol&gt;
+&lt;li&gt;&amp;ldquo;Nonlinear forecasting as a way of distinguishing chaos from measurement error in time series&amp;rdquo; (Sugihara and May, 1990)&lt;/li&gt;
+&lt;li&gt;&amp;ldquo;Nonlinear forecasting for the classification of natural time series&amp;rdquo;, (Sugihara, 1994).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Relevant Material: &lt;a href=&#34;https://deepeco.ucsd.edu/nonlinear-dynamics-research/edm/#page-content&#34;&gt;Sugihara&amp;rsquo;s Lab&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Programming Language: Python (Numpy, Scipy, Sklearn, Matplotlib)&lt;/li&gt;
+&lt;li&gt;Source Code: &lt;a href=&#34;https://github.com/gdetor/empyred&#34;&gt;&lt;style&gt;
+    .inline-svg {
+      display: inline-block;
+      height: 1.0rem;
+      width: 1.0rem;
+      top: 0.1rem;
+      position: relative;
+    }
+&lt;/style&gt;
+
+&lt;span class=&#34;inline-svg&#34; &gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 448 512&#34;&gt;&lt;!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+
+
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;neuroscience&#34;&gt;Neuroscience&lt;/h2&gt;
+&lt;h3 id=&#34;correlated-spike-trains-corrspiketrains&#34;&gt;Correlated Spike Trains (CorrSpikeTrains)&lt;/h3&gt;
+&lt;p&gt;This is a Python implementation of the paper &amp;ldquo;Generation of correlated spike
+trains&amp;rdquo;. Both the doubly stochastic processes and the mixture method described
+in the original paper are implemented.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Original Paper: &lt;a href=&#34;http://romainbrette.fr/WordPress3/wp-content/uploads/2014/06/Brette2008NC.pdf&#34;&gt;&amp;ldquo;Generation of correlated spike trains&amp;rdquo;, R. Brette,
+Neural Computation, 2009&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Programming Language: Python&lt;/li&gt;
+&lt;li&gt;Source Code: &lt;a href=&#34;https://github.com/gdetor/CorrSpikeTrains&#34;&gt;&lt;style&gt;
+    .inline-svg {
+      display: inline-block;
+      height: 1.0rem;
+      width: 1.0rem;
+      top: 0.1rem;
+      position: relative;
+    }
+&lt;/style&gt;
+
+&lt;span class=&#34;inline-svg&#34; &gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 448 512&#34;&gt;&lt;!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+
+
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;spike-sorting---spysort&#34;&gt;Spike sorting - SPySort&lt;/h3&gt;
+&lt;p&gt;Spike sorting is a class of algorithms for classifying spikes into clusters
+based on a similarity measure. Usually, spike sorting identifies the waveforms
+of neural spiking in signals collected from extracellular recordings. SpySort
+is a Python package that implements a spike sorting algorithm.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Original Paper: &lt;a href=&#34;https://arxiv.org/abs/1412.6383&#34;&gt;&amp;ldquo;SPySort: Neuronal Spike Sorting with Python&amp;rdquo;,
+C. Pouzat and G.Is. Detorakis, 2014&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Programming Language: Python&lt;/li&gt;
+&lt;li&gt;Source Code: &lt;a href=&#34;https://github.com/gdetor/SPySort&#34;&gt;&lt;style&gt;
+    .inline-svg {
+      display: inline-block;
+      height: 1.0rem;
+      width: 1.0rem;
+      top: 0.1rem;
+      position: relative;
+    }
+&lt;/style&gt;
+
+&lt;span class=&#34;inline-svg&#34; &gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 448 512&#34;&gt;&lt;!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+
+
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;neural-fields-and-deep-brain-stimulation&#34;&gt;Neural Fields and Deep Brain Stimulation&lt;/h3&gt;
+&lt;p&gt;This project regards a deep brain stimulation (DBS) model of the globus pallidus
+and the subthalamic nucleus of the basal ganglia. The model explores the effects
+of optogenetic DBS stimulation in closed-loop treatments of motor symptoms of
+Parkinson’s disease. The model relies on neural fields and a simple proportional
+controller.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Original Paper: &lt;a href=&#34;https://www.frontiersin.org/articles/10.3389/fnins.2015.00237/full&#34;&gt;&amp;ldquo;Closed-loop stimulation of a delayed neural fields model
+of parkinsonian STN-GPe network: a theoretical and computational study&amp;rdquo;,
+Detorakis et al, Frontiers in Neuroscience, 2015&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Programming Language: Python&lt;/li&gt;
+&lt;li&gt;Source Code: &lt;a href=&#34;https://github.com/gdetor/neuralfieldDBSmodel&#34;&gt;&lt;style&gt;
+    .inline-svg {
+      display: inline-block;
+      height: 1.0rem;
+      width: 1.0rem;
+      top: 0.1rem;
+      position: relative;
+    }
+&lt;/style&gt;
+
+&lt;span class=&#34;inline-svg&#34; &gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 448 512&#34;&gt;&lt;!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+
+
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;primary-somatosensory-cortex-and-structure-of-its-receptice-fields&#34;&gt;Primary Somatosensory Cortex and Structure of its Receptice Fields&lt;/h3&gt;
+&lt;p&gt;This repo contains a computational model of area 3b of the somatosensory cortex.
+The model relies on the neural field&amp;rsquo;s theory and reproduces an exact experimental
+protocol described in DiCarlo et al., 1998. The model describes the structure
+of receptive fields in area 3b of the primary somatosensory cortex and how
+attention mechanisms affect that structure. The source code, beyond the model,
+provides tools to analyze the results and generate the figures from the original
+paper. The model is capable of obtaining similar results as the original experiment
+described in DiCarlo et al..&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Original Paper: &lt;a href=&#34;https://www.frontiersin.org/articles/10.3389/fncom.2014.00076/fulL&#34;&gt;&amp;ldquo;Structure of receptive fields in a computational model
+of area 3b of primary sensory cortex&amp;rdquo;, G.Is. Detorakis and N.P. Rougier, Frontiers in Neuroscience, 2014&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Programming Language: Python&lt;/li&gt;
+&lt;li&gt;Source Code: &lt;a href=&#34;https://github.com/gdetor/SI-RF-Structure&#34;&gt;&lt;style&gt;
+    .inline-svg {
+      display: inline-block;
+      height: 1.0rem;
+      width: 1.0rem;
+      top: 0.1rem;
+      position: relative;
+    }
+&lt;/style&gt;
+
+&lt;span class=&#34;inline-svg&#34; &gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 448 512&#34;&gt;&lt;!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+
+
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;self-organization-and-sensory-topographic-maps&#34;&gt;Self-Organization and Sensory Topographic Maps&lt;/h3&gt;
+&lt;p&gt;A collection of Python scripts implement a self-organization model of the
+primary somatosensory cortex. The model relies on the neural field&amp;rsquo;s theory
+and describes the dynamics of the primary somatosensory cortex of monkeys.
+It forms, maintains, and reorganizes somatosensory topographic maps following
+a biologically plausible Oja-like learning rule.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Original Paper: &lt;a href=&#34;https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0040257&#34;&gt;&amp;ldquo;A Neural Field Model of the Somatosensory Cortex:
+Formation, Maintenance and Reorganization of Ordered Topographic Maps&amp;rdquo;,
+G.Is. Detorakis and N.P. Rougier, PloS ONE, 2012&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Programming Language: Python&lt;/li&gt;
+&lt;li&gt;Source Code: &lt;a href=&#34;https://github.com/gdetor/SITopMaps&#34;&gt;&lt;style&gt;
+    .inline-svg {
+      display: inline-block;
+      height: 1.0rem;
+      width: 1.0rem;
+      top: 0.1rem;
+      position: relative;
+    }
+&lt;/style&gt;
+
+&lt;span class=&#34;inline-svg&#34; &gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 448 512&#34;&gt;&lt;!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+
+
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;numerical-analysis&#34;&gt;Numerical Analysis&lt;/h2&gt;
+&lt;h3 id=&#34;pseudospectra-analysis-for-rectangular-matrices-pygpsa&#34;&gt;Pseudospectra Analysis for Rectangular Matrices (pygpsa)&lt;/h3&gt;
+&lt;p&gt;Pseudospectra of a matrix (or an operator) is a set containing its spectrum
+and the &amp;ldquo;pseudo&amp;rdquo;-eigenvalues. Pseudospectra is particularly useful for
+understanding and/or revealing information about non-normal matrices (operators).
+A Python script that computes the pseudospectra of a rectangular matrix.
+For more information about pseudospectra visit the &lt;a href=&#34;https://www.cs.ox.ac.uk/pseudospectra/&#34;&gt;Pseudospectra Gateway&lt;/a&gt;.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Original Paper: &lt;a href=&#34;http://people.maths.ox.ac.uk/~trefethen/publication/PDF/2002_101.pdf&#34;&gt;&amp;ldquo;Pseudospectra of rectangular matrices&amp;rdquo;, T.G. Wright
+and L.N. Trefethen, IMA Journal of Numerical Analysis, 22, 501&amp;ndash;519, 2002&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Programming Language: Python&lt;/li&gt;
+&lt;li&gt;Source Code: &lt;a href=&#34;https://github.com/gdetor/pygpsa&#34;&gt;&lt;style&gt;
+    .inline-svg {
+      display: inline-block;
+      height: 1.0rem;
+      width: 1.0rem;
+      top: 0.1rem;
+      position: relative;
+    }
+&lt;/style&gt;
+
+&lt;span class=&#34;inline-svg&#34; &gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 448 512&#34;&gt;&lt;!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+
+
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;crkmethods&#34;&gt;CRKMethods&lt;/h3&gt;
+&lt;p&gt;Runge-Kutta (RK) methods are iterative methods used in the temporal discretization
+of (numerical) approximations of Ordinary Differential Equations (ODEs).
+CRKMethods is a collection of explicit RK methods: (i) Foreward Euler’s method,
+(ii) RK45, (iii) Refined RK45, and (iv) Fehlberg’s method. Each method is
+implemented as a single step, so the end-user has to run over N timesteps to
+get the final solution. Furthermore, the end-user is responsible for providing
+the time-step (dt). For more details, please have a look at the file &lt;em&gt;main.c&lt;/em&gt; in
+the &lt;em&gt;src&lt;/em&gt; directory.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Programming Language: C&lt;/li&gt;
+&lt;li&gt;Source Code: &lt;a href=&#34;https://github.com/gdetor/CRKMethods&#34;&gt;&lt;style&gt;
+    .inline-svg {
+      display: inline-block;
+      height: 1.0rem;
+      width: 1.0rem;
+      top: 0.1rem;
+      position: relative;
+    }
+&lt;/style&gt;
+
+&lt;span class=&#34;inline-svg&#34; &gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 448 512&#34;&gt;&lt;!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+
+
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

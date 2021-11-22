@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on GID Webpage</title>
+    <link>https://gdetor.github.io/posts/</link>
+    <description>Recent content in Posts on GID Webpage</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>GID - 2021</copyright>
+    <lastBuildDate>Tue, 13 Apr 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>https://gdetor.github.io/posts/welcome/</link>
+      <pubDate>Tue, 13 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/posts/welcome/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>Research Demos</title>
+      <link>https://gdetor.github.io/posts/demos/</link>
+      <pubDate>Tue, 13 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/posts/demos/</guid>
+      <description>The following videos demonstrate a computation model of primary somatosensory cortex undergoing self-organization. The model relies on Neural Field [1]. The complete mathematical/computational model as well as all the details and results are given in [2] and [3].
+ Self-organization of receptive fields (RFs)    Evolution of a single RF during self-organization    Evolution of multiple RFs during self-organization    References  Dynamics of pattern formation in lateral-inhibition type neural fields A Neural Field Model of the Somatosensory Cortex: Formation, Maintenance and Reorganization of Ordered Topographic Maps Structure of receptive fields in a computational model of area 3b of primary sensory cortex  </description>
+      <content>&lt;p&gt;The following videos demonstrate a computation model of primary somatosensory
+cortex undergoing self-organization. The model relies on Neural Field [1].
+The complete mathematical/computational model as well as all the details
+and results are given in [2] and [3].&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;self-organization-of-receptive-fields-rfs&#34;&gt;Self-organization of receptive fields (RFs)&lt;/h3&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/JU0PKFpagUo&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+&lt;h3 id=&#34;evolution-of-a-single-rf-during-self-organization&#34;&gt;Evolution of a single RF during self-organization&lt;/h3&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/UzosJK8YOU0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+&lt;h3 id=&#34;evolution-of-multiple-rfs-during-self-organization&#34;&gt;Evolution of multiple RFs during self-organization&lt;/h3&gt;
+
+&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;
+  &lt;iframe src=&#34;https://www.youtube.com/embed/F8JOQs2MYN4&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; allowfullscreen title=&#34;YouTube Video&#34;&gt;&lt;/iframe&gt;
+&lt;/div&gt;
+
+&lt;hr&gt;
+&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;a href=&#34;https://link.springer.com/article/10.1007/BF00337259&#34;&gt;Dynamics of pattern formation in lateral-inhibition type neural fields&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0040257&#34;&gt;A Neural Field Model of the Somatosensory Cortex: Formation, Maintenance and Reorganization of Ordered Topographic Maps&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.frontiersin.org/articles/10.3389/fncom.2014.00076/full&#34;&gt;Structure of receptive fields in a computational model of area 3b of primary sensory cortex&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    </item>
+    
+    <item>
+      <title>Tweets</title>
+      <link>https://gdetor.github.io/posts/news/</link>
+      <pubDate>Tue, 13 Apr 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/posts/news/</guid>
+      <description>&amp;quot;I, Pencil&amp;quot; An essay published in 1958 which beautifully describes the amount of human coordination, cooperation and trade that needs to happen for the creation of a seemingly simple object, a lead pencil. ✏️
+It&amp;#39;s a great read: https://t.co/P4Ha7HpoGp pic.twitter.com/vPPZuCZ5cB
+&amp;mdash; Fermat&amp;#39;s Library (@fermatslibrary) April 6, 2021  </description>
+      <content>&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;en&#34; dir=&#34;ltr&#34;&gt;&amp;quot;I, Pencil&amp;quot; &lt;br&gt;&lt;br&gt;An essay published in 1958 which beautifully describes the amount of human coordination, cooperation and trade that needs to happen for the creation of a seemingly simple object, a lead pencil.  ✏️&lt;br&gt;&lt;br&gt;It&amp;#39;s a great read: &lt;a href=&#34;https://t.co/P4Ha7HpoGp&#34;&gt;https://t.co/P4Ha7HpoGp&lt;/a&gt; &lt;a href=&#34;https://t.co/vPPZuCZ5cB&#34;&gt;pic.twitter.com/vPPZuCZ5cB&lt;/a&gt;&lt;/p&gt;&amp;mdash; Fermat&amp;#39;s Library (@fermatslibrary) &lt;a href=&#34;https://twitter.com/fermatslibrary/status/1379424914445377536?ref_src=twsrc%5Etfw&#34;&gt;April 6, 2021&lt;/a&gt;&lt;/blockquote&gt;
+&lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
+
+</content>
+    </item>
+    
+  </channel>
+</rss>
