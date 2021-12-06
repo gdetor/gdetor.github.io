@@ -6,8 +6,8 @@
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Machine/Deep Learning Pytorch-Time2Vec Time2Vec is an algorithm that provides a learning representation of time, which is model agnostic and can be used to encode temporal dynamics in many different applications (e.g., in Transformers for time series).
- Original Paper: &amp;ldquo;Time2Vec: Learning a vector representation of time&amp;rdquo;, Kazemi et al., arXiv, 2019 Programming Language: Python (Pytorch, Numpy, Matplotlib) Source Code:  .inline-svg { display: inline-block; height: 1.0rem; width: 1.0rem; top: 0.1rem; position: relative; }      Neural Sampling Machines NSMs or Neural Sampling Machines is a Pytorch implementation of the algorithms proposed in" />
+<meta name="description" content="Machine/Deep Learning Time series collection There are many ways to perform time series forecasting. One of the most recent (modern) ways is to use artificial neural networks (or even deep neural networks) to model time series and perform predictions usign those models. The present repository provides three mainstream artificial neural networks, an LSTM, a MLP, and a TCN for time series forecasting.
+ Programming Language: Python (Pytorch, Numpy, Matplotlib) Source Code:  ." />
 <meta name="keywords" content="[gdetor, Georgios Detorakis, Georgios Is. Detorakis, georgios, detorakis]" />
 <meta name="robots" content="noodp" />
 <link rel="canonical" href="https://gdetor.github.io/software/" />
@@ -38,8 +38,8 @@
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="Software">
-<meta property="og:description" content="Machine/Deep Learning Pytorch-Time2Vec Time2Vec is an algorithm that provides a learning representation of time, which is model agnostic and can be used to encode temporal dynamics in many different applications (e.g., in Transformers for time series).
- Original Paper: &amp;ldquo;Time2Vec: Learning a vector representation of time&amp;rdquo;, Kazemi et al., arXiv, 2019 Programming Language: Python (Pytorch, Numpy, Matplotlib) Source Code:  .inline-svg { display: inline-block; height: 1.0rem; width: 1.0rem; top: 0.1rem; position: relative; }      Neural Sampling Machines NSMs or Neural Sampling Machines is a Pytorch implementation of the algorithms proposed in" />
+<meta property="og:description" content="Machine/Deep Learning Time series collection There are many ways to perform time series forecasting. One of the most recent (modern) ways is to use artificial neural networks (or even deep neural networks) to model time series and perform predictions usign those models. The present repository provides three mainstream artificial neural networks, an LSTM, a MLP, and a TCN for time series forecasting.
+ Programming Language: Python (Pytorch, Numpy, Matplotlib) Source Code:  ." />
 <meta property="og:url" content="https://gdetor.github.io/software/" />
 <meta property="og:site_name" content="GID Webpage" />
 
@@ -162,6 +162,56 @@
 
   <div class="post-content"><div>
         <h2 id="machinedeep-learning">Machine/Deep Learning<a href="#machinedeep-learning" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h3 id="time-series-collection">Time series collection<a href="#time-series-collection" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>There are many ways to perform time series forecasting. One of the most recent
+(modern) ways is to use artificial neural networks (or even deep neural
+networks) to model time series and perform predictions usign those models.
+The present repository provides three mainstream artificial neural networks,
+an LSTM, a MLP, and a TCN for time series forecasting.</p>
+<ul>
+<li>Programming Language: Python (Pytorch, Numpy, Matplotlib)</li>
+<li>Source Code: <a href="https://gitlab.com/gdetor/time_series_forecasting"><style>
+    .inline-svg {
+      display: inline-block;
+      height: 1.0rem;
+      width: 1.0rem;
+      top: 0.1rem;
+      position: relative;
+    }
+</style>
+
+<span class="inline-svg" ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path fill="currentColor" d="M105.2 24.9c-3.1-8.9-15.7-8.9-18.9 0L29.8 199.7h132c-.1 0-56.6-174.8-56.6-174.8zM.9 287.7c-2.6 8 .3 16.9 7.1 22l247.9 184-226.2-294zm160.8-88l94.3 294 94.3-294zm349.4 88l-28.8-88-226.3 294 247.9-184c6.9-5.1 9.7-14 7.2-22zM425.7 24.9c-3.1-8.9-15.7-8.9-18.9 0l-56.6 174.8h132z"/></svg>
+</span>
+
+
+</a></li>
+</ul>
+<h3 id="autoencoders">Autoencoders<a href="#autoencoders" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Autoencoders are a type of artificial neural networks that can learn efficient
+codings of unlabeled data. Autoencoders learn the code by trying to map the
+identity function (<strong>e.g.</strong>, they try to reconstruct the input at their output
+layer). This repository contains four types of autoencoders: (i) a standard
+linear autoencoder (AE and Variational AE), (ii) an LSTM autoencoder (AE and
+VAE), (iii) a convolutional autoencoder, and finally a causal convolutional
+autoencoder.</p>
+<ul>
+<li>Programming Language: Python (Pytorch, Numpy, Matplotlib)</li>
+<li>Source Code: <a href="https://gitlab.com/gdetor/autoencoders"><style>
+    .inline-svg {
+      display: inline-block;
+      height: 1.0rem;
+      width: 1.0rem;
+      top: 0.1rem;
+      position: relative;
+    }
+</style>
+
+<span class="inline-svg" ><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --><path fill="currentColor" d="M105.2 24.9c-3.1-8.9-15.7-8.9-18.9 0L29.8 199.7h132c-.1 0-56.6-174.8-56.6-174.8zM.9 287.7c-2.6 8 .3 16.9 7.1 22l247.9 184-226.2-294zm160.8-88l94.3 294 94.3-294zm349.4 88l-28.8-88-226.3 294 247.9-184c6.9-5.1 9.7-14 7.2-22zM425.7 24.9c-3.1-8.9-15.7-8.9-18.9 0l-56.6 174.8h132z"/></svg>
+</span>
+
+
+</a></li>
+</ul>
 <h3 id="pytorch-time2vec">Pytorch-Time2Vec<a href="#pytorch-time2vec" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>Time2Vec is an algorithm that provides a learning representation of time, which
 is model agnostic and can be used to encode temporal dynamics in many different
