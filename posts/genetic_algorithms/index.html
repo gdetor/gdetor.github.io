@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Genetic Algorithms &amp; Islands Model :: GID Webpage</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Blog post on genetic algorithms" />
+<meta name="keywords" content="[gdetor, Georgios Detorakis, Georgios Is. Detorakis, georgios, detorakis]" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://gdetor.github.io/posts/genetic_algorithms/" />
+
+
+
+
+<link rel="stylesheet" href="https://gdetor.github.io/assets/style.css">
+
+
+
+<link rel="stylesheet" href="https://gdetor.github.io/style.css">
+
+
+<link rel="apple-touch-icon" href="https://gdetor.github.io/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://gdetor.github.io/icons/favicon.ico">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:creator" content="GID" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Genetic Algorithms &amp; Islands Model">
+<meta property="og:description" content="Blog post on genetic algorithms" />
+<meta property="og:url" content="https://gdetor.github.io/posts/genetic_algorithms/" />
+<meta property="og:site_name" content="GID Webpage" />
+
+  
+    <meta property="og:image" content="https://gdetor.github.io/icons/favicon.ico">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2022-01-11 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false}
+                ]
+            });
+        });
+    </script>
+  </head>
+</html>
+
+
+</head>
+<body class="orange">
+
+
+<div class="container center">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    # GID
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/research">Research</a></li>
+        
+      
+        
+          <li><a href="/software">Software</a></li>
+        
+      
+        
+          <li><a href="/publications">Publications</a></li>
+        
+      
+        
+          <li><a href="/artwork">Artwork</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/research">Research</a></li>
+      
+    
+      
+        <li><a href="/software">Software</a></li>
+      
+    
+      
+        <li><a href="/publications">Publications</a></li>
+      
+    
+      
+        <li><a href="/artwork">Artwork</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://gdetor.github.io/posts/genetic_algorithms/">Genetic Algorithms &amp; Islands Model</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2022-01-11
+        
+      </span>
+    
+    
+      <span class="post-author">:: GID</span>
+    
+    
+  </div>
+
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <p>In this post, we explore genetic algorithms (GAs) and the so-called
+island model (IM). GAs and the IM are optimization methods used to
+maximize or minimize a cost function.</p>
+<h2 id="what-is-optimization">What is Optimization?<a href="#what-is-optimization" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Let&rsquo;s see an example of an optimization problem we all face every day. Let&rsquo;s
+assume you&rsquo;d like to go and grab a couple of coffee from your favorite coffee
+shop. Typically, you ask Google to find the fastest way to the store from your
+current location. But let&rsquo;s forget about technology for now.</p>
+<p>You only have a map. Yes, a paper map! They are still around! You first try to
+find the shortest paths from your current location to the coffee shop. If
+you&rsquo;re a scrooge, you will define the &ldquo;optimal path&rdquo; as &ldquo;the path I consume the
+least fuel.&rdquo;</p>
+<p>An optimization problem is a search for the &ldquo;best&rdquo; set of parameters, where
+&ldquo;best&rdquo; is defined as the minimum or maximum of some cost function of interest.
+Here, that function is our fuel consumption. However, we could have also
+designated it to be the distance from start to finish.</p>
+<p>Mathematically speaking the problem of a minimization can be formulated as
+follows [1]:
+Given a function $f:A\subseteq \mathbb{R} \rightarrow \mathbb{R}$ we are
+searching for an element $ {\bf x}^* $ such that
+$$ f({\bf x}^*) \leq f({\bf x}) $$</p>
+<p>for all $ {\bf x} \in A $. Similarly, a maximization would be the search for
+a ${\bf x}^* $ such that
+$$ f({\bf x}^*) \geq f({\bf x}) $$
+for all $ {\bf x} \in A $.</p>
+<p>In both cases, we are searching for a global optimum (either a global minimum
+or a global maximum). However, it is not always possible to find a global
+optimum point in real-life cases. Instead, we can settle for a local minimum or
+maximum. For example, that&rsquo;s the compromise we often make when training neural
+networks with backpropagation [2].</p>
+<p>Figure 1A shows the global minimum of the cost function, $f(x)=x^2$, with a
+magenta color. Figure 1B displays what is known as the Rastrigin function in
+one dimension. It is evident that this function has multiple local minima
+(<em>e.g.,</em>, magenta disc)  and maxima (green disc) as well as one global minimum
+at $(0, 0)$ (black disc).</p>
+
+  <figure class="center" >
+    <img src="/images/fun_extremes.png"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Figure 1. Global and local extremes for (A) $f(x)=x^2$, where the magenta disc indicates the global minimum at $(0, 0)$. (B) For Rastrigin $f(x) = 10 + x^2-10\cos(2\pi x)$, there is a global mimimum at $(0, 0)$ and many local mimima and maxima (for instance see the magenta and green discs, respectively).</figcaption>
+    
+  </figure>
+
+
+<p>Sometimes, it&rsquo;s easier to solve a minimization problem from a computational
+standpoint. In that case, we would minimize the function $ -f $.</p>
+<h2 id="what-is-a-genetic-algorithm">What is a Genetic Algorithm?<a href="#what-is-a-genetic-algorithm" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>A genetic algorithm is an optimization method that mimics evolution to optimize
+a cost function. The entire set of the cost function parameters is called the
+genome. Each parameter consists of a gene. Because GA mimics how evolution
+works, they require a population of individuals. Each individual is nothing
+more than a randomly initialized genome. Any GA starts optimizing a cost
+function after initializing a population of genomes (individuals).</p>
+<p>In most GA implementations, an individual is a a data structure that holds a
+genome (vector of bits, integers, floats, etc.), the corresponding cost to its
+genome, a unique ID, a flag indicating whether the current individual is about
+to mate (after a selection process), and other relevant information that the
+developer deems necessary.</p>
+<p>When the GA optimizes a cost function, it usually applies three basic operators:</p>
+<ul>
+<li>
+<p><strong>Selection</strong> This operator selects two individuals from a population
+(<em>i.e.,</em> a set of many individuals) to mate and eventually procreate. The
+selected individuals are called parents. Some selection operators
+are k-tournament, roulette-wheel, random, etc.</p>
+</li>
+<li>
+<p><strong>Crossover</strong> This operator mises the genomes of the selected parents. A
+crossover operator will combine a part of the first parent&rsquo;s genome with a
+part of the second parent&rsquo;s genome. Some crossover operators are one-point
+Crossover, two-points Crossover, random, etc.</p>
+</li>
+<li>
+<p><strong>Mutation</strong> Finally, the potential offspring&rsquo;s (or child&rsquo;s) genome is
+subject to a mutation, which will further change the offspring&rsquo;s genome.
+Some of the most used mutation operators are delta, random, etc.</p>
+</li>
+</ul>
+<p>Typically, a GA will repeat every generation&rsquo;s operations mentioned above
+(another fancy term for iteration). At every iteration, potential offspring
+will replace their parents. Usually, the best-performing offspring will replace
+the most poor-performing parents in terms of fitness. We call that kind of
+replacement &ldquo;elite&rdquo; replacement. Another idea of replacing the parents is
+randomly choosing some of the parents and replacing them.</p>
+<p>When the GA exhausts the predefined number of generations, the algorithm
+terminates. We can evaluate its performance by inspecting the average fitness
+(the average cost function value over all the individuals) or the best-so-far
+fitness (BSF). Figure 2A shows a typical example of average fitness and 2B a
+BSF. Upon the algorithm&rsquo;s termination, the individual with the best fitness
+function provides the genome (set of parameters) optimizes the cost function
+[3].</p>
+<h2 id="how-a-genetic-algorithm-works">How a Genetic Algorithm works?<a href="#how-a-genetic-algorithm-works" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Let&rsquo;s use an example to try to understand how GAs work.</p>
+<h3 id="example">Example<a href="#example" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Let&rsquo;s try to solve the XOR problem using a feed-forward neural network.  The
+XOR (exclusive OR) is a binary operator that returns true if and only if the
+operands are different. This means that if $ X = 1 $ (or $ X = 0 $) and $ Y = 0
+$ (or $ Y = 1 $) then $ X \oplus Y = 1 $ (same when ). If both $ X $ and $ Y $
+are zeros or ones, then $ X \oplus Y = 0 $.</p>
+
+  <figure class="center" >
+    <img src="/images/xor_net.png"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Figure 2. XOR neural networ.</figcaption>
+    
+  </figure>
+
+
+<p>Our neural network will consist of two input units (since the XOR operator is a
+binary one), two hidden units, and one output unit. Please see [CITE HERE] for
+more details on why we choose such an architecture. Figure 2 shows the neural
+network we are about to use.  Let&rsquo;s optimize this neural network that will
+serve as an XOR operator. To facilitate the demonstration, let&rsquo;s split the
+process into four steps:</p>
+<ol>
+<li>
+<p>Define the cost function and the size of our genome.
+Since the input to the XOR function is two-dimensional, we have a
+genome of size two. Regarding the cost function, we first define an
+error term as
+$$ \epsilon = | y_{\text{target} - y_{\text{pred}}} | $$
+where $ y_{\text{target} $ is the true value that the XOR function returns
+and $x_{\text{pred}$ is the value of our network&rsquo;s output. Since we have four
+pairs of inputs $ (0, 1), (1, 0), (1, 1), (0, 0) $, and four real outputs
+$1, 1, 0, 0$, respectively, we define the cost function as:
+$$ f({\bf x}) = \sum_{i=1}^{4} \epsilon_i $$
+Ideally, we expect the cost function to be zero to get our
+optimal solution. That&rsquo;s the case in Figure 2, where we see the best-so-far
+fitness and the average fitness.</p>
+</li>
+<li>
+<p>Once we have defined the cost function (that&rsquo;s always the most challenging
+part), we determine the number of genes per individual, which is $9$ in
+this case. The neural network has the two input units connected via a $ 2
+\times 2 $ matrix with the two hidden units. Next, the hidden units
+connect via a $ 2\times 1 $ matrix to the output unit. Moreover, the
+hidden and output units have a bias term (3 bias terms in total).
+Therefore, the entire network has nine parameters (six weights and three
+bias terms) we have to optimize. So, we initialize the neural network with
+small random weights, define the number of individuals (population size)
+to be $ 20 $, and define the size of the genome to be $ 9 $. Remember,
+this is the number of cost function parameters to optimize. We set the
+number of generations to $ 5000 $,  the number of offspring to $ 10 $, and
+the replacement size to $ 5 $, which means $ 5 $ parents will be replaced
+by $ 5 $ offsprings.</p>
+</li>
+<li>
+<p>We need to decide what operators we will use for our GA.
+In this particular example, we use a k-tournament Selection,
+a one-point Crossover, and a delta Mutation operator.</p>
+</li>
+<li>
+<p>Finally, we set our Optimization in motion. The GA will first evaluate
+the cost function of each individual. It will sort the individuals based
+on their fitness values. To this end, we feed the XOR input to the neural
+network, and we collect the output $ y_{\text{pred}} $. Then we use the
+output to compute the cost function value for that individual. The next step
+for our GA is to choose two parents based on the k-tournament Selection. The
+genome of the two selected parents will be crossed over using the
+one-point operator. That will give rise to a new genome, a child or
+offspring. The offspring&rsquo;s genome will undergo a mutation based on the
+delta operator. Finally, the GA will add the offspring to a list.  The
+Selection, Crossover, and Mutation processes continue until the number
+of offspring have been exhausted. Then, the best performing offspring
+will replace the poorest-performing (maximum cost function value)
+parents (elite replacement). And the entire process repeats for $ 4999$
+more generations.</p>
+</li>
+</ol>
+<p>After the convergence of the process described in step $ 4 $, the Optimization
+of the XOR fitness terminates, and we can inspect the results. Figure 3 shows
+the best-so-far fitness (BSF) and the average fitness, respectively. The first
+observation is that the cost function value indeed converges to zero. Thus, our
+GA&rsquo;s best genome is optimal, and our neural network solves the XOR problem. The
+second observation is that we could have used only $500$ generations for this
+particular instance. The difficulty of the problem at hand usually determines
+the number of generations and the initial values of the genome.</p>
+
+  <figure class="center" >
+    <img src="/images/bsf_avg_fit.png"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Figure 3. BSF and average fitness for the optimization of the XOR fitness function.</figcaption>
+    
+  </figure>
+
+
+<p>We used a GA library named GAIM [4], which is a C++ library for genetic
+algorithms and the island model. It implements the most fundamental Selection,
+Crossover, and mutation operators. It also provides an MPI and POSIX threads
+implementation of island model.  Finally, it comes with a Python interface
+called PyGAIM that simplifies
+GA-based optimization problem setup. For more information about GAIM, its
+source code, and examples, you can visit its [Github]
+(<a href="https://github.com/gdetor/gaim">https://github.com/gdetor/gaim</a>) repository.</p>
+<h2 id="what-is-an-island-model">What is an Island Model?<a href="#what-is-an-island-model" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>An island model is a computational method that runs multiple instances of GAs
+on the same optimization problem in a distributed and parallel fashion. In some
+cases, each island (another fancy word for process, thread, or computational
+node in a cluster) can run a part of the optimization problem [5].</p>
+<p>What is essential in an island model is the periodic exchange of individuals
+between islands. According to a predetermined time interval, a migration of a
+subpopulation takes place. This circulation of individuals between islands
+relies on specific communication protocols and predetermined topologies
+(<em>e.g.,</em>  ring topology). In this case, the islands are connected, forming a
+ring, meaning the current island (node) connects to the one on its right (or
+left).</p>
+<p>Figure 4 shows three basic topologies, (A) all-to-all, where every island
+connects to all other ones, (B) ring, and (C) star topology, where one island
+serves as a communication hub [5, 6, 7].</p>
+
+  <figure class="center" >
+    <img src="/images/island_model.png"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Figure 4. Island model topologies. (A) all-to-all, (B) ring, (C) star.</figcaption>
+    
+  </figure>
+
+
+<p>Each island begins with a population of $N$ individuals where $$ N =
+\frac{K}{M} $$ where $ K $ is the number of all individuals, and $M$ is the
+number of islands.
+Every island will initialize a GA based on all the parameters and procedures
+described earlier. When a time counter exhausts, migration takes place. The IM
+algorithm selects a subpopulation on each island via some selection method
+(random, elite - the best performing individuals, etc.). The selected genomes
+move to the neighboring, connected island or islands. The newly arrived ones
+replace local individuals via a replacement method (random, poor - the
+worst-performing individuals, etc.). IM fills the vacant spots on the source
+island with new offspring or randomly generated individuals [6]. The number of
+individuals moved at every migration interval is called the &ldquo;migration size.&rdquo;
+The reader can refer to [8, 9] for more information on how the migration
+interval and the migration size affect the performance of an island model.</p>
+<p>The island model offers a means of faster convergence since each island can
+potentially follow a different evolutionary trajectory covering different parts
+of the search space. Furthermore, exchanging individuals between islands can
+help the overall optimization process avoid being stuck in some local
+minimum/maximum. That doesn&rsquo;t mean that the island model is impervious to local
+extrema.</p>
+<h2 id="when-should-we-use-gas">When should we use GAs?<a href="#when-should-we-use-gas" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>As we have seen, GAs can optimize virtually any function given
+a well-defined cost function (and that&rsquo;s the most challenging part of using
+GAs). However, there are some cases where we should try to use a GA
+instead of any other conventional optimization method. These instances are:</p>
+<ol>
+<li>If the search space is massive, then GAs are suitable for optimizing a
+function in that space (for instance, non-linear functions).</li>
+<li>Another issue with Optimization is the cost function. The cost function may
+be discontinuous (having gaps), or it may be non-differentiable. GAs do not
+use derivatives and are therefore immune to such issues.</li>
+<li>When a cost function is too complex, GAs have more chances than the vanilla
+optimization methods to avoid local minima and correctly find the global
+optimum. A genetic algorithm can simultaneously explore the search space in
+multiple directions, even if some offspring will never discover an optimal
+solution to the problem.</li>
+<li>Finally, GAs are agnostic to the problem at hand. They do not require any
+information about the system or the function they optimize to solve the
+optimization problem.</li>
+</ol>
+<h2 id="what-are-some-of-the-gas-applications">What are some of the GAs applications?<a href="#what-are-some-of-the-gas-applications" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Here, you can find some of the GA&rsquo;s applications in real life. Although the
+the following list is not complete; you will glimpse where and how GAs are used.</p>
+<ol>
+<li><strong>Optimization</strong> As discussed in this post, GAs can optimize almost any function.</li>
+<li><strong>Machine learning</strong> GAs can tune ML/DL models to discover optimal neural
+network parameters. Moreover, they can design neural networks (searching
+for the optimal neural network topology [10]).</li>
+<li><strong>Path and trajectory planning</strong> GAs can aid in the designing and planning
+of paths and trajectories for autonomous robotic platforms, vehicles, or
+manipulators, such as robotic arms.</li>
+<li><strong>DNA Analysis</strong> GAs can analyze the structure of DNA samples.</li>
+<li><strong>Finance</strong> GAs are an excellent tool for analyzing and forecasting stock prices.</li>
+<li><strong>Aerospace engineering</strong> GAs can aid in the process of designing
+aircraft.</li>
+<li><strong>Traveling salesman problem (TSP)</strong> The
+<a href="https://en.wikipedia.org/wiki/Travelling_salesman_problem">TSP</a> is
+well-defined in combinatorial Optimization and has many applications in
+real-life issues.</li>
+</ol>
+<h3 id="references">References<a href="#references" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<ol>
+<li>D. A. Pierre, <em>Optimization theory with applications</em>,
+Courier Corporation, 1986.</li>
+<li>I. Goodfellow, B. Yoshua, and A. Courville, <em>Deep learning</em>,
+MIT press, 2016.</li>
+<li>K. De Jong, <em>Evolutionary computation</em>, Wiley Interdisciplinary Reviews:
+Computational Statistics, 2009, 1.1: 52-56.</li>
+<li>G. Is. Detorakis and A. Burton, <em>GAIM: A C++ library for Genetic Algorithms
+and Island Models</em>, Journal of Open Source Software, 2019, 4.44: 1839.</li>
+<li>D. Whitley, S. Rana, and R.B. Heckendorn, <em>The island model genetic
+algorithm: On separability, population size and convergence</em>,
+Journal of computing and information technology, 7:1, 33&ndash;47, 1999.</li>
+<li>D. Sudholt, <em>Parallel evolutionary algorithms</em>, Springer Handbook of
+Computational Intelligence, 929&ndash;959, 2015.</li>
+<li>W. N. Martin, J. Lienig, and J. P. Cohoon, <em>Parallel Genetic Algorithms Based
+on Punctuated Equilibria</em>, Handbook of Evolutionary Computation, IOP Publishing group,</li>
+<li></li>
+<li>Z. Skolicki, <em>An analysis of island models in evolutionary computation</em>,
+Proceedings of the 7th annual workshop on Genetic and evolutionary computation,
+386&ndash;389, 2005.</li>
+<li>Z. Skolicki, and K. De Jong, <em>The influence of migration sizes and intervals
+on island models</em>, Proceedings of the 7th annual conference on Genetic and
+evolutionary computation, 1295&ndash;1302, 2005.</li>
+<li>K. O. Stanley, and R. Miikkulainen, <em>Efficient evolution of neural network
+topologies</em>, Proceedings of the 2002 Congress on Evolutionary Computation.
+2, 1757&ndash;1762, 2002.</li>
+</ol>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://gdetor.github.io/posts/welcome/">
+                <span class="button__icon">←</span>
+                <span class="button__text"></span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://gdetor.github.io/posts/demos/">
+                <span class="button__text">Research Demos</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>ⓒ  GID, 2021-2022</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://gdetor.github.io/assets/main.js"></script>
+<script src="https://gdetor.github.io/assets/prism.js"></script>
+
+
+
+
+<style>
+    #body a, #body span {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        line-height: 1.7em;
+    }
+    h2 {
+        display: inline-block;
+    }
+    img.github, img.gitlab, img.twitter, img.rgate, img.orcid{
+        -webkit-filter: invert(1);
+        filter: invert(1);
+    }
+</style>
+
+<center>
+    <div>
+        <a class="inline-block px-2" href="https://github.com/gdetor"><h2><img class="image github" src="/github-square.svg" alt="Github" width="36"></h2></a>
+        <a class="inline-block" href="https://gitlab.com/gdetor"><h2><img class="image gitlab" src="/gitlab.svg" alt="Gitlab" width="36"></h2></a>
+        <a class="inline-block px-2" href="https://twitter.com/gsnake4"><h2><img class="image twitter" src="/twitter-square.svg" alt="Twitter" width="36"></h2></a>
+        <a class="inline-block px-2" href="https://www.researchgate.net/profile/Georgios-Detorakis"><h2>
+         <img class="image rgate" src="/researchgate-square.svg" alt="RG" width="36"></h2></a>
+        <a class="inline-block px-2" href="https://orcid.org/0000-0001-5891-1702"><h2>
+         <img class="image orcid" src="/orcid-square.svg" alt="RG" width="36"></h2></a>
+    </div>
+</center>
+
+
+  
+</div>
+
+</body>
+</html>
