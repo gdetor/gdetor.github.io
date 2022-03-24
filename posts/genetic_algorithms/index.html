@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   
-    <title>Genetic Algorithms &amp; Islands Model :: GID Webpage</title>
+    <title>Genetic Algorithms &amp; Island Models :: GID Webpage</title>
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Blog post on genetic algorithms" />
+<meta name="description" content="Blog post on genetic algorithms and island models" />
 <meta name="keywords" content="[gdetor, Georgios Detorakis, Georgios Is. Detorakis, georgios, detorakis]" />
 <meta name="robots" content="noodp" />
 <link rel="canonical" href="https://gdetor.github.io/posts/genetic_algorithms/" />
@@ -36,8 +36,8 @@
 
 <meta property="og:locale" content="en" />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="Genetic Algorithms &amp; Islands Model">
-<meta property="og:description" content="Blog post on genetic algorithms" />
+<meta property="og:title" content="Genetic Algorithms &amp; Island Models">
+<meta property="og:description" content="Blog post on genetic algorithms and island models" />
 <meta property="og:url" content="https://gdetor.github.io/posts/genetic_algorithms/" />
 <meta property="og:site_name" content="GID Webpage" />
 
@@ -49,7 +49,7 @@
 <meta property="og:image:height" content="1024">
 
 
-  <meta property="article:published_time" content="2022-01-11 00:00:00 &#43;0000 UTC" />
+  <meta property="article:published_time" content="2022-03-16 00:00:00 &#43;0000 UTC" />
 
 
 
@@ -174,11 +174,11 @@
     
 <div class="post">
   <h1 class="post-title">
-    <a href="https://gdetor.github.io/posts/genetic_algorithms/">Genetic Algorithms &amp; Islands Model</a></h1>
+    <a href="https://gdetor.github.io/posts/genetic_algorithms/">Genetic Algorithms &amp; Island Models</a></h1>
   <div class="post-meta">
     
       <span class="post-date">
-        2022-01-11
+        2022-03-16
         
       </span>
     
@@ -381,14 +381,132 @@ the number of generations and the initial values of the genome.</p>
   </figure>
 
 
-<p>We used a GA library named GAIM [4], which is a C++ library for genetic
-algorithms and the island model. It implements the most fundamental Selection,
-Crossover, and mutation operators. It also provides an MPI and POSIX threads
-implementation of island model.  Finally, it comes with a Python interface
-called PyGAIM that simplifies
-GA-based optimization problem setup. For more information about GAIM, its
-source code, and examples, you can visit its [Github]
-(<a href="https://github.com/gdetor/gaim">https://github.com/gdetor/gaim</a>) repository.</p>
+<p>Bellow, you can find the source code of the Python script we used to optimize
+the XOR problem. As you can see, we combine Pytorch and PyGAIM to build
+a neural network and optimize the weights and the biases.</p>
+<p>The first snippet shows what packages we need to import, the class of the
+neural network, and a function that we will use to measure the accuracy
+of our optimization process.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#f92672">import</span> sys
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pylab <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> random <span style="color:#f92672">import</span> shuffle
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> torch
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> torch <span style="color:#f92672">import</span> nn
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sys<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>append(<span style="color:#e6db74">&#34;/home/gdetorak/packages/gaim/pygaim&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pygaim <span style="color:#f92672">import</span> GAOptimize, c2numpy
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">XOR_NET</span>(nn<span style="color:#f92672">.</span>Module):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        super(XOR_NET, self)<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc1 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Linear(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc2 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Linear(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>sigmoid <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Sigmoid()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x):
+</span></span><span style="display:flex;"><span>        out <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>sigmoid(self<span style="color:#f92672">.</span>fc1(x))
+</span></span><span style="display:flex;"><span>        out <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>fc2(out)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> out
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Instantiate the XOR_NET class</span>
+</span></span><span style="display:flex;"><span>net <span style="color:#f92672">=</span> XOR_NET()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># src: Input XOR</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># tgt: Output XOR</span>
+</span></span><span style="display:flex;"><span>src <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>], [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>], [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>], [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>]], <span style="color:#e6db74">&#39;f&#39;</span>)
+</span></span><span style="display:flex;"><span>dst <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>], [<span style="color:#ae81ff">1</span>], [<span style="color:#ae81ff">0</span>], [<span style="color:#ae81ff">0</span>]], <span style="color:#e6db74">&#39;f&#39;</span>)
+</span></span><span style="display:flex;"><span>index <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">accuracy</span>(genome):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Measures the accuracy of the XOR_NET. Runs over 100 times
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    and compares the network output against the target pattern
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    each time.      
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Assign genomes to network weights</span>
+</span></span><span style="display:flex;"><span>    w1 <span style="color:#f92672">=</span> genome[:<span style="color:#ae81ff">4</span>]
+</span></span><span style="display:flex;"><span>    b1 <span style="color:#f92672">=</span> genome[<span style="color:#ae81ff">4</span>:<span style="color:#ae81ff">6</span>]
+</span></span><span style="display:flex;"><span>    w2 <span style="color:#f92672">=</span> genome[<span style="color:#ae81ff">6</span>:<span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>    b2 <span style="color:#f92672">=</span> genome[<span style="color:#ae81ff">8</span>:]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    net<span style="color:#f92672">.</span>fc1<span style="color:#f92672">.</span>weight<span style="color:#f92672">.</span>data <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>FloatTensor(w1)<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    net<span style="color:#f92672">.</span>fc1<span style="color:#f92672">.</span>bias<span style="color:#f92672">.</span>data <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>FloatTensor(b1)
+</span></span><span style="display:flex;"><span>    net<span style="color:#f92672">.</span>fc2<span style="color:#f92672">.</span>weight<span style="color:#f92672">.</span>data <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>FloatTensor(w2)<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    net<span style="color:#f92672">.</span>fc1<span style="color:#f92672">.</span>bias<span style="color:#f92672">.</span>data <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>FloatTensor(b2)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    count <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100</span>):
+</span></span><span style="display:flex;"><span>        idx <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>        inp <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>FloatTensor(src[idx])
+</span></span><span style="display:flex;"><span>        tgt <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>FloatTensor(dst[idx])
+</span></span><span style="display:flex;"><span>        y <span style="color:#f92672">=</span> net(inp)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>round(y<span style="color:#f92672">.</span>item()) <span style="color:#f92672">==</span> np<span style="color:#f92672">.</span>round(tgt<span style="color:#f92672">.</span>item()):
+</span></span><span style="display:flex;"><span>            count <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># print(y.item(), tgt.item())</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;Accuracy: </span><span style="color:#e6db74">%d</span><span style="color:#e6db74"> / 100&#34;</span> <span style="color:#f92672">%</span> count)
+</span></span></code></pre></div><p>The fitness function takes the genome (C array) as input and
+returns the negative of fitness value (or loss) since we perform
+a minimization. It presents each time all four XOR patterns to
+the neural network and computes the loss for each pattern.
+Finally, it sums up all four individual losses and returns the
+total loss.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fitness</span>(x, length):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Fitness function. Receives the genome (x) from GAIM, passes it through
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    net.forward (Pytorch) and computes the absolute loss. 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    x <span style="color:#f92672">=</span> c2numpy(x, length)				<span style="color:#75715e"># Convert C array to Numpy</span>
+</span></span><span style="display:flex;"><span>    w1 <span style="color:#f92672">=</span> x[:<span style="color:#ae81ff">4</span>]						<span style="color:#75715e"># First layer weights (2x2)</span>
+</span></span><span style="display:flex;"><span>    b1 <span style="color:#f92672">=</span> x[<span style="color:#ae81ff">4</span>:<span style="color:#ae81ff">6</span>]					<span style="color:#75715e"># First layer bias (2X1)</span>
+</span></span><span style="display:flex;"><span>    w2 <span style="color:#f92672">=</span> x[<span style="color:#ae81ff">6</span>:<span style="color:#ae81ff">8</span>]					<span style="color:#75715e"># Second layer weights (2x1)</span>
+</span></span><span style="display:flex;"><span>    b2 <span style="color:#f92672">=</span> x[<span style="color:#ae81ff">8</span>:]						<span style="color:#75715e"># Second layer bias (1x1)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Assign the new values to network weights	</span>
+</span></span><span style="display:flex;"><span>    net<span style="color:#f92672">.</span>fc1<span style="color:#f92672">.</span>weight<span style="color:#f92672">.</span>data <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>FloatTensor(w1)<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    net<span style="color:#f92672">.</span>fc1<span style="color:#f92672">.</span>bias<span style="color:#f92672">.</span>data <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>FloatTensor(b1)
+</span></span><span style="display:flex;"><span>    net<span style="color:#f92672">.</span>fc2<span style="color:#f92672">.</span>weight<span style="color:#f92672">.</span>data <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>FloatTensor(w2)<span style="color:#f92672">.</span>reshape(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    net<span style="color:#f92672">.</span>fc1<span style="color:#f92672">.</span>bias<span style="color:#f92672">.</span>data <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>FloatTensor(b2)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    loss <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>						
+</span></span><span style="display:flex;"><span>    shuffle(index)					<span style="color:#75715e"># shuffle the index</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># loop over all four patterns in a random order</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> idx <span style="color:#f92672">in</span> index:
+</span></span><span style="display:flex;"><span>        inp <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>from_numpy(src[idx])
+</span></span><span style="display:flex;"><span>        tgt <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>from_numpy(dst[idx])
+</span></span><span style="display:flex;"><span>        y <span style="color:#f92672">=</span> net(inp)
+</span></span><span style="display:flex;"><span>        loss <span style="color:#f92672">+=</span> torch<span style="color:#f92672">.</span>abs(y[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">-</span> tgt[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> float(<span style="color:#f92672">-</span>loss<span style="color:#f92672">.</span>item())			<span style="color:#75715e"># return -loss (minimize)</span>
+</span></span></code></pre></div><p>The final snippet provides the code to call the GAOptimize function
+of PyGAIM, to plot the results and measure the performance (accuracy)
+of the neural network on solving XOR.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>    genome_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">9</span>
+</span></span><span style="display:flex;"><span>    ga <span style="color:#f92672">=</span> GAOptimize(fitness,
+</span></span><span style="display:flex;"><span>                    n_generations<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>,
+</span></span><span style="display:flex;"><span>                    population_size<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>,
+</span></span><span style="display:flex;"><span>                    genome_size<span style="color:#f92672">=</span>genome_size,
+</span></span><span style="display:flex;"><span>                    n_offsprings<span style="color:#f92672">=</span><span style="color:#ae81ff">5</span>,
+</span></span><span style="display:flex;"><span>                    n_replacements<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>                    a<span style="color:#f92672">=</span>[float(<span style="color:#f92672">-</span><span style="color:#ae81ff">10.0</span>) <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(genome_size)],
+</span></span><span style="display:flex;"><span>                    b<span style="color:#f92672">=</span>[float(<span style="color:#ae81ff">10.0</span>) <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(genome_size)],
+</span></span><span style="display:flex;"><span>                    mutation_rate<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>,
+</span></span><span style="display:flex;"><span>                    mutation_var<span style="color:#f92672">=</span><span style="color:#ae81ff">.1</span>)
+</span></span><span style="display:flex;"><span>    genome, _, _ <span style="color:#f92672">=</span> ga<span style="color:#f92672">.</span>fit()
+</span></span><span style="display:flex;"><span>    ga<span style="color:#f92672">.</span>plot_()
+</span></span><span style="display:flex;"><span>    test_weights(genome)
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div><p>GAIM [4] is a C++ library for genetic algorithms and the island model.
+It implements the most fundamental Selection, Crossover, and mutation
+operators. It also provides an MPI and POSIX threads implementation
+of the island model. Finally, it comes with a Python interface
+called PyGAIM that simplifies GA-based optimization problem setup,
+and PyGAIM provides a scikit-learn-like interface.</p>
+<p>For more information about GAIM, its source code, and examples,
+you can visit its <a href="https://github.com/gdetor/gaim">Github</a> repository.</p>
 <h2 id="what-is-an-island-model">What is an Island Model?<a href="#what-is-an-island-model" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>An island model is a computational method that runs multiple instances of GAs
 on the same optimization problem in a distributed and parallel fashion. In some
@@ -473,7 +591,15 @@ aircraft.</li>
 well-defined in combinatorial Optimization and has many applications in
 real-life issues.</li>
 </ol>
-<h3 id="references">References<a href="#references" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Cited as:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>@article{detorakis2022geneticalg,
+</span></span><span style="display:flex;"><span>  title   = &#34;Genetic algorithms and island models&#34;,
+</span></span><span style="display:flex;"><span>  author  = &#34;Georgios Is. Detorakis&#34;,
+</span></span><span style="display:flex;"><span>  journal = &#34;gdetor.github.io&#34;,
+</span></span><span style="display:flex;"><span>  year    = &#34;2022&#34;,
+</span></span><span style="display:flex;"><span>  url     = &#34;https://gdetor.github.io/posts/genetics_algorithms&#34;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="references">References<a href="#references" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <ol>
 <li>D. A. Pierre, <em>Optimization theory with applications</em>,
 Courier Corporation, 1986.</li>
@@ -522,8 +648,8 @@ topologies</em>, Proceedings of the 2002 Congress on Evolutionary Computation.
         
         
         <span class="button next">
-            <a href="https://gdetor.github.io/posts/demos/">
-                <span class="button__text">Research Demos</span>
+            <a href="https://gdetor.github.io/posts/rl_controller/">
+                <span class="button__text">How to use Deep Reinforcement Learning agents as controllers </span>
                 <span class="button__icon">→</span>
             </a>
         </span>
