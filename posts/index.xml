@@ -19,6 +19,316 @@
     </item>
     
     <item>
+      <title>Time series and forecasting error measures</title>
+      <link>https://gdetor.github.io/posts/errors/</link>
+      <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/posts/errors/</guid>
+      <description>In this post, we are going to explore the basic error measures used in time-series forecasting. Error measures provide a way to quantify the quality of a forecasting algorithm (e.g., the performance). First, we briefly introduce time series and the fundamental terms of forecasting. Second, we will introduce the most commonly used error measures and give some examples. Finally, we provide a complete example of using errors in a real-life forecasting scenario.</description>
+      <content>&lt;p&gt;In this post, we are going to explore the basic error measures
+used in time-series forecasting. Error measures provide a way
+to quantify the quality of a forecasting algorithm (&lt;em&gt;e.g.&lt;/em&gt;, the
+performance). First, we briefly introduce time series and the
+fundamental terms of forecasting. Second, we will introduce the
+most commonly used error measures and give some examples. Finally,
+we provide a complete example of using errors in a real-life
+forecasting scenario.&lt;/p&gt;
+&lt;h2 id=&#34;what-is-a-time-series&#34;&gt;What is a time series&lt;/h2&gt;
+&lt;p&gt;A time series is a series of data points indexed in time order in
+layman&amp;rsquo;s terms [1, 2].
+A few examples of time series are&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The daily closing price of a stock in the stock market&lt;/li&gt;
+&lt;li&gt;The number of air passengers per month&lt;/li&gt;
+&lt;li&gt;The biosignals recorded from electroencephalogram or electrocardiogram&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Figure 1 shows the number of air passengers per month from January 1949
+to September 1960.  In all the examples in this post, we are going to
+use this dataset, so if you would like to try the examples by yourself;
+you can download the data from Kaggle
+&lt;a href=&#34;https://www.kaggle.com/datasets/rakannimer/air-passengers&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;img src=&#34;https://gdetor.github.io/images/passengers.png&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Figure 1. An example of a time series showing the number of air passengers per month.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+&lt;p&gt;A more rigorous definition of a time series found in [1] (Chapter 1, pg 1)
+is given below:&lt;/p&gt;
+&lt;p&gt;Let $ k \in \mathbf{N}, T \subseteq \mathbf{R} $. A function
+$$ x: T \rightarrow \mathbf{R}^k, \hspace{2mm} t \rightarrow x_t $$
+or equivalently, a set of indexed elements of $ \mathbf{R}^k $,
+$$  { x_t | x_t \in \mathbf{R}^k, \hspace{2mm} t \in T }  $$
+is called an observed time series (or time series).
+Sometimes, we write $ x_t(t \in T) $ or $ (x_t)_{t\in T} $.&lt;/p&gt;
+&lt;p&gt;When $ k = 1 $ the time series is called &lt;em&gt;univariate&lt;/em&gt;, otherwise is
+called &lt;em&gt;multivariate&lt;/em&gt;.
+$ T $ determines if the time series is [1]:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;discrete&lt;/strong&gt; $ T $ is countable, and $ \forall a &amp;lt; b \in \mathbb{R}: T \cap[a, b] $
+is finite,&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;continuous&lt;/strong&gt; $ T = [a, b], a &amp;lt; b \in \mathbb{R}, T = \mathbb{R}_{+}
+\hspace{2mm} \text{or} \hspace{2mm} T = \mathbb{R} $,&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;equidistant&lt;/strong&gt; $ T $ is discrete, and $ \exists u \hspace{2mm} s.t. \hspace{2mm} t_{j+1} - t_j = u $.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;From now on and for simplicity&amp;rsquo;s sake we will use the following notation for
+a time series: $ y[1], y[2], \ldots , y[N] $, where
+$ N \in \mathbb{N} $ or $ y[t] $, where $t=1, \ldots , N $.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;more-terminology&#34;&gt;More terminology&lt;/h2&gt;
+&lt;p&gt;Before we dive into the post, let&amp;rsquo;s give some valuable terminology for the
+unfamiliar reader.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Observed data&lt;/strong&gt; ($ (y_t)_{t\in T} $ or $ y[t] $) This is the
+data we obtain by observing a system or a process.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Predictive model&lt;/strong&gt; Is a mathematical representation of observed data.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Target&lt;/strong&gt; ($ y[t] $) This is the gound truth signal we use to train
+a predictor.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Horizon&lt;/strong&gt; ($ h $) Is the number of points or steps we predict in
+the future.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Prediction&lt;/strong&gt; ($ \hat{y}[t] = y[t+h] $) This is a value that predictor
+returns.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Forecasting&lt;/strong&gt; Is the process of prediction future values from historical
+and present data.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Outlier&lt;/strong&gt; It is a significantly different value from other values
+in a time series.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Error&lt;/strong&gt; ($ \epsilon[t] $) is the difference between the target signal
+and the prediction of our model. The error is given by
+$ \epsilon[t] = y[t] - \hat{y}[t] $.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Seasonality&lt;/strong&gt; ($ S $) Seasonality is the periodic appearance of specific
+patterns over the same period—for instance, increasing prices before and
+over the Christmas holidays.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;four-basic-predictors&#34;&gt;Four basic predictors&lt;/h2&gt;
+&lt;p&gt;So far, we have seen what a time series and the basic terminology is.
+Now, we will explore some essential predictors or models and see how
+we can use them to perform forecasting.&lt;/p&gt;
+&lt;p&gt;As we&amp;rsquo;ve already seen, a predictor is a statistical (or mathematical)
+model that receives as input historical and present data and returns one
+(one-step ahead forecasting, $ h = 1$) or multiple future values
+(multi-step ahead prediction, $ h &amp;gt; 1 $).
+The development of predictors is out of the scope of this post, so we
+will not see how to build, train, test/validate, and use a predictor (here
+are a few references where the reader can find more details on that matter
+[3, 4, 5, 6]). However, we will introduce the four elementary
+predictors since some error measures use some of them to estimate the
+prediction errors.&lt;/p&gt;
+&lt;h4 id=&#34;naive-predictor&#34;&gt;Naive predictor&lt;/h4&gt;
+&lt;p&gt;The most straightforward predictor we can imagine is the &lt;em&gt;naive&lt;/em&gt; one,
+and it gets the last observed value and returns it as the predicted
+value.&lt;/p&gt;
+&lt;p&gt;$$ \hat{y}[t + h | t] = y[t]. $$&lt;/p&gt;
+&lt;h4 id=&#34;seasonal-predictor&#34;&gt;Seasonal predictor&lt;/h4&gt;
+&lt;p&gt;We can use the seasonal predictor when we know that our time series
+has a seasonal component (seasonality). It is a natural extension of
+the naive one, and we can describe it as:&lt;/p&gt;
+&lt;p&gt;$$ \hat{y}[t+h|t] = y[t+h-S(P+1)]. $$&lt;/p&gt;
+&lt;p&gt;$ P $ is $ \Big[\frac{h-1}{S}\Big] $, where $ \Big[ x \Big] $ is the
+integer part of $ x $. $ P $ reflects the number of years&amp;ndash;365 days&amp;ndash;
+have passed prior to time $ t + h $.&lt;/p&gt;
+&lt;h4 id=&#34;average-predictor&#34;&gt;Average predictor&lt;/h4&gt;
+&lt;p&gt;This predictor receives historical and present values as input,
+computes their average (or mean), and returns it as a prediction.&lt;/p&gt;
+&lt;p&gt;$$ \hat{y}[t+h|t] = \bar{y} = \frac{1}{N} \sum_{t=1}^{N} y[t] .$$&lt;/p&gt;
+&lt;h4 id=&#34;drift-predictor&#34;&gt;Drift predictor&lt;/h4&gt;
+&lt;p&gt;Another variation of the naive predictor, only this time
+we allow to the predicted value to &lt;em&gt;drift&lt;/em&gt; (fluctuate) over time,&lt;/p&gt;
+&lt;p&gt;$$ \hat{y}[t+h|t] = y[t] + \frac{h}{t-1} \sum_{j=2}^{t} (y[j]-y[j-1]) = y[t] + h\Big( \frac{y[t] - y[1]}{t - 1} \Big). $$&lt;/p&gt;
+&lt;p&gt;You can picture this predictor as a line drawn from the first
+observation to the last one and beyond, where beyond is the prediction.&lt;/p&gt;
+&lt;p&gt;Figure 2 shows the predictions in each of the cases mentioned above for
+the air passengers data (brown line).
+The blue line represents the naive predictor, the green line the
+seasonal, the orange line shows the average predictor, and finally,
+the pink line indicates the drift predictor.&lt;/p&gt;
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;img src=&#34;https://gdetor.github.io/images/naive_predictors.png&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Figure 2. Forecasts of montly air passengers. Naive predictor (blue line), naive seasonal (green), average (orange), drift (pink).&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+&lt;h2 id=&#34;forecasting-error-measures&#34;&gt;Forecasting error measures&lt;/h2&gt;
+&lt;p&gt;So why do we need error measures? The general idea is to quantify
+the distance between an actual observation (target) and a predicted
+one. Particularly when we train a model to learn how to predict
+future values, we have to measure the error between the actual
+observations and the predicted ones, so the minimization of the
+error leads to a better model.&lt;/p&gt;
+&lt;p&gt;When we teach a model, we need to use some penalties to help the
+model improve the predictions. The error measures listed below do
+precisely that. They measure how far the model&amp;rsquo;s predictions are
+from the ground truth and penalize the model accordingly. Usually,
+the smaller the error, the better the predictor.&lt;/p&gt;
+&lt;p&gt;Another reason we need error measures is to evaluate the performance
+of our model in real-life scenarios. We might have a trained model
+that performs some forecasting, and we would like to investigate the
+quality of its predictions. In this case, we can measure the error
+between the historical data we will collect in the future and the
+model&amp;rsquo;s predictions.&lt;/p&gt;
+&lt;p&gt;We already said that developing and training a predictor is out of
+the scope of the present post. Therefore, we will use historical
+data and add some Gaussian noise to them to fake the predictions.
+Furthermore, we adopt the discrete-time signals time indexing, meaning
+that $ y[t] $ is the value of the time series at time index $ t $.
+A similar way would be $ y_t $, where $ t $ is the time index.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Reminder&lt;/strong&gt; $ y[t] $ is the target signal, $ \hat{y}[t] $ the prediction
+signal and $ \epsilon[t] $ the error signal.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;And now, we are ready to introduce the error measures and some examples
+demonstrating their behavior.&lt;/p&gt;
+&lt;h3 id=&#34;mean-absolute-error-mae&#34;&gt;Mean Absolute Error (MAE)&lt;/h3&gt;
+&lt;p&gt;The MAE is the most straightforward error measure, and as it&amp;rsquo;s
+name signifies it is just the difference between a target (or desired)
+value and model&amp;rsquo;s prediction. MAE is defined as:&lt;/p&gt;
+&lt;p&gt;$$ \frac{1}{N} \sum_{t=1}^{N} |y[t] - \hat{y}[t]| = \frac{1}{N} \sum_{t=1}^{N} | \epsilon[t] |. $$&lt;/p&gt;
+&lt;p&gt;By observing the definition of MAE, we can see that MAE is
+scale-dependent, meaning that both signals, target, and prediction,
+must be of the same scale. Another drawback of MAE that we can identify
+by looking at its definition is its sensitivity to outliers (&lt;em&gt;e.g.&lt;/em&gt;,
+values in the time series that stick further away from any other value).
+Outliers can drag the MAE to higher values, thus affecting the error.
+However, there are ways to handle outliers and fix that issue (see here [REF]).&lt;/p&gt;
+&lt;h3 id=&#34;mean-absolute-percentage-error-mape&#34;&gt;Mean Absolute Percentage Error (MAPE)&lt;/h3&gt;
+&lt;p&gt;MAPE computes the error between a target and a prediction signal
+as a ratio of the error $ \epsilon[t] $ and the target signal. More
+precisely,&lt;/p&gt;
+&lt;p&gt;$$ MAPE = \frac{100\%}{N} \sum_{t=1}^{N} \frac{|y[t] - \hat{y}[t]|}{y[t]} = \frac{100}{N} \sum_{t=1}^{N} \frac{| \epsilon[t] |}{y[t]}. $$&lt;/p&gt;
+&lt;p&gt;MAPE is a helpful error measure when it serves as a loss function
+in training and validating a regression model [REF].&lt;/p&gt;
+&lt;p&gt;Again by observing the definition of MAPE above, we can draw some
+conclusions about this measure. MAPE can be problematic when the actual
+values are zero or close to zero. We can see from the definition above
+that when the denominator is close to zero or zero, the MAPE is too
+large or cannot be defined. Moreover, MAPE is susceptible to skewness,
+since the term $ \frac{1}{y[t]} $ depends only on the observed data
+(not on the model&amp;rsquo;s predictions).&lt;/p&gt;
+&lt;h3 id=&#34;mean-squared-error-mse&#34;&gt;Mean Squared Error (MSE)&lt;/h3&gt;
+&lt;p&gt;The MSE is one of the most used error measures in Machine and
+Deep learning. It computes the average of the square of the errors
+between target and prediction signals. We define the MSE as:&lt;/p&gt;
+&lt;p&gt;$$ MSE = \frac{1}{N} \sum_{t=1}^{N} (y[t] - \hat{y}[t])^2 = \frac{1}{N} \sum_{t=1}^{N} \epsilon[t]^2 . $$&lt;/p&gt;
+&lt;p&gt;If we take the square root of $ MSE $, we get the Root MSE or RMSE.
+When the MSE is zero, we call the predictor (model) a perfect predictor.
+MSE falls into the category of quadratic errors. Quadratic errors
+tend to exaggerate the difference between the target and the model&amp;rsquo;s
+prediction, rendering them suitable for training models since the
+penalty applied to the model will be more prominent when the error
+signal is significant [7].&lt;/p&gt;
+&lt;p&gt;MSE combines the &lt;em&gt;bias&lt;/em&gt; and the &lt;em&gt;variance&lt;/em&gt; of a prediction. More
+precisely, $ MSE = b^2 + Var $, where $b$ is the bias term and
+$ Var $ is the variance. The bias reflects the assumptions the
+model makes to simplify the process of finding answers. The more
+assumptions a model makes, the larger the bias. On the other hand,
+variance refers to how the answers given by the model are subject
+to change when we present different training/testing data to the
+model. Usually, linear models such as &lt;em&gt;Linear Regression&lt;/em&gt; and
+&lt;em&gt;Logistic Regression&lt;/em&gt; have high bias and low variance. Nonlinear
+models such as &lt;em&gt;Decision Trees&lt;/em&gt;,  &lt;em&gt;SVM&lt;/em&gt;, and &lt;em&gt;kNN&lt;/em&gt; have low
+bias and high variance [8]. Ideally, we would like to find a balance
+between bias and variance. That&amp;rsquo;s why sometimes we have to penalize
+our model during training using regularization techniques (this is
+out of the scope of the present post).&lt;/p&gt;
+&lt;h3 id=&#34;symmetric-mean-absolute-percentage-error-smape&#34;&gt;Symmetric Mean Absolute Percentage Error (SMAPE)&lt;/h3&gt;
+&lt;p&gt;SMAPE computes the error between the target and the prediction signals
+as a ratio of the error with the sum of the absolute values of actual
+and prediction values.
+The mathematical definition for SMAPE is:&lt;/p&gt;
+&lt;p&gt;$$ SMAPE = \frac{100\%}{N} \sum_{t=1}^{N} \frac{| \epsilon [t] |}{(| y[t]| + | \hat{y}[t] |)} $$&lt;/p&gt;
+&lt;p&gt;And as we can see from that definition, SMAPE is bounded from
+above and below, $ 0 \leq SMAPE \leq 100 $. Another remark we
+can make based on  SMAPE&amp;rsquo;s definition: when both a target and
+a prediction value are zero, the SMAPE is not defined. If only
+the actual or target value is zero, $ SMAPE = 100 $. Finally,
+SMAPE can cause troubles when  let&amp;rsquo;s say a prediction is
+$ \hat{y}[t] = 10 $ the first time and $ \hat{y}[t] = 12 $ the
+second time, while in both cases the target (actual) value is
+$ y[t] = 11 $.  In the former case, $ SMAPE  = 4.7 % $ and in
+the latter case $ SMAPE = 4.3 % $. We see that we get two different
+error values for the same target when our predictor returns
+different predictions.&lt;/p&gt;
+&lt;h3 id=&#34;mean-absolute-scaled-error-mase&#34;&gt;Mean Absolute Scaled Error (MASE)&lt;/h3&gt;
+&lt;p&gt;MASE is a metric that computes the error ratio between the
+target and the model&amp;rsquo;s prediction to a naive predictor&amp;rsquo;s error (forecaster).&lt;/p&gt;
+&lt;p&gt;The following equation gives the MASE,&lt;/p&gt;
+&lt;p&gt;$$ MASE = \frac{\frac{1}{N} \sum_{t=1}^{N} | \epsilon[t] | }{\frac{1}{N-1} \sum_{t=2}^{N} | y[t] - y[t-1] | } $$&lt;/p&gt;
+&lt;p&gt;When we are dealing with time series with seasonality with period
+$ S $ we can use the following MASE formula instead:&lt;/p&gt;
+&lt;p&gt;$$ MASE = \frac{\frac{1}{N} \sum_{t=1}^{N} | \epsilon[t] | }{\frac{1}{N-S} \sum_{t=S+1}^{N} | y[t] - y[t-S] | }. $$&lt;/p&gt;
+&lt;p&gt;MASE is scale-invariant, meaning that it&amp;rsquo;s immune to any scaling
+we perform on the observed data. MASE is symmetric, which implies
+that it penalizes equally the positive and the negative (as well
+as big and small) forecast errors. When MASE error is greater than
+one, the naive forecaster performs better than our model. MASE can
+be problematic only when the actual (target) signal is only zero values.
+In that case the naive predictor will be zero ad infinitum and thus
+the MASE will be undefined.&lt;/p&gt;
+&lt;h3 id=&#34;coefficient-of-determination-cod-or-r&#34;&gt;Coefficient of Determination (CoD) or R²&lt;/h3&gt;
+&lt;p&gt;The $ R^2 $ or Coefficient of Determination is an error measure
+frequently used in evaluating regression models (&lt;em&gt;goodness of fit&lt;/em&gt;
+or &lt;em&gt;best-fit line&lt;/em&gt;). $ R^2 $ counts how many of the target data
+points approach the line formed by the regression [7].&lt;/p&gt;
+&lt;p&gt;We define $ R^2 $ as&lt;/p&gt;
+&lt;p&gt;$$ R^2 = 1 - \frac{\sum_{t=1}^{N}(y[t] - \hat{y}[t])^2 }{\sum_{t=1}^{N}(y[t] - \bar{y})^2} = 1 - \frac{MSE}{Var[y[t]]}, $$&lt;/p&gt;
+&lt;p&gt;or alternatively&lt;/p&gt;
+&lt;p&gt;$$ R^2 = \frac{SSR}{SST} = \frac{\sum_{t=1}^{N}(y[t] - \hat{y}[t])^2 }{\sum_{t=1}^{N}(y[t] - \bar{y})^2}. $$&lt;/p&gt;
+&lt;p&gt;SSR is the sum of squares regression, and SST is the sum of squares
+total. SSR represents the total variation of all the predicted values
+found on the regression plane from the mean value of all the values
+of response variables. SST reflects the total variation of actual
+values (targets) from the mean value of all the values of response
+variables.&lt;/p&gt;
+&lt;p&gt;$R^2$ is bounded from above, $R^2 \leq 1$, since the fraction term
+lives always in the interval $ [0, 1] $. In the case of training a
+regression model $ R^2 $ is bounded from bellow $ 0 \leq R^2 \leq 1 $.
+For the test/validation data, $ R^2 $ can be negative when MSE is
+large or the total variance of the target (actual) signal is too
+small. A negative $ R^2 $ implies that the term $ \bar{y} $ is a
+better predictor than our model. Moreover, from the first definition
+of $ R^2 $, we see a direct relation between $ R^2 $ and MSE. While
+the $ R^2 $ increases, the MSE tends to approach zero. When we have
+an ideal predictor, $ MSE = 0 $ and $ r^2 = 1 $.&lt;/p&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;h3 id=&#34;cited-as&#34;&gt;Cited as:&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;@article{detorakis2022errors-timeseries,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  title   = &amp;#34;Time series and forecasting error measures&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  author  = &amp;#34;Georgios Is. Detorakis&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  journal = &amp;#34;gdetor.github.io&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  year    = &amp;#34;2022&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  url     = &amp;#34;https://gdetor.github.io/posts/errors&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;J. Beran, &lt;em&gt;Mathematical Foundations of Time Series Analysis A Concise
+Introduction&lt;/em&gt;, Springer, 2017.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Time_series&#34;&gt;&amp;ldquo;Time series&amp;rdquo;&lt;/a&gt;, Wikipedia,
+Wikimedia Foundation, May 2 2022.&lt;/li&gt;
+&lt;li&gt;A. Nielsen, &lt;em&gt;Practical time series analysis: Prediction with statistics
+and machine learning&lt;/em&gt;, O&amp;rsquo;Reilly Media, 2019.&lt;/li&gt;
+&lt;li&gt;R. J. Hyndman, and G. Athanasopoulos, &lt;em&gt;Forecasting: principles and practice&lt;/em&gt;,
+OTexts, 2018.&lt;/li&gt;
+&lt;li&gt;D. Oliveira, &lt;em&gt;Deep learning for time series forecasting&lt;/em&gt;,
+&lt;a href=&#34;https://www.kaggle.com/code/dimitreoliveira/deep-learning-for-time-series-forecasting&#34;&gt;https://www.kaggle.com/code/dimitreoliveira/deep-learning-for-time-series-forecasting&lt;/a&gt;,
+Kaggle, 2019.&lt;/li&gt;
+&lt;li&gt;R. Mulla, &lt;em&gt;[Tutorial] TIme series forecasting with XGBoost&lt;/em&gt;,
+&lt;a href=&#34;https://www.kaggle.com/code/robikscube/tutorial-time-series-forecasting-with-xgboost&#34;&gt;https://www.kaggle.com/code/robikscube/tutorial-time-series-forecasting-with-xgboost&lt;/a&gt;,
+Kaggle, 2019.&lt;/li&gt;
+&lt;li&gt;A. Kumar, &lt;em&gt;Mean squared error or R-squared - Which one to use?&lt;/em&gt;
+&lt;a href=&#34;https://vitalflux.com/mean-square-error-r-squared-which-one-to-use/&#34;&gt;https://vitalflux.com/mean-square-error-r-squared-which-one-to-use/&lt;/a&gt;, 2022.&lt;/li&gt;
+&lt;li&gt;C. M. Bishop, and N. M. Nasrabadi, &lt;em&gt;Pattern recognition and machine learning&lt;/em&gt;,
+New York: Springer, 2006.&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    </item>
+    
+    <item>
       <title>Genetic Algorithms &amp; Island Models</title>
       <link>https://gdetor.github.io/posts/genetic_algorithms/</link>
       <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>

@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Time series and forecasting error measures :: GID Webpage</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Blog post on time sereis and forecasting error measures" />
+<meta name="keywords" content="[gdetor, Georgios Detorakis, Georgios Is. Detorakis, georgios, detorakis]" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://gdetor.github.io/posts/errors/" />
+
+
+
+
+<link rel="stylesheet" href="https://gdetor.github.io/assets/style.css">
+
+
+
+<link rel="stylesheet" href="https://gdetor.github.io/style.css">
+
+
+<link rel="apple-touch-icon" href="https://gdetor.github.io/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://gdetor.github.io/icons/favicon.ico">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:creator" content="Georgios Is. Detorakis" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Time series and forecasting error measures">
+<meta property="og:description" content="Blog post on time sereis and forecasting error measures" />
+<meta property="og:url" content="https://gdetor.github.io/posts/errors/" />
+<meta property="og:site_name" content="GID Webpage" />
+
+  
+    <meta property="og:image" content="https://gdetor.github.io/icons/favicon.ico">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2022-05-05 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx" crossorigin="anonymous"></script>
+
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            renderMathInElement(document.body, {
+                delimiters: [
+                    {left: "$$", right: "$$", display: true},
+                    {left: "$", right: "$", display: false}
+                ]
+            });
+        });
+    </script>
+  </head>
+</html>
+
+
+</head>
+<body class="orange">
+
+
+<div class="container center">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    # GID
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/research">Research</a></li>
+        
+      
+        
+          <li><a href="/software">Software</a></li>
+        
+      
+        
+          <li><a href="/publications">Publications</a></li>
+        
+      
+        
+          <li><a href="/artwork">Artwork</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/research">Research</a></li>
+      
+    
+      
+        <li><a href="/software">Software</a></li>
+      
+    
+      
+        <li><a href="/publications">Publications</a></li>
+      
+    
+      
+        <li><a href="/artwork">Artwork</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://gdetor.github.io/posts/errors/">Time series and forecasting error measures</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2022-05-05
+        
+      </span>
+    
+    
+      <span class="post-author">:: Georgios Is. Detorakis</span>
+    
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://gdetor.github.io/tags/mean-square-error/">mean square error</a>&nbsp;
+    
+    #<a href="https://gdetor.github.io/tags/mse/">MSE</a>&nbsp;
+    
+    #<a href="https://gdetor.github.io/tags/mae/">MAE</a>&nbsp;
+    
+    #<a href="https://gdetor.github.io/tags/mean-absolute-error/">mean absolute error</a>&nbsp;
+    
+    #<a href="https://gdetor.github.io/tags/time-series/">time series</a>&nbsp;
+    
+    #<a href="https://gdetor.github.io/tags/r2/">R2</a>&nbsp;
+    
+    #<a href="https://gdetor.github.io/tags/coefficient-of-determination/">coefficient of determination</a>&nbsp;
+    
+  </span>
+  
+  
+
+
+  
+
+  <div class="post-content"><div>
+        <p>In this post, we are going to explore the basic error measures
+used in time-series forecasting. Error measures provide a way
+to quantify the quality of a forecasting algorithm (<em>e.g.</em>, the
+performance). First, we briefly introduce time series and the
+fundamental terms of forecasting. Second, we will introduce the
+most commonly used error measures and give some examples. Finally,
+we provide a complete example of using errors in a real-life
+forecasting scenario.</p>
+<h2 id="what-is-a-time-series">What is a time series<a href="#what-is-a-time-series" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>A time series is a series of data points indexed in time order in
+layman&rsquo;s terms [1, 2].
+A few examples of time series are</p>
+<ul>
+<li>The daily closing price of a stock in the stock market</li>
+<li>The number of air passengers per month</li>
+<li>The biosignals recorded from electroencephalogram or electrocardiogram</li>
+</ul>
+<p>Figure 1 shows the number of air passengers per month from January 1949
+to September 1960.  In all the examples in this post, we are going to
+use this dataset, so if you would like to try the examples by yourself;
+you can download the data from Kaggle
+<a href="https://www.kaggle.com/datasets/rakannimer/air-passengers">here</a>.</p>
+
+  <figure class="center" >
+    <img src="/images/passengers.png"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Figure 1. An example of a time series showing the number of air passengers per month.</figcaption>
+    
+  </figure>
+
+
+<p>A more rigorous definition of a time series found in [1] (Chapter 1, pg 1)
+is given below:</p>
+<p>Let $ k \in \mathbf{N}, T \subseteq \mathbf{R} $. A function
+$$ x: T \rightarrow \mathbf{R}^k, \hspace{2mm} t \rightarrow x_t $$
+or equivalently, a set of indexed elements of $ \mathbf{R}^k $,
+$$  { x_t | x_t \in \mathbf{R}^k, \hspace{2mm} t \in T }  $$
+is called an observed time series (or time series).
+Sometimes, we write $ x_t(t \in T) $ or $ (x_t)_{t\in T} $.</p>
+<p>When $ k = 1 $ the time series is called <em>univariate</em>, otherwise is
+called <em>multivariate</em>.
+$ T $ determines if the time series is [1]:</p>
+<ul>
+<li><strong>discrete</strong> $ T $ is countable, and $ \forall a &lt; b \in \mathbb{R}: T \cap[a, b] $
+is finite,</li>
+<li><strong>continuous</strong> $ T = [a, b], a &lt; b \in \mathbb{R}, T = \mathbb{R}_{+}
+\hspace{2mm} \text{or} \hspace{2mm} T = \mathbb{R} $,</li>
+<li><strong>equidistant</strong> $ T $ is discrete, and $ \exists u \hspace{2mm} s.t. \hspace{2mm} t_{j+1} - t_j = u $.</li>
+</ul>
+<blockquote>
+<p>From now on and for simplicity&rsquo;s sake we will use the following notation for
+a time series: $ y[1], y[2], \ldots , y[N] $, where
+$ N \in \mathbb{N} $ or $ y[t] $, where $t=1, \ldots , N $.</p>
+</blockquote>
+<h2 id="more-terminology">More terminology<a href="#more-terminology" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Before we dive into the post, let&rsquo;s give some valuable terminology for the
+unfamiliar reader.</p>
+<ul>
+<li><strong>Observed data</strong> ($ (y_t)_{t\in T} $ or $ y[t] $) This is the
+data we obtain by observing a system or a process.</li>
+<li><strong>Predictive model</strong> Is a mathematical representation of observed data.</li>
+<li><strong>Target</strong> ($ y[t] $) This is the gound truth signal we use to train
+a predictor.</li>
+<li><strong>Horizon</strong> ($ h $) Is the number of points or steps we predict in
+the future.</li>
+<li><strong>Prediction</strong> ($ \hat{y}[t] = y[t+h] $) This is a value that predictor
+returns.</li>
+<li><strong>Forecasting</strong> Is the process of prediction future values from historical
+and present data.</li>
+<li><strong>Outlier</strong> It is a significantly different value from other values
+in a time series.</li>
+<li><strong>Error</strong> ($ \epsilon[t] $) is the difference between the target signal
+and the prediction of our model. The error is given by
+$ \epsilon[t] = y[t] - \hat{y}[t] $.</li>
+<li><strong>Seasonality</strong> ($ S $) Seasonality is the periodic appearance of specific
+patterns over the same period—for instance, increasing prices before and
+over the Christmas holidays.</li>
+</ul>
+<h2 id="four-basic-predictors">Four basic predictors<a href="#four-basic-predictors" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>So far, we have seen what a time series and the basic terminology is.
+Now, we will explore some essential predictors or models and see how
+we can use them to perform forecasting.</p>
+<p>As we&rsquo;ve already seen, a predictor is a statistical (or mathematical)
+model that receives as input historical and present data and returns one
+(one-step ahead forecasting, $ h = 1$) or multiple future values
+(multi-step ahead prediction, $ h &gt; 1 $).
+The development of predictors is out of the scope of this post, so we
+will not see how to build, train, test/validate, and use a predictor (here
+are a few references where the reader can find more details on that matter
+[3, 4, 5, 6]). However, we will introduce the four elementary
+predictors since some error measures use some of them to estimate the
+prediction errors.</p>
+<h4 id="naive-predictor">Naive predictor<a href="#naive-predictor" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>The most straightforward predictor we can imagine is the <em>naive</em> one,
+and it gets the last observed value and returns it as the predicted
+value.</p>
+<p>$$ \hat{y}[t + h | t] = y[t]. $$</p>
+<h4 id="seasonal-predictor">Seasonal predictor<a href="#seasonal-predictor" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>We can use the seasonal predictor when we know that our time series
+has a seasonal component (seasonality). It is a natural extension of
+the naive one, and we can describe it as:</p>
+<p>$$ \hat{y}[t+h|t] = y[t+h-S(P+1)]. $$</p>
+<p>$ P $ is $ \Big[\frac{h-1}{S}\Big] $, where $ \Big[ x \Big] $ is the
+integer part of $ x $. $ P $ reflects the number of years&ndash;365 days&ndash;
+have passed prior to time $ t + h $.</p>
+<h4 id="average-predictor">Average predictor<a href="#average-predictor" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>This predictor receives historical and present values as input,
+computes their average (or mean), and returns it as a prediction.</p>
+<p>$$ \hat{y}[t+h|t] = \bar{y} = \frac{1}{N} \sum_{t=1}^{N} y[t] .$$</p>
+<h4 id="drift-predictor">Drift predictor<a href="#drift-predictor" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<p>Another variation of the naive predictor, only this time
+we allow to the predicted value to <em>drift</em> (fluctuate) over time,</p>
+<p>$$ \hat{y}[t+h|t] = y[t] + \frac{h}{t-1} \sum_{j=2}^{t} (y[j]-y[j-1]) = y[t] + h\Big( \frac{y[t] - y[1]}{t - 1} \Big). $$</p>
+<p>You can picture this predictor as a line drawn from the first
+observation to the last one and beyond, where beyond is the prediction.</p>
+<p>Figure 2 shows the predictions in each of the cases mentioned above for
+the air passengers data (brown line).
+The blue line represents the naive predictor, the green line the
+seasonal, the orange line shows the average predictor, and finally,
+the pink line indicates the drift predictor.</p>
+
+  <figure class="center" >
+    <img src="/images/naive_predictors.png"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Figure 2. Forecasts of montly air passengers. Naive predictor (blue line), naive seasonal (green), average (orange), drift (pink).</figcaption>
+    
+  </figure>
+
+
+<h2 id="forecasting-error-measures">Forecasting error measures<a href="#forecasting-error-measures" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>So why do we need error measures? The general idea is to quantify
+the distance between an actual observation (target) and a predicted
+one. Particularly when we train a model to learn how to predict
+future values, we have to measure the error between the actual
+observations and the predicted ones, so the minimization of the
+error leads to a better model.</p>
+<p>When we teach a model, we need to use some penalties to help the
+model improve the predictions. The error measures listed below do
+precisely that. They measure how far the model&rsquo;s predictions are
+from the ground truth and penalize the model accordingly. Usually,
+the smaller the error, the better the predictor.</p>
+<p>Another reason we need error measures is to evaluate the performance
+of our model in real-life scenarios. We might have a trained model
+that performs some forecasting, and we would like to investigate the
+quality of its predictions. In this case, we can measure the error
+between the historical data we will collect in the future and the
+model&rsquo;s predictions.</p>
+<p>We already said that developing and training a predictor is out of
+the scope of the present post. Therefore, we will use historical
+data and add some Gaussian noise to them to fake the predictions.
+Furthermore, we adopt the discrete-time signals time indexing, meaning
+that $ y[t] $ is the value of the time series at time index $ t $.
+A similar way would be $ y_t $, where $ t $ is the time index.</p>
+<blockquote>
+<p><strong>Reminder</strong> $ y[t] $ is the target signal, $ \hat{y}[t] $ the prediction
+signal and $ \epsilon[t] $ the error signal.</p>
+</blockquote>
+<p>And now, we are ready to introduce the error measures and some examples
+demonstrating their behavior.</p>
+<h3 id="mean-absolute-error-mae">Mean Absolute Error (MAE)<a href="#mean-absolute-error-mae" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>The MAE is the most straightforward error measure, and as it&rsquo;s
+name signifies it is just the difference between a target (or desired)
+value and model&rsquo;s prediction. MAE is defined as:</p>
+<p>$$ \frac{1}{N} \sum_{t=1}^{N} |y[t] - \hat{y}[t]| = \frac{1}{N} \sum_{t=1}^{N} | \epsilon[t] |. $$</p>
+<p>By observing the definition of MAE, we can see that MAE is
+scale-dependent, meaning that both signals, target, and prediction,
+must be of the same scale. Another drawback of MAE that we can identify
+by looking at its definition is its sensitivity to outliers (<em>e.g.</em>,
+values in the time series that stick further away from any other value).
+Outliers can drag the MAE to higher values, thus affecting the error.
+However, there are ways to handle outliers and fix that issue (see here [REF]).</p>
+<h3 id="mean-absolute-percentage-error-mape">Mean Absolute Percentage Error (MAPE)<a href="#mean-absolute-percentage-error-mape" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>MAPE computes the error between a target and a prediction signal
+as a ratio of the error $ \epsilon[t] $ and the target signal. More
+precisely,</p>
+<p>$$ MAPE = \frac{100\%}{N} \sum_{t=1}^{N} \frac{|y[t] - \hat{y}[t]|}{y[t]} = \frac{100}{N} \sum_{t=1}^{N} \frac{| \epsilon[t] |}{y[t]}. $$</p>
+<p>MAPE is a helpful error measure when it serves as a loss function
+in training and validating a regression model [REF].</p>
+<p>Again by observing the definition of MAPE above, we can draw some
+conclusions about this measure. MAPE can be problematic when the actual
+values are zero or close to zero. We can see from the definition above
+that when the denominator is close to zero or zero, the MAPE is too
+large or cannot be defined. Moreover, MAPE is susceptible to skewness,
+since the term $ \frac{1}{y[t]} $ depends only on the observed data
+(not on the model&rsquo;s predictions).</p>
+<h3 id="mean-squared-error-mse">Mean Squared Error (MSE)<a href="#mean-squared-error-mse" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>The MSE is one of the most used error measures in Machine and
+Deep learning. It computes the average of the square of the errors
+between target and prediction signals. We define the MSE as:</p>
+<p>$$ MSE = \frac{1}{N} \sum_{t=1}^{N} (y[t] - \hat{y}[t])^2 = \frac{1}{N} \sum_{t=1}^{N} \epsilon[t]^2 . $$</p>
+<p>If we take the square root of $ MSE $, we get the Root MSE or RMSE.
+When the MSE is zero, we call the predictor (model) a perfect predictor.
+MSE falls into the category of quadratic errors. Quadratic errors
+tend to exaggerate the difference between the target and the model&rsquo;s
+prediction, rendering them suitable for training models since the
+penalty applied to the model will be more prominent when the error
+signal is significant [7].</p>
+<p>MSE combines the <em>bias</em> and the <em>variance</em> of a prediction. More
+precisely, $ MSE = b^2 + Var $, where $b$ is the bias term and
+$ Var $ is the variance. The bias reflects the assumptions the
+model makes to simplify the process of finding answers. The more
+assumptions a model makes, the larger the bias. On the other hand,
+variance refers to how the answers given by the model are subject
+to change when we present different training/testing data to the
+model. Usually, linear models such as <em>Linear Regression</em> and
+<em>Logistic Regression</em> have high bias and low variance. Nonlinear
+models such as <em>Decision Trees</em>,  <em>SVM</em>, and <em>kNN</em> have low
+bias and high variance [8]. Ideally, we would like to find a balance
+between bias and variance. That&rsquo;s why sometimes we have to penalize
+our model during training using regularization techniques (this is
+out of the scope of the present post).</p>
+<h3 id="symmetric-mean-absolute-percentage-error-smape">Symmetric Mean Absolute Percentage Error (SMAPE)<a href="#symmetric-mean-absolute-percentage-error-smape" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>SMAPE computes the error between the target and the prediction signals
+as a ratio of the error with the sum of the absolute values of actual
+and prediction values.
+The mathematical definition for SMAPE is:</p>
+<p>$$ SMAPE = \frac{100\%}{N} \sum_{t=1}^{N} \frac{| \epsilon [t] |}{(| y[t]| + | \hat{y}[t] |)} $$</p>
+<p>And as we can see from that definition, SMAPE is bounded from
+above and below, $ 0 \leq SMAPE \leq 100 $. Another remark we
+can make based on  SMAPE&rsquo;s definition: when both a target and
+a prediction value are zero, the SMAPE is not defined. If only
+the actual or target value is zero, $ SMAPE = 100 $. Finally,
+SMAPE can cause troubles when  let&rsquo;s say a prediction is
+$ \hat{y}[t] = 10 $ the first time and $ \hat{y}[t] = 12 $ the
+second time, while in both cases the target (actual) value is
+$ y[t] = 11 $.  In the former case, $ SMAPE  = 4.7 % $ and in
+the latter case $ SMAPE = 4.3 % $. We see that we get two different
+error values for the same target when our predictor returns
+different predictions.</p>
+<h3 id="mean-absolute-scaled-error-mase">Mean Absolute Scaled Error (MASE)<a href="#mean-absolute-scaled-error-mase" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>MASE is a metric that computes the error ratio between the
+target and the model&rsquo;s prediction to a naive predictor&rsquo;s error (forecaster).</p>
+<p>The following equation gives the MASE,</p>
+<p>$$ MASE = \frac{\frac{1}{N} \sum_{t=1}^{N} | \epsilon[t] | }{\frac{1}{N-1} \sum_{t=2}^{N} | y[t] - y[t-1] | } $$</p>
+<p>When we are dealing with time series with seasonality with period
+$ S $ we can use the following MASE formula instead:</p>
+<p>$$ MASE = \frac{\frac{1}{N} \sum_{t=1}^{N} | \epsilon[t] | }{\frac{1}{N-S} \sum_{t=S+1}^{N} | y[t] - y[t-S] | }. $$</p>
+<p>MASE is scale-invariant, meaning that it&rsquo;s immune to any scaling
+we perform on the observed data. MASE is symmetric, which implies
+that it penalizes equally the positive and the negative (as well
+as big and small) forecast errors. When MASE error is greater than
+one, the naive forecaster performs better than our model. MASE can
+be problematic only when the actual (target) signal is only zero values.
+In that case the naive predictor will be zero ad infinitum and thus
+the MASE will be undefined.</p>
+<h3 id="coefficient-of-determination-cod-or-r">Coefficient of Determination (CoD) or R²<a href="#coefficient-of-determination-cod-or-r" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>The $ R^2 $ or Coefficient of Determination is an error measure
+frequently used in evaluating regression models (<em>goodness of fit</em>
+or <em>best-fit line</em>). $ R^2 $ counts how many of the target data
+points approach the line formed by the regression [7].</p>
+<p>We define $ R^2 $ as</p>
+<p>$$ R^2 = 1 - \frac{\sum_{t=1}^{N}(y[t] - \hat{y}[t])^2 }{\sum_{t=1}^{N}(y[t] - \bar{y})^2} = 1 - \frac{MSE}{Var[y[t]]}, $$</p>
+<p>or alternatively</p>
+<p>$$ R^2 = \frac{SSR}{SST} = \frac{\sum_{t=1}^{N}(y[t] - \hat{y}[t])^2 }{\sum_{t=1}^{N}(y[t] - \bar{y})^2}. $$</p>
+<p>SSR is the sum of squares regression, and SST is the sum of squares
+total. SSR represents the total variation of all the predicted values
+found on the regression plane from the mean value of all the values
+of response variables. SST reflects the total variation of actual
+values (targets) from the mean value of all the values of response
+variables.</p>
+<p>$R^2$ is bounded from above, $R^2 \leq 1$, since the fraction term
+lives always in the interval $ [0, 1] $. In the case of training a
+regression model $ R^2 $ is bounded from bellow $ 0 \leq R^2 \leq 1 $.
+For the test/validation data, $ R^2 $ can be negative when MSE is
+large or the total variance of the target (actual) signal is too
+small. A negative $ R^2 $ implies that the term $ \bar{y} $ is a
+better predictor than our model. Moreover, from the first definition
+of $ R^2 $, we see a direct relation between $ R^2 $ and MSE. While
+the $ R^2 $ increases, the MSE tends to approach zero. When we have
+an ideal predictor, $ MSE = 0 $ and $ r^2 = 1 $.</p>
+<h2 id="summary">Summary<a href="#summary" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h3 id="cited-as">Cited as:<a href="#cited-as" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>@article{detorakis2022errors-timeseries,
+</span></span><span style="display:flex;"><span>  title   = &#34;Time series and forecasting error measures&#34;,
+</span></span><span style="display:flex;"><span>  author  = &#34;Georgios Is. Detorakis&#34;,
+</span></span><span style="display:flex;"><span>  journal = &#34;gdetor.github.io&#34;,
+</span></span><span style="display:flex;"><span>  year    = &#34;2022&#34;,
+</span></span><span style="display:flex;"><span>  url     = &#34;https://gdetor.github.io/posts/errors&#34;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="references">References<a href="#references" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<ol>
+<li>J. Beran, <em>Mathematical Foundations of Time Series Analysis A Concise
+Introduction</em>, Springer, 2017.</li>
+<li><a href="https://en.wikipedia.org/wiki/Time_series">&ldquo;Time series&rdquo;</a>, Wikipedia,
+Wikimedia Foundation, May 2 2022.</li>
+<li>A. Nielsen, <em>Practical time series analysis: Prediction with statistics
+and machine learning</em>, O&rsquo;Reilly Media, 2019.</li>
+<li>R. J. Hyndman, and G. Athanasopoulos, <em>Forecasting: principles and practice</em>,
+OTexts, 2018.</li>
+<li>D. Oliveira, <em>Deep learning for time series forecasting</em>,
+<a href="https://www.kaggle.com/code/dimitreoliveira/deep-learning-for-time-series-forecasting">https://www.kaggle.com/code/dimitreoliveira/deep-learning-for-time-series-forecasting</a>,
+Kaggle, 2019.</li>
+<li>R. Mulla, <em>[Tutorial] TIme series forecasting with XGBoost</em>,
+<a href="https://www.kaggle.com/code/robikscube/tutorial-time-series-forecasting-with-xgboost">https://www.kaggle.com/code/robikscube/tutorial-time-series-forecasting-with-xgboost</a>,
+Kaggle, 2019.</li>
+<li>A. Kumar, <em>Mean squared error or R-squared - Which one to use?</em>
+<a href="https://vitalflux.com/mean-square-error-r-squared-which-one-to-use/">https://vitalflux.com/mean-square-error-r-squared-which-one-to-use/</a>, 2022.</li>
+<li>C. M. Bishop, and N. M. Nasrabadi, <em>Pattern recognition and machine learning</em>,
+New York: Springer, 2006.</li>
+</ol>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://gdetor.github.io/posts/welcome/">
+                <span class="button__icon">←</span>
+                <span class="button__text"></span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://gdetor.github.io/posts/genetic_algorithms/">
+                <span class="button__text">Genetic Algorithms &amp; Island Models</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>ⓒ  GID, 2021-2022</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://gdetor.github.io/assets/main.js"></script>
+<script src="https://gdetor.github.io/assets/prism.js"></script>
+
+
+
+
+<style>
+    #body a, #body span {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        line-height: 1.7em;
+    }
+    h2 {
+        display: inline-block;
+    }
+    img.github, img.gitlab, img.twitter, img.rgate, img.orcid{
+        -webkit-filter: invert(1);
+        filter: invert(1);
+    }
+</style>
+
+<center>
+    <div>
+        <a class="inline-block px-2" href="https://github.com/gdetor"><h2><img class="image github" src="/github-square.svg" alt="Github" width="36"></h2></a>
+        <a class="inline-block" href="https://gitlab.com/gdetor"><h2><img class="image gitlab" src="/gitlab.svg" alt="Gitlab" width="36"></h2></a>
+        <a class="inline-block px-2" href="https://twitter.com/gsnake4"><h2><img class="image twitter" src="/twitter-square.svg" alt="Twitter" width="36"></h2></a>
+        <a class="inline-block px-2" href="https://www.researchgate.net/profile/Georgios-Detorakis"><h2>
+         <img class="image rgate" src="/researchgate-square.svg" alt="RG" width="36"></h2></a>
+        <a class="inline-block px-2" href="https://orcid.org/0000-0001-5891-1702"><h2>
+         <img class="image orcid" src="/orcid-square.svg" alt="RG" width="36"></h2></a>
+    </div>
+</center>
+
+
+  
+</div>
+
+</body>
+</html>
