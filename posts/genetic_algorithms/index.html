@@ -30,7 +30,7 @@
 <meta name="twitter:card" content="summary" />
 
   
-    <meta name="twitter:creator" content="GID" />
+    <meta name="twitter:creator" content="Georgios Is. Detorakis" />
 
 
 
@@ -49,7 +49,7 @@
 <meta property="og:image:height" content="1024">
 
 
-  <meta property="article:published_time" content="2022-03-16 00:00:00 &#43;0000 UTC" />
+  <meta property="article:published_time" content="2022-04-28 00:00:00 &#43;0000 UTC" />
 
 
 
@@ -178,16 +178,28 @@
   <div class="post-meta">
     
       <span class="post-date">
-        2022-03-16
+        2022-04-28
         
       </span>
     
     
-      <span class="post-author">:: GID</span>
+      <span class="post-author">:: Georgios Is. Detorakis</span>
     
     
   </div>
 
+  
+  <span class="post-tags">
+    
+    #<a href="https://gdetor.github.io/tags/genetic-algorithms/">genetic algorithms</a>&nbsp;
+    
+    #<a href="https://gdetor.github.io/tags/gaim/">GAIM</a>&nbsp;
+    
+    #<a href="https://gdetor.github.io/tags/island-model/">island model</a>&nbsp;
+    
+    #<a href="https://gdetor.github.io/tags/optimization/">optimization</a>&nbsp;
+    
+  </span>
   
   
 
@@ -265,7 +277,7 @@ are k-tournament, roulette-wheel, random, etc.</p>
 <p><strong>Crossover</strong> This operator mises the genomes of the selected parents. A
 crossover operator will combine a part of the first parent&rsquo;s genome with a
 part of the second parent&rsquo;s genome. Some crossover operators are one-point
-Crossover, two-points Crossover, random, etc.</p>
+crossover, two-points crossover, random, etc.</p>
 </li>
 <li>
 <p><strong>Mutation</strong> Finally, the potential offspring&rsquo;s (or child&rsquo;s) genome is
@@ -343,8 +355,24 @@ by $ 5 $ offsprings.</p>
 </li>
 <li>
 <p>We need to decide what operators we will use for our GA.
-In this particular example, we use a k-tournament Selection,
-a one-point Crossover, and a delta Mutation operator.</p>
+In this particular example, we use a k-tournament selection,
+a one-point crossover, and a delta mutation operator.</p>
+<ul>
+<li><strong>k-tournament selection</strong> This operator will randomly choose
+$ k $ individuals from the population. It will, then, choose the best
+individual, based on the fitness from the tournament with probability
+$ p $, choose the second-best individual with probability $ p(1-p) $,
+the third-best with probability $ p(1-p)^2 $, etc.</li>
+<li><strong>One-point crossover</strong> will take the genes of two parents as input,
+it will randomly pick a number from zero to the size of genes, and it
+will cut the parents&rsquo; genes at that point. Then it will swap the
+sliced genes between the two parents, and thus the offspring will carry
+genetic information from both parents.</li>
+<li><strong>Delta mutation</strong> operator will draw uniformly a number from the
+interval $ [0, 1] $ for each gene in an individual&rsquo;s genome. If that
+number is greater than a probability $ p $ (usually $ p = \frac{1}{2} $).
+A predefined increment will increase the value of the gene.</li>
+</ul>
 </li>
 <li>
 <p>Finally, we set our Optimization in motion. The GA will first evaluate
@@ -352,12 +380,12 @@ the cost function of each individual. It will sort the individuals based
 on their fitness values. To this end, we feed the XOR input to the neural
 network, and we collect the output $ y_{\text{pred}} $. Then we use the
 output to compute the cost function value for that individual. The next step
-for our GA is to choose two parents based on the k-tournament Selection. The
+for our GA is to choose two parents based on the k-tournament selection. The
 genome of the two selected parents will be crossed over using the
 one-point operator. That will give rise to a new genome, a child or
 offspring. The offspring&rsquo;s genome will undergo a mutation based on the
 delta operator. Finally, the GA will add the offspring to a list.  The
-Selection, Crossover, and Mutation processes continue until the number
+selection, crossover, and mutation processes continue until the number
 of offspring have been exhausted. Then, the best performing offspring
 will replace the poorest-performing (maximum cost function value)
 parents (elite replacement). And the entire process repeats for $ 4999$
@@ -500,7 +528,7 @@ of the neural network on solving XOR.</p>
 </span></span><span style="display:flex;"><span>    test_weights(genome)
 </span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>show()
 </span></span></code></pre></div><p>GAIM [4] is a C++ library for genetic algorithms and the island model.
-It implements the most fundamental Selection, Crossover, and mutation
+It implements the most fundamental selection, crossover, and mutation
 operators. It also provides an MPI and POSIX threads implementation
 of the island model. Finally, it comes with a Python interface
 called PyGAIM that simplifies GA-based optimization problem setup,
@@ -591,7 +619,7 @@ aircraft.</li>
 well-defined in combinatorial Optimization and has many applications in
 real-life issues.</li>
 </ol>
-<p>Cited as:</p>
+<h3 id="cited-as">Cited as:<a href="#cited-as" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>@article{detorakis2022geneticalg,
 </span></span><span style="display:flex;"><span>  title   = &#34;Genetic algorithms and island models&#34;,
 </span></span><span style="display:flex;"><span>  author  = &#34;Georgios Is. Detorakis&#34;,
@@ -648,8 +676,8 @@ topologies</em>, Proceedings of the 2002 Congress on Evolutionary Computation.
         
         
         <span class="button next">
-            <a href="https://gdetor.github.io/posts/rl_controller/">
-                <span class="button__text">How to use Deep Reinforcement Learning agents as controllers </span>
+            <a href="https://gdetor.github.io/posts/tipsntricks/">
+                <span class="button__text">Tips &amp; Tricks (Linux/Vim/Git/Programming)</span>
                 <span class="button__icon">→</span>
             </a>
         </span>

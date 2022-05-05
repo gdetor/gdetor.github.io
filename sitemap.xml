@@ -3,19 +3,49 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://gdetor.github.io/posts/welcome/</loc>
-    <lastmod>2022-03-17T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://gdetor.github.io/</loc>
-    <lastmod>2022-03-17T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://gdetor.github.io/posts/</loc>
-    <lastmod>2022-03-17T00:00:00+00:00</lastmod>
+    <lastmod>2022-05-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/tags/c/</loc>
+    <lastmod>2022-04-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/tags/gaim/</loc>
+    <lastmod>2022-04-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/tags/genetic-algorithms/</loc>
+    <lastmod>2022-04-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://gdetor.github.io/posts/genetic_algorithms/</loc>
-    <lastmod>2022-03-16T00:00:00+00:00</lastmod>
+    <lastmod>2022-04-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://gdetor.github.io/posts/rl_controller/</loc>
-    <lastmod>2022-03-16T00:00:00+00:00</lastmod>
+    <loc>https://gdetor.github.io/tags/git/</loc>
+    <lastmod>2022-04-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/tags/island-model/</loc>
+    <lastmod>2022-04-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/tags/linux/</loc>
+    <lastmod>2022-04-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/tags/optimization/</loc>
+    <lastmod>2022-04-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/tags/python/</loc>
+    <lastmod>2022-04-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/tags/</loc>
+    <lastmod>2022-04-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/posts/tipsntricks/</loc>
+    <lastmod>2022-04-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/tags/vim/</loc>
+    <lastmod>2022-04-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://gdetor.github.io/posts/demos/</loc>
     <lastmod>2021-04-13T00:00:00+00:00</lastmod>
@@ -37,7 +67,5 @@
     <loc>https://gdetor.github.io/research/</loc>
   </url><url>
     <loc>https://gdetor.github.io/software/</loc>
-  </url><url>
-    <loc>https://gdetor.github.io/tags/</loc>
   </url>
 </urlset>

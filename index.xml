@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>ⓒ  GID, 2021-2022</copyright>
-    <lastBuildDate>Thu, 17 Mar 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 05 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>https://gdetor.github.io/posts/welcome/</link>
-      <pubDate>Thu, 17 Mar 2022 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://gdetor.github.io/posts/welcome/</guid>
       <description></description>
@@ -21,7 +21,7 @@
     <item>
       <title>Genetic Algorithms &amp; Island Models</title>
       <link>https://gdetor.github.io/posts/genetic_algorithms/</link>
-      <pubDate>Wed, 16 Mar 2022 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://gdetor.github.io/posts/genetic_algorithms/</guid>
       <description>In this post, we explore genetic algorithms (GAs) and the so-called island model (IM). GAs and the IM are optimization methods used to maximize or minimize a cost function.
@@ -96,7 +96,7 @@ are k-tournament, roulette-wheel, random, etc.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Crossover&lt;/strong&gt; This operator mises the genomes of the selected parents. A
 crossover operator will combine a part of the first parent&amp;rsquo;s genome with a
 part of the second parent&amp;rsquo;s genome. Some crossover operators are one-point
-Crossover, two-points Crossover, random, etc.&lt;/p&gt;
+crossover, two-points crossover, random, etc.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;&lt;strong&gt;Mutation&lt;/strong&gt; Finally, the potential offspring&amp;rsquo;s (or child&amp;rsquo;s) genome is
@@ -174,8 +174,24 @@ by $ 5 $ offsprings.&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;We need to decide what operators we will use for our GA.
-In this particular example, we use a k-tournament Selection,
-a one-point Crossover, and a delta Mutation operator.&lt;/p&gt;
+In this particular example, we use a k-tournament selection,
+a one-point crossover, and a delta mutation operator.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;k-tournament selection&lt;/strong&gt; This operator will randomly choose
+$ k $ individuals from the population. It will, then, choose the best
+individual, based on the fitness from the tournament with probability
+$ p $, choose the second-best individual with probability $ p(1-p) $,
+the third-best with probability $ p(1-p)^2 $, etc.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;One-point crossover&lt;/strong&gt; will take the genes of two parents as input,
+it will randomly pick a number from zero to the size of genes, and it
+will cut the parents&amp;rsquo; genes at that point. Then it will swap the
+sliced genes between the two parents, and thus the offspring will carry
+genetic information from both parents.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Delta mutation&lt;/strong&gt; operator will draw uniformly a number from the
+interval $ [0, 1] $ for each gene in an individual&amp;rsquo;s genome. If that
+number is greater than a probability $ p $ (usually $ p = \frac{1}{2} $).
+A predefined increment will increase the value of the gene.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;Finally, we set our Optimization in motion. The GA will first evaluate
@@ -183,12 +199,12 @@ the cost function of each individual. It will sort the individuals based
 on their fitness values. To this end, we feed the XOR input to the neural
 network, and we collect the output $ y_{\text{pred}} $. Then we use the
 output to compute the cost function value for that individual. The next step
-for our GA is to choose two parents based on the k-tournament Selection. The
+for our GA is to choose two parents based on the k-tournament selection. The
 genome of the two selected parents will be crossed over using the
 one-point operator. That will give rise to a new genome, a child or
 offspring. The offspring&amp;rsquo;s genome will undergo a mutation based on the
 delta operator. Finally, the GA will add the offspring to a list.  The
-Selection, Crossover, and Mutation processes continue until the number
+selection, crossover, and mutation processes continue until the number
 of offspring have been exhausted. Then, the best performing offspring
 will replace the poorest-performing (maximum cost function value)
 parents (elite replacement). And the entire process repeats for $ 4999$
@@ -331,7 +347,7 @@ of the neural network on solving XOR.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    test_weights(genome)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    plt&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;show()
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;GAIM [4] is a C++ library for genetic algorithms and the island model.
-It implements the most fundamental Selection, Crossover, and mutation
+It implements the most fundamental selection, crossover, and mutation
 operators. It also provides an MPI and POSIX threads implementation
 of the island model. Finally, it comes with a Python interface
 called PyGAIM that simplifies GA-based optimization problem setup,
@@ -422,7 +438,7 @@ aircraft.&lt;/li&gt;
 well-defined in combinatorial Optimization and has many applications in
 real-life issues.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;Cited as:&lt;/p&gt;
+&lt;h3 id=&#34;cited-as&#34;&gt;Cited as:&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;@article{detorakis2022geneticalg,
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  title   = &amp;#34;Genetic algorithms and island models&amp;#34;,
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  author  = &amp;#34;Georgios Is. Detorakis&amp;#34;,
@@ -462,27 +478,113 @@ topologies&lt;/em&gt;, Proceedings of the 2002 Congress on Evolutionary Computat
     </item>
     
     <item>
-      <title>How to use Deep Reinforcement Learning agents as controllers </title>
-      <link>https://gdetor.github.io/posts/rl_controller/</link>
-      <pubDate>Wed, 16 Mar 2022 00:00:00 +0000</pubDate>
+      <title>Tips &amp; Tricks (Linux/Vim/Git/Programming)</title>
+      <link>https://gdetor.github.io/posts/tipsntricks/</link>
+      <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
       
-      <guid>https://gdetor.github.io/posts/rl_controller/</guid>
-      <description>What is Deep Reinforcement Learning (DRL)? The shortest introduction to Control Theory (CT) How to combine DRL and CT? Controlling a thermal valve using DQN Controlling a thermal valve using PPO Cited as:
-@article{detorakis2022rlcontrollers,  title = &amp;#34;How to use deep reinforcement learning agents as controllers&amp;#34;,  author = &amp;#34;Georgios Is. Detorakis&amp;#34;,  journal = &amp;#34;gdetor.github.io&amp;#34;,  year = &amp;#34;2022&amp;#34;,  url = &amp;#34;https://gdetor.github.io/posts/rl_controller&amp;#34; } References </description>
-      <content>&lt;h2 id=&#34;what-is-deep-reinforcement-learning-drl&#34;&gt;What is Deep Reinforcement Learning (DRL)?&lt;/h2&gt;
-&lt;h2 id=&#34;the-shortest-introduction-to-control-theory-ct&#34;&gt;The shortest introduction to Control Theory (CT)&lt;/h2&gt;
-&lt;h2 id=&#34;how-to-combine-drl-and-ct&#34;&gt;How to combine DRL and CT?&lt;/h2&gt;
-&lt;h2 id=&#34;controlling-a-thermal-valve-using-dqn&#34;&gt;Controlling a thermal valve using DQN&lt;/h2&gt;
-&lt;h2 id=&#34;controlling-a-thermal-valve-using-ppo&#34;&gt;Controlling a thermal valve using PPO&lt;/h2&gt;
-&lt;p&gt;Cited as:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;@article{detorakis2022rlcontrollers,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  title   = &amp;#34;How to use deep reinforcement learning agents as controllers&amp;#34;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  author  = &amp;#34;Georgios Is. Detorakis&amp;#34;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  journal = &amp;#34;gdetor.github.io&amp;#34;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  year    = &amp;#34;2022&amp;#34;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  url     = &amp;#34;https://gdetor.github.io/posts/rl_controller&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
+      <guid>https://gdetor.github.io/posts/tipsntricks/</guid>
+      <description>In this post you can find various simple tricks and tips for Linux, Vim, Git, Python and many other stuff. All the material provided in this page are free and can be redistributed and/or modified. There is no any warranty that they work for you or are suitable to your need. The author of this page is not responsible for any damage this material may cause.
+Joining dictinary keys and values to a list in Python (Programming) &amp;#39;_&amp;#39;.</description>
+      <content>&lt;p&gt;In this post you can find various simple tricks and tips for Linux, Vim,
+Git, Python and many other stuff. All the material provided in this page are
+free and can be redistributed and/or modified. There is no any warranty that
+they work for you or are suitable to your need. The author of this page is
+not responsible for any damage this material may cause.&lt;/p&gt;
+&lt;h3 id=&#34;joining-dictinary-keys-and-values-to-a-list-in-python-programming&#34;&gt;Joining dictinary keys and values to a list in Python (Programming)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;_&amp;#39;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;join(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{!s}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;_&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;{!r}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;format(key, val) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; (key, val) &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; d&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;items())
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;check-the-health-status-of-your-hard-drive-linux&#34;&gt;Check the health status of your hard drive (Linux)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ badblocks -w -s -o error.log /dev/sdX     &lt;span style=&#34;color:#75715e&#34;&gt;# get X using lsblk&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;how-to-load-reload-modules-ipython&#34;&gt;How to load (reload) modules (iPython)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;load_ext autoreload
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt;autoreload &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;power-off-an-external-hard-drive-linux&#34;&gt;Power-off an external hard drive (Linux)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ udiskctl power-off -b /dev/sdX    &lt;span style=&#34;color:#75715e&#34;&gt;# obtain X using lsblk&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;rsync-your-data-linux&#34;&gt;rsync your data (Linux)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ rsync -avzhP src dst --exclude-from&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;file.txt --inlude&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;.git/config&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;recover-data-linux&#34;&gt;Recover data (Linux)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ddrescue -dr3 /dev/sdX imagename.image logfile
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;random-execution-of-a-linux-command-linux&#34;&gt;Random execution of a Linux command (Linux)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ &lt;span style=&#34;color:#f92672&#34;&gt;[&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;$((&lt;/span&gt;RANDOM &lt;span style=&#34;color:#f92672&#34;&gt;%&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;))&lt;/span&gt; -eq &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; command
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;open-a-file-in-vim-with-no-compatibility-vim&#34;&gt;Open a file in VIM with no compatibility (Vim)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ vim -u NONE -u NORC fname
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;io-devices-latency-linux&#34;&gt;IO devices latency (Linux)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo ioping -R /dev/sdX         &lt;span style=&#34;color:#75715e&#34;&gt;# (seek rate)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo ioping -RL /dev/sdX        &lt;span style=&#34;color:#75715e&#34;&gt;# (sequential speed)    &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;copy-a-file-to-the-clipboard-linux&#34;&gt;Copy a file to the clipboard (Linux)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ xclip -sel clip &amp;lt; file
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;import-date-in-vim-vim&#34;&gt;Import date in VIM (Vim)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:&lt;span style=&#34;color:#a6e22e&#34;&gt;read&lt;/span&gt; !&lt;span style=&#34;color:#a6e22e&#34;&gt;date&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;import-the-output-of-a-linux-command-in-vim-vim&#34;&gt;Import the output of a Linux command in Vim (Vim)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;:&lt;span style=&#34;color:#66d9ef&#34;&gt;let&lt;/span&gt; @&lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;=&lt;span style=&#34;color:#a6e22e&#34;&gt;system&lt;/span&gt;(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;)&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;In&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;insert&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;mode&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;press&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;Ctrl&lt;/span&gt;+&lt;span style=&#34;color:#a6e22e&#34;&gt;R&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;and&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;then&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;a&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;convert-a-bunch-of-png-files-to-a-video-linux&#34;&gt;Convert a bunch of png files to a video (Linux)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ffmpeg -framerate 1/5 -patter_type glob -i &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;*.png&amp;#34;&lt;/span&gt; -vf &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;fps=95,format=yuv420p&amp;#34;&lt;/span&gt; output.mp4
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;convert-a-photo-into-ascii-art-linux&#34;&gt;Convert a photo into ASCII art (Linux)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ jp2a photo.jpg | tee photo.ascii
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;read-gz-files-without-extracting-them-linux&#34;&gt;Read .gz files without extracting them (Linux)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ zmore file.gz
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ zless file.gz
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;how-to-load-huge-files-in-python-programming&#34;&gt;How to load huge files in Python (Programming)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; mmap
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;f &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; open(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;HUGE.txt&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mm &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; mmap&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;mmap(f&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;filend, length&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, access&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;mmap&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ACCESS_READ, offset&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(mm[&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1000&lt;/span&gt;:])
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;git-credential-storage-git&#34;&gt;Git credential storage (Git)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ git config --global credential.helper cache &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;--timeout S&amp;#39;&lt;/span&gt;  &lt;span style=&#34;color:#75715e&#34;&gt;# S -&amp;gt; seconds&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;include-a-help-flag-in-makefiles-programming&#34;&gt;Include a help flag in Makefiles (Programming)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-make&#34; data-lang=&#34;make&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;.PHONY&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    help
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;help&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    cat makefile | grep -oP &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;^#\K(.*)&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;copy-a-file-into-multiple-directories-linux&#34;&gt;Copy a file into multiple directories (Linux)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;echo dir1 dir2 | xargs -n &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; cp file
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;parallel cp file ::: dir1 dir2
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;how-to-run-a-elf-programming&#34;&gt;How to run a ELF (Programming)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ touch file
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ cp /bin/ls .
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ./ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;file ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ chmod -x ./ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ./ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;-bash: ./ls: Permission denied
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ strings ./ls | head -n &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;/lib64/ld-linux-x86-64.so.2
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ /lib64/ld-linux-x86-64.so.2 ./ls
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;file ls
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;set-an-alert-message-when-a-job-finishes-linux&#34;&gt;Set an alert message when a job finishes (Linux)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt; execute_something_that_takes_time; xmessage DONE; &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;&amp;amp;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;dennis-ritchie-linuxprogrammin&#34;&gt;Dennis Ritchie (Linux/Programmin)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ curl -L git.io/unix
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;play-tetris-linux&#34;&gt;Play tetris (Linux)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ssh netris&lt;span style=&#34;color:#ae81ff&#34;&gt;\.&lt;/span&gt;rocketnine&lt;span style=&#34;color:#ae81ff&#34;&gt;\.&lt;/span&gt;space
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;python-scope-programming&#34;&gt;Python scope (Programming)&lt;/h3&gt;
+&lt;p&gt;LEGB:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;L&lt;/strong&gt;ocal (within a function)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;E&lt;/strong&gt;nclosing functions locals&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;G&lt;/strong&gt;lobal (module)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;B&lt;/strong&gt;uilt-in (python) preassigned names&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;c-pointers-programming&#34;&gt;C Pointers (Programming)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;ptr++ Evaluates ptr and then increments ptr by 1xbase_type_size&lt;/li&gt;
+&lt;li&gt;*ptr++ Evaluates ptr, increments it, and dereferences the evaluated value&lt;/li&gt;
+&lt;li&gt;int *ptr[10] Array of 10 pointers to integer (int *)&lt;/li&gt;
+&lt;li&gt;int (*ptr)[10] Pointer to an array of 10 integers&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;delete-the-last-column-of-a-text-file-linux&#34;&gt;Delete the last column of a text file (Linux)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;NF {NF-=1};1&amp;#39;&lt;/span&gt;&amp;lt; input_file &amp;gt; output_file
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ awk &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;NF {NF--};1&amp;#39;&lt;/span&gt;&amp;lt; input_file &amp;gt; output_file
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;automatic-variables-in-make-programming&#34;&gt;Automatic variables in Make (Programming)&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;$@: The target filename.&lt;/li&gt;
+&lt;li&gt;$*: The target filename without the file extension.&lt;/li&gt;
+&lt;li&gt;$&amp;lt;: The first prerequisite filename.&lt;/li&gt;
+&lt;li&gt;$^: The filenames of all the prerequisites, separated by spaces, discard duplicates.&lt;/li&gt;
+&lt;li&gt;$+: Similar to $^, but includes duplicates.&lt;/li&gt;
+&lt;li&gt;$?: The names of all prerequisites that are newer than the target, separated by spaces.&lt;/li&gt;
+&lt;/ul&gt;
 </content>
     </item>
     
