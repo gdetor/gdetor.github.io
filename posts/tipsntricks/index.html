@@ -189,7 +189,96 @@ Git, Python and many other stuff. All the material provided in this page are
 free and can be redistributed and/or modified. There is no any warranty that
 they work for you or are suitable to your need. The author of this page is
 not responsible for any damage this material may cause.</p>
-<h3 id="joining-dictinary-keys-and-values-to-a-list-in-python-programming">Joining dictinary keys and values to a list in Python (Programming)<a href="#joining-dictinary-keys-and-values-to-a-list-in-python-programming" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="remove-duplicates-from-pythons-list-python">Remove duplicates from Python&rsquo;s list (Python)<a href="#remove-duplicates-from-pythons-list-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>collection <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>collection <span style="color:#f92672">=</span> list(set(collection))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(collection)
+</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>]
+</span></span></code></pre></div><h3 id="merge-two-dictionaries-in-python-python">Merge two dictionaries in Python (Python)<a href="#merge-two-dictionaries-in-python-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>dict1 <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;a&#39;</span>: <span style="color:#ae81ff">1</span>}
+</span></span><span style="display:flex;"><span>dict2 <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;b&#39;</span>: <span style="color:#ae81ff">2</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dict <span style="color:#f92672">=</span> {<span style="color:#f92672">**</span>dict1, <span style="color:#f92672">**</span>dict2}
+</span></span></code></pre></div><h3 id="filter-a-list-in-python-python">Filter a list in Python (Python)<a href="#filter-a-list-in-python-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>mylist <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>filtered_list <span style="color:#f92672">=</span> list(filter(<span style="color:#66d9ef">lambda</span> x: x<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>, mylist))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(filtered_list)
+</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">7</span>]
+</span></span></code></pre></div><h3 id="sort-a-python-dictionary-by-values">Sort a Python dictionary by values<a href="#sort-a-python-dictionary-by-values" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>grades <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;Bob&#39;</span>:<span style="color:#ae81ff">3.5</span>, <span style="color:#e6db74">&#39;Alice&#39;</span>: <span style="color:#ae81ff">4.0</span>, <span style="color:#e6db74">&#39;Foo&#39;</span>: <span style="color:#ae81ff">2.2</span>}
+</span></span><span style="display:flex;"><span>sorted_grades <span style="color:#f92672">=</span> {k:v <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> sorted(grades<span style="color:#f92672">.</span>items(), key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x:x[<span style="color:#ae81ff">1</span>])}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(sorted_grades)
+</span></span><span style="display:flex;"><span>{<span style="color:#e6db74">&#39;Foo&#39;</span>: <span style="color:#ae81ff">2.2</span>, <span style="color:#e6db74">&#39;Bob&#39;</span>: <span style="color:#ae81ff">3.5</span>, <span style="color:#e6db74">&#39;Alice&#39;</span>: <span style="color:#ae81ff">4.0</span>}
+</span></span></code></pre></div><h3 id="sort-a-python-dictionary-by-keys">Sort a Python dictionary by keys<a href="#sort-a-python-dictionary-by-keys" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>grades <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;Bob&#39;</span>:<span style="color:#ae81ff">3.5</span>, <span style="color:#e6db74">&#39;Alice&#39;</span>: <span style="color:#ae81ff">4.0</span>, <span style="color:#e6db74">&#39;Foo&#39;</span>: <span style="color:#ae81ff">2.2</span>}
+</span></span><span style="display:flex;"><span>sorted_grades <span style="color:#f92672">=</span> {key:grades[key] <span style="color:#66d9ef">for</span> key <span style="color:#f92672">in</span> sorted(grades<span style="color:#f92672">.</span>keys())}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(sorted_grades)
+</span></span><span style="display:flex;"><span>{<span style="color:#e6db74">&#39;Alice&#39;</span>: <span style="color:#ae81ff">4.0</span><span style="color:#e6db74">&#39;, Bob&#39;</span>: <span style="color:#ae81ff">3.5</span>, <span style="color:#e6db74">&#39;Foo&#39;</span>: <span style="color:#ae81ff">2.2</span>}
+</span></span></code></pre></div><h3 id="map-filter-and-reduce-python">Map, Filter, and Reduce (Python)<a href="#map-filter-and-reduce-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># MAP</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">square</span>(x):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> x<span style="color:#f92672">*</span>x
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>]
+</span></span><span style="display:flex;"><span>res <span style="color:#f92672">=</span> map(square, x)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># res = map(lambda y:y*y, x)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(res)
+</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">25</span>, <span style="color:#ae81ff">36</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># FILTER</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">less_than_10</span>(x):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> x <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> x
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">14</span>]
+</span></span><span style="display:flex;"><span>res <span style="color:#f92672">=</span> list(filter(less_than_10, x))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(res)
+</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># REDUCE</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">addition</span>(x,y):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> x <span style="color:#f92672">+</span> y
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> reduce
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>res <span style="color:#f92672">=</span> reduce(addition, x))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(res)
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">15</span>
+</span></span></code></pre></div><h3 id="python-string-methods-python">Python string methods (Python)<a href="#python-string-methods-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>string <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello, World!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(string<span style="color:#f92672">.</span>isalpha())    <span style="color:#75715e"># check if all characters are letters</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(string<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;Hello&#34;</span>, <span style="color:#e6db74">&#34;Hi&#34;</span>))    <span style="color:#75715e"># replace Hello with Hi</span>
+</span></span><span style="display:flex;"><span>Hi, World<span style="color:#960050;background-color:#1e0010">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(string<span style="color:#f92672">.</span>count(<span style="color:#e6db74">&#34;World&#34;</span>))    <span style="color:#75715e"># count the occurrences of word World</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(string<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;!&#34;</span>))     <span style="color:#75715e"># return the position of character &#39;!&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(string<span style="color:#f92672">.</span>upper())       <span style="color:#75715e"># capitalize all characters</span>
+</span></span><span style="display:flex;"><span>HELLO, WORLD<span style="color:#960050;background-color:#1e0010">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(string<span style="color:#f92672">.</span>lower())       <span style="color:#75715e"># convert all characters to lower-case</span>
+</span></span><span style="display:flex;"><span>hello, world<span style="color:#960050;background-color:#1e0010">!</span>
+</span></span></code></pre></div><h3 id="reboot-a-linux-system-directly-to-the-firmware-setup-menu-linux">Reboot a Linux system directly to the firmware setup menu (Linux)<a href="#reboot-a-linux-system-directly-to-the-firmware-setup-menu-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ systemctl reboot --firmware-setup
+</span></span></code></pre></div><h3 id="joining-dictinary-keys-and-values-to-a-list-in-python-programming">Joining dictinary keys and values to a list in Python (Programming)<a href="#joining-dictinary-keys-and-values-to-a-list-in-python-programming" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#39;_&#39;</span><span style="color:#f92672">.</span>join(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{!s}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">{!r}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(key, val) <span style="color:#66d9ef">for</span> (key, val) <span style="color:#f92672">in</span> d<span style="color:#f92672">.</span>items())
 </span></span></code></pre></div><h3 id="check-the-health-status-of-your-hard-drive-linux">Check the health status of your hard drive (Linux)<a href="#check-the-health-status-of-your-hard-drive-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ badblocks -w -s -o error.log /dev/sdX     <span style="color:#75715e"># get X using lsblk</span>
@@ -223,6 +312,10 @@ not responsible for any damage this material may cause.</p>
 </span></span></code></pre></div><h3 id="read-gz-files-without-extracting-them-linux">Read .gz files without extracting them (Linux)<a href="#read-gz-files-without-extracting-them-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ zmore file.gz
 </span></span><span style="display:flex;"><span>$ zless file.gz
+</span></span></code></pre></div><h3 id="get-memory-information-linux">Get memory information (Linux)<a href="#get-memory-information-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo lshw -C memory -short
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ sudo dmidecode -t memory
 </span></span></code></pre></div><h3 id="how-to-load-huge-files-in-python-programming">How to load huge files in Python (Programming)<a href="#how-to-load-huge-files-in-python-programming" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> mmap
 </span></span><span style="display:flex;"><span>f <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;HUGE.txt&#34;</span>)

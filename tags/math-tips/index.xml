@@ -16,7 +16,7 @@
       <guid>https://gdetor.github.io/posts/math_tips/</guid>
       <description>In this post, you can find some helpful mathematical tips and tricks in Python programming language.
 Positive definite matrix Check if a given matrix $ \bf{A} $ is positive definite. If all the eigenvalues of matrix $ \bf{A} $ are positive then the matrix is positive definite.
-$ A = np.array([[1, 2], [2, 1]]) $ print(A) [[1 2]  [2 1]]  $ np.all(np.linalg.eigvals(A) &amp;gt; 0) False # A is not a positive definite matrix  $ A = np.</description>
+$ A = np.array([[1, 2], [2, 1]]) $ print(A) [[1 2] [2 1]] $ np.all(np.linalg.eigvals(A) &amp;gt; 0) False # A is not a positive definite matrix $ A = np.</description>
       <content>&lt;p&gt;In this post, you can find some helpful mathematical tips and tricks
 in Python programming language.&lt;/p&gt;
 &lt;h3 id=&#34;positive-definite-matrix&#34;&gt;Positive definite matrix&lt;/h3&gt;
