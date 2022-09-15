@@ -189,7 +189,9 @@ Git, Python and many other stuff. All the material provided in this page are
 free and can be redistributed and/or modified. There is no any warranty that
 they work for you or are suitable to your need. The author of this page is
 not responsible for any damage this material may cause.</p>
-<h3 id="remove-duplicates-from-pythons-list-python">Remove duplicates from Python&rsquo;s list (Python)<a href="#remove-duplicates-from-pythons-list-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="detect-any-vulnerabilities-on-your-system-linux">Detect any vulnerabilities on your system (Linux)<a href="#detect-any-vulnerabilities-on-your-system-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ grep -r . /sys/devices/system/cpu/vulnerabilities/
+</span></span></code></pre></div><h3 id="remove-duplicates-from-pythons-list-python">Remove duplicates from Python&rsquo;s list (Python)<a href="#remove-duplicates-from-pythons-list-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>collection <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>]
 </span></span><span style="display:flex;"><span>collection <span style="color:#f92672">=</span> list(set(collection))
 </span></span><span style="display:flex;"><span>

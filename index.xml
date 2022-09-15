@@ -876,13 +876,15 @@ topologies&lt;/em&gt;, Proceedings of the 2002 Congress on Evolutionary Computat
       
       <guid>https://gdetor.github.io/posts/tipsntricks/</guid>
       <description>In this post you can find various simple tricks and tips for Linux, Vim, Git, Python and many other stuff. All the material provided in this page are free and can be redistributed and/or modified. There is no any warranty that they work for you or are suitable to your need. The author of this page is not responsible for any damage this material may cause.
-Remove duplicates from Python&amp;rsquo;s list (Python) collection = [1, 1, 1, 2, 3, 4, 4, 4, 4, 4, 7, 8] collection = list(set(collection)) print(collection) [1, 2, 3, 4, 7, 8] Merge two dictionaries in Python (Python) dict1 = {&amp;#39;a&amp;#39;: 1} dict2 = {&amp;#39;b&amp;#39;: 2} dict = {**dict1, **dict2} Filter a list in Python (Python) mylist = [1, 2, 3, 4, 5, 6, 7, 8] filtered_list = list(filter(lambda x: x%2==0, mylist)) print(filtered_list) [1, 3, 5, 7] Sort a Python dictionary by values grades = {&amp;#39;Bob&amp;#39;:3.</description>
+Detect any vulnerabilities on your system (Linux) $ grep -r .</description>
       <content>&lt;p&gt;In this post you can find various simple tricks and tips for Linux, Vim,
 Git, Python and many other stuff. All the material provided in this page are
 free and can be redistributed and/or modified. There is no any warranty that
 they work for you or are suitable to your need. The author of this page is
 not responsible for any damage this material may cause.&lt;/p&gt;
-&lt;h3 id=&#34;remove-duplicates-from-pythons-list-python&#34;&gt;Remove duplicates from Python&amp;rsquo;s list (Python)&lt;/h3&gt;
+&lt;h3 id=&#34;detect-any-vulnerabilities-on-your-system-linux&#34;&gt;Detect any vulnerabilities on your system (Linux)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ grep -r . /sys/devices/system/cpu/vulnerabilities/
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;remove-duplicates-from-pythons-list-python&#34;&gt;Remove duplicates from Python&amp;rsquo;s list (Python)&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;collection &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;]
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;collection &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; list(set(collection))
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
@@ -1684,7 +1686,7 @@ with applications on Recommendation Systems and Content Analysis.&lt;/p&gt;
       <guid>https://gdetor.github.io/software/</guid>
       <description>Miscellaneous omnipyseed Omnipyseed is a tiny and simple Python package that can be used to seed random number generators (RNGs) of Python, Numpy, and Pytorch.
 Programming Language: Python Source Code: PyPi Machine/Deep Learning Pytorch TimeseriesLoader A Pytorch Dataset class for time series data sets. The class provides several methods for preprocessing raw time series data (Box-Cox transform, normalization, standardization, mu-law).
-Programming Language: Python Source Code: Time series collection There are many ways to perform time series forecasting.</description>
+Programming Language: Python (Pytorch, Numpy, Sklearn) Source Code: Time series collection There are many ways to perform time series forecasting.</description>
       <content>&lt;h2 id=&#34;miscellaneous&#34;&gt;Miscellaneous&lt;/h2&gt;
 &lt;h3 id=&#34;omnipyseed&#34;&gt;omnipyseed&lt;/h3&gt;
 &lt;p&gt;Omnipyseed is a tiny and simple Python package that can be used to seed random
@@ -1714,7 +1716,7 @@ number generators (RNGs) of Python, Numpy, and Pytorch.&lt;/p&gt;
 methods for preprocessing raw time series data (Box-Cox transform,
 normalization, standardization, mu-law).&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Programming Language: Python&lt;/li&gt;
+&lt;li&gt;Programming Language: Python (Pytorch, Numpy, Sklearn)&lt;/li&gt;
 &lt;li&gt;Source Code: &lt;a href=&#34;https://github.com/gdetor/pytorch_timeseries_loader&#34;&gt;&lt;style&gt;
     .inline-svg {
       display: inline-block;
@@ -1915,7 +1917,21 @@ is well-organized.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Original Paper: &amp;ldquo;Organization measures and representations of the Kohonen maps&amp;rdquo;, P. Demartines, 1992&lt;/li&gt;
 &lt;li&gt;Programming Language: Python (Numpy)&lt;/li&gt;
-&lt;li&gt;Source Code:&lt;/li&gt;
+&lt;li&gt;Source Code: &lt;a href=&#34;https://github.com/gdetor/som_quality_measures&#34;&gt;&lt;style&gt;
+    .inline-svg {
+      display: inline-block;
+      height: 1.0rem;
+      width: 1.0rem;
+      top: 0.1rem;
+      position: relative;
+    }
+&lt;/style&gt;
+
+&lt;span class=&#34;inline-svg&#34; &gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 448 512&#34;&gt;&lt;!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+
+
+&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;neuromorphic-computing&#34;&gt;Neuromorphic Computing&lt;/h2&gt;
@@ -1997,6 +2013,32 @@ Island Models, G. Is. Detorakis and A. Burton, JOSS, 2019&amp;rdquo;&lt;/a&gt;&l
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;dynamical-systems&#34;&gt;Dynamical Systems&lt;/h2&gt;
+&lt;h3 id=&#34;neural-field-self-organizing-map-stability-analysis&#34;&gt;Neural Field Self-organizing Map Stability Analysis&lt;/h3&gt;
+&lt;p&gt;This project is about establishing a stability condition for a class of
+neural fields. The main idea is to provide a stability condition for a
+self-organizing map based on neural fields, which allows us to know
+&lt;em&gt;a priori&lt;/em&gt; if the learning will converge to a stable map.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Original Paper: &lt;a href=&#34;https://mathematical-neuroscience.springeropen.com/articles/10.1186/s13408-020-00097-6&#34;&gt;&amp;ldquo;Stability analysis of a neural field self-organizing map&amp;rdquo;,
+G. Detorakis, A. Chaillet, and N.P. Rougier,
+The Journal of Mathematical Neuroscience, 10(1):1-20, 2020&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Programming Language: Python (Numpy, Numba, Matplotlib, Sklearn)&lt;/li&gt;
+&lt;li&gt;Source Code: &lt;a href=&#34;https://github.com/gdetor/som_stability&#34;&gt;&lt;style&gt;
+    .inline-svg {
+      display: inline-block;
+      height: 1.0rem;
+      width: 1.0rem;
+      top: 0.1rem;
+      position: relative;
+    }
+&lt;/style&gt;
+
+&lt;span class=&#34;inline-svg&#34; &gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 448 512&#34;&gt;&lt;!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z&#34;/&gt;&lt;/svg&gt;
+&lt;/span&gt;
+
+
+&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;empirical-dynamic-modeling-empyred&#34;&gt;Empirical Dynamic Modeling (empyred)&lt;/h3&gt;
 &lt;p&gt;Empirical Dynamic Modeling (EDM) is an equation-free framework for modeling
 non-linear dynamic systems. EDM relies on Takens&amp;rsquo; (1981) theorem of temporal
