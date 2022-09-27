@@ -14,14 +14,21 @@
       <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://gdetor.github.io/posts/tipsntricks/</guid>
-      <description>In this post you can find various simple tricks and tips for Linux, Vim, Git, Python and many other stuff. All the material provided in this page are free and can be redistributed and/or modified. There is no any warranty that they work for you or are suitable to your need. The author of this page is not responsible for any damage this material may cause.
-Detect any vulnerabilities on your system (Linux) $ grep -r .</description>
+      <description>In this post you can find various simple tricks and tips for Linux, Vim, Git, Python and many other stuff. All the material provided in this page has been suggested by many different sources such as Command Line Magic, Mastering Vim, kernel_perspective, nixCraft, and Linux Today. The material is free and can be redistributed and/or modified. There is no any warranty that they work for you or are suitable to your need.</description>
       <content>&lt;p&gt;In this post you can find various simple tricks and tips for Linux, Vim,
-Git, Python and many other stuff. All the material provided in this page are
-free and can be redistributed and/or modified. There is no any warranty that
+Git, Python and many other stuff. All the material provided in this page has
+been suggested by many different sources such as
+&lt;a href=&#34;https://twitter.com/climagic&#34;&gt;Command Line Magic&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/MasteringVim&#34;&gt;Mastering Vim&lt;/a&gt;,
+&lt;a href=&#34;https://twitter.com/unix_byte&#34;&gt;kernel_perspective&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/nixcraft&#34;&gt;nixCraft&lt;/a&gt;,
+and &lt;a href=&#34;https://twitter.com/linuxtoday&#34;&gt;Linux Today&lt;/a&gt;. The material is free and can
+be redistributed and/or modified. There is no any warranty that
 they work for you or are suitable to your need. The author of this page is
 not responsible for any damage this material may cause.&lt;/p&gt;
-&lt;h3 id=&#34;detect-any-vulnerabilities-on-your-system-linux&#34;&gt;Detect any vulnerabilities on your system (Linux)&lt;/h3&gt;
+&lt;h3 id=&#34;copymove-a-file-into-the-directory-you-were-just-in-linux&#34;&gt;Copy/move a file into the directory you were just in (Linux)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ cp &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;or mv&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; FILENAME &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$OLDPWD&lt;span style=&#34;color:#e6db74&#34;&gt;/&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;find-big-files-linux&#34;&gt;Find big files (Linux)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ find / -type f -size +XXXM    &lt;span style=&#34;color:#75715e&#34;&gt;# where XXX is the desired size in MB&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;detect-any-vulnerabilities-on-your-system-linux&#34;&gt;Detect any vulnerabilities on your system (Linux)&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ grep -r . /sys/devices/system/cpu/vulnerabilities/
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;remove-duplicates-from-pythons-list-python&#34;&gt;Remove duplicates from Python&amp;rsquo;s list (Python)&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;collection &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;]
