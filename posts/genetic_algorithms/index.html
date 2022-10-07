@@ -316,11 +316,10 @@ are zeros or ones, then $ X \oplus Y = 0 $.</p>
 
 
 <p>Our neural network will consist of two input units (since the XOR operator is a
-binary one), two hidden units, and one output unit. Please see [CITE HERE] for
-more details on why we choose such an architecture. Figure 2 shows the neural
-network we are about to use.  Let&rsquo;s optimize this neural network that will
-serve as an XOR operator. To facilitate the demonstration, let&rsquo;s split the
-process into four steps:</p>
+binary one), two hidden units, and one output unit. Please see <a href="https://dev.to/jbahire/demystifying-the-xor-problem-1blk">here</a> for more details on why we choose such an architecture.
+Figure 2 shows the neural network we are about to use.  Let&rsquo;s optimize this
+neural network that will serve as an XOR operator. To facilitate the demonstration,
+let&rsquo;s split the process into four steps:</p>
 <ol>
 <li>
 <p>Define the cost function and the size of our genome.
@@ -328,8 +327,8 @@ Since the input to the XOR function is two-dimensional, we have a
 genome of size two. Regarding the cost function, we first define an
 error term as
 $$ \epsilon = | y_{\text{target} - y_{\text{pred}}} | $$
-where $ y_{\text{target} $ is the true value that the XOR function returns
-and $x_{\text{pred}$ is the value of our network&rsquo;s output. Since we have four
+where $ y_{\text{target}} $ is the true value that the XOR function returns
+and $x_{\text{pred}}$ is the value of our network&rsquo;s output. Since we have four
 pairs of inputs $ (0, 1), (1, 0), (1, 1), (0, 0) $, and four real outputs
 $1, 1, 0, 0$, respectively, we define the cost function as:
 $$ f({\bf x}) = \sum_{i=1}^{4} \epsilon_i $$
