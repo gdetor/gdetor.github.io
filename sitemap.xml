@@ -3,12 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://gdetor.github.io/posts/welcome/</loc>
-    <lastmod>2022-05-05T00:00:00+00:00</lastmod>
+    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://gdetor.github.io/tags/coefficient-of-determination/</loc>
-    <lastmod>2022-05-05T00:00:00+00:00</lastmod>
+    <loc>https://gdetor.github.io/tags/acf/</loc>
+    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/tags/autocorrelation/</loc>
+    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/posts/acf_pacf/</loc>
+    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://gdetor.github.io/</loc>
+    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/tags/pacf/</loc>
+    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/tags/partial-autocorrelation/</loc>
+    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/posts/</loc>
+    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/tags/</loc>
+    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/tags/time-series/</loc>
+    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/tags/coefficient-of-determination/</loc>
     <lastmod>2022-05-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://gdetor.github.io/tags/mae/</loc>
@@ -23,16 +47,7 @@
     <loc>https://gdetor.github.io/tags/mse/</loc>
     <lastmod>2022-05-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://gdetor.github.io/posts/</loc>
-    <lastmod>2022-05-05T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://gdetor.github.io/tags/r2/</loc>
-    <lastmod>2022-05-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://gdetor.github.io/tags/</loc>
-    <lastmod>2022-05-05T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://gdetor.github.io/tags/time-series/</loc>
     <lastmod>2022-05-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://gdetor.github.io/posts/errors/</loc>

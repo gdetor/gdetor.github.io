@@ -7,15 +7,516 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>ⓒ  GID, 2021-2022</copyright>
-    <lastBuildDate>Thu, 05 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 13 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title></title>
       <link>https://gdetor.github.io/posts/welcome/</link>
-      <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
+      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://gdetor.github.io/posts/welcome/</guid>
       <description></description>
       <content></content>
+    </item>
+    
+    <item>
+      <title>Autocorrelation Functions for Time Series</title>
+      <link>https://gdetor.github.io/posts/acf_pacf/</link>
+      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/posts/acf_pacf/</guid>
+      <description>This post aims to provide some theoretical background on autocorrelation functions and how we can use it to analyse time series. Furthremore, we show how to use the autocorrelation (ACF) function and the Partial Autocorrelation (PACF) functions to determine the parameters for an ARMA model.
+Brief introduction to time series In a previous post (see here) we introduced some basic definitions and terminology about time series. To avoid forcing the reader to move back and forth we repeat those very same definitions here.</description>
+      <content>&lt;p&gt;This post aims to provide some theoretical background on autocorrelation functions
+and how we can use it to analyse time series. Furthremore, we show how to use
+the autocorrelation (ACF) function and the Partial Autocorrelation (PACF) functions
+to determine the parameters for an ARMA model.&lt;/p&gt;
+&lt;h2 id=&#34;brief-introduction-to-time-series&#34;&gt;Brief introduction to time series&lt;/h2&gt;
+&lt;p&gt;In a previous post (see &lt;a href=&#34;https://gdetor.github.io/posts/errors&#34;&gt;here&lt;/a&gt;) we
+introduced some basic definitions and terminology about time series. To avoid
+forcing the reader to move back and forth we repeat those very same definitions
+here.&lt;/p&gt;
+&lt;p&gt;A time series is a series of data points indexed in time order in
+layman&amp;rsquo;s terms [1, 2].
+A few examples of time series are&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The daily closing price of a stock in the stock market&lt;/li&gt;
+&lt;li&gt;The number of air passengers per month&lt;/li&gt;
+&lt;li&gt;The biosignals recorded from electroencephalogram or electrocardiogram&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Figure 1 shows the number of air passengers per month from January 1949
+to September 1960.  In all the examples in this post, we are going to
+use this dataset, so if you would like to try the examples by yourself;
+you can download the data from Kaggle
+&lt;a href=&#34;https://www.kaggle.com/datasets/rakannimer/air-passengers&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;img src=&#34;https://gdetor.github.io/images/passengers.png&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Figure 1. An example of a time series showing the number of air passengers per month.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+&lt;p&gt;A more rigorous definition of a time series found in [1] (Chapter 1, pg 1)
+is given below:&lt;/p&gt;
+&lt;p&gt;Let $ k \in \mathbf{N}, T \subseteq \mathbf{R} $. A function
+$$ x: T \rightarrow \mathbf{R}^k, \hspace{2mm} t \rightarrow x_t $$
+or equivalently, a set of indexed elements of $ \mathbf{R}^k $,
+$$  { x_t | x_t \in \mathbf{R}^k, \hspace{2mm} t \in T }  $$
+is called an observed time series (or time series).
+Sometimes, we write $ x_t(t \in T) $ or $ (x_t)_{t\in T} $.&lt;/p&gt;
+&lt;p&gt;When $ k = 1 $ the time series is called &lt;em&gt;univariate&lt;/em&gt;, otherwise is
+called &lt;em&gt;multivariate&lt;/em&gt;.
+$ T $ determines if the time series is [1]:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;discrete&lt;/strong&gt; $ T $ is countable, and $ \forall a &amp;lt; b \in \mathbb{R}: T \cap[a, b] $
+is finite,&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;continuous&lt;/strong&gt; $ T = [a, b], a &amp;lt; b \in \mathbb{R}, T = \mathbb{R}_{+}
+\hspace{2mm} \text{or} \hspace{2mm} T = \mathbb{R} $,&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;equidistant&lt;/strong&gt; $ T $ is discrete, and $ \exists u \hspace{2mm} s.t. \hspace{2mm} t_{j+1} - t_j = u $.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;From now on and for simplicity&amp;rsquo;s sake we will use the following notation for
+a time series: $ y[1], y[2], \ldots , y[N] $, where
+$ N \in \mathbb{N} $ or $ y[t] $, where $t=1, \ldots , N $.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;what-is-autocorrelation-acf&#34;&gt;What is autocorrelation (ACF)&lt;/h2&gt;
+&lt;p&gt;The Autocorrelation function (from now on, we will refer to the autocorrelation
+function as ACF) for a given time series $ x[t] $ at times $ t_1, t_2, \ldots, t_N $
+with mean $ \mu_t $ and the time series $ x[s] $ at time $ s_1, s_2, \ldots, s_N $
+with mean $ \mu_s $ is givenb by following formula:&lt;/p&gt;
+&lt;p&gt;$$ \rho(s, t) = \frac{\mathbb{E}[(x[s]-\mu_s)(x[t]-\mu_t)]}{\mathbb{E}[(x[s]-\mu_s)^2] \mathbb{E}[(x[t]-\mu_t)^2]}.  \qquad (1)  $$&lt;/p&gt;
+&lt;p&gt;Another way to express the ACF is through the autocovariance function.
+By plugging the equation of correlation&lt;/p&gt;
+&lt;p&gt;$$ \gamma(s, t) = \text{cov}(x[s], x[t]) = \mathbb{E}[(x[s]-\mu_s)(x[t]-\mu_t)], $$
+into equation (1) we obtain
+$$ \rho(s, t) = \frac{\gamma(s, t)}{\sqrt{\gamma(s, s) \gamma(t, t)}}.  $$&lt;/p&gt;
+&lt;p&gt;The above definitions are valid for time series of real numbers. If the time
+series are complex then we have to replace the term $ \mathbb{E} {(x[s]-\mu_s)(x[t]-\mu_t)} $
+with the complex conjugate $\mathbb{E} {(x[s]-\mu_s)\bar{(x[t]-\mu_t)}} $.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;From the definitions above one can conclude, first, the autocovariance of
+a time series with itself is the variance of the signal (&lt;em&gt;i.e.&lt;/em&gt;, $ \gamma(t, t) = \text{Var}[x[t]] $)
+and second, the autocorrelation of a time series x[t] with itself is one (&lt;em&gt;i.e.&lt;/em&gt;, $ \rho(t, t) = 1 $).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Let&amp;rsquo;s now explain the autocorrelation in layperson&amp;rsquo;s terms and give some
+intuition on the information we obtain by using it. Let&amp;rsquo;s start with the
+very notion of a time series. In a time series, the data points are ordered
+temporally. Thus, extra information is stored in a time series, meaning we
+can determine how past data (historical data) can affect present or future
+values or the correlation between those points. Therefore, autocorrelation
+or serial correlation is nothing more than the correlation of a data point
+with its past values (previous times).&lt;/p&gt;
+&lt;h3 id=&#34;how-to-compute-acf&#34;&gt;How to compute ACF&lt;/h3&gt;
+&lt;p&gt;Therefore, to estimate the ACF, we start by evaluating the correlation
+of the original time series with itself (zero lag). Then we introduce a
+lag into our original time series and estimate the correlation between
+the original time series and its lagged version. We repeat those steps until
+we exhaust the predetermined number of lags. The table below shows an example
+of a time series and its first three lagged signals. From now on, we will
+use the letter $ k $ to indicate any lag.&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;($ k = 0 $)&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;$ k = 1 $&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;$ k = 2 $&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;$ k = 3&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;NaN&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;NaN&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;NaN&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;NaN&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;NaN&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;NaN&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;1&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;6&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;7&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;6&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;5&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Let&amp;rsquo;s now estimate the ACF for the data given in the table above.
+First, we will write our custom ACF function in the Python programming
+language, and then we will introduce the ACF function of the &lt;em&gt;statsmodels&lt;/em&gt;
+Python package.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; np
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;rho&lt;/span&gt;(x, nlags&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# Create a list with all the lagged versions of input signal x&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    x_lagged &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [x[:(len(x) &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; i)] &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(nlags)]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# Compute the mean of input x&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    x_bar &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;mean()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# Initialize a list that contains the correlations for each lag&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    acf &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; []
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#75715e&#34;&gt;# Loop over all lags and use equation (1)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; lag &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(nlags):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        nominator &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ((x[lag:] &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; x_bar) &lt;span style=&#34;color:#f92672&#34;&gt;*&lt;/span&gt; (x_lagged[lag] &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; x_bar))&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sum() 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        denominator &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ((x &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; x_bar)&lt;span style=&#34;color:#f92672&#34;&gt;**&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;sum()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        acf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(nominator &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; denominator)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; acf
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;array([&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; rho(x, nlags&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#ae81ff&#34;&gt;1.0&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0.5714285714285714&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0.17857142857142858&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0.14285714285714285&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The above code snippet shows how to implement a naive autocorrelation
+algorithm. Now, let&amp;rsquo;s compute the ACF but this time using the &lt;em&gt;statsmodels&lt;/em&gt;
+Python package (if you haven&amp;rsquo;t installed the statsmodels package, you will
+find all the installation information &lt;a href=&#34;https://www.statsmodels.org/dev/install.html&#34;&gt;here&lt;/a&gt;).
+The package &lt;em&gt;statsmodels&lt;/em&gt; provides tools for the estimation of different
+statistical models, as well as for conducting statistical tests and statistical
+data exploration. We will use the TSA submodule, which contains time series
+analysis and prediction tools.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; statsmodels.tsa.stattools &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; acf       &lt;span style=&#34;color:#75715e&#34;&gt;# import ACF&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;array([&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; acf(x, nlags&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, fft&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;) 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;array([ &lt;span style=&#34;color:#ae81ff&#34;&gt;1.&lt;/span&gt;        ,  &lt;span style=&#34;color:#ae81ff&#34;&gt;0.57142857&lt;/span&gt;,  &lt;span style=&#34;color:#ae81ff&#34;&gt;0.17857143&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0.14285714&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As we expected, the ACF of the statsmodels package returns the same
+results as our custom-made function does. The only difference is that
+we used four lags in our custom function, and that&amp;rsquo;s because we count
+the zero lag ($ k = 0 $) as well. For more information about the ACF
+function you can check the &lt;a href=&#34;https://www.statsmodels.org/dev/generated/statsmodels.tsa.stattools.acf.html&#34;&gt;docs&lt;/a&gt;
+of &lt;em&gt;statsmodels&lt;/em&gt; package.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The ACF is often used to identify non-randomness in a time series and to
+aid in determining the parameters of a mathematical model for that time series.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&#34;what-is-partial-autocorrelation-pacf&#34;&gt;What is partial autocorrelation (PACF)&lt;/h2&gt;
+&lt;p&gt;Partial autocorrelation, or PACF, is more challenging to understand than ACF.
+Let&amp;rsquo;s understand the intuition behind the PACF, and then we will see how to
+estimate the PACF for a time series. Remember that the ACF reveals how a
+measurement (or a data point) at a given time index $ t $ affects a data point
+at time $ t - k $ ($ k $ is the lag). In that case, the formula for estimating
+ACF considers all the intermediate data points $ t + 1, t + 2, \ldots, t + k - 1 $
+until it reaches the $ t + k $. Now, the PACF ignores the information in the
+intermediate data points; hence it is called partial.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s now give a more rigorous mathematical definition of PACF. Assume that we
+have a time series x[t], then the PACF is defined as&lt;/p&gt;
+&lt;p&gt;$$ \rho_{\text{partial}}(t, t) = \text{corr}(x[t+1], x[t]) \quad for k = 1, $$&lt;/p&gt;
+&lt;p&gt;$$ \rho_{\text{partial}}(t, k) = \text{corr}(x[t+k] - \hat{x}[t+k], x[t] - \hat{x}[t]), \quad for k \geq 2, $$&lt;/p&gt;
+&lt;p&gt;where $ \hat{x}[t+k] $ and $ \hat{x}[t] $ are linear combinations of all the
+intermediate data points (&lt;em&gt;i.e.&lt;/em&gt;, $ x[t+1], x[t+2], \ldots, x[t+k-1]$) that
+minimize the mean squared error (see &lt;a href=&#34;https://gdetor.github.io/posts/errors&#34;&gt;here&lt;/a&gt;)
+of $ x[t+k] $ and $ x[t] $, respectively.&lt;/p&gt;
+&lt;h3 id=&#34;how-to-compute-pacf&#34;&gt;How to compute PACF&lt;/h3&gt;
+&lt;p&gt;Estimation of the PACF can be done with several algorithms. The most known
+are (i) the Yule-Walker approach, (ii) the ordinary least squares (OLS),
+and the Levinson-Durbin recursion method. The package &lt;em&gt;statsmodels&lt;/em&gt; implements
+all those methods and a few more (see &lt;em&gt;statsmodels&lt;/em&gt; &lt;a href=&#34;https://www.statsmodels.org/dev/generated/statsmodels.tsa.stattools.pacf.html&#34;&gt;docs&lt;/a&gt;).&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s take the previous very simple example and estimate the PCAF for the
+time series $ x[t] = 1, 2, 3, 4, 5, 6, 7 $.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; statsmodels.tsa.stattools &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; acf       &lt;span style=&#34;color:#75715e&#34;&gt;# import ACF&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;array([&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; acf(x, nlags&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, method&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ols&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;array([ &lt;span style=&#34;color:#ae81ff&#34;&gt;1.00000000e+00&lt;/span&gt;,  &lt;span style=&#34;color:#ae81ff&#34;&gt;1.00000000e+00&lt;/span&gt;,  &lt;span style=&#34;color:#ae81ff&#34;&gt;1.55431223e-15&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;3.33333333e-01&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In the code snippet above, we specified the algorithm for estimating the PCAF
+to be the ordinary least squares. It is relatively simple to implement the OLS
+method from scratch. We will use the function &lt;code&gt;lagmat&lt;/code&gt; of statsmodels which
+creates a $ 2d $ array of lags, and we will separate the zero lag signal,
+which is the original data. Finally, we will use the &lt;em&gt;Numpy&lt;/em&gt; function &lt;code&gt;lstsq&lt;/code&gt;
+to estimate the parameters of the least squares and thus compute the PACF.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; np
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; numpy.linalg &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; lstsq
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; statsmodels.tsa.stattools &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; lagmat 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;array([&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;6&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Compute the lags (x_lagged) and keep the original time series in x0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; x_lagged, x0 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; lagmat(x, &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;, original&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;sep&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Prepend x_lagged with a column of ones (add constant)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; x_lagged &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; x_lagged &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ones((&lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)), x_lagged, axis&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# The first element of PACF is always 1.0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pacf &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;1.0&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Run the least squares over lags&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; lag &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, lags &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt;     params &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; lstsq(x_lagged[lag:, :(lag&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)], x0[lag:], rcond&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;None&lt;/span&gt;)[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt;     pacf&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;append(params[&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&amp;gt;&lt;/span&gt; print(pacf)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#ae81ff&#34;&gt;1.0&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1.000000000000001&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1.5543122344752192e-15&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;0.33333333333333415&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Keep in mind that here we used the method of least squares, and if one
+wants to use a different approach to estimate the PACF, the values will
+differ from the ones in the code snippet above. Moreover, the function
+&lt;code&gt;lstsq&lt;/code&gt; receives an argument named &lt;code&gt;rcond&lt;/code&gt; which is a cut-off ratio
+for small singular values of &lt;code&gt;x_lagged&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;visualization-of-acf-and-pacf&#34;&gt;Visualization of ACF and PACF&lt;/h2&gt;
+&lt;p&gt;Up to now, we have defined ACF and PACF and learned how to estimate them
+given a time series. Now we will explore the visualization of ACF and PACF
+and learn how to interpret their graphical representations. To better
+demonstrate the power of ACF and PACF visualization, we will apply those
+two methods to the airport passengers&amp;rsquo; data set (see Figure 1). To simplify
+things we will use the functions &lt;code&gt;plot_acf&lt;/code&gt; and &lt;code&gt;plot_pacf&lt;/code&gt; provided by the
+Python module &lt;em&gt;statsmodels&lt;/em&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; np
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; matplotlib.pylab &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; plt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Import the plot_acf, and plot_pacf functtions&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; statsmodels.graphics.tsaplots &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; plot_acf, plot_pacf
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Load the data&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;genfromtxt(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;PATH_TO_FILE/passengers.csv&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;fig &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; plt&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;figure(figsize&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ax1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; fig&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add_subplot(&lt;span style=&#34;color:#ae81ff&#34;&gt;211&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Call the function for estimating and plotting the ACF&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;plot_acf(x, ax1, fft&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ticks &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ax1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_xticks()&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;i&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ax1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_xticklabels(ticks, fontsize&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;14&lt;/span&gt;, weight&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bold&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ticks &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ax1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_yticks()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ax1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_yticklabels(ticks, fontsize&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;14&lt;/span&gt;, weight&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bold&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ax1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_title(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Autocorrelation (ACF)&amp;#34;&lt;/span&gt;, fontsize&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;16&lt;/span&gt;, weight&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bold&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ax2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; fig&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add_subplot(&lt;span style=&#34;color:#ae81ff&#34;&gt;212&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Call the function plot_pacf to estimate and visualize the PACF&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# We use the method &amp;#34;ols&amp;#34; as we did in a previous example&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;plot_pacf(x, ax2, method&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;ols&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ticks &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ax2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_xticks()&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;astype(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;i&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ax2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_xticklabels(ticks, fontsize&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;14&lt;/span&gt;, weight&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bold&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ticks &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ax2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get_yticks()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ax2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_yticklabels(ticks, fontsize&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;14&lt;/span&gt;, weight&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bold&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;ax2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_title(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Partial Autocorrelation (PACF)&amp;#34;&lt;/span&gt;, fontsize&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;16&lt;/span&gt;, weight&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;bold&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;plt&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;show()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After running the script above, we get the plots of ACF and PACF,
+as depicted in Figure 2. The left panel shows the ACF, and the right
+is the PACF. Blue-shaded areas indicate the confidence interval cone,
+and each point outside that cone is considered significant ($ 95 $%
+confidence). In simple words, whatever is within that cone is considered
+to be zero.&lt;/p&gt;
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;img src=&#34;https://gdetor.github.io/images/acf_pacf.png&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Figure 2. ACF and PACF on airport passengers data set. Left panel - ACF, right panel PACF.&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+&lt;p&gt;We observe that the first component in the ACF and PACF plots equals one,
+as we expected (and have already discussed). A second apparent observation
+is the reflection of the original&amp;rsquo;s data periodicity in the ACF plot. The
+most important part of those graphic representations is the number of
+statistically significant points (outside the cone). Data points in the ACF
+plot reflect the correlation between a data point in our time series and its
+past values. Therefore, the number of these points indicates how far in the
+past one should look to predict a future point using some mathematical/statistical
+model.&lt;/p&gt;
+&lt;p&gt;In the following sections, we will learn how to use the ACF and PACF
+plots to make assumptions about our models and determine their parameters.&lt;/p&gt;
+&lt;h2 id=&#34;what-is-an-arma-and-an-arima-model&#34;&gt;What is an ARMA and an ARIMA model?&lt;/h2&gt;
+&lt;p&gt;We will begin our discussion on ARMA and ARIMA models by introducing
+the autoregressive (AR) and the moving average (MA) models.&lt;/p&gt;
+&lt;h3 id=&#34;autoregressive-model---arp&#34;&gt;Autoregressive Model - AR(p)&lt;/h3&gt;
+&lt;p&gt;The AR(p) model is based on linear regression. It assumes that the
+current value $ x[t] $ is dependent on previous (past) values
+(observations). Due to this ``linear&amp;rsquo;&amp;rsquo; relationship to the past,
+AR(p) relies on linear regression. More precisely, it is described
+by the following equation:&lt;/p&gt;
+&lt;p&gt;$$ x[t] = \sum_{i=1}^{p} \phi [i] x[t-i] + \epsilon [t], \qquad (2)  $$&lt;/p&gt;
+&lt;p&gt;where $ \phi[1], \ldots, \phi[p] $ are the parameters of the model,
+and $ \epsilon[t] $ is white noise. We will refer to equation (2) as
+AR($ p $) or AR of order $p$. The order $ p $ controls how many terms
+in the right-hand side of equation (2) will contribute to the estimation
+of $ x[t] $.&lt;/p&gt;
+&lt;h3 id=&#34;moving-average-model---maq&#34;&gt;Moving Average Model - MA(q)&lt;/h3&gt;
+&lt;p&gt;On the other hand, the MA(q) model relies on past error terms to
+estimate the current value $ x[t] $, and it is given by&lt;/p&gt;
+&lt;p&gt;$$ x[t] = \mu + \sum_{i=1}^{q} \theta[i] \epsilon[t - i] + \epsilon[t], \qquad (3) $$&lt;/p&gt;
+&lt;p&gt;where $ \mu $ is the mean of the time series (all observations up to $ t - 1 $),
+$ \theta[1], \ldots, \theta[q] $ are the parameters of the model, and
+$ \epsilon[t], \epsilon[t-1], \ldots, \epsilon[t-q] $ are white noise error
+terms. Because the error terms are white noise, no linearity is involved in
+the MA(q) model as in the AR(p) model. The parameter $ q $ is the order of
+the MA(q) model and determines how many terms the value $ x[t] $ will depend
+on.&lt;/p&gt;
+&lt;h3 id=&#34;autoregressive-moving-average---armap-q&#34;&gt;Autoregressive-moving-average - ARMA(p, q)&lt;/h3&gt;
+&lt;p&gt;In the case where we combine an AR(p) model with a MA(q), we obtain an
+autoregressive-moving average model, ARMA(p, q). In the ARMA(p, q) model,
+$ p $ is the autoregressive order, and $ q $ is the order of the moving
+average. ARMA(p, q) model is described by:&lt;/p&gt;
+&lt;p&gt;$$ x[t] = \epsilon[t] + \sum_{i=1}^{p} \phi[i] x[t-i] + \sum_{i=1}^{q} \theta[i] \epsilon[t-i].  \qquad (4) $$&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Lag (L) and backshift (B) operators&lt;/strong&gt;. In a time series context, the
+backshift operator acts on a time series element and returns the previous
+element as its name reveals. For instance, if $ x[t] = {x[1], x[2], \ldots, } $
+is a time series then $ Bx[t] = x[t-1] $ for each $ t &amp;gt; 1 $. The lag
+operator $ L $ acts in the same way $ Lx[t] = x[t-1] $. Furthermore,
+both operators can be raised in integer powers, $ L^k x[t] = t[t-k] $.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Another way to write equation (4) is to use the lag operator, and thus
+$$ \Big(1 - \sum_{i=1}^{p} \phi[i] L^i \Big) x[t]  =\Big(1 + \sum_{i=1}^{q} \theta[i] L^i \Big) \epsilon[t]. $$&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;Stationarity&lt;/strong&gt; A wide-sense stationary time series has a constant
+mean and variance (autocovariance) over time. For instance, the passengers&#39;
+data in Figure 1 are non-stationary since an upward trend indicates that
+the mean increases over time. However, because the variance does not change,
+we will call that time series non-stationary in the sense of mean. You can
+You can find more details about stationarity &lt;a href=&#34;https://en.wikipedia.org/wiki/Stationary_process#Weak_or_wide-sense_stationarity&#34;&gt;here&lt;/a&gt;
+and in [1].&lt;br&gt;
+&lt;strong&gt;Differencing&lt;/strong&gt;
+The time series in Figure 1 are non-stationary in the sense of mean (see
+&lt;strong&gt;Stationarity&lt;/strong&gt;). One way to eliminate the non-stationarity is to
+apply a differencing transform, $ x&amp;rsquo;[t] = x[t] - x[t-1] $ (for instance,
+in Python, we could use the &lt;code&gt;diff()&lt;/code&gt; function to apply the differencing
+transform on the original time series.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&#34;autoregressive-integrated-moving-average---arimap-d-q&#34;&gt;Autoregressive Integrated Moving Average - ARIMA(p, d, q)&lt;/h3&gt;
+&lt;p&gt;ARIMA(p, q, d) is a generalzation of ARMA(p, q) model. ARIMA can be seen as
+an improvement of ARMA for time series that show non-stationarity in the sense
+of mean. The integrated part of the ARIMA model corresponds to the differencing
+of the time series observations. Differencing non-stationary time series can
+cancel the non-stationarity (in many time series applications, one has to apply
+a differencing transformation on the data to remove the non-stationarity [CITE]).&lt;/p&gt;
+&lt;p&gt;$$ x[t] - \alpha[1] x[t-1] - \cdots - \alpha[p] x[t-p] = \epsilon[t] + \theta[1]\epsilon[t-1] + \cdots + \theta[q] \epsilon[t-q], \qquad (5) $$&lt;/p&gt;
+&lt;p&gt;and using the lag operator we rewrite equation (5)&lt;/p&gt;
+&lt;p&gt;$$ \Big(1 - \sum_{i=1}^{p} \alpha[i] L^i \Big) x[t] = \Big( 1 + \sum_{i=1}^{q} \theta[i] L^i \Big) \epsilon[t]. $$&lt;/p&gt;
+&lt;p&gt;The parameters of the autoregressive part are $ \alpha[i] $ and of the moving
+average are $ \theta[i] $. $ \epsilon[t] $ are error &lt;em&gt;i.i.d&lt;/em&gt; variables (sampled
+from a normal distribution with zero mean).&lt;/p&gt;
+&lt;h4 id=&#34;examples&#34;&gt;Examples&lt;/h4&gt;
+&lt;p&gt;Two basic examples of ARIMA models are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The random walk $ x[t] = x[t-1] + \epsilon[t] $ is an ARIMA(0, 1, 0),&lt;/li&gt;
+&lt;li&gt;and white noise $ x[t] = \epsilon[t] $ can be described as an ARIMA(0, 0, 0).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;how-to-use-acf-and-pacf-in-time-series-analysis&#34;&gt;How to use ACF and PACF in time series analysis&lt;/h2&gt;
+&lt;p&gt;In this section, we present several applications of the ACF and PACF. The most
+practical applications are the determination of the order of AR(p), MA(q), ARMA(p, q),
+and ARIMA(p, d, q) models.&lt;/p&gt;
+&lt;p&gt;Let&amp;rsquo;s begin by examining some basic examples of AR, MA, ARMA, and ARIMA models
+and see what conclusions we can draw. For simplicity&amp;rsquo;s sake, we first consider
+a signal generated from a normal distribution with zero mean, white noise,
+Figure 3A. When we estimate its ACF and PACF (Figure 3B and 3C), we notice that
+both are zero (remember that the first component always equals one and can be
+ignored). The absence of strong correlations (non-zero elements) indicates that
+our data come from a random process.&lt;/p&gt;
+&lt;p&gt;The second example demonstrates what information we can obtain from the ACF and
+PACF applied to an AR(1) model. Remember that an AR(1) model is an autoregressive
+model with order $ p = 1 $, meaning that the data shown in Figure 3D have been
+generated by $ x[t] = 0.6 * x[t-1] + \epsilon[t] $, where $ \epsilon[t] $ is
+white noise. First, let&amp;rsquo;s take a look at the ACF plot in Figure 3E. We notice
+four lags with strong correlations besides the zero lag component, meaning there
+is a structure in the data, and they are not completely random. Moreover, we see
+that the non-significant components (lags $ k &amp;gt; 1 $) follow a geometric decay.
+The PACF plot in panel 3F of Figure 3 has only one strong correlation at lag $ k = 1 $,
+verifying that the data come from an AR(1) model.&lt;/p&gt;
+
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;img src=&#34;https://gdetor.github.io/images/acf_examples.png&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Figure 3. Estimation of ACF and PACF for three models. Each row shows a white noise, an AR(1), and a MA(1) raw data, the ACF, and the PACF. The blue-shaded area indicates the confidence interval cone ($ 95 $% confidence).&lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+&lt;p&gt;Let&amp;rsquo;s look now into a moving average model of order $ p = 1 $. In this case,
+the data shown in Figure 3G are described by the equation
+$ x[t] = 10 + 0.7 \epsilon[t-1] + \epsilon[t] $, which is MA(1) model. By
+examining the ACF plot in Figure 3H, we see strong correlations besides lag
+$ k = 0 $, which means that the data come from a process that is not completely
+random. In the PACF plot in Figure 3I, several lag components have strong
+correlations, and the PACF decays geometrically.&lt;/p&gt;
+&lt;p&gt;AThe final example regards a periodic time series with period $ T $. Figure 3J
+shows a sinusoidal signal $ g(t) = \sin(2 \pi t \frac{1}{T}) + \epsilon $ with
+additive white noise, $ \epsilon $, and $ T = \frac{1}{10} $. Because
+there are several components with strong correlations in the ACF and PACF plots,
+we know there is some structure in the data. The ACF plot in Figure 3K reflects
+the periodicity of the time series. We can infer that the signal&amp;rsquo;s frequency is
+$ f = 10 $ (where an entire cycle has been completed). Moreover, the lag component
+on the frequency ($ k = 10 $) is the strongest in the graph. Therefore, if we
+needed to know the frequency of the raw data without knowing the model, we could
+infer the period by looking into the ACF plot.&lt;/p&gt;
+&lt;h3 id=&#34;a-few-remarks-on-acf-and-pacf-plots&#34;&gt;A few remarks on ACF and PACF plots&lt;/h3&gt;
+&lt;p&gt;Let&amp;rsquo;s now draw some conclusions and give some remarks regarding the ACF and
+PACF and how to use them to identify an underlying model in raw data.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;When a time series (or a signal) contains a moving average term (MA),
+we can determine the exact order of the MA by counting the components
+with strong correlations in an ACF plot. That&amp;rsquo;s true even when the
+underlying model is a high-order MA.&lt;/li&gt;
+&lt;li&gt;There is an autoregressive term (AR) in the raw data when the PACF plot
+has strong correlations up to some lag $ k &amp;gt; 0 $. The number of those
+elements determines the order $ p $ of the AR($ p $) model.&lt;/li&gt;
+&lt;li&gt;When a strong positive correlation exists and the PACF oscillates to zero,
+then there is a moving average, MA, term. The same holds when the zero lag
+is negative, and the PACF decays geometrically to zero.&lt;/li&gt;
+&lt;li&gt;Another case is when the PACF has strong correlations up to a lag $ k $,
+then decays geometrically to zero. The data can be modeled in that case by
+an ARMA(p, q) model.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;In this post, we defined the autocorrelation and the partial autocorrelation
+functions, ACF and PACF. We introduced the AR(p), MA(q), ARMA(p, q), and ARIMA(p, d, q)
+models, and we showed how one could use the ACF and PACF to determine the
+parameters p, q, and d. Moreover, we provided a few examples and Python code
+snippets on how to use the &lt;em&gt;statsmodels&lt;/em&gt; &lt;code&gt;acf&lt;/code&gt; and &lt;code&gt;pacf&lt;/code&gt; functions.&lt;/p&gt;
+&lt;h3 id=&#34;cited-as&#34;&gt;Cited as&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;@article{detorakis2022acfpacf,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  title   = &amp;#34;Autocorrelation functions for time series&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  author  = &amp;#34;Georgios Is. Detorakis&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  journal = &amp;#34;gdetor.github.io&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  year    = &amp;#34;2022&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  url     = &amp;#34;https://gdetor.github.io/posts/acf_pacf&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;J. Beran, &lt;em&gt;Mathematical Foundations of Time Series Analysis A Concise
+Introduction&lt;/em&gt;, Springer, 2017.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Time_series&#34;&gt;&amp;ldquo;Time series&amp;rdquo;&lt;/a&gt;, Wikipedia,
+Wikimedia Foundation, May 2 2022.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Autocorrelation&#34;&gt;&amp;ldquo;Autocorrelation&amp;rdquo;&lt;/a&gt;, Wikipedia,
+Wikimedia Foundation, May 2 2022.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Partial_autocorrelation_function&#34;&gt;&amp;ldquo;Partial autocorrelation function&amp;rdquo;&lt;/a&gt;, Wikipedia,
+Wikimedia Foundation, May 2 2022.&lt;/li&gt;
+&lt;li&gt;S. Wang, C. Li, and A. Lim, &lt;em&gt;Why Are the ARIMA and SARIMA not Sufficient&lt;/em&gt;, arXiv:1904.07632, 2019.&lt;/li&gt;
+&lt;/ol&gt;
+</content>
     </item>
     
     <item>

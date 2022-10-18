@@ -7,7 +7,57 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>ⓒ  GID, 2021-2022</copyright>
-    <lastBuildDate>Thu, 05 May 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 13 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ACF</title>
+      <link>https://gdetor.github.io/tags/acf/</link>
+      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/tags/acf/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>autocorrelation</title>
+      <link>https://gdetor.github.io/tags/autocorrelation/</link>
+      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/tags/autocorrelation/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>PACF</title>
+      <link>https://gdetor.github.io/tags/pacf/</link>
+      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/tags/pacf/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>partial autocorrelation</title>
+      <link>https://gdetor.github.io/tags/partial-autocorrelation/</link>
+      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/tags/partial-autocorrelation/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>time series</title>
+      <link>https://gdetor.github.io/tags/time-series/</link>
+      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/tags/time-series/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
     <item>
       <title>coefficient of determination</title>
       <link>https://gdetor.github.io/tags/coefficient-of-determination/</link>
@@ -64,16 +114,6 @@
       <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://gdetor.github.io/tags/r2/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
-      <title>time series</title>
-      <link>https://gdetor.github.io/tags/time-series/</link>
-      <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://gdetor.github.io/tags/time-series/</guid>
       <description></description>
       <content></content>
     </item>
