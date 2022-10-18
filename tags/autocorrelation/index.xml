@@ -25,8 +25,8 @@ to determine the parameters for an ARMA model.&lt;/p&gt;
 introduced some basic definitions and terminology about time series. To avoid
 forcing the reader to move back and forth we repeat those very same definitions
 here.&lt;/p&gt;
-&lt;p&gt;A time series is a series of data points indexed in time order in
-layman&amp;rsquo;s terms [1, 2].
+&lt;p&gt;In layman&amp;rsquo;s terms, a time series is a series of observations (or data points)
+indexed in time order [1, 2].
 A few examples of time series are&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The daily closing price of a stock in the stock market&lt;/li&gt;
@@ -52,7 +52,7 @@ is given below:&lt;/p&gt;
 &lt;p&gt;Let $ k \in \mathbf{N}, T \subseteq \mathbf{R} $. A function
 $$ x: T \rightarrow \mathbf{R}^k, \hspace{2mm} t \rightarrow x_t $$
 or equivalently, a set of indexed elements of $ \mathbf{R}^k $,
-$$  { x_t | x_t \in \mathbf{R}^k, \hspace{2mm} t \in T }  $$
+$$  \begin{Bmatrix} x_t | x_t \in \mathbf{R}^k, \hspace{2mm} t \in T \end{Bmatrix}  $$
 is called an observed time series (or time series).
 Sometimes, we write $ x_t(t \in T) $ or $ (x_t)_{t\in T} $.&lt;/p&gt;
 &lt;p&gt;When $ k = 1 $ the time series is called &lt;em&gt;univariate&lt;/em&gt;, otherwise is
@@ -67,7 +67,7 @@ is finite,&lt;/li&gt;
 &lt;/ul&gt;
 &lt;blockquote&gt;
 &lt;p&gt;From now on and for simplicity&amp;rsquo;s sake we will use the following notation for
-a time series: $ y[1], y[2], \ldots , y[N] $, where
+a time series: $ \begin{Bmatrix} y[1], y[2], \ldots , y[N] \end{Bmatrix} $, where
 $ N \in \mathbb{N} $ or $ y[t] $, where $t=1, \ldots , N $.&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h2 id=&#34;what-is-autocorrelation-acf&#34;&gt;What is autocorrelation (ACF)&lt;/h2&gt;
@@ -82,8 +82,8 @@ By plugging the equation of correlation&lt;/p&gt;
 into equation (1) we obtain
 $$ \rho(s, t) = \frac{\gamma(s, t)}{\sqrt{\gamma(s, s) \gamma(t, t)}}.  $$&lt;/p&gt;
 &lt;p&gt;The above definitions are valid for time series of real numbers. If the time
-series are complex then we have to replace the term $ \mathbb{E} {(x[s]-\mu_s)(x[t]-\mu_t)} $
-with the complex conjugate $\mathbb{E} {(x[s]-\mu_s)\bar{(x[t]-\mu_t)}} $.&lt;/p&gt;
+series are complex then we have to replace the term $ \mathbb{E}[(x[s]-\mu_s)(x[t]-\mu_t)] $
+with the complex conjugate $\mathbb{E}[(x[s]-\mu_s)\bar{(x[t]-\mu_t)}] $.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;From the definitions above one can conclude, first, the autocovariance of
 a time series with itself is the variance of the signal (&lt;em&gt;i.e.&lt;/em&gt;, $ \gamma(t, t) = \text{Var}[x[t]] $)
@@ -206,6 +206,11 @@ we used four lags in our custom function, and that&amp;rsquo;s because we count
 the zero lag ($ k = 0 $) as well. For more information about the ACF
 function you can check the &lt;a href=&#34;https://www.statsmodels.org/dev/generated/statsmodels.tsa.stattools.acf.html&#34;&gt;docs&lt;/a&gt;
 of &lt;em&gt;statsmodels&lt;/em&gt; package.&lt;/p&gt;
+&lt;p&gt;One important note regarding ACF and later the PACF is the number of
+lags we have to use. The &lt;em&gt;statsmodels&lt;/em&gt; module computes the number of
+lags using the following formula&lt;/p&gt;
+&lt;p&gt;$$ \text{nlags} = \min \begin{Bmatrix} 10 \log_{10}(N), N - 1  \end{Bmatrix}, $$&lt;/p&gt;
+&lt;p&gt;where $ N $ is the number of observations in the time series (raw data).&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;The ACF is often used to identify non-randomness in a time series and to
 aid in determining the parameters of a mathematical model for that time series.&lt;/p&gt;
@@ -332,11 +337,11 @@ to be zero.&lt;/p&gt;
 as we expected (and have already discussed). A second apparent observation
 is the reflection of the original&amp;rsquo;s data periodicity in the ACF plot. The
 most important part of those graphic representations is the number of
-statistically significant points (outside the cone). Data points in the ACF
+statistically significant correlations (outside the cone). Data points in the ACF
 plot reflect the correlation between a data point in our time series and its
-past values. Therefore, the number of these points indicates how far in the
-past one should look to predict a future point using some mathematical/statistical
-model.&lt;/p&gt;
+past values. Therefore, the number of significant correlations indicates how
+far in the past one should look to predict a future point using some
+mathematical/statistical model.&lt;/p&gt;
 &lt;p&gt;In the following sections, we will learn how to use the ACF and PACF
 plots to make assumptions about our models and determine their parameters.&lt;/p&gt;
 &lt;h2 id=&#34;what-is-an-arma-and-an-arima-model&#34;&gt;What is an ARMA and an ARIMA model?&lt;/h2&gt;
@@ -374,7 +379,7 @@ average. ARMA(p, q) model is described by:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;strong&gt;Lag (L) and backshift (B) operators&lt;/strong&gt;. In a time series context, the
 backshift operator acts on a time series element and returns the previous
-element as its name reveals. For instance, if $ x[t] = {x[1], x[2], \ldots, } $
+element as its name reveals. For instance, if $ x[t] = \begin{Bmatrix} x[1], x[2], \ldots, \end{Bmatrix} $
 is a time series then $ Bx[t] = x[t-1] $ for each $ t &amp;gt; 1 $. The lag
 operator $ L $ acts in the same way $ Lx[t] = x[t-1] $. Furthermore,
 both operators can be raised in integer powers, $ L^k x[t] = t[t-k] $.&lt;/p&gt;
