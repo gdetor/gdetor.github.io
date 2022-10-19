@@ -678,12 +678,101 @@ is negative, and the PACF decays geometrically to zero.</li>
 then decays geometrically to zero. The data can be modeled in that case by
 an ARMA(p, q) model.</li>
 </ul>
+<h2 id="why-do-we-need-models-like-arp-maq-and-others-">Why do we need models like AR(p), MA(q), and others ?<a href="#why-do-we-need-models-like-arp-maq-and-others-" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>So far, we have seen the ACF and PACF and how to estimate them given
+a time series. Moreover, we have seen how to use the ACF and PACF plots
+in determining the parameters of models such as AR(p) or MA(q). However,
+there is one question we still need to answer. <em>Why do we need models
+like AR(p) in the first place?</em> The answer is for describing raw data
+with a mathematical model that will allow us to make predictions (forecasting)
+of future values of our system.</p>
+<p>Let&rsquo;s be more specific. Assume that we obtain some raw data (observations)
+like the ones in Figure 1 showing the number of airport passengers per
+month for the years $ 1949 - 1960 $. Suppose we would like to know the number
+of passengers in the next month or in two months. In other words, we would like
+to predict the number of passengers in the future using known historical (past)
+observations.</p>
+<p>One way to predict future values would be to assume that the number of
+passengers will keep growing following the current trend. However, that
+would need to be more accurate since we do not have a model for the
+underlying processes that describe our observations. A solution to that
+problem would be to apply the analysis we have already used. First, we
+would estimate the ACF and PACf and visualize the results. From ACF and
+PACF plots, we would find out the type of model (AR(p), MA(q), or other)
+that best fits our observations. Once we know that our observations follow
+a, let&rsquo;s assume, AR(p) model with order $ p $, we can use that model to
+make predictions. More precisely, we could use equation (2) to fit the data
+and then use the fitted equation to make predictions for future values.
+Below, we give a Python code demonstrating how we can make predictions
+using the <em>statsmodels</em> module.</p>
+<p>First, let&rsquo;s create the data set, which follows an AR(1) model. For that
+reason, we will use the model in Figure 2D. The equation that describes
+the dynamics is $ x[t] = 0.6 * x[t-1] + \epsilon[t] $ (see the section
+about the AR(p) model). In a real-life situation, we won&rsquo;t create the data
+set; instead, we will have to obtain them somehow, for instance, collect
+them by ourselves.</p>
+<p>In the first code snippet, we show how to build the data set from
+scratch.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pylab <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> statsmodels.tsa.ar_model <span style="color:#f92672">import</span> AutoReg
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>seed(<span style="color:#ae81ff">3</span>)	<span style="color:#75715e"># fix the RNG seed for reproducibility</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create raw data using an AR(1) model</span>
+</span></span><span style="display:flex;"><span>N <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span> 	<span style="color:#75715e"># total number of observations</span>
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0.5</span>]	<span style="color:#75715e"># initial value</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(N):
+</span></span><span style="display:flex;"><span>    x<span style="color:#f92672">.</span>append(<span style="color:#ae81ff">0.6</span> <span style="color:#f92672">*</span> x[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>))
+</span></span></code></pre></div><p>The next step is to split the raw data into two separate sets. One
+for training (fitting) the parameters of our AR model and one for
+testing the fitted model. The training data set is usually larger
+than the testing one. Therefore, we use $ 70 $% of the data for
+training and the remaining $ 30 $% for testing. Remember that
+we have already performed our analysis in Figures 2E and 2F, where
+we estimated the ACF and PACF. Thus, we know that the underlying
+process for those observations is an AR(1), and we need three
+lags to predict the future.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Split the original data set into train/test data sets</span>
+</span></span><span style="display:flex;"><span>K <span style="color:#f92672">=</span> int(N <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.7</span>)   <span style="color:#75715e"># size of training data set</span>
+</span></span><span style="display:flex;"><span>train_data <span style="color:#f92672">=</span> x[:K]
+</span></span><span style="display:flex;"><span>test_data <span style="color:#f92672">=</span> x[K:]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Fit the AR model using 3 lags (see Figures 2D, E, F)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># We use the same AR(1) model. </span>
+</span></span><span style="display:flex;"><span>ARmodel <span style="color:#f92672">=</span> AutoReg(train_data, lags<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)<span style="color:#f92672">.</span>fit()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Print a summary of the fitting process</span>
+</span></span><span style="display:flex;"><span>print(ARmodel<span style="color:#f92672">.</span>summary())
+</span></span></code></pre></div><p>Finally, we use the method <code>predict</code> of the class <code>AutoReg</code> to predict
+five steps into the future (the horizon is five). As we see in Figure 4,
+although the prediction is not perfect, it captures the main pattern.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>horizon <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>	<span style="color:#75715e"># How many values into the future we want to predict</span>
+</span></span><span style="display:flex;"><span>prediction <span style="color:#f92672">=</span> ARmodel<span style="color:#f92672">.</span>predict(start<span style="color:#f92672">=</span>K, end<span style="color:#f92672">=</span>(K <span style="color:#f92672">+</span> horizon), dynamic<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>fig <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>figure()
+</span></span><span style="display:flex;"><span>ax <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">111</span>)
+</span></span><span style="display:flex;"><span>ax<span style="color:#f92672">.</span>plot(prediction, <span style="color:#e6db74">&#39;b&#39;</span>, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;prediction&#34;</span>)
+</span></span><span style="display:flex;"><span>ax<span style="color:#f92672">.</span>plot(test_data[:horizon], <span style="color:#e6db74">&#39;k&#39;</span>, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;target&#34;</span>)
+</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot()
+</span></span></code></pre></div>
+  <figure class="center" >
+    <img src="/images/pred_examples.png"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Figure 4. Prediction of an AR(1) process using *statsmodels* `AutoReg`. The black curve indicates actual observations and the red one is the predictions.</figcaption>
+    
+  </figure>
+
+
 <h2 id="summary">Summary<a href="#summary" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>In this post, we defined the autocorrelation and the partial autocorrelation
 functions, ACF and PACF. We introduced the AR(p), MA(q), ARMA(p, q), and ARIMA(p, d, q)
 models, and we showed how one could use the ACF and PACF to determine the
 parameters p, q, and d. Moreover, we provided a few examples and Python code
-snippets on how to use the <em>statsmodels</em> <code>acf</code> and <code>pacf</code> functions.</p>
+snippets on how to use the <em>statsmodels</em> <code>acf</code> and <code>pacf</code> functions. Finally,
+we give a simple example of using models such as AR(p) to make predictions for
+future values.</p>
 <h3 id="cited-as">Cited as<a href="#cited-as" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>@article{detorakis2022acfpacf,
 </span></span><span style="display:flex;"><span>  title   = &#34;Autocorrelation functions for time series&#34;,
