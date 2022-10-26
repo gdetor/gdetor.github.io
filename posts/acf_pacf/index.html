@@ -600,9 +600,9 @@ an improvement of ARMA for time series that show non-stationarity in the sense
 of mean. The integrated part of the ARIMA model corresponds to the differencing
 of the time series observations. Differencing non-stationary time series can
 cancel the non-stationarity (in many time series applications, one has to apply
-a differencing transformation on the data to remove the non-stationarity [CITE]).</p>
+a differencing transformation on the data to remove the non-stationarity [5]).</p>
 <p>$$ x[t] - \alpha[1] x[t-1] - \cdots - \alpha[p] x[t-p] = \epsilon[t] + \theta[1]\epsilon[t-1] + \cdots + \theta[q] \epsilon[t-q], \qquad (5) $$</p>
-<p>and using the lag operator we rewrite equation (5)</p>
+<p>and using the lag operator, equation (5) recast</p>
 <p>$$ \Big(1 - \sum_{i=1}^{p} \alpha[i] L^i \Big) x[t] = \Big( 1 + \sum_{i=1}^{q} \theta[i] L^i \Big) \epsilon[t]. $$</p>
 <p>The parameters of the autoregressive part are $ \alpha[i] $ and of the moving
 average are $ \theta[i] $. $ \epsilon[t] $ are error <em>i.i.d</em> variables (sampled

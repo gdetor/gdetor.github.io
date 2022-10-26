@@ -193,7 +193,14 @@ and <a href="https://twitter.com/linuxtoday">Linux Today</a>. The material is fr
 be redistributed and/or modified. There is no any warranty that
 they work for you or are suitable to your need. The author of this page is
 not responsible for any damage this material may cause.</p>
-<h3 id="copymove-a-file-into-the-directory-you-were-just-in-linux">Copy/move a file into the directory you were just in (Linux)<a href="#copymove-a-file-into-the-directory-you-were-just-in-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="share-a-file-using-python-linux-python">Share a file using Python (Linux, Python)<a href="#share-a-file-using-python-linux-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir temproot
+</span></span><span style="display:flex;"><span>$ cd temproot
+</span></span><span style="display:flex;"><span>$ ln -s FILE_TO_BE_SHARED
+</span></span><span style="display:flex;"><span>$ python3 -mhttp.server     <span style="color:#75715e"># file now is accessible at http://other_machine_ip:8000/</span>
+</span></span></code></pre></div><h3 id="compress-an-executable-using-upx-linux">Compress an executable using UPX (Linux)<a href="#compress-an-executable-using-upx-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ upx -n compressed_exec_name source_exec_name
+</span></span></code></pre></div><h3 id="copymove-a-file-into-the-directory-you-were-just-in-linux">Copy/move a file into the directory you were just in (Linux)<a href="#copymove-a-file-into-the-directory-you-were-just-in-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cp <span style="color:#f92672">(</span>or mv<span style="color:#f92672">)</span> FILENAME <span style="color:#e6db74">&#34;</span>$OLDPWD<span style="color:#e6db74">/&#34;</span>
 </span></span></code></pre></div><h3 id="find-big-files-linux">Find big files (Linux)<a href="#find-big-files-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ find / -type f -size +XXXM    <span style="color:#75715e"># where XXX is the desired size in MB</span>

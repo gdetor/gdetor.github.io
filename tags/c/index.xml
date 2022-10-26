@@ -24,7 +24,14 @@ and &lt;a href=&#34;https://twitter.com/linuxtoday&#34;&gt;Linux Today&lt;/a&gt;
 be redistributed and/or modified. There is no any warranty that
 they work for you or are suitable to your need. The author of this page is
 not responsible for any damage this material may cause.&lt;/p&gt;
-&lt;h3 id=&#34;copymove-a-file-into-the-directory-you-were-just-in-linux&#34;&gt;Copy/move a file into the directory you were just in (Linux)&lt;/h3&gt;
+&lt;h3 id=&#34;share-a-file-using-python-linux-python&#34;&gt;Share a file using Python (Linux, Python)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ mkdir temproot
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ cd temproot
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ln -s FILE_TO_BE_SHARED
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ python3 -mhttp.server     &lt;span style=&#34;color:#75715e&#34;&gt;# file now is accessible at http://other_machine_ip:8000/&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;compress-an-executable-using-upx-linux&#34;&gt;Compress an executable using UPX (Linux)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ upx -n compressed_exec_name source_exec_name
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;copymove-a-file-into-the-directory-you-were-just-in-linux&#34;&gt;Copy/move a file into the directory you were just in (Linux)&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ cp &lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;or mv&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; FILENAME &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$OLDPWD&lt;span style=&#34;color:#e6db74&#34;&gt;/&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;find-big-files-linux&#34;&gt;Find big files (Linux)&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ find / -type f -size +XXXM    &lt;span style=&#34;color:#75715e&#34;&gt;# where XXX is the desired size in MB&lt;/span&gt;
