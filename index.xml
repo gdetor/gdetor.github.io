@@ -1479,7 +1479,24 @@ and &lt;a href=&#34;https://twitter.com/linuxtoday&#34;&gt;Linux Today&lt;/a&gt;
 be redistributed and/or modified. There is no any warranty that
 they work for you or are suitable to your need. The author of this page is
 not responsible for any damage this material may cause.&lt;/p&gt;
-&lt;h3 id=&#34;share-a-file-using-python-linux-python&#34;&gt;Share a file using Python (Linux, Python)&lt;/h3&gt;
+&lt;h3 id=&#34;how-to-share-files-with-samba-linux&#34;&gt;How to share files with SAMBA (Linux)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo apt install samba        &lt;span style=&#34;color:#75715e&#34;&gt;# Install samba packages on Ubuntu/Debian&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ mkdir samba_shared_folder     &lt;span style=&#34;color:#75715e&#34;&gt;# Create a temporary folder&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ vim /etc/samba/smb.conf
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Add the following section to the &lt;code&gt;smb.conf&lt;/code&gt; file.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-vim&#34; data-lang=&#34;vim&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;[&lt;span style=&#34;color:#a6e22e&#34;&gt;samba_share&lt;/span&gt;]&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;comment&lt;/span&gt; = &lt;span style=&#34;color:#a6e22e&#34;&gt;Samba&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;on&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;local&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;network&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;path&lt;/span&gt; = &lt;span style=&#34;color:#e6db74&#34;&gt;/home/&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;username&lt;/span&gt;/&lt;span style=&#34;color:#a6e22e&#34;&gt;path_to_samba_shared_folder&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;read&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;only&lt;/span&gt; = &lt;span style=&#34;color:#a6e22e&#34;&gt;no&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;&lt;/span&gt;    &lt;span style=&#34;color:#a6e22e&#34;&gt;browsable&lt;/span&gt; = &lt;span style=&#34;color:#a6e22e&#34;&gt;yes&lt;/span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then run the following commands:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo service smbd restart
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo ufw allow samba      &lt;span style=&#34;color:#75715e&#34;&gt;# net filter firewall&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo smbpasswd -a username
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To access the SAMBA shared folder, either use any manager such as Nautilus
+or through the terminal:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ smbclient -L //hostname/samba_shared_folder
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;share-a-file-using-python-linux-python&#34;&gt;Share a file using Python (Linux, Python)&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ mkdir temproot
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ cd temproot
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ln -s FILE_TO_BE_SHARED
@@ -1599,8 +1616,10 @@ not responsible for any damage this material may cause.&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;open-a-file-in-vim-with-no-compatibility-vim&#34;&gt;Open a file in VIM with no compatibility (Vim)&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ vim -u NONE -u NORC fname
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;io-devices-latency-linux&#34;&gt;IO devices latency (Linux)&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo ioping -R /dev/sdX         &lt;span style=&#34;color:#75715e&#34;&gt;# (seek rate)&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo ioping -RL /dev/sdX        &lt;span style=&#34;color:#75715e&#34;&gt;# (sequential speed)    &lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ioping /tmp/
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ ioping -c &lt;span style=&#34;color:#ae81ff&#34;&gt;12&lt;/span&gt; /tmp/    &lt;span style=&#34;color:#75715e&#34;&gt;# runs for 12 rounds&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo ioping -R /dev/sdX         &lt;span style=&#34;color:#75715e&#34;&gt;# seek rate&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ sudo ioping -RL /dev/sdX        &lt;span style=&#34;color:#75715e&#34;&gt;# sequential speed&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;copy-a-file-to-the-clipboard-linux&#34;&gt;Copy a file to the clipboard (Linux)&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;$ xclip -sel clip &amp;lt; file
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;import-date-in-vim-vim&#34;&gt;Import date in VIM (Vim)&lt;/h3&gt;
@@ -1689,12 +1708,97 @@ not responsible for any damage this material may cause.&lt;/p&gt;
       <pubDate>Wed, 16 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://gdetor.github.io/posts/math_tips/</guid>
-      <description>In this post, you can find some helpful mathematical tips and tricks in Python programming language.
-Positive definite matrix Check if a given matrix $ \bf{A} $ is positive definite. If all the eigenvalues of matrix $ \bf{A} $ are positive then the matrix is positive definite.
-$ A = np.array([[1, 2], [2, 1]]) $ print(A) [[1 2] [2 1]] $ np.all(np.linalg.eigvals(A) &amp;gt; 0) False # A is not a positive definite matrix $ A = np.</description>
+      <description>In this post, you can find some helpful mathematical tips and tricks in the Python programming language.
+Linear separability Two sets $ A $ and $ B $ in an $ n $ dimensional Euclidean space are linear separable if there exist $ n + 1 $ numbers $ w_i \in \mathbb{R} $ such that every point $ a \in A $ satisfies
+$$ \sum_{i=1}^{n}w_i a_i &amp;gt; k, $$
+and every point $ b \in B $ satisfies</description>
       <content>&lt;p&gt;In this post, you can find some helpful mathematical tips and tricks
-in Python programming language.&lt;/p&gt;
-&lt;h3 id=&#34;positive-definite-matrix&#34;&gt;Positive definite matrix&lt;/h3&gt;
+in the Python programming language.&lt;/p&gt;
+&lt;h2 id=&#34;linear-separability&#34;&gt;Linear separability&lt;/h2&gt;
+&lt;p&gt;Two sets $ A $ and $ B $ in an $ n $ dimensional Euclidean space are linear
+separable if there exist $ n + 1 $ numbers $ w_i \in \mathbb{R} $ such that
+every point $ a \in A $ satisfies&lt;/p&gt;
+&lt;p&gt;$$ \sum_{i=1}^{n}w_i a_i &amp;gt; k,  $$&lt;/p&gt;
+&lt;p&gt;and every point $ b \in B $ satisfies&lt;/p&gt;
+&lt;p&gt;$$ \sum_{i=1}^{n}w_i b_i &amp;lt; k,  $$&lt;/p&gt;
+&lt;p&gt;where $ k \in \mathbb{R} $ defines a linear border (&lt;em&gt;e.g.,&lt;/em&gt; a line) between
+data points of the two sets.&lt;/p&gt;
+&lt;p&gt;In layperson&amp;rsquo;s terms, let&amp;rsquo;s say we have two two-dimensional data sets (&lt;em&gt;e.g.&lt;/em&gt;,
+each data point is described by two coordinates, x and y). These two sets are
+linearly separable if we can draw at least one line that will separate the
+points of set A from those of set B.&lt;/p&gt;
+&lt;p&gt;Many times we have to solve a classification or clustering problem. If we
+could know &lt;em&gt;a priori&lt;/em&gt; if the involved sets are linearly separable, we could
+choose the appropriate classification algorithm. For instance, if the data
+sets are not linearly separable, we won&amp;rsquo;t be able to use a linear classifier.&lt;/p&gt;
+&lt;p&gt;Therefore, one way to know if the sets at hand are linear separable is to
+compute the convex hull of each set and check if those convex hulls intersect
+or one contains the other, or they overlap. If any of those three conditions
+is true, then we know that the two sets are &lt;strong&gt;not&lt;/strong&gt; linearly separable.
+In Python, we can quickly check that using the function &lt;code&gt;ConvexHull&lt;/code&gt; of
+&lt;em&gt;Scipy&lt;/em&gt;. Here is an example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; matplotlib.pylab &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; plt
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.datasets &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; make_moons, make_blobs
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; scipy.spatial &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; ConvexHull
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    S &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;       &lt;span style=&#34;color:#75715e&#34;&gt;# size of scatter plot point&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    blobs &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; make_blobs(n_samples&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;, centers&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, random_state&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;13&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    moons &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; make_moons(n_samples&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    fig &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; plt&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;figure(figsize&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;13&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;11&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; fig&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add_subplot(&lt;span style=&#34;color:#ae81ff&#34;&gt;221&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    Xb, Yb &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; blobs
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    x1b &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Xb[Yb &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    x2b &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Xb[Yb &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;scatter(x1b[:, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], x1b[:, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;], s&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;S)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;scatter(x2b[:, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], x2b[:, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;], c&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;orange&amp;#34;&lt;/span&gt;, s&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;S)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_xticks([])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_yticks([])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; fig&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add_subplot(&lt;span style=&#34;color:#ae81ff&#34;&gt;222&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    X, Y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; moons
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    x1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; X[Y &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    x2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; X[Y &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;scatter(x1[:, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], x1[:, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;], s&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;S)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;scatter(x2[:, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], x2[:, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;], c&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;orange&amp;#34;&lt;/span&gt;, s&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;S)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_xticks([])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_yticks([])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax3 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; fig&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add_subplot(&lt;span style=&#34;color:#ae81ff&#34;&gt;223&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ch1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ConvexHull(x1b)			&lt;span style=&#34;color:#75715e&#34;&gt;# Compute the convex hull&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax3&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;scatter(x1b[:, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], x1b[:, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;], s&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;S)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax3&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;plot(x1b[ch1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;vertices, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], x1b[ch1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;vertices, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;], lw&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, c&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;k&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ch2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ConvexHull(x2b)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax3&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;scatter(x2b[:, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], x2b[:, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;], s&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;S)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax3&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;plot(x2b[ch2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;vertices, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], x2b[ch2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;vertices, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;], lw&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, c&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;k&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax3&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_xticks([])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax3&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_yticks([])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax4 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; fig&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;add_subplot(&lt;span style=&#34;color:#ae81ff&#34;&gt;224&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ch1 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ConvexHull(x1)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax4&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;scatter(x1[:, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], x1[:, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;], s&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;S)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax4&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;plot(x1[ch1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;vertices, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], x1[ch1&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;vertices, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;], lw&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, c&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;k&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ch2 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ConvexHull(x2)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax4&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;scatter(x2[:, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], x2[:, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;], s&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;S)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax4&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;plot(x2[ch2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;vertices, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], x2[ch2&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;vertices, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;], lw&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, c&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;k&amp;#39;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax4&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_xticks([])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ax4&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set_yticks([])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    plt&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;savefig(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;convec_hulls.png&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    plt&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;show()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;figure class=&#34;center&#34; &gt;
+    &lt;img src=&#34;https://gdetor.github.io/images/convex_hulls.png&#34;   style=&#34;border-radius: 8px;&#34;  /&gt;
+    
+      &lt;figcaption class=&#34;center&#34; &gt;Figure 1. Blobs and moons data sets along with their convex hulls. The blobs are linear separable since the convex hull of the blue set does not intersect or overlap with the convex hull of the orange data set. On the other hand, the moons data set is not linear separable. &lt;/figcaption&gt;
+    
+  &lt;/figure&gt;
+
+
+&lt;h2 id=&#34;positive-definite-matrix&#34;&gt;Positive definite matrix&lt;/h2&gt;
 &lt;p&gt;Check if a given matrix $ \bf{A} $ is positive definite. If all the eigenvalues
 of matrix $ \bf{A} $ are positive then the matrix is positive definite.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt; A &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;array([[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;], [&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]])
@@ -1713,7 +1817,7 @@ of matrix $ \bf{A} $ are positive then the matrix is positive definite.&lt;/p&gt
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;all(np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;linalg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;eigvals(A) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;# A is positive definite&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;random-matrix-with-predetermined-condition-number&#34;&gt;Random matrix with predetermined condition number&lt;/h3&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;random-matrix-with-predetermined-condition-number&#34;&gt;Random matrix with predetermined condition number&lt;/h2&gt;
 &lt;p&gt;You can generate a random matrix with predetermined condition number by
 following method:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt; cond &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;3.0&lt;/span&gt;
@@ -1739,7 +1843,7 @@ following method:&lt;/p&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Desired condition number: &lt;span style=&#34;color:#ae81ff&#34;&gt;3.0&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt; print(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Actual condition number&amp;#34;&lt;/span&gt;, np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;linalg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;cond(B))
 &lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Actual condition number: &lt;span style=&#34;color:#ae81ff&#34;&gt;2.9999999999999973&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;integer-operations&#34;&gt;Integer operations&lt;/h3&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;integer-operations&#34;&gt;Integer operations&lt;/h2&gt;
 &lt;p&gt;Fast integer division by two (rounded down). In this case, we have to
 perform a bit shift to the right by $ k $. $ k $ indicates the power of two
 $ 2^k $.&lt;/p&gt;

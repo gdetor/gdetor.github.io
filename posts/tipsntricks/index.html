@@ -193,7 +193,24 @@ and <a href="https://twitter.com/linuxtoday">Linux Today</a>. The material is fr
 be redistributed and/or modified. There is no any warranty that
 they work for you or are suitable to your need. The author of this page is
 not responsible for any damage this material may cause.</p>
-<h3 id="share-a-file-using-python-linux-python">Share a file using Python (Linux, Python)<a href="#share-a-file-using-python-linux-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="how-to-share-files-with-samba-linux">How to share files with SAMBA (Linux)<a href="#how-to-share-files-with-samba-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt install samba        <span style="color:#75715e"># Install samba packages on Ubuntu/Debian</span>
+</span></span><span style="display:flex;"><span>$ mkdir samba_shared_folder     <span style="color:#75715e"># Create a temporary folder</span>
+</span></span><span style="display:flex;"><span>$ vim /etc/samba/smb.conf
+</span></span></code></pre></div><p>Add the following section to the <code>smb.conf</code> file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>[<span style="color:#a6e22e">samba_share</span>]<span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">comment</span> = <span style="color:#a6e22e">Samba</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">local</span> <span style="color:#a6e22e">network</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">path</span> = <span style="color:#e6db74">/home/</span><span style="color:#a6e22e">username</span>/<span style="color:#a6e22e">path_to_samba_shared_folder</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">read</span> <span style="color:#a6e22e">only</span> = <span style="color:#a6e22e">no</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">browsable</span> = <span style="color:#a6e22e">yes</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>Then run the following commands:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo service smbd restart
+</span></span><span style="display:flex;"><span>$ sudo ufw allow samba      <span style="color:#75715e"># net filter firewall</span>
+</span></span><span style="display:flex;"><span>$ sudo smbpasswd -a username
+</span></span></code></pre></div><p>To access the SAMBA shared folder, either use any manager such as Nautilus
+or through the terminal:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ smbclient -L //hostname/samba_shared_folder
+</span></span></code></pre></div><h3 id="share-a-file-using-python-linux-python">Share a file using Python (Linux, Python)<a href="#share-a-file-using-python-linux-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir temproot
 </span></span><span style="display:flex;"><span>$ cd temproot
 </span></span><span style="display:flex;"><span>$ ln -s FILE_TO_BE_SHARED
@@ -313,8 +330,10 @@ not responsible for any damage this material may cause.</p>
 </span></span></code></pre></div><h3 id="open-a-file-in-vim-with-no-compatibility-vim">Open a file in VIM with no compatibility (Vim)<a href="#open-a-file-in-vim-with-no-compatibility-vim" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ vim -u NONE -u NORC fname
 </span></span></code></pre></div><h3 id="io-devices-latency-linux">IO devices latency (Linux)<a href="#io-devices-latency-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo ioping -R /dev/sdX         <span style="color:#75715e"># (seek rate)</span>
-</span></span><span style="display:flex;"><span>$ sudo ioping -RL /dev/sdX        <span style="color:#75715e"># (sequential speed)    </span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ioping /tmp/
+</span></span><span style="display:flex;"><span>$ ioping -c <span style="color:#ae81ff">12</span> /tmp/    <span style="color:#75715e"># runs for 12 rounds</span>
+</span></span><span style="display:flex;"><span>$ sudo ioping -R /dev/sdX         <span style="color:#75715e"># seek rate</span>
+</span></span><span style="display:flex;"><span>$ sudo ioping -RL /dev/sdX        <span style="color:#75715e"># sequential speed</span>
 </span></span></code></pre></div><h3 id="copy-a-file-to-the-clipboard-linux">Copy a file to the clipboard (Linux)<a href="#copy-a-file-to-the-clipboard-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ xclip -sel clip &lt; file
 </span></span></code></pre></div><h3 id="import-date-in-vim-vim">Import date in VIM (Vim)<a href="#import-date-in-vim-vim" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>

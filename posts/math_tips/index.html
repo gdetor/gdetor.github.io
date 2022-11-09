@@ -206,8 +206,92 @@
 
   <div class="post-content"><div>
         <p>In this post, you can find some helpful mathematical tips and tricks
-in Python programming language.</p>
-<h3 id="positive-definite-matrix">Positive definite matrix<a href="#positive-definite-matrix" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+in the Python programming language.</p>
+<h2 id="linear-separability">Linear separability<a href="#linear-separability" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Two sets $ A $ and $ B $ in an $ n $ dimensional Euclidean space are linear
+separable if there exist $ n + 1 $ numbers $ w_i \in \mathbb{R} $ such that
+every point $ a \in A $ satisfies</p>
+<p>$$ \sum_{i=1}^{n}w_i a_i &gt; k,  $$</p>
+<p>and every point $ b \in B $ satisfies</p>
+<p>$$ \sum_{i=1}^{n}w_i b_i &lt; k,  $$</p>
+<p>where $ k \in \mathbb{R} $ defines a linear border (<em>e.g.,</em> a line) between
+data points of the two sets.</p>
+<p>In layperson&rsquo;s terms, let&rsquo;s say we have two two-dimensional data sets (<em>e.g.</em>,
+each data point is described by two coordinates, x and y). These two sets are
+linearly separable if we can draw at least one line that will separate the
+points of set A from those of set B.</p>
+<p>Many times we have to solve a classification or clustering problem. If we
+could know <em>a priori</em> if the involved sets are linearly separable, we could
+choose the appropriate classification algorithm. For instance, if the data
+sets are not linearly separable, we won&rsquo;t be able to use a linear classifier.</p>
+<p>Therefore, one way to know if the sets at hand are linear separable is to
+compute the convex hull of each set and check if those convex hulls intersect
+or one contains the other, or they overlap. If any of those three conditions
+is true, then we know that the two sets are <strong>not</strong> linearly separable.
+In Python, we can quickly check that using the function <code>ConvexHull</code> of
+<em>Scipy</em>. Here is an example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pylab <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.datasets <span style="color:#f92672">import</span> make_moons, make_blobs
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy.spatial <span style="color:#f92672">import</span> ConvexHull
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    S <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>       <span style="color:#75715e"># size of scatter plot point</span>
+</span></span><span style="display:flex;"><span>    blobs <span style="color:#f92672">=</span> make_blobs(n_samples<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, centers<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">13</span>)
+</span></span><span style="display:flex;"><span>    moons <span style="color:#f92672">=</span> make_moons(n_samples<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    fig <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">13</span>, <span style="color:#ae81ff">11</span>))
+</span></span><span style="display:flex;"><span>    ax1 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">221</span>)
+</span></span><span style="display:flex;"><span>    Xb, Yb <span style="color:#f92672">=</span> blobs
+</span></span><span style="display:flex;"><span>    x1b <span style="color:#f92672">=</span> Xb[Yb <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    x2b <span style="color:#f92672">=</span> Xb[Yb <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>    ax1<span style="color:#f92672">.</span>scatter(x1b[:, <span style="color:#ae81ff">0</span>], x1b[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
+</span></span><span style="display:flex;"><span>    ax1<span style="color:#f92672">.</span>scatter(x2b[:, <span style="color:#ae81ff">0</span>], x2b[:, <span style="color:#ae81ff">1</span>], c<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;orange&#34;</span>, s<span style="color:#f92672">=</span>S)
+</span></span><span style="display:flex;"><span>    ax1<span style="color:#f92672">.</span>set_xticks([])
+</span></span><span style="display:flex;"><span>    ax1<span style="color:#f92672">.</span>set_yticks([])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ax2 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">222</span>)
+</span></span><span style="display:flex;"><span>    X, Y <span style="color:#f92672">=</span> moons
+</span></span><span style="display:flex;"><span>    x1 <span style="color:#f92672">=</span> X[Y <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    x2 <span style="color:#f92672">=</span> X[Y <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>    ax2<span style="color:#f92672">.</span>scatter(x1[:, <span style="color:#ae81ff">0</span>], x1[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
+</span></span><span style="display:flex;"><span>    ax2<span style="color:#f92672">.</span>scatter(x2[:, <span style="color:#ae81ff">0</span>], x2[:, <span style="color:#ae81ff">1</span>], c<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;orange&#34;</span>, s<span style="color:#f92672">=</span>S)
+</span></span><span style="display:flex;"><span>    ax2<span style="color:#f92672">.</span>set_xticks([])
+</span></span><span style="display:flex;"><span>    ax2<span style="color:#f92672">.</span>set_yticks([])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ax3 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">223</span>)
+</span></span><span style="display:flex;"><span>    ch1 <span style="color:#f92672">=</span> ConvexHull(x1b)			<span style="color:#75715e"># Compute the convex hull</span>
+</span></span><span style="display:flex;"><span>    ax3<span style="color:#f92672">.</span>scatter(x1b[:, <span style="color:#ae81ff">0</span>], x1b[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
+</span></span><span style="display:flex;"><span>    ax3<span style="color:#f92672">.</span>plot(x1b[ch1<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">0</span>], x1b[ch1<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">1</span>], lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, c<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>)
+</span></span><span style="display:flex;"><span>    ch2 <span style="color:#f92672">=</span> ConvexHull(x2b)
+</span></span><span style="display:flex;"><span>    ax3<span style="color:#f92672">.</span>scatter(x2b[:, <span style="color:#ae81ff">0</span>], x2b[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
+</span></span><span style="display:flex;"><span>    ax3<span style="color:#f92672">.</span>plot(x2b[ch2<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">0</span>], x2b[ch2<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">1</span>], lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, c<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>)
+</span></span><span style="display:flex;"><span>    ax3<span style="color:#f92672">.</span>set_xticks([])
+</span></span><span style="display:flex;"><span>    ax3<span style="color:#f92672">.</span>set_yticks([])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ax4 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">224</span>)
+</span></span><span style="display:flex;"><span>    ch1 <span style="color:#f92672">=</span> ConvexHull(x1)
+</span></span><span style="display:flex;"><span>    ax4<span style="color:#f92672">.</span>scatter(x1[:, <span style="color:#ae81ff">0</span>], x1[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
+</span></span><span style="display:flex;"><span>    ax4<span style="color:#f92672">.</span>plot(x1[ch1<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">0</span>], x1[ch1<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">1</span>], lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, c<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>)
+</span></span><span style="display:flex;"><span>    ch2 <span style="color:#f92672">=</span> ConvexHull(x2)
+</span></span><span style="display:flex;"><span>    ax4<span style="color:#f92672">.</span>scatter(x2[:, <span style="color:#ae81ff">0</span>], x2[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
+</span></span><span style="display:flex;"><span>    ax4<span style="color:#f92672">.</span>plot(x2[ch2<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">0</span>], x2[ch2<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">1</span>], lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, c<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>)
+</span></span><span style="display:flex;"><span>    ax4<span style="color:#f92672">.</span>set_xticks([])
+</span></span><span style="display:flex;"><span>    ax4<span style="color:#f92672">.</span>set_yticks([])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>savefig(<span style="color:#e6db74">&#34;convec_hulls.png&#34;</span>)
+</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>show()
+</span></span></code></pre></div>
+  <figure class="center" >
+    <img src="/images/convex_hulls.png"   style="border-radius: 8px;"  />
+    
+      <figcaption class="center" >Figure 1. Blobs and moons data sets along with their convex hulls. The blobs are linear separable since the convex hull of the blue set does not intersect or overlap with the convex hull of the orange data set. On the other hand, the moons data set is not linear separable. </figcaption>
+    
+  </figure>
+
+
+<h2 id="positive-definite-matrix">Positive definite matrix<a href="#positive-definite-matrix" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>Check if a given matrix $ \bf{A} $ is positive definite. If all the eigenvalues
 of matrix $ \bf{A} $ are positive then the matrix is positive definite.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> A <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>], [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>]])
@@ -226,7 +310,7 @@ of matrix $ \bf{A} $ are positive then the matrix is positive definite.</p>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> np<span style="color:#f92672">.</span>all(np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>eigvals(A) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">True</span>        <span style="color:#75715e"># A is positive definite</span>
-</span></span></code></pre></div><h3 id="random-matrix-with-predetermined-condition-number">Random matrix with predetermined condition number<a href="#random-matrix-with-predetermined-condition-number" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</span></span></code></pre></div><h2 id="random-matrix-with-predetermined-condition-number">Random matrix with predetermined condition number<a href="#random-matrix-with-predetermined-condition-number" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>You can generate a random matrix with predetermined condition number by
 following method:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> cond <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.0</span>
@@ -252,7 +336,7 @@ following method:</p>
 </span></span><span style="display:flex;"><span>Desired condition number: <span style="color:#ae81ff">3.0</span>
 </span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> print(<span style="color:#e6db74">&#34;Actual condition number&#34;</span>, np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>cond(B))
 </span></span><span style="display:flex;"><span>Actual condition number: <span style="color:#ae81ff">2.9999999999999973</span>
-</span></span></code></pre></div><h3 id="integer-operations">Integer operations<a href="#integer-operations" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</span></span></code></pre></div><h2 id="integer-operations">Integer operations<a href="#integer-operations" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>Fast integer division by two (rounded down). In this case, we have to
 perform a bit shift to the right by $ k $. $ k $ indicates the power of two
 $ 2^k $.</p>
