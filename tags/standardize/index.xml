@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>standardize on GID Webpage</title>
+    <link>https://gdetor.github.io/tags/standardize/</link>
+    <description>Recent content in standardize on GID Webpage</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>ⓒ  GID, 2021-2022</copyright>
+    <lastBuildDate>Thu, 13 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/tags/standardize/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Useful data transformations</title>
+      <link>https://gdetor.github.io/posts/normalization/</link>
+      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/posts/normalization/</guid>
+      <description>This post briefly introduces fundamental data transformations such as mean subtraction (centering data), normalization, standardization, difference transform, and power transform. Furthermore, we provide simple examples of Python code on how to apply those transforms to real data. Moreover, we heavily rely on the sklearn Python package [1].
+Mean subtraction Let&amp;rsquo;s assume we have some data in a vector $ {\bf x} $, and we know that the mean value of $ {\bf x} $ is not zero.</description>
+      <content>&lt;p&gt;This post briefly introduces fundamental data transformations such as mean
+subtraction (centering data), normalization, standardization, difference
+transform, and power transform. Furthermore, we provide simple examples of
+Python code on how to apply those transforms to real data. Moreover, we heavily
+rely on the &lt;em&gt;sklearn&lt;/em&gt; Python package [1].&lt;/p&gt;
+&lt;h2 id=&#34;mean-subtraction&#34;&gt;Mean subtraction&lt;/h2&gt;
+&lt;p&gt;Let&amp;rsquo;s assume we have some data in a vector $ {\bf x} $, and we know that the
+mean value of $ {\bf x} $ is not zero. We could force the mean to be zero by
+subtracting the mean from each element in the vector $ {\bf x} $. Thus we center
+the data when we apply the following transform:&lt;/p&gt;
+&lt;p&gt;$$ {\bf z} = {\bf x} - \bar{x}, \quad (1) $$&lt;/p&gt;
+&lt;p&gt;where $ \bar{x} $ is the mean of $ {\bf x} $. Another important use of this
+transform is this: When we would like to compare data sets of different scales,
+such as temperatures in Celcius and Fahrenheit, we can center each data set
+separately and then compare them.&lt;/p&gt;
+&lt;p&gt;The following code snippet shows how we can center data in Python:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; np
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;X &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;random&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;normal(&lt;span style=&#34;color:#ae81ff&#34;&gt;5&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, (&lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;,))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;X_bar &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; X&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;mean()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(X_bar)		&lt;span style=&#34;color:#75715e&#34;&gt;# 4.9911754&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Z &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; X &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; X_bar
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(Z&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;mean()) 	&lt;span style=&#34;color:#75715e&#34;&gt;# -2.930988e-16 &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;normalize&#34;&gt;Normalize&lt;/h2&gt;
+&lt;p&gt;Originally, data normalization meant rescaling and shifting a data set&amp;rsquo;s values
+so that they range in $ [0, 1] $. The mathematical formula to do that is:&lt;/p&gt;
+&lt;p&gt;$$ {\bf z} = \frac{ {\bf x} - x_{\text{min}} }{ x_{\text{max}} - x_{\text{min}} }, \quad (2) $$&lt;/p&gt;
+&lt;p&gt;where $ {\bf x} $ is the input data, $ x_{\text{min}} $ is the minimum element
+in the vector $ {\bf x} $, and $ x_{\text{max}} $ is the maximum element.&lt;/p&gt;
+&lt;p&gt;However, if we would like to normalize our data into a different interval
+$ [a, b] $ we can use the following formula:&lt;/p&gt;
+&lt;p&gt;$$ {\bf z} = \frac{ {\bf x} - x_{\text{min}} }{ x_{\text{max}} - x_{\text{min}} } (b - a) + a. \quad (3) $$&lt;/p&gt;
+&lt;p&gt;Normalization is used when we know our data do not follow a Gaussian distribution.&lt;/p&gt;
+&lt;p&gt;In Python, we can normalize any data set using the &lt;em&gt;MinMaxScaler&lt;/em&gt; function
+of &lt;em&gt;sklearn&lt;/em&gt; [2].&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; np
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.preprocessing &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; MinMaxScaler
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;X &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;random&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;random((&lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Normalize into [0, 1]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;scaler &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; MinMaxScaler()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Z &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; scaler&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;fit_transform(X)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Normalize into [2, 4]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;scaler &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; MinMaxScaler(feature_range&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Z &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; scaler&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;fit_transform(X)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;standarize&#34;&gt;Standarize&lt;/h2&gt;
+&lt;p&gt;Let&amp;rsquo;s assume that we have some data on people&amp;rsquo;s height and weight, and we would
+like to use machine learning models on them. Naturally, weight and height
+measure different physical quantities and thus are in various scales and units
+(height is usually between $ 10 $ and $ 200 $ kilograms, and height is between
+$ 0 $ to $ 2 $ m). So, &lt;em&gt;how do we use those data&lt;/em&gt;? One solution is to
+standardize the data using the z-score&lt;/p&gt;
+&lt;p&gt;$$  {\bf z} = \frac{{\bf x} - \bar{x}}{\sigma}, \quad (4)  $$&lt;/p&gt;
+&lt;p&gt;where $ {\bf x} $ is the vector that holds the data, $ \bar{x} $ is the mean
+value of $ {\bf x} $, and $ \sigma $ is the standard deviation. When we
+standardize, our data ti means they will have a zero mean and a unit standard
+deviation. We usually apply a standardization transformation when we know
+that our data follow a Gaussian-like distribution.&lt;/p&gt;
+&lt;p&gt;In Python, we can standardize our data using the preprocessing functions
+provided by the &lt;em&gt;sklearn&lt;/em&gt; package [3]. Here is an example:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; np
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.preprocessing &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; StandardScaler
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;X &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;empty((&lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Both weight and height follow a Gaussian distribution&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;X[:, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;random&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;normal(&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, (&lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;, ))		&lt;span style=&#34;color:#75715e&#34;&gt;# height in meters&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;X[:, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;random&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;normal(&lt;span style=&#34;color:#ae81ff&#34;&gt;70&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;50&lt;/span&gt;, (&lt;span style=&#34;color:#ae81ff&#34;&gt;100&lt;/span&gt;,))		&lt;span style=&#34;color:#75715e&#34;&gt;# weight in kilograms&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;scaler &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; StandardScaler()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Z &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; scaler&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;fit_transform(X)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;When we should use a standardization of our data:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Before &lt;em&gt;PCA&lt;/em&gt;. Sometimes data points with high variance get weighted
+more and dominate the principal components.&lt;/li&gt;
+&lt;li&gt;Before clustering algorithms such as &lt;em&gt;kNN&lt;/em&gt;. Clustering algorithms are based
+on the notion of distance as a similarity measure; thus, data with a wide
+range of features will affect the distances of the clustering algorithm more.&lt;/li&gt;
+&lt;li&gt;Before &lt;em&gt;SVM&lt;/em&gt;. Classic SVM tries to maximize the distance
+between two separable hyperplanes and their support vectors. Thus, data with
+a wide range of features will affect the distances in a non-desirable way.&lt;/li&gt;
+&lt;li&gt;Before &lt;em&gt;LASSO&lt;/em&gt; or &lt;em&gt;Ridge&lt;/em&gt; regression. These algorithms penalize the
+magnitude of their coefficients related to each variable, and thus the scale
+of each variable will determine the penalty values. Coefficients with high
+variance take small values, and thus they will be penalized less.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In the following cases, we can skip standardization since these models are
+immune to a wide range of features:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Logistic regression&lt;/li&gt;
+&lt;li&gt;Random forests&lt;/li&gt;
+&lt;li&gt;Decision trees&lt;/li&gt;
+&lt;li&gt;Gradient boosting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;difference-transform&#34;&gt;Difference transform&lt;/h2&gt;
+&lt;p&gt;A difference transform is most useful when we are dealing with time series.
+In case there is a trend in a time series, and we would like to get rid of it,
+we can apply a difference transform by subtracting the value at time $ t-1 $
+from the current time $ t $ value. More precisely,&lt;/p&gt;
+&lt;p&gt;$$ x[t] = x[t] - x[t-1], \quad (5) $$&lt;/p&gt;
+&lt;p&gt;and if we would like to get rid of a seasonal structure, then we only need
+to take into account the period (or frequency) of that seasonality,&lt;/p&gt;
+&lt;p&gt;$$ x[t] = x[t] - x[t - d], \quad (6) $$&lt;/p&gt;
+&lt;p&gt;where $ d $ is the delay or the period of seasonality (&lt;em&gt;e.g.&lt;/em&gt;, how many
+data points in the past we should subtract).&lt;/p&gt;
+&lt;p&gt;The difference transform is easy to implement in Python. The following code
+snippet provides two functions to apply and reverse the difference transform.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; np
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;difference&lt;/span&gt;(X, delay&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; len(X)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    diff &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [X[i] &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; X[i &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; delay] &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(delay, n)]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#a6e22e&#34;&gt;invDifference&lt;/span&gt;(X, dX, delay&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; len(X)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    inv &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [dX[i &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; delay] &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; X[i &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; delay] &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(delay, n)]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; __name__ &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#39;__main__&amp;#39;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    x &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;array([i &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#f92672&#34;&gt;in&lt;/span&gt; range(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;)])
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(x)					&lt;span style=&#34;color:#75715e&#34;&gt;# 1, 2, 3, 4, 5, 6, 7, 8, 9&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    x_diff &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; difference(x, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(x_diff)				&lt;span style=&#34;color:#75715e&#34;&gt;# [1, 1, 1, 1, 1, 1, 1, 1]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#75715e&#34;&gt;# We can obtain similar results when delay=1 using Numpy&amp;#39;s diff function&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    x_diff_prime &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;diff(x)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(x_diff_prime)			&lt;span style=&#34;color:#75715e&#34;&gt;# [1 1 1 1 1 1 1 1]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	x_diff_inv &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; invDifference(x, x_diff, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(x_diff_inv)			&lt;span style=&#34;color:#75715e&#34;&gt;# [2, 3, 4, 5, 6, 7, 8, 9]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#75715e&#34;&gt;# Another way to inverse the difference when delay=1 is the following&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    x_diff_prime_inv &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;r_[x[&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], x_diff_prime]&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;cumsum()
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    print(x_diff_prime_inv)		&lt;span style=&#34;color:#75715e&#34;&gt;# [1 2 3 4 5 6 7 8 9]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;power-transform&#34;&gt;Power transform&lt;/h2&gt;
+&lt;p&gt;We can apply a power transform when we want to make our data distribution look
+more like Gaussian. At the same time, a power transformation will also stabilize
+the variance of our data. There are two major power transforms, the Cox-Box [4]
+and the Yeo-Johnson [5]. The &lt;em&gt;sklearn&lt;/em&gt; Python package supports Cox-Box and
+Yeo-Johnson transforms, and the Box-Cox transform requires strictly positive
+data. On the other hand, Yeo-Johnson supports positive and negative data [6].
+The following code snippet demonstrates how we can apply them to our data.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; numpy &lt;span style=&#34;color:#66d9ef&#34;&gt;as&lt;/span&gt; np
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;from&lt;/span&gt; sklearn.preprocessing &lt;span style=&#34;color:#f92672&#34;&gt;import&lt;/span&gt; PowerTransformer
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;X &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;random&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;random(&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(X)	
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# array([0.92222554, 0.92306673, 0.82856923, 0.8713333 , 0.08001814,&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#        0.12258023, 0.5008433 , 0.60396389, 0.24539718, 0.55259061])&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;pt &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; PowerTransformer(method&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;box-cox&amp;#34;&lt;/span&gt;)		&lt;span style=&#34;color:#75715e&#34;&gt;# or method=&amp;#39;yeo-johnson&amp;#39; (default)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# fit_transform receives ndarray of shape (n_samples, n_features)&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Z &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; pt&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;fit_transform(X&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;reshape(&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)	
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Z &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Z[:, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]								&lt;span style=&#34;color:#75715e&#34;&gt;# we have only one feature&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;print(Z)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# [-1.71002627  1.17246013 -1.55389497  0.91312675 -0.02584321  0.19532181&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#75715e&#34;&gt;#  -0.08403872  1.48983064  0.03445026 -0.43138641]&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;summary&#34;&gt;Summary&lt;/h2&gt;
+&lt;p&gt;We went through five essential data transforms, centering data,
+normalization, standardization, difference, and power transform. We briefly
+described the math behind those transformations and provided some Python
+functions based on &lt;em&gt;sklearn&lt;/em&gt; that implement those transformations.&lt;/p&gt;
+&lt;h3 id=&#34;cited-as&#34;&gt;Cited as&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;@article{detorakis2022acfpacf,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  title   = &amp;#34;Useful data transformations&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  author  = &amp;#34;Georgios Is. Detorakis&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  journal = &amp;#34;gdetor.github.io&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  year    = &amp;#34;2022&amp;#34;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  url     = &amp;#34;https://gdetor.github.io/posts/normalization&amp;#34;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;Pedregosa et al., &lt;em&gt;Scikit-learn: Machine Learning in Python,&lt;/em&gt;, JMLR 12, pp. 2825-2830, 2011.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html#sklearn.preprocessing.MinMaxScaler&#34;&gt;Sklearn MinMaxScaler&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.StandardScaler.html&#34;&gt;Sklearn StandardScaler&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;G. E. Box and D. R. Cox, &lt;em&gt;An analysis of transformations&lt;/em&gt;, Journal of the Royal Statistical Society, Series B. 26 (2): 211–252, 1964.&lt;/li&gt;
+&lt;li&gt;In-Kwon Yeo and R.A. Johnson, &lt;em&gt;A New Family of Power Transformations to Improve Normality or Symmetry&lt;/em&gt;, Biometrica, 87(4), 2000.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html#sklearn.preprocessing.PowerTransformer&#34;&gt;Sklearn PowerTransformer&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>
