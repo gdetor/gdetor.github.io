@@ -193,7 +193,25 @@ and <a href="https://twitter.com/linuxtoday">Linux Today</a>. The material is fr
 be redistributed and/or modified. There is no any warranty that
 they work for you or are suitable to your need. The author of this page is
 not responsible for any damage this material may cause.</p>
-<h3 id="how-to-share-files-with-samba-linux">How to share files with SAMBA (Linux)<a href="#how-to-share-files-with-samba-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="how-to-avoid-nested-loops-python">How to avoid nested loops (Python)<a href="#how-to-avoid-nested-loops-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> itertools <span style="color:#f92672">import</span> product
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>]
+</span></span><span style="display:flex;"><span>y <span style="color:#f92672">=</span> [<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>]
+</span></span><span style="display:flex;"><span>z <span style="color:#f92672">=</span> [<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">10</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i, j, k <span style="color:#f92672">in</span> product(x, y, z):
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span> <span style="color:#75715e"># do something with x, y, and z</span>
+</span></span></code></pre></div><h3 id="eval-function-python">Eval function (Python)<a href="#eval-function-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">foo</span>(x, y, operator):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> eval(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>x<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span>operator<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span>b<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>x, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>
+</span></span><span style="display:flex;"><span>operator <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;+&#34;</span>
+</span></span><span style="display:flex;"><span>print(foo(x, y, operator))
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">9</span>
+</span></span></code></pre></div><h3 id="how-to-share-files-with-samba-linux">How to share files with SAMBA (Linux)<a href="#how-to-share-files-with-samba-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt install samba        <span style="color:#75715e"># Install samba packages on Ubuntu/Debian</span>
 </span></span><span style="display:flex;"><span>$ mkdir samba_shared_folder     <span style="color:#75715e"># Create a temporary folder</span>
 </span></span><span style="display:flex;"><span>$ vim /etc/samba/smb.conf
