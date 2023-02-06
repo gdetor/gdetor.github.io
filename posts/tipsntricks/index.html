@@ -193,7 +193,13 @@ and <a href="https://twitter.com/linuxtoday">Linux Today</a>. The material is fr
 be redistributed and/or modified. There is no any warranty that
 they work for you or are suitable to your need. The author of this page is
 not responsible for any damage this material may cause.</p>
-<h3 id="how-to-avoid-nested-loops-python">How to avoid nested loops (Python)<a href="#how-to-avoid-nested-loops-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="how-to-delete-all-files-except-one-or-few-files-with-extensions-linux">How to delete all files except one or few files with extensions (Linux)<a href="#how-to-delete-all-files-except-one-or-few-files-with-extensions-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ rm -v !<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;filaneme_youd_like_to_keep&#34;</span><span style="color:#f92672">)</span>     <span style="color:#75715e"># verbose mode</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ rm -i !<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;foo&#34;</span>|<span style="color:#e6db74">&#34;bar&#34;</span><span style="color:#f92672">)</span>   <span style="color:#75715e"># interactive mode - keep files foo and bar</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ rm -v <span style="color:#f92672">(</span>*.pdf | *.odt<span style="color:#f92672">)</span>  <span style="color:#75715e"># keep files with extensions pdf and odt</span>
+</span></span></code></pre></div><h3 id="how-to-avoid-nested-loops-python">How to avoid nested loops (Python)<a href="#how-to-avoid-nested-loops-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> itertools <span style="color:#f92672">import</span> product
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
@@ -340,7 +346,7 @@ or through the terminal:</p>
 </span></span></code></pre></div><h3 id="power-off-an-external-hard-drive-linux">Power-off an external hard drive (Linux)<a href="#power-off-an-external-hard-drive-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ udiskctl power-off -b /dev/sdX    <span style="color:#75715e"># obtain X using lsblk</span>
 </span></span></code></pre></div><h3 id="rsync-your-data-linux">rsync your data (Linux)<a href="#rsync-your-data-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ rsync -avzhP src dst --exclude-from<span style="color:#f92672">=</span>file.txt --inlude<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;.git/config&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ rsync -avzhP src dst --exclude-from<span style="color:#f92672">=</span>file.txt --include<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;.git/config&#34;</span>
 </span></span></code></pre></div><h3 id="recover-data-linux">Recover data (Linux)<a href="#recover-data-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ddrescue -dr3 /dev/sdX imagename.image logfile
 </span></span></code></pre></div><h3 id="random-execution-of-a-linux-command-linux">Random execution of a Linux command (Linux)<a href="#random-execution-of-a-linux-command-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
