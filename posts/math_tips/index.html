@@ -230,59 +230,61 @@ or one contains the other, or they overlap. If any of those three conditions
 is true, then we know that the two sets are <strong>not</strong> linearly separable.
 In Python, we can quickly check that using the function <code>ConvexHull</code> of
 <em>Scipy</em>. Here is an example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pylab <span style="color:#66d9ef">as</span> plt
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.datasets <span style="color:#f92672">import</span> make_moons, make_blobs
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> scipy.spatial <span style="color:#f92672">import</span> ConvexHull
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
-</span></span><span style="display:flex;"><span>    S <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>       <span style="color:#75715e"># size of scatter plot point</span>
-</span></span><span style="display:flex;"><span>    blobs <span style="color:#f92672">=</span> make_blobs(n_samples<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, centers<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">13</span>)
-</span></span><span style="display:flex;"><span>    moons <span style="color:#f92672">=</span> make_moons(n_samples<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    fig <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">13</span>, <span style="color:#ae81ff">11</span>))
-</span></span><span style="display:flex;"><span>    ax1 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">221</span>)
-</span></span><span style="display:flex;"><span>    Xb, Yb <span style="color:#f92672">=</span> blobs
-</span></span><span style="display:flex;"><span>    x1b <span style="color:#f92672">=</span> Xb[Yb <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>]
-</span></span><span style="display:flex;"><span>    x2b <span style="color:#f92672">=</span> Xb[Yb <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>]
-</span></span><span style="display:flex;"><span>    ax1<span style="color:#f92672">.</span>scatter(x1b[:, <span style="color:#ae81ff">0</span>], x1b[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
-</span></span><span style="display:flex;"><span>    ax1<span style="color:#f92672">.</span>scatter(x2b[:, <span style="color:#ae81ff">0</span>], x2b[:, <span style="color:#ae81ff">1</span>], c<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;orange&#34;</span>, s<span style="color:#f92672">=</span>S)
-</span></span><span style="display:flex;"><span>    ax1<span style="color:#f92672">.</span>set_xticks([])
-</span></span><span style="display:flex;"><span>    ax1<span style="color:#f92672">.</span>set_yticks([])
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    ax2 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">222</span>)
-</span></span><span style="display:flex;"><span>    X, Y <span style="color:#f92672">=</span> moons
-</span></span><span style="display:flex;"><span>    x1 <span style="color:#f92672">=</span> X[Y <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>]
-</span></span><span style="display:flex;"><span>    x2 <span style="color:#f92672">=</span> X[Y <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>]
-</span></span><span style="display:flex;"><span>    ax2<span style="color:#f92672">.</span>scatter(x1[:, <span style="color:#ae81ff">0</span>], x1[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
-</span></span><span style="display:flex;"><span>    ax2<span style="color:#f92672">.</span>scatter(x2[:, <span style="color:#ae81ff">0</span>], x2[:, <span style="color:#ae81ff">1</span>], c<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;orange&#34;</span>, s<span style="color:#f92672">=</span>S)
-</span></span><span style="display:flex;"><span>    ax2<span style="color:#f92672">.</span>set_xticks([])
-</span></span><span style="display:flex;"><span>    ax2<span style="color:#f92672">.</span>set_yticks([])
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    ax3 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">223</span>)
-</span></span><span style="display:flex;"><span>    ch1 <span style="color:#f92672">=</span> ConvexHull(x1b)			<span style="color:#75715e"># Compute the convex hull</span>
-</span></span><span style="display:flex;"><span>    ax3<span style="color:#f92672">.</span>scatter(x1b[:, <span style="color:#ae81ff">0</span>], x1b[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
-</span></span><span style="display:flex;"><span>    ax3<span style="color:#f92672">.</span>plot(x1b[ch1<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">0</span>], x1b[ch1<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">1</span>], lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, c<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>)
-</span></span><span style="display:flex;"><span>    ch2 <span style="color:#f92672">=</span> ConvexHull(x2b)
-</span></span><span style="display:flex;"><span>    ax3<span style="color:#f92672">.</span>scatter(x2b[:, <span style="color:#ae81ff">0</span>], x2b[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
-</span></span><span style="display:flex;"><span>    ax3<span style="color:#f92672">.</span>plot(x2b[ch2<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">0</span>], x2b[ch2<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">1</span>], lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, c<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>)
-</span></span><span style="display:flex;"><span>    ax3<span style="color:#f92672">.</span>set_xticks([])
-</span></span><span style="display:flex;"><span>    ax3<span style="color:#f92672">.</span>set_yticks([])
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    ax4 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">224</span>)
-</span></span><span style="display:flex;"><span>    ch1 <span style="color:#f92672">=</span> ConvexHull(x1)
-</span></span><span style="display:flex;"><span>    ax4<span style="color:#f92672">.</span>scatter(x1[:, <span style="color:#ae81ff">0</span>], x1[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
-</span></span><span style="display:flex;"><span>    ax4<span style="color:#f92672">.</span>plot(x1[ch1<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">0</span>], x1[ch1<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">1</span>], lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, c<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>)
-</span></span><span style="display:flex;"><span>    ch2 <span style="color:#f92672">=</span> ConvexHull(x2)
-</span></span><span style="display:flex;"><span>    ax4<span style="color:#f92672">.</span>scatter(x2[:, <span style="color:#ae81ff">0</span>], x2[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
-</span></span><span style="display:flex;"><span>    ax4<span style="color:#f92672">.</span>plot(x2[ch2<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">0</span>], x2[ch2<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">1</span>], lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, c<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>)
-</span></span><span style="display:flex;"><span>    ax4<span style="color:#f92672">.</span>set_xticks([])
-</span></span><span style="display:flex;"><span>    ax4<span style="color:#f92672">.</span>set_yticks([])
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>savefig(<span style="color:#e6db74">&#34;convec_hulls.png&#34;</span>)
-</span></span><span style="display:flex;"><span>    plt<span style="color:#f92672">.</span>show()
-</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> matplotlib.pylab <span style="color:#66d9ef">as</span> plt
+
+<span style="color:#f92672">from</span> sklearn.datasets <span style="color:#f92672">import</span> make_moons, make_blobs
+<span style="color:#f92672">from</span> scipy.spatial <span style="color:#f92672">import</span> ConvexHull
+
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    S <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>       <span style="color:#75715e"># size of scatter plot point</span>
+    blobs <span style="color:#f92672">=</span> make_blobs(n_samples<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, centers<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">13</span>)
+    moons <span style="color:#f92672">=</span> make_moons(n_samples<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>)
+
+    fig <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">13</span>, <span style="color:#ae81ff">11</span>))
+    ax1 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">221</span>)
+    Xb, Yb <span style="color:#f92672">=</span> blobs
+    x1b <span style="color:#f92672">=</span> Xb[Yb <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>]
+    x2b <span style="color:#f92672">=</span> Xb[Yb <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>]
+    ax1<span style="color:#f92672">.</span>scatter(x1b[:, <span style="color:#ae81ff">0</span>], x1b[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
+    ax1<span style="color:#f92672">.</span>scatter(x2b[:, <span style="color:#ae81ff">0</span>], x2b[:, <span style="color:#ae81ff">1</span>], c<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;orange&#34;</span>, s<span style="color:#f92672">=</span>S)
+    ax1<span style="color:#f92672">.</span>set_xticks([])
+    ax1<span style="color:#f92672">.</span>set_yticks([])
+
+    ax2 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">222</span>)
+    X, Y <span style="color:#f92672">=</span> moons
+    x1 <span style="color:#f92672">=</span> X[Y <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>]
+    x2 <span style="color:#f92672">=</span> X[Y <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>]
+    ax2<span style="color:#f92672">.</span>scatter(x1[:, <span style="color:#ae81ff">0</span>], x1[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
+    ax2<span style="color:#f92672">.</span>scatter(x2[:, <span style="color:#ae81ff">0</span>], x2[:, <span style="color:#ae81ff">1</span>], c<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;orange&#34;</span>, s<span style="color:#f92672">=</span>S)
+    ax2<span style="color:#f92672">.</span>set_xticks([])
+    ax2<span style="color:#f92672">.</span>set_yticks([])
+
+    ax3 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">223</span>)
+    ch1 <span style="color:#f92672">=</span> ConvexHull(x1b)			<span style="color:#75715e"># Compute the convex hull</span>
+    ax3<span style="color:#f92672">.</span>scatter(x1b[:, <span style="color:#ae81ff">0</span>], x1b[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
+    ax3<span style="color:#f92672">.</span>plot(x1b[ch1<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">0</span>], x1b[ch1<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">1</span>], lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, c<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>)
+    ch2 <span style="color:#f92672">=</span> ConvexHull(x2b)
+    ax3<span style="color:#f92672">.</span>scatter(x2b[:, <span style="color:#ae81ff">0</span>], x2b[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
+    ax3<span style="color:#f92672">.</span>plot(x2b[ch2<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">0</span>], x2b[ch2<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">1</span>], lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, c<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>)
+    ax3<span style="color:#f92672">.</span>set_xticks([])
+    ax3<span style="color:#f92672">.</span>set_yticks([])
+
+    ax4 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">224</span>)
+    ch1 <span style="color:#f92672">=</span> ConvexHull(x1)
+    ax4<span style="color:#f92672">.</span>scatter(x1[:, <span style="color:#ae81ff">0</span>], x1[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
+    ax4<span style="color:#f92672">.</span>plot(x1[ch1<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">0</span>], x1[ch1<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">1</span>], lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, c<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>)
+    ch2 <span style="color:#f92672">=</span> ConvexHull(x2)
+    ax4<span style="color:#f92672">.</span>scatter(x2[:, <span style="color:#ae81ff">0</span>], x2[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
+    ax4<span style="color:#f92672">.</span>plot(x2[ch2<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">0</span>], x2[ch2<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">1</span>], lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, c<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>)
+    ax4<span style="color:#f92672">.</span>set_xticks([])
+    ax4<span style="color:#f92672">.</span>set_yticks([])
+
+    plt<span style="color:#f92672">.</span>savefig(<span style="color:#e6db74">&#34;convec_hulls.png&#34;</span>)
+    plt<span style="color:#f92672">.</span>show()
+
+
+</code></pre></div>
   <figure class="center" >
     <img src="/images/convex_hulls.png"   style="border-radius: 8px;"  />
     
@@ -294,85 +296,85 @@ In Python, we can quickly check that using the function <code>ConvexHull</code> 
 <h2 id="positive-definite-matrix">Positive definite matrix<a href="#positive-definite-matrix" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>Check if a given matrix $ \bf{A} $ is positive definite. If all the eigenvalues
 of matrix $ \bf{A} $ are positive then the matrix is positive definite.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> A <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>], [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>]])
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> print(A)
-</span></span><span style="display:flex;"><span>[[<span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span>]
-</span></span><span style="display:flex;"><span> [<span style="color:#ae81ff">2</span> <span style="color:#ae81ff">1</span>]]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> np<span style="color:#f92672">.</span>all(np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>eigvals(A) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">False</span>       <span style="color:#75715e"># A is not a positive definite matrix</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> A <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">2</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>], [<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>], [<span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>]])
-</span></span><span style="display:flex;"><span>print(A)
-</span></span><span style="display:flex;"><span>[[ <span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>]
-</span></span><span style="display:flex;"><span> [<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
-</span></span><span style="display:flex;"><span> [ <span style="color:#ae81ff">0</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">2</span>]]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> np<span style="color:#f92672">.</span>all(np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>eigvals(A) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">True</span>        <span style="color:#75715e"># A is positive definite</span>
-</span></span></code></pre></div><h2 id="random-matrix-with-predetermined-condition-number">Random matrix with predetermined condition number<a href="#random-matrix-with-predetermined-condition-number" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#960050;background-color:#1e0010">$</span> A <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>], [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>]])
+<span style="color:#960050;background-color:#1e0010">$</span> print(A)
+[[<span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span>]
+ [<span style="color:#ae81ff">2</span> <span style="color:#ae81ff">1</span>]]
+
+<span style="color:#960050;background-color:#1e0010">$</span> np<span style="color:#f92672">.</span>all(np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>eigvals(A) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
+<span style="color:#66d9ef">False</span>       <span style="color:#75715e"># A is not a positive definite matrix</span>
+
+<span style="color:#960050;background-color:#1e0010">$</span> A <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">2</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">0</span>], [<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>], [<span style="color:#ae81ff">0</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>]])
+print(A)
+[[ <span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">0</span>]
+ [<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+ [ <span style="color:#ae81ff">0</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>  <span style="color:#ae81ff">2</span>]]
+
+<span style="color:#960050;background-color:#1e0010">$</span> np<span style="color:#f92672">.</span>all(np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>eigvals(A) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
+<span style="color:#66d9ef">True</span>        <span style="color:#75715e"># A is positive definite</span>
+</code></pre></div><h2 id="random-matrix-with-predetermined-condition-number">Random matrix with predetermined condition number<a href="#random-matrix-with-predetermined-condition-number" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>You can generate a random matrix with predetermined condition number by
 following method:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> cond <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.0</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> n, m <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> A <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, (m, n))
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> print(A)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>[[ <span style="color:#ae81ff">0.24143692</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">0.61944458</span>]
-</span></span><span style="display:flex;"><span> [ <span style="color:#ae81ff">0.49427012</span>  <span style="color:#ae81ff">1.34003024</span>]
-</span></span><span style="display:flex;"><span> [<span style="color:#f92672">-</span><span style="color:#ae81ff">1.08271826</span>  <span style="color:#ae81ff">0.91021725</span>]]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> k <span style="color:#f92672">=</span> min(m, n)
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> U, S, V <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>svd(A)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> S <span style="color:#f92672">=</span> S[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> ((cond <span style="color:#f92672">-</span> <span style="color:#ae81ff">1.0</span>) <span style="color:#f92672">/</span> cond) <span style="color:#f92672">*</span> (S[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">-</span> S) <span style="color:#f92672">/</span> (S[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">-</span> S[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]))
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> SMAT <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((m, n), dtype<span style="color:#f92672">=</span>complex) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1e-9</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> smat[:k, :k] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>diag(S)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> B <span style="color:#f92672">=</span> U <span style="color:#f92672">@</span> (SMAT <span style="color:#f92672">@</span> V<span style="color:#f92672">.</span>T)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> print(<span style="color:#e6db74">&#34;Desired condition number: &#34;</span>, cond)
-</span></span><span style="display:flex;"><span>Desired condition number: <span style="color:#ae81ff">3.0</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> print(<span style="color:#e6db74">&#34;Actual condition number&#34;</span>, np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>cond(B))
-</span></span><span style="display:flex;"><span>Actual condition number: <span style="color:#ae81ff">2.9999999999999973</span>
-</span></span></code></pre></div><h2 id="integer-operations">Integer operations<a href="#integer-operations" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#960050;background-color:#1e0010">$</span> cond <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.0</span>
+<span style="color:#960050;background-color:#1e0010">$</span> n, m <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>
+<span style="color:#960050;background-color:#1e0010">$</span> A <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, (m, n))
+<span style="color:#960050;background-color:#1e0010">$</span> print(A)
+
+[[ <span style="color:#ae81ff">0.24143692</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">0.61944458</span>]
+ [ <span style="color:#ae81ff">0.49427012</span>  <span style="color:#ae81ff">1.34003024</span>]
+ [<span style="color:#f92672">-</span><span style="color:#ae81ff">1.08271826</span>  <span style="color:#ae81ff">0.91021725</span>]]
+
+<span style="color:#960050;background-color:#1e0010">$</span> k <span style="color:#f92672">=</span> min(m, n)
+<span style="color:#960050;background-color:#1e0010">$</span> U, S, V <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>svd(A)
+
+<span style="color:#960050;background-color:#1e0010">$</span> S <span style="color:#f92672">=</span> S[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> ((cond <span style="color:#f92672">-</span> <span style="color:#ae81ff">1.0</span>) <span style="color:#f92672">/</span> cond) <span style="color:#f92672">*</span> (S[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">-</span> S) <span style="color:#f92672">/</span> (S[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">-</span> S[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]))
+
+<span style="color:#960050;background-color:#1e0010">$</span> SMAT <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>zeros((m, n), dtype<span style="color:#f92672">=</span>complex) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1e-9</span>
+<span style="color:#960050;background-color:#1e0010">$</span> smat[:k, :k] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>diag(S)
+
+<span style="color:#960050;background-color:#1e0010">$</span> B <span style="color:#f92672">=</span> U <span style="color:#f92672">@</span> (SMAT <span style="color:#f92672">@</span> V<span style="color:#f92672">.</span>T)
+
+<span style="color:#960050;background-color:#1e0010">$</span> print(<span style="color:#e6db74">&#34;Desired condition number: &#34;</span>, cond)
+Desired condition number: <span style="color:#ae81ff">3.0</span>
+<span style="color:#960050;background-color:#1e0010">$</span> print(<span style="color:#e6db74">&#34;Actual condition number&#34;</span>, np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>cond(B))
+Actual condition number: <span style="color:#ae81ff">2.9999999999999973</span>
+</code></pre></div><h2 id="integer-operations">Integer operations<a href="#integer-operations" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>Fast integer division by two (rounded down). In this case, we have to
 perform a bit shift to the right by $ k $. $ k $ indicates the power of two
 $ 2^k $.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># n &gt;&gt; k</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#ae81ff">6</span> <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">3</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#ae81ff">6</span> <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">2</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0</span>
-</span></span></code></pre></div><p>Fast integer multiplication with two by left-bit-shift.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># n &lt;&lt; k</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#ae81ff">6</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">12</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#ae81ff">6</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">24</span>
-</span></span></code></pre></div><p>Check if an integer $ n $ is even or odd by performing a binary and operation.
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># n &gt;&gt; k</span>
+
+<span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#ae81ff">6</span> <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">1</span>
+<span style="color:#ae81ff">3</span>
+<span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#ae81ff">6</span> <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">2</span>
+<span style="color:#ae81ff">0</span>
+</code></pre></div><p>Fast integer multiplication with two by left-bit-shift.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># n &lt;&lt; k</span>
+
+<span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#ae81ff">6</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">1</span>
+<span style="color:#ae81ff">12</span>
+<span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#ae81ff">6</span> <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">24</span>
+</code></pre></div><p>Check if an integer $ n $ is even or odd by performing a binary and operation.
 If the result of the following operation is 0, then n is even, otherwise is
 an odd number.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># n &amp; 1</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#ae81ff">6</span> <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span>
-</span></span></code></pre></div><p>You can find the maximum power-of-two that divides an integer $ n $ by
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># n &amp; 1</span>
+
+<span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#ae81ff">6</span> <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>
+<span style="color:#ae81ff">0</span>
+<span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">1</span>
+<span style="color:#ae81ff">1</span>
+</code></pre></div><p>You can find the maximum power-of-two that divides an integer $ n $ by
 performing an and operation between the integers $ n $ and its additive inverse
 $ -n $.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># -n &amp; n</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">5</span> <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">5</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">6</span> <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">6</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span>
-</span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">12</span> <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">12</span>
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4</span>
-</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># -n &amp; n</span>
+
+<span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">5</span> <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">5</span>
+<span style="color:#ae81ff">1</span>
+<span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">6</span> <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">6</span>
+<span style="color:#ae81ff">2</span>
+<span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">12</span> <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">12</span>
+<span style="color:#ae81ff">4</span>
+</code></pre></div>
       </div></div>
 
   

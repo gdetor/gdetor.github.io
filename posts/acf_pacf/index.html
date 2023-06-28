@@ -356,30 +356,31 @@ use the letter $ k $ to indicate any lag.</p>
 First, we will write our custom ACF function in the Python programming
 language, and then we will introduce the ACF function of the <em>statsmodels</em>
 Python package.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> <span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">rho</span>(x, nlags<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>):
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Create a list with all the lagged versions of input signal x</span>
-</span></span><span style="display:flex;"><span>    x_lagged <span style="color:#f92672">=</span> [x[:(len(x) <span style="color:#f92672">-</span> i)] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(nlags)]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Compute the mean of input x</span>
-</span></span><span style="display:flex;"><span>    x_bar <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>mean()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Initialize a list that contains the correlations for each lag</span>
-</span></span><span style="display:flex;"><span>    acf <span style="color:#f92672">=</span> []
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Loop over all lags and use equation (1)</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> lag <span style="color:#f92672">in</span> range(nlags):
-</span></span><span style="display:flex;"><span>        nominator <span style="color:#f92672">=</span> ((x[lag:] <span style="color:#f92672">-</span> x_bar) <span style="color:#f92672">*</span> (x_lagged[lag] <span style="color:#f92672">-</span> x_bar))<span style="color:#f92672">.</span>sum() 
-</span></span><span style="display:flex;"><span>        denominator <span style="color:#f92672">=</span> ((x <span style="color:#f92672">-</span> x_bar)<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>)<span style="color:#f92672">.</span>sum()
-</span></span><span style="display:flex;"><span>        acf<span style="color:#f92672">.</span>append(nominator <span style="color:#f92672">/</span> denominator)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> acf
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>])
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> rho(x, nlags<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>)
-</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">0.5714285714285714</span>, <span style="color:#ae81ff">0.17857142857142858</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.14285714285714285</span>]
-</span></span></code></pre></div><p>The above code snippet shows how to implement a naive autocorrelation
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;</span> <span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">rho</span>(x, nlags<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>):
+    <span style="color:#75715e"># Create a list with all the lagged versions of input signal x</span>
+    x_lagged <span style="color:#f92672">=</span> [x[:(len(x) <span style="color:#f92672">-</span> i)] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(nlags)]
+
+    <span style="color:#75715e"># Compute the mean of input x</span>
+    x_bar <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>mean()
+
+    <span style="color:#75715e"># Initialize a list that contains the correlations for each lag</span>
+    acf <span style="color:#f92672">=</span> []
+
+    <span style="color:#75715e"># Loop over all lags and use equation (1)</span>
+    <span style="color:#66d9ef">for</span> lag <span style="color:#f92672">in</span> range(nlags):
+        nominator <span style="color:#f92672">=</span> ((x[lag:] <span style="color:#f92672">-</span> x_bar) <span style="color:#f92672">*</span> (x_lagged[lag] <span style="color:#f92672">-</span> x_bar))<span style="color:#f92672">.</span>sum() 
+        denominator <span style="color:#f92672">=</span> ((x <span style="color:#f92672">-</span> x_bar)<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>)<span style="color:#f92672">.</span>sum()
+        acf<span style="color:#f92672">.</span>append(nominator <span style="color:#f92672">/</span> denominator)
+    <span style="color:#66d9ef">return</span> acf
+
+
+<span style="color:#f92672">&gt;&gt;</span> x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>])
+<span style="color:#f92672">&gt;&gt;</span> rho(x, nlags<span style="color:#f92672">=</span><span style="color:#ae81ff">4</span>)
+[<span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">0.5714285714285714</span>, <span style="color:#ae81ff">0.17857142857142858</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.14285714285714285</span>]
+
+</code></pre></div><p>The above code snippet shows how to implement a naive autocorrelation
 algorithm. Now, let&rsquo;s compute the ACF but this time using the <em>statsmodels</em>
 Python package (if you haven&rsquo;t installed the statsmodels package, you will
 find all the installation information <a href="https://www.statsmodels.org/dev/install.html">here</a>).
@@ -387,13 +388,13 @@ The package <em>statsmodels</em> provides tools for the estimation of different
 statistical models, as well as for conducting statistical tests and statistical
 data exploration. We will use the TSA submodule, which contains time series
 analysis and prediction tools.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> <span style="color:#f92672">from</span> statsmodels.tsa.stattools <span style="color:#f92672">import</span> acf       <span style="color:#75715e"># import ACF</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>])
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> acf(x, nlags<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, fft<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>) 
-</span></span><span style="display:flex;"><span>array([ <span style="color:#ae81ff">1.</span>        ,  <span style="color:#ae81ff">0.57142857</span>,  <span style="color:#ae81ff">0.17857143</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.14285714</span>])
-</span></span></code></pre></div><p>As we expected, the ACF of the statsmodels package returns the same
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;</span> <span style="color:#f92672">from</span> statsmodels.tsa.stattools <span style="color:#f92672">import</span> acf       <span style="color:#75715e"># import ACF</span>
+
+
+<span style="color:#f92672">&gt;&gt;</span> x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>])
+<span style="color:#f92672">&gt;&gt;</span> acf(x, nlags<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, fft<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>) 
+array([ <span style="color:#ae81ff">1.</span>        ,  <span style="color:#ae81ff">0.57142857</span>,  <span style="color:#ae81ff">0.17857143</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.14285714</span>])
+</code></pre></div><p>As we expected, the ACF of the statsmodels package returns the same
 results as our custom-made function does. The only difference is that
 we used four lags in our custom function, and that&rsquo;s because we count
 the zero lag ($ k = 0 $) as well. For more information about the ACF
@@ -432,40 +433,40 @@ and the Levinson-Durbin recursion method. The package <em>statsmodels</em> imple
 all those methods and a few more (see <em>statsmodels</em> <a href="https://www.statsmodels.org/dev/generated/statsmodels.tsa.stattools.pacf.html">docs</a>).</p>
 <p>Let&rsquo;s take the previous very simple example and estimate the PCAF for the
 time series $ x[t] = 1, 2, 3, 4, 5, 6, 7 $.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> <span style="color:#f92672">from</span> statsmodels.tsa.stattools <span style="color:#f92672">import</span> acf       <span style="color:#75715e"># import ACF</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>])
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> acf(x, nlags<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ols&#34;</span>)
-</span></span><span style="display:flex;"><span>array([ <span style="color:#ae81ff">1.00000000e+00</span>,  <span style="color:#ae81ff">1.00000000e+00</span>,  <span style="color:#ae81ff">1.55431223e-15</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">3.33333333e-01</span>])
-</span></span></code></pre></div><p>In the code snippet above, we specified the algorithm for estimating the PCAF
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;</span> <span style="color:#f92672">from</span> statsmodels.tsa.stattools <span style="color:#f92672">import</span> acf       <span style="color:#75715e"># import ACF</span>
+
+<span style="color:#f92672">&gt;&gt;</span> x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>])
+<span style="color:#f92672">&gt;&gt;</span> acf(x, nlags<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>, method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ols&#34;</span>)
+array([ <span style="color:#ae81ff">1.00000000e+00</span>,  <span style="color:#ae81ff">1.00000000e+00</span>,  <span style="color:#ae81ff">1.55431223e-15</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">3.33333333e-01</span>])
+</code></pre></div><p>In the code snippet above, we specified the algorithm for estimating the PCAF
 to be the ordinary least squares. It is relatively simple to implement the OLS
 method from scratch. We will use the function <code>lagmat</code> of statsmodels which
 creates a $ 2d $ array of lags, and we will separate the zero lag signal,
 which is the original data. Finally, we will use the <em>Numpy</em> function <code>lstsq</code>
 to estimate the parameters of the least squares and thus compute the PACF.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> <span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> <span style="color:#f92672">from</span> numpy.linalg <span style="color:#f92672">import</span> lstsq
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> <span style="color:#f92672">from</span> statsmodels.tsa.stattools <span style="color:#f92672">import</span> lagmat 
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>])
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Compute the lags (x_lagged) and keep the original time series in x0</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> x_lagged, x0 <span style="color:#f92672">=</span> lagmat(x, <span style="color:#ae81ff">3</span>, original<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sep&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Prepend x_lagged with a column of ones (add constant)</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> x_lagged <span style="color:#f92672">=</span> x_lagged <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>append(np<span style="color:#f92672">.</span>ones((<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">1</span>)), x_lagged, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># The first element of PACF is always 1.0</span>
-</span></span><span style="display:flex;"><span>pacf <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1.0</span>]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Run the least squares over lags</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> <span style="color:#66d9ef">for</span> lag <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, lags <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span>     params <span style="color:#f92672">=</span> lstsq(x_lagged[lag:, :(lag<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)], x0[lag:], rcond<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)[<span style="color:#ae81ff">0</span>]
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span>     pacf<span style="color:#f92672">.</span>append(params[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>])
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;</span> print(pacf)
-</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">1.000000000000001</span>, <span style="color:#ae81ff">1.5543122344752192e-15</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.33333333333333415</span>]
-</span></span></code></pre></div><p>Keep in mind that here we used the method of least squares, and if one
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;</span> <span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+<span style="color:#f92672">&gt;&gt;</span> <span style="color:#f92672">from</span> numpy.linalg <span style="color:#f92672">import</span> lstsq
+<span style="color:#f92672">&gt;&gt;</span> <span style="color:#f92672">from</span> statsmodels.tsa.stattools <span style="color:#f92672">import</span> lagmat 
+
+<span style="color:#f92672">&gt;&gt;</span> x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>])
+
+<span style="color:#75715e"># Compute the lags (x_lagged) and keep the original time series in x0</span>
+<span style="color:#f92672">&gt;&gt;</span> x_lagged, x0 <span style="color:#f92672">=</span> lagmat(x, <span style="color:#ae81ff">3</span>, original<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;sep&#34;</span>)
+
+<span style="color:#75715e"># Prepend x_lagged with a column of ones (add constant)</span>
+<span style="color:#f92672">&gt;&gt;</span> x_lagged <span style="color:#f92672">=</span> x_lagged <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>append(np<span style="color:#f92672">.</span>ones((<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">1</span>)), x_lagged, axis<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+
+<span style="color:#75715e"># The first element of PACF is always 1.0</span>
+pacf <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1.0</span>]
+
+<span style="color:#75715e"># Run the least squares over lags</span>
+<span style="color:#f92672">&gt;&gt;</span> <span style="color:#66d9ef">for</span> lag <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, lags <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>):
+<span style="color:#f92672">&gt;&gt;</span>     params <span style="color:#f92672">=</span> lstsq(x_lagged[lag:, :(lag<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)], x0[lag:], rcond<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)[<span style="color:#ae81ff">0</span>]
+<span style="color:#f92672">&gt;&gt;</span>     pacf<span style="color:#f92672">.</span>append(params[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>])
+
+<span style="color:#f92672">&gt;&gt;</span> print(pacf)
+[<span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">1.000000000000001</span>, <span style="color:#ae81ff">1.5543122344752192e-15</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.33333333333333415</span>]
+</code></pre></div><p>Keep in mind that here we used the method of least squares, and if one
 wants to use a different approach to estimate the PACF, the values will
 differ from the ones in the code snippet above. Moreover, the function
 <code>lstsq</code> receives an argument named <code>rcond</code> which is a cut-off ratio
@@ -475,43 +476,44 @@ for small singular values of <code>x_lagged</code>.</p>
 given a time series. Now we will explore the visualization of ACF and PACF
 and learn how to interpret their graphical representations. To better
 demonstrate the power of ACF and PACF visualization, we will apply those
-two methods to the airport passengers&rsquo; data set (see Figure 1). To simplify
+two methods to the airport passengers' data set (see Figure 1). To simplify
 things we will use the functions <code>plot_acf</code> and <code>plot_pacf</code> provided by the
 Python module <em>statsmodels</em>.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pylab <span style="color:#66d9ef">as</span> plt
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Import the plot_acf, and plot_pacf functtions</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> statsmodels.graphics.tsaplots <span style="color:#f92672">import</span> plot_acf, plot_pacf
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Load the data</span>
-</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>genfromtxt(<span style="color:#e6db74">&#34;PATH_TO_FILE/passengers.csv&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>fig <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">12</span>))
-</span></span><span style="display:flex;"><span>ax1 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">211</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Call the function for estimating and plotting the ACF</span>
-</span></span><span style="display:flex;"><span>plot_acf(x, ax1, fft<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>ticks <span style="color:#f92672">=</span> ax1<span style="color:#f92672">.</span>get_xticks()<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;i&#39;</span>)
-</span></span><span style="display:flex;"><span>ax1<span style="color:#f92672">.</span>set_xticklabels(ticks, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">14</span>, weight<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bold&#39;</span>)
-</span></span><span style="display:flex;"><span>ticks <span style="color:#f92672">=</span> ax1<span style="color:#f92672">.</span>get_yticks()
-</span></span><span style="display:flex;"><span>ax1<span style="color:#f92672">.</span>set_yticklabels(ticks, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">14</span>, weight<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bold&#39;</span>)
-</span></span><span style="display:flex;"><span>ax1<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#34;Autocorrelation (ACF)&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">16</span>, weight<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bold&#39;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>ax2 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">212</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Call the function plot_pacf to estimate and visualize the PACF</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># We use the method &#34;ols&#34; as we did in a previous example</span>
-</span></span><span style="display:flex;"><span>plot_pacf(x, ax2, method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ols&#34;</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>ticks <span style="color:#f92672">=</span> ax2<span style="color:#f92672">.</span>get_xticks()<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;i&#39;</span>)
-</span></span><span style="display:flex;"><span>ax2<span style="color:#f92672">.</span>set_xticklabels(ticks, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">14</span>, weight<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bold&#39;</span>)
-</span></span><span style="display:flex;"><span>ticks <span style="color:#f92672">=</span> ax2<span style="color:#f92672">.</span>get_yticks()
-</span></span><span style="display:flex;"><span>ax2<span style="color:#f92672">.</span>set_yticklabels(ticks, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">14</span>, weight<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bold&#39;</span>)
-</span></span><span style="display:flex;"><span>ax2<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#34;Partial Autocorrelation (PACF)&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">16</span>, weight<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bold&#39;</span>)
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>show()
-</span></span></code></pre></div><p>After running the script above, we get the plots of ACF and PACF,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+<span style="color:#f92672">import</span> matplotlib.pylab <span style="color:#66d9ef">as</span> plt
+
+<span style="color:#75715e"># Import the plot_acf, and plot_pacf functtions</span>
+<span style="color:#f92672">from</span> statsmodels.graphics.tsaplots <span style="color:#f92672">import</span> plot_acf, plot_pacf
+
+<span style="color:#75715e"># Load the data</span>
+x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>genfromtxt(<span style="color:#e6db74">&#34;PATH_TO_FILE/passengers.csv&#34;</span>)
+
+fig <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">12</span>))
+ax1 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">211</span>)
+
+<span style="color:#75715e"># Call the function for estimating and plotting the ACF</span>
+plot_acf(x, ax1, fft<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+
+ticks <span style="color:#f92672">=</span> ax1<span style="color:#f92672">.</span>get_xticks()<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;i&#39;</span>)
+ax1<span style="color:#f92672">.</span>set_xticklabels(ticks, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">14</span>, weight<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bold&#39;</span>)
+ticks <span style="color:#f92672">=</span> ax1<span style="color:#f92672">.</span>get_yticks()
+ax1<span style="color:#f92672">.</span>set_yticklabels(ticks, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">14</span>, weight<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bold&#39;</span>)
+ax1<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#34;Autocorrelation (ACF)&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">16</span>, weight<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bold&#39;</span>)
+
+ax2 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">212</span>)
+
+<span style="color:#75715e"># Call the function plot_pacf to estimate and visualize the PACF</span>
+<span style="color:#75715e"># We use the method &#34;ols&#34; as we did in a previous example</span>
+plot_pacf(x, ax2, method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ols&#34;</span>)
+
+ticks <span style="color:#f92672">=</span> ax2<span style="color:#f92672">.</span>get_xticks()<span style="color:#f92672">.</span>astype(<span style="color:#e6db74">&#39;i&#39;</span>)
+ax2<span style="color:#f92672">.</span>set_xticklabels(ticks, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">14</span>, weight<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bold&#39;</span>)
+ticks <span style="color:#f92672">=</span> ax2<span style="color:#f92672">.</span>get_yticks()
+ax2<span style="color:#f92672">.</span>set_yticklabels(ticks, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">14</span>, weight<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bold&#39;</span>)
+ax2<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#34;Partial Autocorrelation (PACF)&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">16</span>, weight<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bold&#39;</span>)
+plt<span style="color:#f92672">.</span>show()
+
+</code></pre></div><p>After running the script above, we get the plots of ACF and PACF,
 as depicted in Figure 2. The left panel shows the ACF, and the right
 is the PACF. Blue-shaded areas indicate the confidence interval cone,
 and each point outside that cone is considered significant ($ 95 $%
@@ -543,7 +545,7 @@ the autoregressive (AR) and the moving average (MA) models.</p>
 <h3 id="autoregressive-model---arp">Autoregressive Model - AR(p)<a href="#autoregressive-model---arp" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <p>The AR(p) model is based on linear regression. It assumes that the
 current value $ x[t] $ is dependent on previous (past) values
-(observations). Due to this ``linear&rsquo;&rsquo; relationship to the past,
+(observations). Due to this ``linear'' relationship to the past,
 AR(p) relies on linear regression. More precisely, it is described
 by the following equation:</p>
 <p>$$ x[t] = \sum_{i=1}^{p} \phi [i] x[t-i] + \epsilon [t], \qquad (2)  $$</p>
@@ -590,7 +592,7 @@ and in [1].<br>
 <strong>Differencing</strong>
 The time series in Figure 1 are non-stationary in the sense of mean (see
 <strong>Stationarity</strong>). One way to eliminate the non-stationarity is to
-apply a differencing transform, $ x&rsquo;[t] = x[t] - x[t-1] $ (for instance,
+apply a differencing transform, $ x'[t] = x[t] - x[t-1] $ (for instance,
 in Python, we could use the <code>diff()</code> function to apply the differencing
 transform on the original time series.</p>
 </blockquote>
@@ -713,19 +715,19 @@ set; instead, we will have to obtain them somehow, for instance, collect
 them by ourselves.</p>
 <p>In the first code snippet, we show how to build the data set from
 scratch.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> matplotlib.pylab <span style="color:#66d9ef">as</span> plt
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> statsmodels.tsa.ar_model <span style="color:#f92672">import</span> AutoReg
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>seed(<span style="color:#ae81ff">3</span>)	<span style="color:#75715e"># fix the RNG seed for reproducibility</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Create raw data using an AR(1) model</span>
-</span></span><span style="display:flex;"><span>N <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span> 	<span style="color:#75715e"># total number of observations</span>
-</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0.5</span>]	<span style="color:#75715e"># initial value</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(N):
-</span></span><span style="display:flex;"><span>    x<span style="color:#f92672">.</span>append(<span style="color:#ae81ff">0.6</span> <span style="color:#f92672">*</span> x[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>))
-</span></span></code></pre></div><p>The next step is to split the raw data into two separate sets. One
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+<span style="color:#f92672">import</span> matplotlib.pylab <span style="color:#66d9ef">as</span> plt
+
+<span style="color:#f92672">from</span> statsmodels.tsa.ar_model <span style="color:#f92672">import</span> AutoReg
+
+np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>seed(<span style="color:#ae81ff">3</span>)	<span style="color:#75715e"># fix the RNG seed for reproducibility</span>
+
+<span style="color:#75715e"># Create raw data using an AR(1) model</span>
+N <span style="color:#f92672">=</span> <span style="color:#ae81ff">1000</span> 	<span style="color:#75715e"># total number of observations</span>
+x <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0.5</span>]	<span style="color:#75715e"># initial value</span>
+<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(N):
+    x<span style="color:#f92672">.</span>append(<span style="color:#ae81ff">0.6</span> <span style="color:#f92672">*</span> x[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>))
+</code></pre></div><p>The next step is to split the raw data into two separate sets. One
 for training (fitting) the parameters of our AR model and one for
 testing the fitted model. The training data set is usually larger
 than the testing one. Therefore, we use $ 70 $% of the data for
@@ -734,29 +736,29 @@ we have already performed our analysis in Figures 2E and 2F, where
 we estimated the ACF and PACF. Thus, we know that the underlying
 process for those observations is an AR(1), and we need three
 lags to predict the future.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># Split the original data set into train/test data sets</span>
-</span></span><span style="display:flex;"><span>K <span style="color:#f92672">=</span> int(N <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.7</span>)   <span style="color:#75715e"># size of training data set</span>
-</span></span><span style="display:flex;"><span>train_data <span style="color:#f92672">=</span> x[:K]
-</span></span><span style="display:flex;"><span>test_data <span style="color:#f92672">=</span> x[K:]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Fit the AR model using 3 lags (see Figures 2D, E, F)</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># We use the same AR(1) model. </span>
-</span></span><span style="display:flex;"><span>ARmodel <span style="color:#f92672">=</span> AutoReg(train_data, lags<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)<span style="color:#f92672">.</span>fit()
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Print a summary of the fitting process</span>
-</span></span><span style="display:flex;"><span>print(ARmodel<span style="color:#f92672">.</span>summary())
-</span></span></code></pre></div><p>Finally, we use the method <code>predict</code> of the class <code>AutoReg</code> to predict
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># Split the original data set into train/test data sets</span>
+K <span style="color:#f92672">=</span> int(N <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.7</span>)   <span style="color:#75715e"># size of training data set</span>
+train_data <span style="color:#f92672">=</span> x[:K]
+test_data <span style="color:#f92672">=</span> x[K:]
+
+<span style="color:#75715e"># Fit the AR model using 3 lags (see Figures 2D, E, F)</span>
+<span style="color:#75715e"># We use the same AR(1) model. </span>
+ARmodel <span style="color:#f92672">=</span> AutoReg(train_data, lags<span style="color:#f92672">=</span><span style="color:#ae81ff">3</span>)<span style="color:#f92672">.</span>fit()
+
+<span style="color:#75715e"># Print a summary of the fitting process</span>
+print(ARmodel<span style="color:#f92672">.</span>summary())
+</code></pre></div><p>Finally, we use the method <code>predict</code> of the class <code>AutoReg</code> to predict
 five steps into the future (the horizon is five). As we see in Figure 4,
 although the prediction is not perfect, it captures the main pattern.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>horizon <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>	<span style="color:#75715e"># How many values into the future we want to predict</span>
-</span></span><span style="display:flex;"><span>prediction <span style="color:#f92672">=</span> ARmodel<span style="color:#f92672">.</span>predict(start<span style="color:#f92672">=</span>K, end<span style="color:#f92672">=</span>(K <span style="color:#f92672">+</span> horizon), dynamic<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>fig <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>figure()
-</span></span><span style="display:flex;"><span>ax <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">111</span>)
-</span></span><span style="display:flex;"><span>ax<span style="color:#f92672">.</span>plot(prediction, <span style="color:#e6db74">&#39;b&#39;</span>, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;prediction&#34;</span>)
-</span></span><span style="display:flex;"><span>ax<span style="color:#f92672">.</span>plot(test_data[:horizon], <span style="color:#e6db74">&#39;k&#39;</span>, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;target&#34;</span>)
-</span></span><span style="display:flex;"><span>plt<span style="color:#f92672">.</span>plot()
-</span></span></code></pre></div>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">horizon <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>	<span style="color:#75715e"># How many values into the future we want to predict</span>
+prediction <span style="color:#f92672">=</span> ARmodel<span style="color:#f92672">.</span>predict(start<span style="color:#f92672">=</span>K, end<span style="color:#f92672">=</span>(K <span style="color:#f92672">+</span> horizon), dynamic<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+
+fig <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>figure()
+ax <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">111</span>)
+ax<span style="color:#f92672">.</span>plot(prediction, <span style="color:#e6db74">&#39;b&#39;</span>, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;prediction&#34;</span>)
+ax<span style="color:#f92672">.</span>plot(test_data[:horizon], <span style="color:#e6db74">&#39;k&#39;</span>, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;target&#34;</span>)
+plt<span style="color:#f92672">.</span>plot()
+</code></pre></div>
   <figure class="center" >
     <img src="/images/pred_examples.png"   style="border-radius: 8px;"  />
     
@@ -774,14 +776,14 @@ snippets on how to use the <em>statsmodels</em> <code>acf</code> and <code>pacf<
 we give a simple example of using models such as AR(p) to make predictions for
 future values.</p>
 <h3 id="cited-as">Cited as<a href="#cited-as" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>@article{detorakis2022acfpacf,
-</span></span><span style="display:flex;"><span>  title   = &#34;Autocorrelation functions for time series&#34;,
-</span></span><span style="display:flex;"><span>  author  = &#34;Georgios Is. Detorakis&#34;,
-</span></span><span style="display:flex;"><span>  journal = &#34;gdetor.github.io&#34;,
-</span></span><span style="display:flex;"><span>  year    = &#34;2022&#34;,
-</span></span><span style="display:flex;"><span>  url     = &#34;https://gdetor.github.io/posts/acf_pacf&#34;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="references">References<a href="#references" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">@article{detorakis2022acfpacf,
+  title   = &#34;Autocorrelation functions for time series&#34;,
+  author  = &#34;Georgios Is. Detorakis&#34;,
+  journal = &#34;gdetor.github.io&#34;,
+  year    = &#34;2022&#34;,
+  url     = &#34;https://gdetor.github.io/posts/acf_pacf&#34;
+}
+</code></pre></div><h3 id="references">References<a href="#references" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <ol>
 <li>J. Beran, <em>Mathematical Foundations of Time Series Analysis A Concise
 Introduction</em>, Springer, 2017.</li>

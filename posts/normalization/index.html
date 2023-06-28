@@ -227,15 +227,15 @@ transform is this: When we would like to compare data sets of different scales,
 such as temperatures in Celcius and Fahrenheit, we can center each data set
 separately and then compare them.</p>
 <p>The following code snippet shows how we can center data in Python:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">1</span>, (<span style="color:#ae81ff">100</span>,))
-</span></span><span style="display:flex;"><span>X_bar <span style="color:#f92672">=</span> X<span style="color:#f92672">.</span>mean()
-</span></span><span style="display:flex;"><span>print(X_bar)		<span style="color:#75715e"># 4.9911754</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Z <span style="color:#f92672">=</span> X <span style="color:#f92672">-</span> X_bar
-</span></span><span style="display:flex;"><span>print(Z<span style="color:#f92672">.</span>mean()) 	<span style="color:#75715e"># -2.930988e-16 </span>
-</span></span></code></pre></div><h2 id="normalize">Normalize<a href="#normalize" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+
+X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">1</span>, (<span style="color:#ae81ff">100</span>,))
+X_bar <span style="color:#f92672">=</span> X<span style="color:#f92672">.</span>mean()
+print(X_bar)		<span style="color:#75715e"># 4.9911754</span>
+
+Z <span style="color:#f92672">=</span> X <span style="color:#f92672">-</span> X_bar
+print(Z<span style="color:#f92672">.</span>mean()) 	<span style="color:#75715e"># -2.930988e-16 </span>
+</code></pre></div><h2 id="normalize">Normalize<a href="#normalize" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>Originally, data normalization meant rescaling and shifting a data set&rsquo;s values
 so that they range in $ [0, 1] $. The mathematical formula to do that is:</p>
 <p>$$ {\bf z} = \frac{ {\bf x} - x_{\text{min}} }{ x_{\text{max}} - x_{\text{min}} }, \quad (2) $$</p>
@@ -247,19 +247,20 @@ $ [a, b] $ we can use the following formula:</p>
 <p>Normalization is used when we know our data do not follow a Gaussian distribution.</p>
 <p>In Python, we can normalize any data set using the <em>MinMaxScaler</em> function
 of <em>sklearn</em> [2].</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.preprocessing <span style="color:#f92672">import</span> MinMaxScaler
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>random((<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">1</span>))
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Normalize into [0, 1]</span>
-</span></span><span style="display:flex;"><span>scaler <span style="color:#f92672">=</span> MinMaxScaler()
-</span></span><span style="display:flex;"><span>Z <span style="color:#f92672">=</span> scaler<span style="color:#f92672">.</span>fit_transform(X)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Normalize into [2, 4]</span>
-</span></span><span style="display:flex;"><span>scaler <span style="color:#f92672">=</span> MinMaxScaler(feature_range<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>))
-</span></span><span style="display:flex;"><span>Z <span style="color:#f92672">=</span> scaler<span style="color:#f92672">.</span>fit_transform(X)
-</span></span></code></pre></div><h2 id="standarize">Standarize<a href="#standarize" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+<span style="color:#f92672">from</span> sklearn.preprocessing <span style="color:#f92672">import</span> MinMaxScaler
+
+X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>random((<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">1</span>))
+
+<span style="color:#75715e"># Normalize into [0, 1]</span>
+scaler <span style="color:#f92672">=</span> MinMaxScaler()
+Z <span style="color:#f92672">=</span> scaler<span style="color:#f92672">.</span>fit_transform(X)
+
+<span style="color:#75715e"># Normalize into [2, 4]</span>
+scaler <span style="color:#f92672">=</span> MinMaxScaler(feature_range<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>))
+Z <span style="color:#f92672">=</span> scaler<span style="color:#f92672">.</span>fit_transform(X)
+
+</code></pre></div><h2 id="standarize">Standarize<a href="#standarize" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>Let&rsquo;s assume that we have some data on people&rsquo;s height and weight, and we would
 like to use machine learning models on them. Naturally, weight and height
 measure different physical quantities and thus are in various scales and units
@@ -274,17 +275,17 @@ deviation. We usually apply a standardization transformation when we know
 that our data follow a Gaussian-like distribution.</p>
 <p>In Python, we can standardize our data using the preprocessing functions
 provided by the <em>sklearn</em> package [3]. Here is an example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.preprocessing <span style="color:#f92672">import</span> StandardScaler
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>empty((<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">2</span>))
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Both weight and height follow a Gaussian distribution</span>
-</span></span><span style="display:flex;"><span>X[:, <span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>, (<span style="color:#ae81ff">100</span>, ))		<span style="color:#75715e"># height in meters</span>
-</span></span><span style="display:flex;"><span>X[:, <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">70</span>, <span style="color:#ae81ff">50</span>, (<span style="color:#ae81ff">100</span>,))		<span style="color:#75715e"># weight in kilograms</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>scaler <span style="color:#f92672">=</span> StandardScaler()
-</span></span><span style="display:flex;"><span>Z <span style="color:#f92672">=</span> scaler<span style="color:#f92672">.</span>fit_transform(X)
-</span></span></code></pre></div><p>When we should use a standardization of our data:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+<span style="color:#f92672">from</span> sklearn.preprocessing <span style="color:#f92672">import</span> StandardScaler
+
+X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>empty((<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">2</span>))
+<span style="color:#75715e"># Both weight and height follow a Gaussian distribution</span>
+X[:, <span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span>, (<span style="color:#ae81ff">100</span>, ))		<span style="color:#75715e"># height in meters</span>
+X[:, <span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">70</span>, <span style="color:#ae81ff">50</span>, (<span style="color:#ae81ff">100</span>,))		<span style="color:#75715e"># weight in kilograms</span>
+
+scaler <span style="color:#f92672">=</span> StandardScaler()
+Z <span style="color:#f92672">=</span> scaler<span style="color:#f92672">.</span>fit_transform(X)
+</code></pre></div><p>When we should use a standardization of our data:</p>
 <ul>
 <li>Before <em>PCA</em>. Sometimes data points with high variance get weighted
 more and dominate the principal components.</li>
@@ -320,37 +321,37 @@ to take into account the period (or frequency) of that seasonality,</p>
 data points in the past we should subtract).</p>
 <p>The difference transform is easy to implement in Python. The following code
 snippet provides two functions to apply and reverse the difference transform.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">difference</span>(X, delay<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>):
-</span></span><span style="display:flex;"><span>	n <span style="color:#f92672">=</span> len(X)
-</span></span><span style="display:flex;"><span>    diff <span style="color:#f92672">=</span> [X[i] <span style="color:#f92672">-</span> X[i <span style="color:#f92672">-</span> delay] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(delay, n)]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">invDifference</span>(X, dX, delay<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>):
-</span></span><span style="display:flex;"><span>	n <span style="color:#f92672">=</span> len(X)
-</span></span><span style="display:flex;"><span>    inv <span style="color:#f92672">=</span> [dX[i <span style="color:#f92672">-</span> delay] <span style="color:#f92672">+</span> X[i <span style="color:#f92672">-</span> delay] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(delay, n)]
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
-</span></span><span style="display:flex;"><span>    x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">10</span>)])
-</span></span><span style="display:flex;"><span>    print(x)					<span style="color:#75715e"># 1, 2, 3, 4, 5, 6, 7, 8, 9</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>    x_diff <span style="color:#f92672">=</span> difference(x, <span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>    print(x_diff)				<span style="color:#75715e"># [1, 1, 1, 1, 1, 1, 1, 1]</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># We can obtain similar results when delay=1 using Numpy&#39;s diff function</span>
-</span></span><span style="display:flex;"><span>    x_diff_prime <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>diff(x)
-</span></span><span style="display:flex;"><span>    print(x_diff_prime)			<span style="color:#75715e"># [1 1 1 1 1 1 1 1]</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	x_diff_inv <span style="color:#f92672">=</span> invDifference(x, x_diff, <span style="color:#ae81ff">1</span>)
-</span></span><span style="display:flex;"><span>    print(x_diff_inv)			<span style="color:#75715e"># [2, 3, 4, 5, 6, 7, 8, 9]</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Another way to inverse the difference when delay=1 is the following</span>
-</span></span><span style="display:flex;"><span>    x_diff_prime_inv <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>r_[x[<span style="color:#ae81ff">0</span>], x_diff_prime]<span style="color:#f92672">.</span>cumsum()
-</span></span><span style="display:flex;"><span>    print(x_diff_prime_inv)		<span style="color:#75715e"># [1 2 3 4 5 6 7 8 9]</span>
-</span></span></code></pre></div><h2 id="power-transform">Power transform<a href="#power-transform" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">difference</span>(X, delay<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>):
+	n <span style="color:#f92672">=</span> len(X)
+    diff <span style="color:#f92672">=</span> [X[i] <span style="color:#f92672">-</span> X[i <span style="color:#f92672">-</span> delay] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(delay, n)]
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">invDifference</span>(X, dX, delay<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>):
+	n <span style="color:#f92672">=</span> len(X)
+    inv <span style="color:#f92672">=</span> [dX[i <span style="color:#f92672">-</span> delay] <span style="color:#f92672">+</span> X[i <span style="color:#f92672">-</span> delay] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(delay, n)]
+
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">10</span>)])
+    print(x)					<span style="color:#75715e"># 1, 2, 3, 4, 5, 6, 7, 8, 9</span>
+
+    x_diff <span style="color:#f92672">=</span> difference(x, <span style="color:#ae81ff">1</span>)
+    print(x_diff)				<span style="color:#75715e"># [1, 1, 1, 1, 1, 1, 1, 1]</span>
+
+	<span style="color:#75715e"># We can obtain similar results when delay=1 using Numpy&#39;s diff function</span>
+    x_diff_prime <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>diff(x)
+    print(x_diff_prime)			<span style="color:#75715e"># [1 1 1 1 1 1 1 1]</span>
+
+	x_diff_inv <span style="color:#f92672">=</span> invDifference(x, x_diff, <span style="color:#ae81ff">1</span>)
+    print(x_diff_inv)			<span style="color:#75715e"># [2, 3, 4, 5, 6, 7, 8, 9]</span>
+
+	<span style="color:#75715e"># Another way to inverse the difference when delay=1 is the following</span>
+    x_diff_prime_inv <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>r_[x[<span style="color:#ae81ff">0</span>], x_diff_prime]<span style="color:#f92672">.</span>cumsum()
+    print(x_diff_prime_inv)		<span style="color:#75715e"># [1 2 3 4 5 6 7 8 9]</span>
+</code></pre></div><h2 id="power-transform">Power transform<a href="#power-transform" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>We can apply a power transform when we want to make our data distribution look
 more like Gaussian. At the same time, a power transformation will also stabilize
 the variance of our data. There are two major power transforms, the Cox-Box [4]
@@ -358,38 +359,38 @@ and the Yeo-Johnson [5]. The <em>sklearn</em> Python package supports Cox-Box an
 Yeo-Johnson transforms, and the Box-Cox transform requires strictly positive
 data. On the other hand, Yeo-Johnson supports positive and negative data [6].
 The following code snippet demonstrates how we can apply them to our data.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> sklearn.preprocessing <span style="color:#f92672">import</span> PowerTransformer
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>random(<span style="color:#ae81ff">10</span>)
-</span></span><span style="display:flex;"><span>print(X)	
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># array([0.92222554, 0.92306673, 0.82856923, 0.8713333 , 0.08001814,</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#        0.12258023, 0.5008433 , 0.60396389, 0.24539718, 0.55259061])</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>pt <span style="color:#f92672">=</span> PowerTransformer(method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;box-cox&#34;</span>)		<span style="color:#75715e"># or method=&#39;yeo-johnson&#39; (default)</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># fit_transform receives ndarray of shape (n_samples, n_features)</span>
-</span></span><span style="display:flex;"><span>Z <span style="color:#f92672">=</span> pt<span style="color:#f92672">.</span>fit_transform(X<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)	
-</span></span><span style="display:flex;"><span>Z <span style="color:#f92672">=</span> Z[:, <span style="color:#ae81ff">0</span>]								<span style="color:#75715e"># we have only one feature</span>
-</span></span><span style="display:flex;"><span>print(Z)
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># [-1.71002627  1.17246013 -1.55389497  0.91312675 -0.02584321  0.19532181</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#  -0.08403872  1.48983064  0.03445026 -0.43138641]</span>
-</span></span></code></pre></div><h2 id="summary">Summary<a href="#summary" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+<span style="color:#f92672">from</span> sklearn.preprocessing <span style="color:#f92672">import</span> PowerTransformer
+
+X <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>random(<span style="color:#ae81ff">10</span>)
+print(X)	
+
+<span style="color:#75715e"># array([0.92222554, 0.92306673, 0.82856923, 0.8713333 , 0.08001814,</span>
+<span style="color:#75715e">#        0.12258023, 0.5008433 , 0.60396389, 0.24539718, 0.55259061])</span>
+
+pt <span style="color:#f92672">=</span> PowerTransformer(method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;box-cox&#34;</span>)		<span style="color:#75715e"># or method=&#39;yeo-johnson&#39; (default)</span>
+
+<span style="color:#75715e"># fit_transform receives ndarray of shape (n_samples, n_features)</span>
+Z <span style="color:#f92672">=</span> pt<span style="color:#f92672">.</span>fit_transform(X<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)	
+Z <span style="color:#f92672">=</span> Z[:, <span style="color:#ae81ff">0</span>]								<span style="color:#75715e"># we have only one feature</span>
+print(Z)
+
+<span style="color:#75715e"># [-1.71002627  1.17246013 -1.55389497  0.91312675 -0.02584321  0.19532181</span>
+<span style="color:#75715e">#  -0.08403872  1.48983064  0.03445026 -0.43138641]</span>
+</code></pre></div><h2 id="summary">Summary<a href="#summary" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
 <p>We went through five essential data transforms, centering data,
 normalization, standardization, difference, and power transform. We briefly
 described the math behind those transformations and provided some Python
 functions based on <em>sklearn</em> that implement those transformations.</p>
 <h3 id="cited-as">Cited as<a href="#cited-as" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>@article{detorakis2022acfpacf,
-</span></span><span style="display:flex;"><span>  title   = &#34;Useful data transformations&#34;,
-</span></span><span style="display:flex;"><span>  author  = &#34;Georgios Is. Detorakis&#34;,
-</span></span><span style="display:flex;"><span>  journal = &#34;gdetor.github.io&#34;,
-</span></span><span style="display:flex;"><span>  year    = &#34;2022&#34;,
-</span></span><span style="display:flex;"><span>  url     = &#34;https://gdetor.github.io/posts/normalization&#34;
-</span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="references">References<a href="#references" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">@article{detorakis2022acfpacf,
+  title   = &#34;Useful data transformations&#34;,
+  author  = &#34;Georgios Is. Detorakis&#34;,
+  journal = &#34;gdetor.github.io&#34;,
+  year    = &#34;2022&#34;,
+  url     = &#34;https://gdetor.github.io/posts/normalization&#34;
+}
+</code></pre></div><h3 id="references">References<a href="#references" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <ol>
 <li>Pedregosa et al., <em>Scikit-learn: Machine Learning in Python,</em>, JMLR 12, pp. 2825-2830, 2011.</li>
 <li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html#sklearn.preprocessing.MinMaxScaler">Sklearn MinMaxScaler</a></li>

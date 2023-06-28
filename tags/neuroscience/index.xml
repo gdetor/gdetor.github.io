@@ -102,7 +102,7 @@ services by logging in to a server.
 Users can demand as many racks (or OoCs) as they would like. The system
 gathers all the necessary information and assists the users in setting
 up their experiments. The users can monitor their experiments as they are executed
-and collect results in real-time. The experiments&amp;rsquo; parameters and conditions are
+and collect results in real-time. The experiments&#39; parameters and conditions are
 constantly monitored, and all the data are stored in a data log. The figure shows an oversimplified structure of racks, where OoCs
 coexist with boards equipped with CPUs, GPUs, microprocessors, and microcontrollers.&lt;/p&gt;
 &lt;h2 id=&#34;safety-and-security-in-cloudlab&#34;&gt;Safety and Security in CloudLab&lt;/h2&gt;
@@ -198,7 +198,7 @@ could set up their experiments for conducting research or training.
 CloudLab also offers students a means to safely run experiments involving hazardous
 materials. Moreover, students in biology, medicine, chemistry, and other life-science
 disciplines will be able to run experiments with great ease.
-They will not have to rely on their professors&amp;rsquo; or institutions&amp;rsquo; budgets to acquire
+They will not have to rely on their professors&#39; or institutions&#39; budgets to acquire
 lab equipment. They will only have to sign up for the CloudLab service.&lt;/p&gt;
 &lt;p&gt;An example of how to use CloudLab in education is given by &lt;em&gt;Elena&lt;/em&gt;.
 &lt;em&gt;Elena&lt;/em&gt; is a software engine for developing educational games.
@@ -242,14 +242,14 @@ scientific fields.
 Technologies like CloudLab will enable substantially faster and more accurate scientific
 research results.&lt;/p&gt;
 &lt;h3 id=&#34;cited-as&#34;&gt;Cited as:&lt;/h3&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;@article{detorakis2022cloudlab,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  title   = &amp;#34;Organs-on-Chip-as-a-Service: A proposal bridging cloud services and scientific experiments}&amp;#34;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  author  = &amp;#34;Georgios Is. Detorakis and Roman Parise&amp;#34;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  journal = &amp;#34;gdetor.github.io&amp;#34;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  year    = &amp;#34;2022&amp;#34;,
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  url     = &amp;#34;https://gdetor.github.io/posts/cloudlab&amp;#34;
-&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-latex&#34; data-lang=&#34;latex&#34;&gt;@article{detorakis2022cloudlab,
+  title   = &amp;#34;Organs-on-Chip-as-a-Service: A proposal bridging cloud services and scientific experiments}&amp;#34;,
+  author  = &amp;#34;Georgios Is. Detorakis and Roman Parise&amp;#34;,
+  journal = &amp;#34;gdetor.github.io&amp;#34;,
+  year    = &amp;#34;2022&amp;#34;,
+  url     = &amp;#34;https://gdetor.github.io/posts/cloudlab&amp;#34;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;
 &lt;ol&gt;
 &lt;li&gt;Donald E Ingber. &lt;em&gt;Human organs-on-chips for disease modelling, drug development and personalized
 medicine&lt;/em&gt;. Nature Reviews Genetics, pages 1–25, 2022.&lt;/li&gt;
