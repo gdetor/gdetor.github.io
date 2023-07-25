@@ -2909,9 +2909,13 @@ with applications on Recommendation Systems and Content Analysis.&lt;/p&gt;
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gdetor.github.io/software/</guid>
-      <description>Miscellaneous omnipyseed Omnipyseed is a tiny and simple Python package that can be used to seed random number generators (RNGs) of Python, Numpy, and Pytorch.
- Programming Language: Python Source Code:  .inline-svg { display: inline-block; height: 1.0rem; width: 1.0rem; top: 0.1rem; position: relative; }     PyPi  Machine/Deep Learning Adversarial Validation This Python class implements the adversarial validation (AV) method. One can use the AV method to test if the train/test data sets come from the same distribution.</description>
-      <content>&lt;h2 id=&#34;miscellaneous&#34;&gt;Miscellaneous&lt;/h2&gt;
+      <description>Gists Here you can find some code snippets or short source code for complete programs that might interest you.
+Miscellaneous omnipyseed Omnipyseed is a tiny and simple Python package that can be used to seed random number generators (RNGs) of Python, Numpy, and Pytorch.
+ Programming Language: Python Source Code:  .inline-svg { display: inline-block; height: 1.0rem; width: 1.0rem; top: 0.1rem; position: relative; }     PyPi  Machine/Deep Learning Adversarial Validation This Python class implements the adversarial validation (AV) method.</description>
+      <content>&lt;h2 id=&#34;gists&#34;&gt;Gists&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://gist.github.com/gdetor&#34;&gt;Here&lt;/a&gt; you can find some code snippets or short
+source code for complete programs that might interest you.&lt;/p&gt;
+&lt;h2 id=&#34;miscellaneous&#34;&gt;Miscellaneous&lt;/h2&gt;
 &lt;h3 id=&#34;omnipyseed&#34;&gt;omnipyseed&lt;/h3&gt;
 &lt;p&gt;Omnipyseed is a tiny and simple Python package that can be used to seed random
 number generators (RNGs) of Python, Numpy, and Pytorch.&lt;/p&gt;
