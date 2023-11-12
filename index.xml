@@ -2495,7 +2495,7 @@ biosignals and financial data).&lt;/p&gt;
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://gdetor.github.io/artwork/</guid>
-      <description>   Basal Ganglia Circuitry Extracellular Recordings Neural Populations              Closed-loop DBS on Basal Ganglia Crossbar Array Ball and Stick Neuron&amp;rsquo;s Model              Topological Data Analysis Topologies XOR Neural Network           </description>
+      <description>   Basal Ganglia Circuitry Extracellular Recordings Neural Populations              Closed-loop DBS on Basal Ganglia Crossbar Array Ball and Stick Neuron&amp;rsquo;s Model              Topological Data Analysis Topologies XOR Neural Network              Tensor Deep Galerkin Method Layer Skip Connection (ResNet)           </description>
       <content>&lt;!-- raw HTML omitted --&gt;
 &lt;table&gt;
 &lt;thead&gt;
@@ -2567,6 +2567,31 @@ biosignals and financial data).&lt;/p&gt;
 &lt;/a&gt;&lt;/td&gt;
 &lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/xor_net.svg&#34;&gt;
   &lt;img src=&#34;https://gdetor.github.io/staticart/img/xor_net_.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;
+
+&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Tensor&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Deep Galerkin Method Layer&lt;/th&gt;
+&lt;th style=&#34;text-align:center&#34;&gt;Skip Connection (ResNet)&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/tensor.svg&#34;&gt;
+  &lt;img src=&#34;https://gdetor.github.io/staticart/img/tensor_.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;
+
+&lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/dgm_nn.svg&#34;&gt;
+  &lt;img src=&#34;https://gdetor.github.io/staticart/img/dgm_nn_.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;
+
+&lt;/a&gt;&lt;/td&gt;
+&lt;td style=&#34;text-align:center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/skip_connection.svg&#34;&gt;
+  &lt;img src=&#34;https://gdetor.github.io/staticart/img/skip_connection_.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;
 
 &lt;/a&gt;&lt;/td&gt;
 &lt;/tr&gt;
