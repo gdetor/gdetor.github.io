@@ -3481,7 +3481,7 @@ G.Is. Detorakis and N.P. Rougier, PloS ONE, 2012&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;signal-processing&#34;&gt;Signal Processing&lt;/h2&gt;
-&lt;h3 id=&#34;wavelet-denoising&#34;&gt;Wavelet denoising&lt;/h3&gt;
+&lt;h3 id=&#34;signal-denoising-with-wavelets&#34;&gt;Signal denoising with Wavelets&lt;/h3&gt;
 &lt;p&gt;In this repository, one will find an implementation of signal denoising using wavelets.
 Denoising is reducing the noise in a signal as much as possible without distorting the
 signal. The user will find examples of using the library and all the necessary
