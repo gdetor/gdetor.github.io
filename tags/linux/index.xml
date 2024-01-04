@@ -7,11 +7,11 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>ⓒ  GID, 2021-2022</copyright>
-    <lastBuildDate>Thu, 28 Apr 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 18 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tips &amp; Tricks (Linux/Vim/Git/Programming)</title>
       <link>https://gdetor.github.io/posts/tipsntricks/</link>
-      <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 18 Dec 2023 00:00:00 +0000</pubDate>
       
       <guid>https://gdetor.github.io/posts/tipsntricks/</guid>
       <description>In this post you can find various simple tricks and tips for Linux, Vim, Git, Python and many other stuff. All the material provided in this page has been suggested by many different sources such as Command Line Magic, Mastering Vim, kernel_perspective, nixCraft, and Linux Today. The material is free and can be redistributed and/or modified. There is no any warranty that they work for you or are suitable to your need.</description>
@@ -24,7 +24,9 @@ and &lt;a href=&#34;https://twitter.com/linuxtoday&#34;&gt;Linux Today&lt;/a&gt;
 be redistributed and/or modified. There is no any warranty that
 they work for you or are suitable to your need. The author of this page is
 not responsible for any damage this material may cause.&lt;/p&gt;
-&lt;h3 id=&#34;how-to-check-if-file-a-contains-all-lines-of-file-b-linux&#34;&gt;How to check if file A contains all lines of file B (Linux)&lt;/h3&gt;
+&lt;h3 id=&#34;override-the-tmux-sessions-numbering-manually-tmux&#34;&gt;Override the Tmux session&amp;rsquo;s numbering manually (Tmux)&lt;/h3&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ tmux new -s &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; -d -P
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;how-to-check-if-file-a-contains-all-lines-of-file-b-linux&#34;&gt;How to check if file A contains all lines of file B (Linux)&lt;/h3&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ comm -13 &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;sort -u fileA&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt; &amp;lt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;sort -u fileB&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# if the output is empty that means all the lines of fileB are in the fileA to0&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;how-to-delete-all-files-except-one-or-few-files-with-extensions-linux&#34;&gt;How to delete all files except one or few files with extensions (Linux)&lt;/h3&gt;

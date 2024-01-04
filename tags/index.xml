@@ -7,7 +7,107 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>ⓒ  GID, 2021-2022</copyright>
-    <lastBuildDate>Mon, 28 Nov 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 29 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kohonen</title>
+      <link>https://gdetor.github.io/tags/kohonen/</link>
+      <pubDate>Fri, 29 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/tags/kohonen/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>neural networks</title>
+      <link>https://gdetor.github.io/tags/neural-networks/</link>
+      <pubDate>Fri, 29 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/tags/neural-networks/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>pytorch</title>
+      <link>https://gdetor.github.io/tags/pytorch/</link>
+      <pubDate>Fri, 29 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/tags/pytorch/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>self-organizing map</title>
+      <link>https://gdetor.github.io/tags/self-organizing-map/</link>
+      <pubDate>Fri, 29 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/tags/self-organizing-map/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>SOM</title>
+      <link>https://gdetor.github.io/tags/som/</link>
+      <pubDate>Fri, 29 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/tags/som/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>C</title>
+      <link>https://gdetor.github.io/tags/c/</link>
+      <pubDate>Mon, 18 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/tags/c/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>https://gdetor.github.io/tags/git/</link>
+      <pubDate>Mon, 18 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/tags/git/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://gdetor.github.io/tags/linux/</link>
+      <pubDate>Mon, 18 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/tags/linux/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://gdetor.github.io/tags/python/</link>
+      <pubDate>Mon, 18 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/tags/python/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
+    <item>
+      <title>Vim</title>
+      <link>https://gdetor.github.io/tags/vim/</link>
+      <pubDate>Mon, 18 Dec 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/tags/vim/</guid>
+      <description></description>
+      <content></content>
+    </item>
+    
     <item>
       <title>cloud computing</title>
       <link>https://gdetor.github.io/tags/cloud-computing/</link>
@@ -229,16 +329,6 @@
     </item>
     
     <item>
-      <title>C</title>
-      <link>https://gdetor.github.io/tags/c/</link>
-      <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://gdetor.github.io/tags/c/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
       <title>GAIM</title>
       <link>https://gdetor.github.io/tags/gaim/</link>
       <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
@@ -259,16 +349,6 @@
     </item>
     
     <item>
-      <title>Git</title>
-      <link>https://gdetor.github.io/tags/git/</link>
-      <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://gdetor.github.io/tags/git/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
       <title>island model</title>
       <link>https://gdetor.github.io/tags/island-model/</link>
       <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
@@ -279,41 +359,11 @@
     </item>
     
     <item>
-      <title>Linux</title>
-      <link>https://gdetor.github.io/tags/linux/</link>
-      <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://gdetor.github.io/tags/linux/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
       <title>optimization</title>
       <link>https://gdetor.github.io/tags/optimization/</link>
       <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
       
       <guid>https://gdetor.github.io/tags/optimization/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
-      <title>Python</title>
-      <link>https://gdetor.github.io/tags/python/</link>
-      <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://gdetor.github.io/tags/python/</guid>
-      <description></description>
-      <content></content>
-    </item>
-    
-    <item>
-      <title>Vim</title>
-      <link>https://gdetor.github.io/tags/vim/</link>
-      <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://gdetor.github.io/tags/vim/</guid>
       <description></description>
       <content></content>
     </item>

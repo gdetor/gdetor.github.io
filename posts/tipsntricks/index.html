@@ -49,7 +49,7 @@
 <meta property="og:image:height" content="1024">
 
 
-  <meta property="article:published_time" content="2022-04-28 00:00:00 &#43;0000 UTC" />
+  <meta property="article:published_time" content="2023-12-18 00:00:00 &#43;0000 UTC" />
 
 
 
@@ -153,7 +153,7 @@
   <div class="post-meta">
     
       <span class="post-date">
-        2022-04-28
+        2023-12-18
         
       </span>
     
@@ -193,7 +193,9 @@ and <a href="https://twitter.com/linuxtoday">Linux Today</a>. The material is fr
 be redistributed and/or modified. There is no any warranty that
 they work for you or are suitable to your need. The author of this page is
 not responsible for any damage this material may cause.</p>
-<h3 id="how-to-check-if-file-a-contains-all-lines-of-file-b-linux">How to check if file A contains all lines of file B (Linux)<a href="#how-to-check-if-file-a-contains-all-lines-of-file-b-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="override-the-tmux-sessions-numbering-manually-tmux">Override the Tmux session&rsquo;s numbering manually (Tmux)<a href="#override-the-tmux-sessions-numbering-manually-tmux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ tmux new -s <span style="color:#ae81ff">1</span> -d -P
+</code></pre></div><h3 id="how-to-check-if-file-a-contains-all-lines-of-file-b-linux">How to check if file A contains all lines of file B (Linux)<a href="#how-to-check-if-file-a-contains-all-lines-of-file-b-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ comm -13 &lt;<span style="color:#f92672">(</span>sort -u fileA<span style="color:#f92672">)</span> &lt;<span style="color:#f92672">(</span>sort -u fileB<span style="color:#f92672">)</span>
 <span style="color:#75715e"># if the output is empty that means all the lines of fileB are in the fileA to0</span>
 </code></pre></div><h3 id="how-to-delete-all-files-except-one-or-few-files-with-extensions-linux">How to delete all files except one or few files with extensions (Linux)<a href="#how-to-delete-all-files-except-one-or-few-files-with-extensions-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
@@ -459,16 +461,16 @@ $ awk <span style="color:#e6db74">&#39;NF {NF--};1&#39;</span>&lt; input_file &g
     <div class="pagination__buttons">
         
         <span class="button previous">
-            <a href="https://gdetor.github.io/posts/genetic_algorithms/">
+            <a href="https://gdetor.github.io/posts/som/">
                 <span class="button__icon">←</span>
-                <span class="button__text">Genetic Algorithms &amp; Island Models</span>
+                <span class="button__text">An introduction to self-organizing maps</span>
             </a>
         </span>
         
         
         <span class="button next">
-            <a href="https://gdetor.github.io/posts/math_tips/">
-                <span class="button__text">Simple mathematical tricks in Python</span>
+            <a href="https://gdetor.github.io/posts/cloudlab/">
+                <span class="button__text">Organs-on-Chip-as-a-Service: A proposal bridging cloud services and scientific experiments</span>
                 <span class="button__icon">→</span>
             </a>
         </span>
