@@ -1,55 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  
-    <title>An introduction to self-organizing maps :: GID Webpage</title>
-  
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Blog post on self-organizing maps implemented in Pytorch" />
-<meta name="keywords" content="[gdetor, Georgios Detorakis, Georgios Is. Detorakis, georgios, detorakis]" />
-<meta name="robots" content="noodp" />
-<link rel="canonical" href="https://gdetor.github.io/posts/som/" />
-
-
-
-
-<link rel="stylesheet" href="https://gdetor.github.io/assets/style.css">
-
-
-
-<link rel="stylesheet" href="https://gdetor.github.io/style.css">
-
-
-<link rel="apple-touch-icon" href="https://gdetor.github.io/img/apple-touch-icon-192x192.png">
-
-  <link rel="shortcut icon" href="https://gdetor.github.io/icons/favicon.ico">
-
-
-
-<meta name="twitter:card" content="summary" />
-
-  
-    <meta name="twitter:creator" content="Georgios Is. Detorakis" />
-
-
-
-<meta property="og:locale" content="en" />
-<meta property="og:type" content="article" />
-<meta property="og:title" content="An introduction to self-organizing maps">
-<meta property="og:description" content="Blog post on self-organizing maps implemented in Pytorch" />
-<meta property="og:url" content="https://gdetor.github.io/posts/som/" />
-<meta property="og:site_name" content="GID Webpage" />
-
-  
-    <meta property="og:image" content="https://gdetor.github.io/icons/favicon.ico">
-  
-
-<meta property="og:image:width" content="2048">
-<meta property="og:image:height" content="1024">
-
-
-  <meta property="article:published_time" content="2023-12-29 00:00:00 &#43;0000 UTC" />
+<!doctype html>
 
 
 
@@ -62,157 +11,349 @@
 
 
 
-<!DOCTYPE html>
 
-<html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
   <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
 
-    
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx" crossorigin="anonymous"></script>
+  
+  <title>An introduction to self-organizing maps - GID</title>
 
-    
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
-        onload="renderMathInElement(document.body);"></script>
+  
+  <meta name="theme-color" />
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                    {left: "$$", right: "$$", display: true},
-                    {left: "$", right: "$", display: false}
-                ]
-            });
-        });
-    </script>
-  </head>
-</html>
+  
+  
+  
+  
+  <meta name="description" content="This post presents the classical self-organizing map algorithm proposed by Grossberg [1] and Teuvo Kohonen [2]. We explain the fundamental aspects of the algorithm and its applications, and we offer a basic implementation in Pytorch.
+Introduction Let us begin with a prevalent problem in science. We often have to deal with data that live in a high-dimensional space $\mathcal{X} \in \mathbb{R}^k$. When $k &gt; 3$, things get rough for people who need help to visualize what&rsquo;s happening." />
+  <meta name="author" content="Georgios Is. Detorakis" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://gdetor.github.io/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/theme.png" />
+
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://avatars.githubusercontent.com/u/7115299?v=4" />
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/github.svg" />
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/linkedin.svg" />
+  
+  
+
+  
+  
+  <script
+    defer
+    src="https://gdetor.github.io/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://gdetor.github.io/icons/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://gdetor.github.io/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.92.2" />
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="An introduction to self-organizing maps">
+<meta itemprop="description" content="This post introduces the classical self-organizing map (SOM) algorithm proposed by Grossberg and later by Kohonen. We explain the algorithm&#39;s fundamental aspects and implement it on Pytorch."><meta itemprop="datePublished" content="2023-12-29T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-12-29T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2151">
+<meta itemprop="keywords" content="SOM,Kohonen,neural networks,self-organizing map,pytorch," />
+  
+  <meta property="og:title" content="An introduction to self-organizing maps" />
+<meta property="og:description" content="This post introduces the classical self-organizing map (SOM) algorithm proposed by Grossberg and later by Kohonen. We explain the algorithm&#39;s fundamental aspects and implement it on Pytorch." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gdetor.github.io/posts/som/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-12-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-12-29T00:00:00+00:00" />
 
 
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="An introduction to self-organizing maps"/>
+<meta name="twitter:description" content="This post introduces the classical self-organizing map (SOM) algorithm proposed by Grossberg and later by Kohonen. We explain the algorithm&#39;s fundamental aspects and implement it on Pytorch."/>
+
+  
+  
+  
+  <link rel="canonical" href="https://gdetor.github.io/posts/som/" />
+  
+  
 </head>
-<body class="orange">
 
-
-<div class="container center">
-
-  <header class="header">
-  <div class="header__inner">
-    <div class="header__logo">
-      <a href="/">
-  <div class="logo">
-    # GID
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://gdetor.github.io"
+      >GID</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
   </div>
-</a>
 
-    </div>
-    
-      <div class="menu-trigger">menu</div>
-    
-  </div>
-  
-    <nav class="menu">
-  <ul class="menu__inner menu__inner--desktop">
-    
-      
-        
-          <li><a href="/about">About</a></li>
-        
-      
-        
-          <li><a href="/research">Research</a></li>
-        
-      
-        
-          <li><a href="/software">Software</a></li>
-        
-      
-        
-          <li><a href="/publications">Publications</a></li>
-        
-      
-        
-          <li><a href="/artwork">Artwork</a></li>
-        
-      
-      
-    
-
-    
-  </ul>
-
-  <ul class="menu__inner menu__inner--mobile">
-    
-      
-        <li><a href="/about">About</a></li>
-      
-    
-      
-        <li><a href="/research">Research</a></li>
-      
-    
-      
-        <li><a href="/software">Software</a></li>
-      
-    
-      
-        <li><a href="/publications">Publications</a></li>
-      
-    
-      
-        <li><a href="/artwork">Artwork</a></li>
-      
-    
-    
-  </ul>
-</nav>
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
 
   
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/about/"
+        >About</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/research/"
+        >Research</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/software/"
+        >Software</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/publications/"
+        >Publications</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/artwork/"
+        >Artwork</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/gdetor"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/georgiosdetorakis"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+    </nav>
+    
+  </div>
 </header>
 
 
-  <div class="content">
-    
-<div class="post">
-  <h1 class="post-title">
-    <a href="https://gdetor.github.io/posts/som/">An introduction to self-organizing maps</a></h1>
-  <div class="post-meta">
-    
-      <span class="post-date">
-        2023-12-29
-        
-      </span>
-    
-    
-      <span class="post-author">:: Georgios Is. Detorakis</span>
-    
-    
-  </div>
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
 
-  
-  <span class="post-tags">
-    
-    #<a href="https://gdetor.github.io/tags/som/">SOM</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/kohonen/">Kohonen</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/neural-networks/">neural networks</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/self-organizing-map/">self-organizing map</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/pytorch/">pytorch</a>&nbsp;
-    
-  </span>
-  
-  
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">An introduction to self-organizing maps</h1>
 
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Dec 29, 2023</time>
+      
+      
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Georgios Is. Detorakis</span>
+      <span class="mx-1">&middot;</span>
+      <span class="inline-item reading">11 minutes read</span>
+      
+    </div>
+    
+  </header>
 
-  
-
-  <div class="post-content"><div>
-        <p>This post presents the classical self-organizing map algorithm proposed by
+  <section><div style="text-align: justify;">
+<p>This post presents the classical self-organizing map algorithm proposed by
 Grossberg [1] and Teuvo Kohonen [2]. We explain the fundamental aspects of the
 algorithm and its applications, and we offer a basic implementation in Pytorch.</p>
-<h2 id="introduction">Introduction<a href="#introduction" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="introduction">Introduction</h2>
 <p>Let us begin with a prevalent problem in science. We often have to deal with
 data that <em>live</em> in a high-dimensional space $\mathcal{X} \in \mathbb{R}^k$.
 When $k &gt; 3$, things get rough for people who need help to visualize
@@ -227,7 +368,7 @@ problem and particularly a self-organizing map, is to learn the input
 distribution, meaning we are looking at an approximation for the joint
 distribution $p(x, y)$, where $x$ represents input samples and $y$ the output,
 without making any assumptions about causality.</p>
-<h3 id="applications">Applications<a href="#applications" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="applications">Applications</h3>
 <p>We have already seen the dimensionality reduction problem, where the data we
 handle are usually high-dimensional, rendering their analysis, processing, or
 interpretation hard. Therefore, we can use a SOM to map the original input
@@ -240,7 +381,7 @@ For instance, classifying world poverty is a problem where clusters (or groups
 of units/neurons) represent poor, rich, or in-between countries [http://www.cis.hut.fi/research/som-research/worldmap.html].
 There are many other applications, but providing an exhaustive list is out of
 the scope of this post.</p>
-<h3 id="notation-and-terminology">Notation and Terminology<a href="#notation-and-terminology" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="notation-and-terminology">Notation and Terminology</h3>
 <p>Before diving into the details and the implementation of the SOM algorithms,
 we must define some mathematical quantities and determine the terminology we
 will use. The SOM is implemented as a neural network $\mathcal{F}({\bf \theta})$
@@ -257,19 +398,15 @@ defined as
 $$ d({\bf x}, {\bf y}) = \Big( \sum_{i=1}^{k} |x_i - y_i|^p \Big)^{\frac{1}{p}}, \qquad (1) $$
 where here ${\bf x}, {\bf y} \in \mathbb{R}^n $ and $ p \geq 1$. For different values of $ p $, we recover different known
 distance functions such as the Euclidean distance ($p=2$) or the Manhattan ($p=1$).</p>
-<h2 id="the-som-algorithm">The SOM Algorithm<a href="#the-som-algorithm" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="the-som-algorithm">The SOM Algorithm</h2>
 <p>We are now ready to introduce the SOM algorithm. First, we will describe the
 main idea behind the SOM algorithm in plain words, and then we will give the
 pseudocode and its implementation along with some examples.</p>
-
-  <figure class="center" >
-    <img src="/images/somtraining.png"   style="border-radius: 8px;"  />
-    
-      <figcaption class="center" >Figure 1. Illustration of SOM algorithm steps. At the beginning (t=0), we see that the winner unit (BMU, center of yellow disc) that is closer to the current sample (white disc) has been identified. The SOM algorithm adjusts the codebook based on a neighborhood function (yellow disc) such that the map will come closer to the sample. After all the iterations have been exhausted, the SOM has learned the representation (black grid) of the input distribution (blue cloud). This figure is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported (Wikipedia)</figcaption>
-    
-  </figure>
-
-
+<figure><img src="/images/somtraining.png"
+         alt="Figure 1. Illustration of SOM algorithm steps. At the beginning (t=0), we see that the winner unit (BMU, center of yellow disc) that is closer to the current sample (white disc) has been identified. The SOM algorithm adjusts the codebook based on a neighborhood function (yellow disc) such that the map will come closer to the sample. After all the iterations have been exhausted, the SOM has learned the representation (black grid) of the input distribution (blue cloud). This figure is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported (Wikipedia)"/><figcaption>
+            <p>Figure 1. Illustration of SOM algorithm steps. At the beginning (t=0), we see that the winner unit (BMU, center of yellow disc) that is closer to the current sample (white disc) has been identified. The SOM algorithm adjusts the codebook based on a neighborhood function (yellow disc) such that the map will come closer to the sample. After all the iterations have been exhausted, the SOM has learned the representation (black grid) of the input distribution (blue cloud). This figure is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported (Wikipedia)</p>
+        </figcaption>
+</figure>
 <p>The first step is to initialize the codebook; we usually do that by assigning
 random values to the code words. Once we initialize the codebook, we start the
 learning iteration. At each iteration or epoch, we draw a sample ${\bf x}$ from
@@ -307,16 +444,12 @@ of data is processed at each iteration. A different version of the SOM
 algorithm runs offline and uses the entire data set at each iteration, called
 batch SOM. In this post, we will implement the online algorithm used in our
 examples.</p>
-
-  <figure class="center" >
-    <img src="/images/som_algo.png"   style="border-radius: 8px;"  />
-    
-      <figcaption class="center" >Figure 2. Self-organizing map basic algorithm.</figcaption>
-    
-  </figure>
-
-
-<h2 id="pytorch-implementation">Pytorch Implementation<a href="#pytorch-implementation" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<figure><img src="/images/som_algo.png"
+         alt="Figure 2. Self-organizing map basic algorithm."/><figcaption>
+            <p>Figure 2. Self-organizing map basic algorithm.</p>
+        </figcaption>
+</figure>
+<h2 id="pytorch-implementation">Pytorch Implementation</h2>
 <p>The source code below is the implementation of the SOM algorithm given in
 Figure 2. The implementation is a simple <em>translation</em> of the pseudocode to
 Python. In this implementation, we contain all the parameters and the codebooks
@@ -393,17 +526,13 @@ is the Euclidean distance ($p=2$ in Equation 1).</p>
 			<span style="color:#75715e"># Update the codebook</span>
             self<span style="color:#f92672">.</span>codebook <span style="color:#f92672">-=</span> self<span style="color:#f92672">.</span>lrate[t] <span style="color:#f92672">*</span> h <span style="color:#f92672">*</span> (self<span style="color:#f92672">.</span>codebook <span style="color:#f92672">-</span> x)
 
-</code></pre></div><h2 id="examples">Examples<a href="#examples" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-
-  <figure class="center" >
-    <img src="/images/som_maps.png"   style="border-radius: 8px;"  />
-    
-      <figcaption class="center" >Figure 3. Self-organizing maps. (A) Shows a self-organizing map  of the unit square $[0, 1]^2$, and (B) shows a a map for a ring in $[-1, 1]^2$.</figcaption>
-    
-  </figure>
-
-
-<h3 id="square-in--mathbbr2-">Square in $ \mathbb{R}^2 $<a href="#square-in--mathbbr2-" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h2 id="examples">Examples</h2>
+<figure><img src="/images/som_maps.png"
+         alt="Figure 3. Self-organizing maps. (A) Shows a self-organizing map  of the unit square $[0, 1]^2$, and (B) shows a a map for a ring in $[-1, 1]^2$."/><figcaption>
+            <p>Figure 3. Self-organizing maps. (A) Shows a self-organizing map  of the unit square $[0, 1]^2$, and (B) shows a a map for a ring in $[-1, 1]^2$.</p>
+        </figcaption>
+</figure>
+<h3 id="square-in--mathbbr2-">Square in $ \mathbb{R}^2 $</h3>
 <p>Our first example is to map a two-dimensional rectangular distribution in the
 $[0, 1] \times [0, 1]$. To this end, we randomly generate points
 $(x_1, x_2) \in [0, 1] \times [0, 1]$ from a uniform distribution $\mathcal{U}$.
@@ -412,7 +541,7 @@ $\epsilon_i = \sigma_i = 0.5$ and $\epsilon_f = \sigma_f = 0.01$, we obtain the
 self-organized map illustrated in Figure 3A, where the red dots represent the
 input space (and thus the samples we used to train our neural network). The
 white discs are the units of our SOM.</p>
-<h3 id="ring-in--mathbbr2-">Ring in $ \mathbb{R}^2 $<a href="#ring-in--mathbbr2-" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="ring-in--mathbbr2-">Ring in $ \mathbb{R}^2 $</h3>
 <p>The second example is again related to space $[0, 1] \times [0, 1] $, only this
 time we draw uniformly points from a ring, rendering this problem a little a
 bit harder for the SOM algorithm since there is a hole in the center of our
@@ -422,7 +551,7 @@ words (white discs) cover the space, and the lattice (black solid lines) are
 well organized. However, we see some units representing the hole (void) in the
 middle of the ring. That is a known problem with Kohonen&rsquo;s SOM algorithm.
 The parameters for this experiment are the same as before.</p>
-<h2 id="evaluate-a-som">Evaluate a SOM<a href="#evaluate-a-som" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="evaluate-a-som">Evaluate a SOM</h2>
 <p>When measuring the quality of a self-organized map, there is no one measure to
 rule them all. People use many different measures in the literature to measure
 how good or how bad a self-organized map is. Three well-known measures are:</p>
@@ -453,22 +582,6 @@ However, the quantization error is not that small for the ring distribution,
 meaning that the map preserves the topology since the topographic error is small.
 Still, the map needs to fit the data distribution better. We can see that the
 map also tries to find non-existent data in the ring&rsquo;s hole.</p>
-
-
-
-
-
-
-  
-    
-  
-
-
-  
-
-
-
-
 <div class="data-table" role="region" tabindex="0" aria-labelledby="table-caption-table1">
   <table class="table optional CSS class declaration" id="table1" itemscope itemtype="https://schema.org/Table"><caption id="table-caption-table1" itemprop="about"><b>Table</b> ${\bf 1}$ SOM Errors. Quantization $\mathcal{E_Q}$ and topographic $\mathcal{E_T}$ errors for the square and ring distributions.</caption>
 <thead>
@@ -489,24 +602,21 @@ map also tries to find non-existent data in the ring&rsquo;s hole.</p>
 <td style="text-align:center">$0.255$</td>
 <td style="text-align:center">$0.04$</td>
 </tr>
-<tr>
-<td style="text-align:center">{{/table}}</td>
-<td></td>
-<td></td>
-</tr>
 </tbody>
 </table>
-<h2 id="summary">Summary<a href="#summary" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+</div>
+<h2 id="summary">Summary</h2>
 <p>In this post, we introduced some fundamental ideas of self-organizing maps.
 We tried to convey the gist of how the SOM algorithm works and provided a
 simple Python implementation using Pytorch. Finally, we tested our implementation
 on two basic examples: a two-dimensional distribution of a rectangle and one of
 a two-dimensional disc. In both cases, we see how the SOM algorithm learns the
 representations and correctly maps the input distribution.</p>
-<h3 id="source-code">Source Code<a href="#source-code" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="source-code">Source Code</h3>
 <p>The entire source code for the experiments used in this post is freely available
 <a href="https://gist.github.com/gdetor/379c2e3897d474894f42735b5b1ba641">here</a>.</p>
-<h3 id="cited-as">Cited as<a href="#cited-as" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</div>
+<h3 id="cite-as">Cite as</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">@article{detorakis2023som,
   title   = &#34;An introduction to self-organizing maps&#34;,
   author  = &#34;Georgios Is. Detorakis&#34;,
@@ -514,7 +624,7 @@ representations and correctly maps the input distribution.</p>
   year    = &#34;2023&#34;,
   url     = &#34;https://gdetor.github.io/posts/som&#34;
 }
-</code></pre></div><h3 id="references">References<a href="#references" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="references">References</h3>
 <ol>
 <li>Grossberg S., <em>Physiological interpretation of the self-organizing map algorithm</em>, 1994.</li>
 <li>Kohonen T., <em>Self-organized formation of topologically correct feature maps</em>, Biol Cybern., 1982;43(1):59–69.</li>
@@ -522,97 +632,95 @@ representations and correctly maps the input distribution.</p>
 <li>Bellman R. E., <em>Adaptive control processes: a guided tour</em>, Princeton University Press. ISBN 9780691079011, 1961.</li>
 <li>Ponmalai, R., and Kamath, C., <em>Self-organizing maps and their applications to data analysis</em>, Lawrence Livermore National Lab.(LLNL), Livermore, CA, 2019.</li>
 </ol>
-
-</div>
-
-
-
-
-      </div></div>
+</section>
 
   
   
-<div class="pagination">
-    <div class="pagination__title">
-        <span class="pagination__title-h">Read other posts</span>
-        <hr />
-    </div>
-    <div class="pagination__buttons">
-        
-        <span class="button previous">
-            <a href="https://gdetor.github.io/posts/welcome/">
-                <span class="button__icon">←</span>
-                <span class="button__text"></span>
-            </a>
-        </span>
-        
-        
-        <span class="button next">
-            <a href="https://gdetor.github.io/posts/tipsntricks/">
-                <span class="button__text">Tips &amp; Tricks (Linux/Vim/Git/Programming)</span>
-                <span class="button__icon">→</span>
-            </a>
-        </span>
-        
-    </div>
-</div>
-
-  
-
-  
-
-</div>
-
-  </div>
-
-  
-    <footer class="footer">
-  <div class="footer__inner">
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/som"
+      >SOM</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/kohonen"
+      >Kohonen</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/neural-networks"
+      >neural networks</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/self-organizing-map"
+      >self-organizing map</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/pytorch"
+      >pytorch</a
+    >
     
-      <div class="copyright copyright--user">
-        <span>ⓒ  GID, 2021-2022</span>
+  </footer>
+  
+
+  
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
     
-        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
-      </div>
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://gdetor.github.io/posts/tipsntricks/"
+      ><span>Tips &amp; Tricks (Linux/Vim/Git/Programming)</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="https://gdetor.github.io">GID</a>
   </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
 </footer>
 
-<script src="https://gdetor.github.io/assets/main.js"></script>
-<script src="https://gdetor.github.io/assets/prism.js"></script>
-
-
-
-
-<style>
-    #body a, #body span {
-        display: inline-block;
-        width: 100%;
-        text-align: center;
-        line-height: 1.7em;
-    }
-    h2 {
-        display: inline-block;
-    }
-    img.github, img.gitlab, img.rgate, img.orcid{
-        -webkit-filter: invert(1);
-        filter: invert(1);
-    }
-</style>
-
-<center>
-    <div>
-        <a class="inline-block px-2" href="https://github.com/gdetor"><h2><img class="image github" src="/github-square.svg" alt="Github" width="36"></h2></a>
-        <a class="inline-block" href="https://gitlab.com/gdetor"><h2><img class="image gitlab" src="/gitlab.svg" alt="Gitlab" width="36"></h2></a>
-        <a class="inline-block px-2" href="https://www.researchgate.net/profile/Georgios-Detorakis"><h2>
-         <img class="image rgate" src="/researchgate-square.svg" alt="RG" width="36"></h2></a>
-        <a class="inline-block px-2" href="https://orcid.org/0000-0001-5891-1702"><h2>
-         <img class="image orcid" src="/orcid-square.svg" alt="RG" width="36"></h2></a>
-    </div>
-</center>
-
-
-  
-</div>
-
-</body>
+  </body>
 </html>

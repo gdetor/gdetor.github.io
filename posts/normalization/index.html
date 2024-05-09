@@ -1,55 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  
-    <title>Useful data transformations :: GID Webpage</title>
-  
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Blog post on useful data transformations" />
-<meta name="keywords" content="[gdetor, Georgios Detorakis, Georgios Is. Detorakis, georgios, detorakis]" />
-<meta name="robots" content="noodp" />
-<link rel="canonical" href="https://gdetor.github.io/posts/normalization/" />
-
-
-
-
-<link rel="stylesheet" href="https://gdetor.github.io/assets/style.css">
-
-
-
-<link rel="stylesheet" href="https://gdetor.github.io/style.css">
-
-
-<link rel="apple-touch-icon" href="https://gdetor.github.io/img/apple-touch-icon-192x192.png">
-
-  <link rel="shortcut icon" href="https://gdetor.github.io/icons/favicon.ico">
-
-
-
-<meta name="twitter:card" content="summary" />
-
-  
-    <meta name="twitter:creator" content="Georgios Is. Detorakis" />
-
-
-
-<meta property="og:locale" content="en" />
-<meta property="og:type" content="article" />
-<meta property="og:title" content="Useful data transformations">
-<meta property="og:description" content="Blog post on useful data transformations" />
-<meta property="og:url" content="https://gdetor.github.io/posts/normalization/" />
-<meta property="og:site_name" content="GID Webpage" />
-
-  
-    <meta property="og:image" content="https://gdetor.github.io/icons/favicon.ico">
-  
-
-<meta property="og:image:width" content="2048">
-<meta property="og:image:height" content="1024">
-
-
-  <meta property="article:published_time" content="2022-10-13 00:00:00 &#43;0000 UTC" />
+<!doctype html>
 
 
 
@@ -62,161 +11,351 @@
 
 
 
-<!DOCTYPE html>
 
-<html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
   <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
 
-    
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx" crossorigin="anonymous"></script>
+  
+  <title>Useful data transformations - GID</title>
 
-    
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
-        onload="renderMathInElement(document.body);"></script>
+  
+  <meta name="theme-color" />
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                    {left: "$$", right: "$$", display: true},
-                    {left: "$", right: "$", display: false}
-                ]
-            });
-        });
-    </script>
-  </head>
-</html>
+  
+  
+  
+  
+  <meta name="description" content="This post briefly introduces fundamental data transformations such as mean subtraction (centering data), normalization, standardization, difference transform, and power transform. Furthermore, we provide simple examples of Python code on how to apply those transforms to real data. Moreover, we heavily rely on the sklearn Python package [1].
+Mean subtraction Let&rsquo;s assume we have some data in a vector $ {\bf x} $, and we know that the mean value of $ {\bf x} $ is not zero." />
+  <meta name="author" content="Georgios Is. Detorakis" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://gdetor.github.io/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/theme.png" />
+
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://avatars.githubusercontent.com/u/7115299?v=4" />
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/github.svg" />
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/linkedin.svg" />
+  
+  
+
+  
+  
+  <script
+    defer
+    src="https://gdetor.github.io/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://gdetor.github.io/icons/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://gdetor.github.io/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.92.2" />
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Useful data transformations">
+<meta itemprop="description" content="Fundamental data transformations such as mean subtraction (centering data), normalization, and standardization are standard preprocessing steps for many algorithms. Therefore, in this post, we provide some information regarding different basic data transformations as well as simple examples of Python code for applying those transforms to real data."><meta itemprop="datePublished" content="2022-10-13T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-10-13T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1358">
+<meta itemprop="keywords" content="normalization,standardize,scaling,centered,difference transform,power transform," />
+  
+  <meta property="og:title" content="Useful data transformations" />
+<meta property="og:description" content="Fundamental data transformations such as mean subtraction (centering data), normalization, and standardization are standard preprocessing steps for many algorithms. Therefore, in this post, we provide some information regarding different basic data transformations as well as simple examples of Python code for applying those transforms to real data." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gdetor.github.io/posts/normalization/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-10-13T00:00:00+00:00" />
 
 
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Useful data transformations"/>
+<meta name="twitter:description" content="Fundamental data transformations such as mean subtraction (centering data), normalization, and standardization are standard preprocessing steps for many algorithms. Therefore, in this post, we provide some information regarding different basic data transformations as well as simple examples of Python code for applying those transforms to real data."/>
+
+  
+  
+  
+  <link rel="canonical" href="https://gdetor.github.io/posts/normalization/" />
+  
+  
 </head>
-<body class="orange">
 
-
-<div class="container center">
-
-  <header class="header">
-  <div class="header__inner">
-    <div class="header__logo">
-      <a href="/">
-  <div class="logo">
-    # GID
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://gdetor.github.io"
+      >GID</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
   </div>
-</a>
 
-    </div>
-    
-      <div class="menu-trigger">menu</div>
-    
-  </div>
-  
-    <nav class="menu">
-  <ul class="menu__inner menu__inner--desktop">
-    
-      
-        
-          <li><a href="/about">About</a></li>
-        
-      
-        
-          <li><a href="/research">Research</a></li>
-        
-      
-        
-          <li><a href="/software">Software</a></li>
-        
-      
-        
-          <li><a href="/publications">Publications</a></li>
-        
-      
-        
-          <li><a href="/artwork">Artwork</a></li>
-        
-      
-      
-    
-
-    
-  </ul>
-
-  <ul class="menu__inner menu__inner--mobile">
-    
-      
-        <li><a href="/about">About</a></li>
-      
-    
-      
-        <li><a href="/research">Research</a></li>
-      
-    
-      
-        <li><a href="/software">Software</a></li>
-      
-    
-      
-        <li><a href="/publications">Publications</a></li>
-      
-    
-      
-        <li><a href="/artwork">Artwork</a></li>
-      
-    
-    
-  </ul>
-</nav>
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
 
   
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/about/"
+        >About</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/research/"
+        >Research</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/software/"
+        >Software</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/publications/"
+        >Publications</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/artwork/"
+        >Artwork</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/gdetor"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/georgiosdetorakis"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+    </nav>
+    
+  </div>
 </header>
 
 
-  <div class="content">
-    
-<div class="post">
-  <h1 class="post-title">
-    <a href="https://gdetor.github.io/posts/normalization/">Useful data transformations</a></h1>
-  <div class="post-meta">
-    
-      <span class="post-date">
-        2022-10-13
-        
-      </span>
-    
-    
-      <span class="post-author">:: Georgios Is. Detorakis</span>
-    
-    
-  </div>
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
 
-  
-  <span class="post-tags">
-    
-    #<a href="https://gdetor.github.io/tags/normalization/">normalization</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/standardize/">standardize</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/scaling/">scaling</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/centered/">centered</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/difference-transform/">difference transform</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/power-transform/">power transform</a>&nbsp;
-    
-  </span>
-  
-  
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Useful data transformations</h1>
 
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Oct 13, 2022</time>
+      
+      
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Georgios Is. Detorakis</span>
+      <span class="mx-1">&middot;</span>
+      <span class="inline-item reading">7 minutes read</span>
+      
+    </div>
+    
+  </header>
 
-  
-
-  <div class="post-content"><div>
-        <p>This post briefly introduces fundamental data transformations such as mean
+  <section><div style="text-align: justify;">
+<p>This post briefly introduces fundamental data transformations such as mean
 subtraction (centering data), normalization, standardization, difference
 transform, and power transform. Furthermore, we provide simple examples of
 Python code on how to apply those transforms to real data. Moreover, we heavily
 rely on the <em>sklearn</em> Python package [1].</p>
-<h2 id="mean-subtraction">Mean subtraction<a href="#mean-subtraction" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="mean-subtraction">Mean subtraction</h2>
 <p>Let&rsquo;s assume we have some data in a vector $ {\bf x} $, and we know that the
 mean value of $ {\bf x} $ is not zero. We could force the mean to be zero by
 subtracting the mean from each element in the vector $ {\bf x} $. Thus we center
@@ -235,7 +374,7 @@ print(X_bar)		<span style="color:#75715e"># 4.9911754</span>
 
 Z <span style="color:#f92672">=</span> X <span style="color:#f92672">-</span> X_bar
 print(Z<span style="color:#f92672">.</span>mean()) 	<span style="color:#75715e"># -2.930988e-16 </span>
-</code></pre></div><h2 id="normalize">Normalize<a href="#normalize" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+</code></pre></div><h2 id="normalize">Normalize</h2>
 <p>Originally, data normalization meant rescaling and shifting a data set&rsquo;s values
 so that they range in $ [0, 1] $. The mathematical formula to do that is:</p>
 <p>$$ {\bf z} = \frac{ {\bf x} - x_{\text{min}} }{ x_{\text{max}} - x_{\text{min}} }, \quad (2) $$</p>
@@ -260,7 +399,7 @@ Z <span style="color:#f92672">=</span> scaler<span style="color:#f92672">.</span
 scaler <span style="color:#f92672">=</span> MinMaxScaler(feature_range<span style="color:#f92672">=</span>(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">4</span>))
 Z <span style="color:#f92672">=</span> scaler<span style="color:#f92672">.</span>fit_transform(X)
 
-</code></pre></div><h2 id="standarize">Standarize<a href="#standarize" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+</code></pre></div><h2 id="standarize">Standarize</h2>
 <p>Let&rsquo;s assume that we have some data on people&rsquo;s height and weight, and we would
 like to use machine learning models on them. Naturally, weight and height
 measure different physical quantities and thus are in various scales and units
@@ -308,7 +447,7 @@ immune to a wide range of features:</p>
 <li>Decision trees</li>
 <li>Gradient boosting</li>
 </ul>
-<h2 id="difference-transform">Difference transform<a href="#difference-transform" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="difference-transform">Difference transform</h2>
 <p>A difference transform is most useful when we are dealing with time series.
 In case there is a trend in a time series, and we would like to get rid of it,
 we can apply a difference transform by subtracting the value at time $ t-1 $
@@ -351,7 +490,7 @@ snippet provides two functions to apply and reverse the difference transform.</p
 	<span style="color:#75715e"># Another way to inverse the difference when delay=1 is the following</span>
     x_diff_prime_inv <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>r_[x[<span style="color:#ae81ff">0</span>], x_diff_prime]<span style="color:#f92672">.</span>cumsum()
     print(x_diff_prime_inv)		<span style="color:#75715e"># [1 2 3 4 5 6 7 8 9]</span>
-</code></pre></div><h2 id="power-transform">Power transform<a href="#power-transform" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+</code></pre></div><h2 id="power-transform">Power transform</h2>
 <p>We can apply a power transform when we want to make our data distribution look
 more like Gaussian. At the same time, a power transformation will also stabilize
 the variance of our data. There are two major power transforms, the Cox-Box [4]
@@ -377,12 +516,13 @@ print(Z)
 
 <span style="color:#75715e"># [-1.71002627  1.17246013 -1.55389497  0.91312675 -0.02584321  0.19532181</span>
 <span style="color:#75715e">#  -0.08403872  1.48983064  0.03445026 -0.43138641]</span>
-</code></pre></div><h2 id="summary">Summary<a href="#summary" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+</code></pre></div><h2 id="summary">Summary</h2>
 <p>We went through five essential data transforms, centering data,
 normalization, standardization, difference, and power transform. We briefly
 described the math behind those transformations and provided some Python
 functions based on <em>sklearn</em> that implement those transformations.</p>
-<h3 id="cited-as">Cited as<a href="#cited-as" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</div>
+<h3 id="cited-as">Cited as</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">@article{detorakis2022acfpacf,
   title   = &#34;Useful data transformations&#34;,
   author  = &#34;Georgios Is. Detorakis&#34;,
@@ -390,7 +530,7 @@ functions based on <em>sklearn</em> that implement those transformations.</p>
   year    = &#34;2022&#34;,
   url     = &#34;https://gdetor.github.io/posts/normalization&#34;
 }
-</code></pre></div><h3 id="references">References<a href="#references" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="references">References</h3>
 <ol>
 <li>Pedregosa et al., <em>Scikit-learn: Machine Learning in Python,</em>, JMLR 12, pp. 2825-2830, 2011.</li>
 <li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.MinMaxScaler.html#sklearn.preprocessing.MinMaxScaler">Sklearn MinMaxScaler</a></li>
@@ -399,92 +539,107 @@ functions based on <em>sklearn</em> that implement those transformations.</p>
 <li>In-Kwon Yeo and R.A. Johnson, <em>A New Family of Power Transformations to Improve Normality or Symmetry</em>, Biometrica, 87(4), 2000.</li>
 <li><a href="https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.PowerTransformer.html#sklearn.preprocessing.PowerTransformer">Sklearn PowerTransformer</a></li>
 </ol>
-
-      </div></div>
-
-  
-  
-<div class="pagination">
-    <div class="pagination__title">
-        <span class="pagination__title-h">Read other posts</span>
-        <hr />
-    </div>
-    <div class="pagination__buttons">
-        
-        <span class="button previous">
-            <a href="https://gdetor.github.io/posts/acf_pacf/">
-                <span class="button__icon">←</span>
-                <span class="button__text">Autocorrelation Functions for Time Series</span>
-            </a>
-        </span>
-        
-        
-        <span class="button next">
-            <a href="https://gdetor.github.io/posts/errors/">
-                <span class="button__text">Time series forecasting error metrics</span>
-                <span class="button__icon">→</span>
-            </a>
-        </span>
-        
-    </div>
-</div>
+</section>
 
   
-
   
-
-</div>
-
-  </div>
-
-  
-    <footer class="footer">
-  <div class="footer__inner">
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/normalization"
+      >normalization</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/standardize"
+      >standardize</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/scaling"
+      >scaling</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/centered"
+      >centered</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/difference-transform"
+      >difference transform</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/power-transform"
+      >power transform</a
+    >
     
-      <div class="copyright copyright--user">
-        <span>ⓒ  GID, 2021-2022</span>
+  </footer>
+  
+
+  
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
     
-        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
-      </div>
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://gdetor.github.io/posts/acf_pacf/"
+      ><span class="mr-1.5">←</span><span>Autocorrelation Functions for Time Series</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://gdetor.github.io/posts/errors/"
+      ><span>Time series forecasting error metrics</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="https://gdetor.github.io">GID</a>
   </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
 </footer>
 
-<script src="https://gdetor.github.io/assets/main.js"></script>
-<script src="https://gdetor.github.io/assets/prism.js"></script>
-
-
-
-
-<style>
-    #body a, #body span {
-        display: inline-block;
-        width: 100%;
-        text-align: center;
-        line-height: 1.7em;
-    }
-    h2 {
-        display: inline-block;
-    }
-    img.github, img.gitlab, img.rgate, img.orcid{
-        -webkit-filter: invert(1);
-        filter: invert(1);
-    }
-</style>
-
-<center>
-    <div>
-        <a class="inline-block px-2" href="https://github.com/gdetor"><h2><img class="image github" src="/github-square.svg" alt="Github" width="36"></h2></a>
-        <a class="inline-block" href="https://gitlab.com/gdetor"><h2><img class="image gitlab" src="/gitlab.svg" alt="Gitlab" width="36"></h2></a>
-        <a class="inline-block px-2" href="https://www.researchgate.net/profile/Georgios-Detorakis"><h2>
-         <img class="image rgate" src="/researchgate-square.svg" alt="RG" width="36"></h2></a>
-        <a class="inline-block px-2" href="https://orcid.org/0000-0001-5891-1702"><h2>
-         <img class="image orcid" src="/orcid-square.svg" alt="RG" width="36"></h2></a>
-    </div>
-</center>
-
-
-  
-</div>
-
-</body>
+  </body>
 </html>

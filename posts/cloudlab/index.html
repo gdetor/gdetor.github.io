@@ -1,55 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  
-    <title>Organs-on-Chip-as-a-Service: A proposal bridging cloud services and scientific experiments :: GID Webpage</title>
-  
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Blog post on organs-on-chip-as-a-service" />
-<meta name="keywords" content="[gdetor, Georgios Detorakis, Georgios Is. Detorakis, georgios, detorakis]" />
-<meta name="robots" content="noodp" />
-<link rel="canonical" href="https://gdetor.github.io/posts/cloudlab/" />
-
-
-
-
-<link rel="stylesheet" href="https://gdetor.github.io/assets/style.css">
-
-
-
-<link rel="stylesheet" href="https://gdetor.github.io/style.css">
-
-
-<link rel="apple-touch-icon" href="https://gdetor.github.io/img/apple-touch-icon-192x192.png">
-
-  <link rel="shortcut icon" href="https://gdetor.github.io/icons/favicon.ico">
-
-
-
-<meta name="twitter:card" content="summary" />
-
-  
-    <meta name="twitter:creator" content="Georgios Is. Detorakis and Roman Parise" />
-
-
-
-<meta property="og:locale" content="en" />
-<meta property="og:type" content="article" />
-<meta property="og:title" content="Organs-on-Chip-as-a-Service: A proposal bridging cloud services and scientific experiments">
-<meta property="og:description" content="Blog post on organs-on-chip-as-a-service" />
-<meta property="og:url" content="https://gdetor.github.io/posts/cloudlab/" />
-<meta property="og:site_name" content="GID Webpage" />
-
-  
-    <meta property="og:image" content="https://gdetor.github.io/icons/favicon.ico">
-  
-
-<meta property="og:image:width" content="2048">
-<meta property="og:image:height" content="1024">
-
-
-  <meta property="article:published_time" content="2022-11-28 00:00:00 &#43;0000 UTC" />
+<!doctype html>
 
 
 
@@ -62,163 +11,358 @@
 
 
 
-<!DOCTYPE html>
 
-<html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
   <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
 
-    
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx" crossorigin="anonymous"></script>
+  
+  <title>Organs-on-Chip-as-a-Service: A proposal bridging cloud services and scientific experiments - GID</title>
 
-    
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
-        onload="renderMathInElement(document.body);"></script>
+  
+  <meta name="theme-color" />
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                    {left: "$$", right: "$$", display: true},
-                    {left: "$", right: "$", display: false}
-                ]
-            });
-        });
-    </script>
-  </head>
-</html>
+  
+  
+  
+  
+  <meta name="description" content="Abstract Technological advancements enable delicate and complex experiments on small-scale devices, such as organs-on-chips, improving and accelerating research. At the same time, an ever-increasing diversity of hardware platforms is accessible via cloud services. This perspective article describes our vision for the future of organs-on-chips. We present the main idea behind organs-on-chips as a cloud service, a brief description of the proposed infrastructure, and some applications.
+Keywors Organs-on-chips, tissue-as-a-service, cloud computing, neuroscience, experiments" />
+  <meta name="author" content="Georgios Is. Detorakis and Roman Parise" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://gdetor.github.io/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/theme.png" />
+
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://avatars.githubusercontent.com/u/7115299?v=4" />
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/github.svg" />
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/linkedin.svg" />
+  
+  
+
+  
+  
+  <script
+    defer
+    src="https://gdetor.github.io/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://gdetor.github.io/icons/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://gdetor.github.io/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.92.2" />
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Organs-on-Chip-as-a-Service: A proposal bridging cloud services and scientific experiments">
+<meta itemprop="description" content="Abstract Technological advancements enable delicate and complex experiments on small-scale devices, such as organs-on-chips, improving and accelerating research. At the same time, an ever-increasing diversity of hardware platforms is accessible via cloud services. This perspective article describes our vision for the future of organs-on-chips. We present the main idea behind organs-on-chips as a cloud service, a brief description of the proposed infrastructure, and some applications.
+Keywors Organs-on-chips, tissue-as-a-service, cloud computing, neuroscience, experiments"><meta itemprop="datePublished" content="2022-11-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-11-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2799">
+<meta itemprop="keywords" content="Organs-on-chips,tissue-as-a-service,cloud computing,neuroscience,scientific experiments," />
+  
+  <meta property="og:title" content="Organs-on-Chip-as-a-Service: A proposal bridging cloud services and scientific experiments" />
+<meta property="og:description" content="Abstract Technological advancements enable delicate and complex experiments on small-scale devices, such as organs-on-chips, improving and accelerating research. At the same time, an ever-increasing diversity of hardware platforms is accessible via cloud services. This perspective article describes our vision for the future of organs-on-chips. We present the main idea behind organs-on-chips as a cloud service, a brief description of the proposed infrastructure, and some applications.
+Keywors Organs-on-chips, tissue-as-a-service, cloud computing, neuroscience, experiments" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gdetor.github.io/posts/cloudlab/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-11-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-11-28T00:00:00+00:00" />
 
 
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Organs-on-Chip-as-a-Service: A proposal bridging cloud services and scientific experiments"/>
+<meta name="twitter:description" content="Abstract Technological advancements enable delicate and complex experiments on small-scale devices, such as organs-on-chips, improving and accelerating research. At the same time, an ever-increasing diversity of hardware platforms is accessible via cloud services. This perspective article describes our vision for the future of organs-on-chips. We present the main idea behind organs-on-chips as a cloud service, a brief description of the proposed infrastructure, and some applications.
+Keywors Organs-on-chips, tissue-as-a-service, cloud computing, neuroscience, experiments"/>
+
+  
+  
+  
+  <link rel="canonical" href="https://gdetor.github.io/posts/cloudlab/" />
+  
+  
 </head>
-<body class="orange">
 
-
-<div class="container center">
-
-  <header class="header">
-  <div class="header__inner">
-    <div class="header__logo">
-      <a href="/">
-  <div class="logo">
-    # GID
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://gdetor.github.io"
+      >GID</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
   </div>
-</a>
 
-    </div>
-    
-      <div class="menu-trigger">menu</div>
-    
-  </div>
-  
-    <nav class="menu">
-  <ul class="menu__inner menu__inner--desktop">
-    
-      
-        
-          <li><a href="/about">About</a></li>
-        
-      
-        
-          <li><a href="/research">Research</a></li>
-        
-      
-        
-          <li><a href="/software">Software</a></li>
-        
-      
-        
-          <li><a href="/publications">Publications</a></li>
-        
-      
-        
-          <li><a href="/artwork">Artwork</a></li>
-        
-      
-      
-    
-
-    
-  </ul>
-
-  <ul class="menu__inner menu__inner--mobile">
-    
-      
-        <li><a href="/about">About</a></li>
-      
-    
-      
-        <li><a href="/research">Research</a></li>
-      
-    
-      
-        <li><a href="/software">Software</a></li>
-      
-    
-      
-        <li><a href="/publications">Publications</a></li>
-      
-    
-      
-        <li><a href="/artwork">Artwork</a></li>
-      
-    
-    
-  </ul>
-</nav>
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
 
   
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/about/"
+        >About</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/research/"
+        >Research</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/software/"
+        >Software</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/publications/"
+        >Publications</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/artwork/"
+        >Artwork</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/gdetor"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/georgiosdetorakis"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+    </nav>
+    
+  </div>
 </header>
 
 
-  <div class="content">
-    
-<div class="post">
-  <h1 class="post-title">
-    <a href="https://gdetor.github.io/posts/cloudlab/">Organs-on-Chip-as-a-Service: A proposal bridging cloud services and scientific experiments</a></h1>
-  <div class="post-meta">
-    
-      <span class="post-date">
-        2022-11-28
-        
-      </span>
-    
-    
-      <span class="post-author">:: Georgios Is. Detorakis and Roman Parise</span>
-    
-    
-  </div>
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
 
-  
-  <span class="post-tags">
-    
-    #<a href="https://gdetor.github.io/tags/organs-on-chips/">Organs-on-chips</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/tissue-as-a-service/">tissue-as-a-service</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/cloud-computing/">cloud computing</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/neuroscience/">neuroscience</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/scientific-experiments/">scientific experiments</a>&nbsp;
-    
-  </span>
-  
-  
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Organs-on-Chip-as-a-Service: A proposal bridging cloud services and scientific experiments</h1>
 
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Nov 28, 2022</time>
+      
+      
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Georgios Is. Detorakis and Roman Parise</span>
+      <span class="mx-1">&middot;</span>
+      <span class="inline-item reading">14 minutes read</span>
+      
+    </div>
+    
+  </header>
 
-  
-
-  <div class="post-content"><div>
-        <h2 id="abstract">Abstract<a href="#abstract" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+  <section><div style="text-align: justify;">
+<h2 id="abstract">Abstract</h2>
 <p>Technological advancements enable delicate and complex experiments on small-scale
 devices, such as organs-on-chips, improving and accelerating research. At the same
 time, an ever-increasing diversity of hardware platforms is accessible via
 cloud services. This perspective article describes our vision for the future of
 organs-on-chips. We present the main idea behind organs-on-chips as a cloud service,
 a brief description of the proposed infrastructure, and some applications.</p>
-<h3 id="keywors">Keywors<a href="#keywors" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="keywors">Keywors</h3>
 <p>Organs-on-chips, tissue-as-a-service, cloud computing, neuroscience, experiments</p>
-<h2 id="introduction">Introduction<a href="#introduction" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="introduction">Introduction</h2>
 <p>Organs-on-chips (OoCs) are small-scale devices that sustain living tissue
 and emulate human organs. Recently, their importance in precision medicine,
 pharmaceuticals, and basic science has been highlighted by many researchers.
@@ -238,7 +382,7 @@ to OoCs. More precisely, warehouses can host racks of OoCs along with servers an
 GPU/accelerator clusters. We will refer to this service as CloudLab. An infrastructure
 like CloudLab will provide all the necessary means for running, managing, and
 monitoring systems biology experiments remotely.</p>
-<h2 id="the-infrastructure">The infrastructure<a href="#the-infrastructure" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="the-infrastructure">The infrastructure</h2>
 <p>CloudLab&rsquo;s OoCs will be hosted in incubator-like rack servers.
 Using existing data center infrastructure, communication protocols, like Ethernet,
 enable remote access to the OoC. Furthermore, systems of microcontrollers and
@@ -248,15 +392,11 @@ levels, humidity, and temperature, will be automatically controlled.
 Sensors will provide real-time information about tissue health and report the
 hardware&rsquo;s condition. All previously mentioned parameters and potentially more
 will be stored in a data log at different points in time.</p>
-
-  <figure class="center" >
-    <img src="/images/cloudlab.png"   style="border-radius: 8px;"  />
-    
-      <figcaption class="center" >Figure 1. CloudLab Schematic.This figure shows an oversimplified schematic representation of how CloudLab operates. A user signs up and gets an account to log in on the central server (distributor). Once connected to the server, they can use a web interface or a Unix terminal to set up and run experiments on CloudLab using the provided organ-on-chip devices. Each rack provides multiple OoCs and CPUs/GPUs. However, the user can combine OoCs from different racks and run experiments in parallel or distribute massive experiments to obtain results faster. </figcaption>
-    
-  </figure>
-
-
+<figure><img src="/images/cloudlab.png"
+         alt="Figure 1. CloudLab Schematic.This figure shows an oversimplified schematic representation of how CloudLab operates. A user signs up and gets an account to log in on the central server (distributor). Once connected to the server, they can use a web interface or a Unix terminal to set up and run experiments on CloudLab using the provided organ-on-chip devices. Each rack provides multiple OoCs and CPUs/GPUs. However, the user can combine OoCs from different racks and run experiments in parallel or distribute massive experiments to obtain results faster."/><figcaption>
+            <p>Figure 1. CloudLab Schematic.This figure shows an oversimplified schematic representation of how CloudLab operates. A user signs up and gets an account to log in on the central server (distributor). Once connected to the server, they can use a web interface or a Unix terminal to set up and run experiments on CloudLab using the provided organ-on-chip devices. Each rack provides multiple OoCs and CPUs/GPUs. However, the user can combine OoCs from different racks and run experiments in parallel or distribute massive experiments to obtain results faster.</p>
+        </figcaption>
+</figure>
 <p>The service will provide users with tissue instances (TIs), which function like
 virtual machines in familiar cloud services. TIs are intended to enable remote
 access to the OoCs in the form of a web interface or a terminal-based shell
@@ -298,7 +438,7 @@ up their experiments. The users can monitor their experiments as they are execut
 and collect results in real-time. The experiments' parameters and conditions are
 constantly monitored, and all the data are stored in a data log. The figure shows an oversimplified structure of racks, where OoCs
 coexist with boards equipped with CPUs, GPUs, microprocessors, and microcontrollers.</p>
-<h2 id="safety-and-security-in-cloudlab">Safety and Security in CloudLab<a href="#safety-and-security-in-cloudlab" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="safety-and-security-in-cloudlab">Safety and Security in CloudLab</h2>
 <p>Furthermore, fail-safe mechanisms such as real-time controllers and sanity checks
 will validate the input from the user so the devices remain within their limits of
 operation. These protective mechanisms will also prevent any unethical use of the
@@ -310,8 +450,8 @@ the safety of all personnel and the facility itself, we propose to dedicate a bi
 level $4$ area within the warehouse to host all dangerous experiments. Academic
 institutions and pharmaceutical companies that use hazardous materials may receive
 written clearance for conducting more complex experiments.</p>
-<h2 id="applications">Applications<a href="#applications" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
-<h3 id="neuroscience">Neuroscience<a href="#neuroscience" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h2 id="applications">Applications</h2>
+<h3 id="neuroscience">Neuroscience</h3>
 <p>Neuroscientists can study the effects
 of a drug on a specific group of neurons (one OoC device) throughout the brain and
 how it affects other groups (other OoC devices connected to the affected one) of
@@ -337,7 +477,7 @@ currents and voltages and calibrate all necessary parameters for a stimulation a
 (<em>e.g.</em>, PID controller gains). Moreover, they can perform identical stimulation
 sequences on a diverse set of tissues without relying on crude <em>in vitro</em> or
 <em>in vivo</em> animal models [10, 11].</p>
-<h3 id="pharmaceutical-research">Pharmaceutical research<a href="#pharmaceutical-research" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="pharmaceutical-research">Pharmaceutical research</h3>
 <p>Researching new drugs can be tedious and involve complex procedures requiring time
 and money. CloudLab allows researchers and companies to conduct thousands of experiments
 in parallel. Therefore, researchers could test their hypotheses or new compounds
@@ -356,7 +496,7 @@ Thus, it is reasonable to assume that <em>orphan</em> drugs may have a more sign
 of their costs concentrated in pre-clinical trials, making them a suitable niche for
 CloudLab,  which could offer a platform for rapid development and testing of <em>orphan</em>
 drugs on OoCs of human tissue.</p>
-<h3 id="machine-and-deep-learning">Machine and Deep Learning<a href="#machine-and-deep-learning" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="machine-and-deep-learning">Machine and Deep Learning</h3>
 <p>CloudLab is a platform that allows and encourages scientists to use
 machine/deep learning (ML/DL) algorithms in their experiments [14, 15].
 The infrastructure
@@ -376,7 +516,7 @@ small form factor microscopes can be embedded in the racks and offer more option
 to researchers. All the mechanisms above will improve and facilitate OoC
 experiments by allowing researchers to automate many complex tasks requiring
 much human labor and time.</p>
-<h3 id="education-and-training">Education and Training<a href="#education-and-training" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="education-and-training">Education and Training</h3>
 <p>CloudLab facilitates and promotes basic research since every researcher
 can access a virtual lab from anywhere in the world. Researchers have access
 to state-of-the-art equipment and can conceive, devise, set up, and run their experiments.
@@ -408,7 +548,7 @@ its melting point.
 This bonus round game <em>was originally intended to involve the remote hardware</em>.
 Thus, frameworks like <em>Elena</em> could be used to build games that make CloudLab
 apps more engaging in a classroom setting.</p>
-<h2 id="economic-benefits">Economic Benefits<a href="#economic-benefits" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="economic-benefits">Economic Benefits</h2>
 <p>From an economic standpoint, pharmaceutical applications are the most promising. In some
 instances, the exploding cost of pharmaceutical development might be better managed by
 OoC-centric remote lab technologies than existing approaches. An interesting and worrisome
@@ -424,7 +564,7 @@ to cheaper, more effective, and safer therapies (<em>e.g.</em>, drugs).
 CloudLab could improve even further that endeavor for reasons we already mentioned above.
 It allows researchers to try many different approaches in parallel (i.e., brute-force attacks)
 and receive the results of their experiments much more quickly.</p>
-<h2 id="conclusions">Conclusions<a href="#conclusions" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="conclusions">Conclusions</h2>
 <p>In conclusion, we briefly described how a relatively new technology, organs-on-chips
 (OoCs), can be used in a cloud service, facilitating research, education, and the rapid
 development of pharmaceutical compounds.
@@ -434,7 +574,8 @@ will provide researchers the ability to conduct state-of-the-art research in man
 scientific fields.
 Technologies like CloudLab will enable substantially faster and more accurate scientific
 research results.</p>
-<h3 id="cited-as">Cited as:<a href="#cited-as" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</div>
+<h3 id="cited-as">Cited as:</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">@article{detorakis2022cloudlab,
   title   = &#34;Organs-on-Chip-as-a-Service: A proposal bridging cloud services and scientific experiments}&#34;,
   author  = &#34;Georgios Is. Detorakis and Roman Parise&#34;,
@@ -442,7 +583,7 @@ research results.</p>
   year    = &#34;2022&#34;,
   url     = &#34;https://gdetor.github.io/posts/cloudlab&#34;
 }
-</code></pre></div><h3 id="references">References<a href="#references" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="references">References</h3>
 <ol>
 <li>Donald E Ingber. <em>Human organs-on-chips for disease modelling, drug development and personalized
 medicine</em>. Nature Reviews Genetics, pages 1–25, 2022.</li>
@@ -488,92 +629,101 @@ Submitted to JOSE, 2022.</li>
 <li>Olivier J. Wouters, Martin McKee, and Jeroen Luyten. <em>Estimated research and development investment
 needed to bring a new medicine to market, 2009-2018</em>. JAMA, 323(9):844, March 2020.</li>
 </ol>
-
-      </div></div>
-
-  
-  
-<div class="pagination">
-    <div class="pagination__title">
-        <span class="pagination__title-h">Read other posts</span>
-        <hr />
-    </div>
-    <div class="pagination__buttons">
-        
-        <span class="button previous">
-            <a href="https://gdetor.github.io/posts/tipsntricks/">
-                <span class="button__icon">←</span>
-                <span class="button__text">Tips &amp; Tricks (Linux/Vim/Git/Programming)</span>
-            </a>
-        </span>
-        
-        
-        <span class="button next">
-            <a href="https://gdetor.github.io/posts/acf_pacf/">
-                <span class="button__text">Autocorrelation Functions for Time Series</span>
-                <span class="button__icon">→</span>
-            </a>
-        </span>
-        
-    </div>
-</div>
+</section>
 
   
-
   
-
-</div>
-
-  </div>
-
-  
-    <footer class="footer">
-  <div class="footer__inner">
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/organs-on-chips"
+      >Organs-on-chips</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/tissue-as-a-service"
+      >tissue-as-a-service</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/cloud-computing"
+      >cloud computing</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/neuroscience"
+      >neuroscience</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/scientific-experiments"
+      >scientific experiments</a
+    >
     
-      <div class="copyright copyright--user">
-        <span>ⓒ  GID, 2021-2022</span>
+  </footer>
+  
+
+  
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
     
-        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
-      </div>
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://gdetor.github.io/posts/tipsntricks/"
+      ><span class="mr-1.5">←</span><span>Tips &amp; Tricks (Linux/Vim/Git/Programming)</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://gdetor.github.io/posts/acf_pacf/"
+      ><span>Autocorrelation Functions for Time Series</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="https://gdetor.github.io">GID</a>
   </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
 </footer>
 
-<script src="https://gdetor.github.io/assets/main.js"></script>
-<script src="https://gdetor.github.io/assets/prism.js"></script>
-
-
-
-
-<style>
-    #body a, #body span {
-        display: inline-block;
-        width: 100%;
-        text-align: center;
-        line-height: 1.7em;
-    }
-    h2 {
-        display: inline-block;
-    }
-    img.github, img.gitlab, img.rgate, img.orcid{
-        -webkit-filter: invert(1);
-        filter: invert(1);
-    }
-</style>
-
-<center>
-    <div>
-        <a class="inline-block px-2" href="https://github.com/gdetor"><h2><img class="image github" src="/github-square.svg" alt="Github" width="36"></h2></a>
-        <a class="inline-block" href="https://gitlab.com/gdetor"><h2><img class="image gitlab" src="/gitlab.svg" alt="Gitlab" width="36"></h2></a>
-        <a class="inline-block px-2" href="https://www.researchgate.net/profile/Georgios-Detorakis"><h2>
-         <img class="image rgate" src="/researchgate-square.svg" alt="RG" width="36"></h2></a>
-        <a class="inline-block px-2" href="https://orcid.org/0000-0001-5891-1702"><h2>
-         <img class="image orcid" src="/orcid-square.svg" alt="RG" width="36"></h2></a>
-    </div>
-</center>
-
-
-  
-</div>
-
-</body>
+  </body>
 </html>

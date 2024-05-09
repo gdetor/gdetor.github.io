@@ -1,190 +1,355 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
   
-    <title>Tips &amp; Tricks (Linux/Vim/Git/Programming) :: GID Webpage</title>
-  
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Blog post on tips and tricks for Linux/Programming/Git/Vim" />
-<meta name="keywords" content="[gdetor, Georgios Detorakis, Georgios Is. Detorakis, georgios, detorakis]" />
-<meta name="robots" content="noodp" />
-<link rel="canonical" href="https://gdetor.github.io/posts/tipsntricks/" />
-
-
-
-
-<link rel="stylesheet" href="https://gdetor.github.io/assets/style.css">
-
-
-
-<link rel="stylesheet" href="https://gdetor.github.io/style.css">
-
-
-<link rel="apple-touch-icon" href="https://gdetor.github.io/img/apple-touch-icon-192x192.png">
-
-  <link rel="shortcut icon" href="https://gdetor.github.io/icons/favicon.ico">
-
-
-
-<meta name="twitter:card" content="summary" />
+  <title>Tips &amp; Tricks (Linux/Vim/Git/Programming) - GID</title>
 
   
-    <meta name="twitter:creator" content="Georgios Is. Detorakis" />
+  <meta name="theme-color" />
 
+  
+  
+  
+  
+  <meta name="description" content="In this post you can find various simple tricks and tips for Linux, Vim, Git, Python and many other stuff. All the material provided in this page has been suggested by many different sources such as Command Line Magic, Mastering Vim, kernel_perspective, nixCraft, and Linux Today. The material is free and can be redistributed and/or modified. There is no any warranty that they work for you or are suitable to your need." />
+  <meta name="author" content="Georgios Is. Detorakis" />
+  
 
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://gdetor.github.io/main.min.css" />
 
-<meta property="og:locale" content="en" />
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/theme.png" />
+
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://avatars.githubusercontent.com/u/7115299?v=4" />
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/github.svg" />
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/linkedin.svg" />
+  
+  
+
+  
+  
+  <script
+    defer
+    src="https://gdetor.github.io/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://gdetor.github.io/icons/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://gdetor.github.io/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.92.2" />
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Tips &amp; Tricks (Linux/Vim/Git/Programming)">
+<meta itemprop="description" content="In this post you can find various simple tricks and tips for Linux, Vim, Git, Python and many other stuff. All the material provided in this page has been suggested by many different sources such as Command Line Magic, Mastering Vim, kernel_perspective, nixCraft, and Linux Today. The material is free and can be redistributed and/or modified. There is no any warranty that they work for you or are suitable to your need."><meta itemprop="datePublished" content="2023-12-18T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2023-12-18T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1287">
+<meta itemprop="keywords" content="Linux,Vim,Python,C,Git," />
+  
+  <meta property="og:title" content="Tips &amp; Tricks (Linux/Vim/Git/Programming)" />
+<meta property="og:description" content="In this post you can find various simple tricks and tips for Linux, Vim, Git, Python and many other stuff. All the material provided in this page has been suggested by many different sources such as Command Line Magic, Mastering Vim, kernel_perspective, nixCraft, and Linux Today. The material is free and can be redistributed and/or modified. There is no any warranty that they work for you or are suitable to your need." />
 <meta property="og:type" content="article" />
-<meta property="og:title" content="Tips &amp; Tricks (Linux/Vim/Git/Programming)">
-<meta property="og:description" content="Blog post on tips and tricks for Linux/Programming/Git/Vim" />
-<meta property="og:url" content="https://gdetor.github.io/posts/tipsntricks/" />
-<meta property="og:site_name" content="GID Webpage" />
+<meta property="og:url" content="https://gdetor.github.io/posts/tipsntricks/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2023-12-18T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-12-18T00:00:00+00:00" />
+
 
   
-    <meta property="og:image" content="https://gdetor.github.io/icons/favicon.ico">
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tips &amp; Tricks (Linux/Vim/Git/Programming)"/>
+<meta name="twitter:description" content="In this post you can find various simple tricks and tips for Linux, Vim, Git, Python and many other stuff. All the material provided in this page has been suggested by many different sources such as Command Line Magic, Mastering Vim, kernel_perspective, nixCraft, and Linux Today. The material is free and can be redistributed and/or modified. There is no any warranty that they work for you or are suitable to your need."/>
+
   
-
-<meta property="og:image:width" content="2048">
-<meta property="og:image:height" content="1024">
-
-
-  <meta property="article:published_time" content="2023-12-18 00:00:00 &#43;0000 UTC" />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  
+  <link rel="canonical" href="https://gdetor.github.io/posts/tipsntricks/" />
+  
+  
 </head>
-<body class="orange">
 
-
-<div class="container center">
-
-  <header class="header">
-  <div class="header__inner">
-    <div class="header__logo">
-      <a href="/">
-  <div class="logo">
-    # GID
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://gdetor.github.io"
+      >GID</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
   </div>
-</a>
 
-    </div>
-    
-      <div class="menu-trigger">menu</div>
-    
-  </div>
-  
-    <nav class="menu">
-  <ul class="menu__inner menu__inner--desktop">
-    
-      
-        
-          <li><a href="/about">About</a></li>
-        
-      
-        
-          <li><a href="/research">Research</a></li>
-        
-      
-        
-          <li><a href="/software">Software</a></li>
-        
-      
-        
-          <li><a href="/publications">Publications</a></li>
-        
-      
-        
-          <li><a href="/artwork">Artwork</a></li>
-        
-      
-      
-    
-
-    
-  </ul>
-
-  <ul class="menu__inner menu__inner--mobile">
-    
-      
-        <li><a href="/about">About</a></li>
-      
-    
-      
-        <li><a href="/research">Research</a></li>
-      
-    
-      
-        <li><a href="/software">Software</a></li>
-      
-    
-      
-        <li><a href="/publications">Publications</a></li>
-      
-    
-      
-        <li><a href="/artwork">Artwork</a></li>
-      
-    
-    
-  </ul>
-</nav>
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
 
   
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/about/"
+        >About</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/research/"
+        >Research</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/software/"
+        >Software</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/publications/"
+        >Publications</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/artwork/"
+        >Artwork</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/gdetor"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/georgiosdetorakis"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+    </nav>
+    
+  </div>
 </header>
 
 
-  <div class="content">
-    
-<div class="post">
-  <h1 class="post-title">
-    <a href="https://gdetor.github.io/posts/tipsntricks/">Tips &amp; Tricks (Linux/Vim/Git/Programming)</a></h1>
-  <div class="post-meta">
-    
-      <span class="post-date">
-        2023-12-18
-        
-      </span>
-    
-    
-      <span class="post-author">:: Georgios Is. Detorakis</span>
-    
-    
-  </div>
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
 
-  
-  <span class="post-tags">
-    
-    #<a href="https://gdetor.github.io/tags/linux/">Linux</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/vim/">Vim</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/python/">Python</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/c/">C</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/git/">Git</a>&nbsp;
-    
-  </span>
-  
-  
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Tips &amp; Tricks (Linux/Vim/Git/Programming)</h1>
 
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Dec 18, 2023</time>
+      
+      
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Georgios Is. Detorakis</span>
+      <span class="mx-1">&middot;</span>
+      <span class="inline-item reading">7 minutes read</span>
+      
+    </div>
+    
+  </header>
 
-  
-
-  <div class="post-content"><div>
-        <p>In this post you can find various simple tricks and tips for Linux, Vim,
+  <section><div style="text-align: justify;">
+<p>In this post you can find various simple tricks and tips for Linux, Vim,
 Git, Python and many other stuff. All the material provided in this page has
 been suggested by many different sources such as
 <a href="https://twitter.com/climagic">Command Line Magic</a>, <a href="https://twitter.com/MasteringVim">Mastering Vim</a>,
@@ -193,20 +358,21 @@ and <a href="https://twitter.com/linuxtoday">Linux Today</a>. The material is fr
 be redistributed and/or modified. There is no any warranty that
 they work for you or are suitable to your need. The author of this page is
 not responsible for any damage this material may cause.</p>
-<h3 id="how-to-count-the-lines-of-specific-files-in-a-dir-linux">How to count the lines of specific files in a dir (Linux)<a href="#how-to-count-the-lines-of-specific-files-in-a-dir-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</div>
+<h3 id="how-to-count-the-lines-of-specific-files-in-a-dir-linux">How to count the lines of specific files in a dir (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ find . -name <span style="color:#e6db74">&#34;*.c&#34;</span> | sed <span style="color:#e6db74">&#39;s/.*/&#34;&amp;&#34;/&#39;</span> | xargs wc -l    <span style="color:#75715e"># assumed C files</span>
-</code></pre></div><h3 id="override-the-tmux-sessions-numbering-manually-tmux">Override the Tmux session&rsquo;s numbering manually (Tmux)<a href="#override-the-tmux-sessions-numbering-manually-tmux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="override-the-tmux-sessions-numbering-manually-tmux">Override the Tmux session&rsquo;s numbering manually (Tmux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ tmux new -s <span style="color:#ae81ff">1</span> -d -P
-</code></pre></div><h3 id="how-to-check-if-file-a-contains-all-lines-of-file-b-linux">How to check if file A contains all lines of file B (Linux)<a href="#how-to-check-if-file-a-contains-all-lines-of-file-b-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="how-to-check-if-file-a-contains-all-lines-of-file-b-linux">How to check if file A contains all lines of file B (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ comm -13 &lt;<span style="color:#f92672">(</span>sort -u fileA<span style="color:#f92672">)</span> &lt;<span style="color:#f92672">(</span>sort -u fileB<span style="color:#f92672">)</span>
 <span style="color:#75715e"># if the output is empty that means all the lines of fileB are in the fileA to0</span>
-</code></pre></div><h3 id="how-to-delete-all-files-except-one-or-few-files-with-extensions-linux">How to delete all files except one or few files with extensions (Linux)<a href="#how-to-delete-all-files-except-one-or-few-files-with-extensions-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="how-to-delete-all-files-except-one-or-few-files-with-extensions-linux">How to delete all files except one or few files with extensions (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ rm -v !<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;filaneme_youd_like_to_keep&#34;</span><span style="color:#f92672">)</span>     <span style="color:#75715e"># verbose mode</span>
 
 $ rm -i !<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;foo&#34;</span>|<span style="color:#e6db74">&#34;bar&#34;</span><span style="color:#f92672">)</span>   <span style="color:#75715e"># interactive mode - keep files foo and bar</span>
 
 $ rm -v <span style="color:#f92672">(</span>*.pdf | *.odt<span style="color:#f92672">)</span>  <span style="color:#75715e"># keep files with extensions pdf and odt</span>
-</code></pre></div><h3 id="how-to-avoid-nested-loops-python">How to avoid nested loops (Python)<a href="#how-to-avoid-nested-loops-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="how-to-avoid-nested-loops-python">How to avoid nested loops (Python)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> itertools <span style="color:#f92672">import</span> product
 
 
@@ -216,7 +382,7 @@ z <span style="color:#f92672">=</span> [<span style="color:#ae81ff">8</span>, <s
 
 <span style="color:#66d9ef">for</span> i, j, k <span style="color:#f92672">in</span> product(x, y, z):
     <span style="color:#f92672">...</span> <span style="color:#75715e"># do something with x, y, and z</span>
-</code></pre></div><h3 id="eval-function-python">Eval function (Python)<a href="#eval-function-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="eval-function-python">Eval function (Python)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">foo</span>(x, y, operator):
     <span style="color:#66d9ef">return</span> eval(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>x<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span>operator<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span>b<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
 
@@ -225,7 +391,7 @@ operator <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;+
 print(foo(x, y, operator))
 <span style="color:#ae81ff">9</span>
 
-</code></pre></div><h3 id="how-to-share-files-with-samba-linux">How to share files with SAMBA (Linux)<a href="#how-to-share-files-with-samba-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="how-to-share-files-with-samba-linux">How to share files with SAMBA (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo apt install samba        <span style="color:#75715e"># Install samba packages on Ubuntu/Debian</span>
 $ mkdir samba_shared_folder     <span style="color:#75715e"># Create a temporary folder</span>
 $ vim /etc/samba/smb.conf
@@ -242,46 +408,46 @@ $ sudo smbpasswd -a username
 </code></pre></div><p>To access the SAMBA shared folder, either use any manager such as Nautilus
 or through the terminal:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ smbclient -L //hostname/samba_shared_folder
-</code></pre></div><h3 id="share-a-file-using-python-linux-python">Share a file using Python (Linux, Python)<a href="#share-a-file-using-python-linux-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="share-a-file-using-python-linux-python">Share a file using Python (Linux, Python)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mkdir temproot
 $ cd temproot
 $ ln -s FILE_TO_BE_SHARED
 $ python3 -mhttp.server     <span style="color:#75715e"># file now is accessible at http://other_machine_ip:8000/</span>
-</code></pre></div><h3 id="compress-an-executable-using-upx-linux">Compress an executable using UPX (Linux)<a href="#compress-an-executable-using-upx-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="compress-an-executable-using-upx-linux">Compress an executable using UPX (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ upx -n compressed_exec_name source_exec_name
 
-</code></pre></div><h3 id="copymove-a-file-into-the-directory-you-were-just-in-linux">Copy/move a file into the directory you were just in (Linux)<a href="#copymove-a-file-into-the-directory-you-were-just-in-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="copymove-a-file-into-the-directory-you-were-just-in-linux">Copy/move a file into the directory you were just in (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cp <span style="color:#f92672">(</span>or mv<span style="color:#f92672">)</span> FILENAME <span style="color:#e6db74">&#34;</span>$OLDPWD<span style="color:#e6db74">/&#34;</span>
-</code></pre></div><h3 id="find-big-files-linux">Find big files (Linux)<a href="#find-big-files-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="find-big-files-linux">Find big files (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ find / -type f -size +XXXM    <span style="color:#75715e"># where XXX is the desired size in MB</span>
-</code></pre></div><h3 id="detect-any-vulnerabilities-on-your-system-linux">Detect any vulnerabilities on your system (Linux)<a href="#detect-any-vulnerabilities-on-your-system-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="detect-any-vulnerabilities-on-your-system-linux">Detect any vulnerabilities on your system (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ grep -r . /sys/devices/system/cpu/vulnerabilities/
 
-</code></pre></div><h3 id="remove-duplicates-from-pythons-list-python">Remove duplicates from Python&rsquo;s list (Python)<a href="#remove-duplicates-from-pythons-list-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="remove-duplicates-from-pythons-list-python">Remove duplicates from Python&rsquo;s list (Python)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">collection <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>]
 collection <span style="color:#f92672">=</span> list(set(collection))
 
 print(collection)
 [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>]
-</code></pre></div><h3 id="merge-two-dictionaries-in-python-python">Merge two dictionaries in Python (Python)<a href="#merge-two-dictionaries-in-python-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="merge-two-dictionaries-in-python-python">Merge two dictionaries in Python (Python)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">dict1 <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;a&#39;</span>: <span style="color:#ae81ff">1</span>}
 dict2 <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;b&#39;</span>: <span style="color:#ae81ff">2</span>}
 
 dict <span style="color:#f92672">=</span> {<span style="color:#f92672">**</span>dict1, <span style="color:#f92672">**</span>dict2}
-</code></pre></div><h3 id="filter-a-list-in-python-python">Filter a list in Python (Python)<a href="#filter-a-list-in-python-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="filter-a-list-in-python-python">Filter a list in Python (Python)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">mylist <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>]
 
 filtered_list <span style="color:#f92672">=</span> list(filter(<span style="color:#66d9ef">lambda</span> x: x<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>, mylist))
 
 print(filtered_list)
 [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">7</span>]
-</code></pre></div><h3 id="sort-a-python-dictionary-by-values">Sort a Python dictionary by values<a href="#sort-a-python-dictionary-by-values" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="sort-a-python-dictionary-by-values">Sort a Python dictionary by values</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">grades <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;Bob&#39;</span>:<span style="color:#ae81ff">3.5</span>, <span style="color:#e6db74">&#39;Alice&#39;</span>: <span style="color:#ae81ff">4.0</span>, <span style="color:#e6db74">&#39;Foo&#39;</span>: <span style="color:#ae81ff">2.2</span>}
 sorted_grades <span style="color:#f92672">=</span> {k:v <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> sorted(grades<span style="color:#f92672">.</span>items(), key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x:x[<span style="color:#ae81ff">1</span>])}
 
 print(sorted_grades)
 {<span style="color:#e6db74">&#39;Foo&#39;</span>: <span style="color:#ae81ff">2.2</span>, <span style="color:#e6db74">&#39;Bob&#39;</span>: <span style="color:#ae81ff">3.5</span>, <span style="color:#e6db74">&#39;Alice&#39;</span>: <span style="color:#ae81ff">4.0</span>}
-</code></pre></div><h3 id="sort-a-python-dictionary-by-keys">Sort a Python dictionary by keys<a href="#sort-a-python-dictionary-by-keys" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="sort-a-python-dictionary-by-keys">Sort a Python dictionary by keys</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
 grades <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;Bob&#39;</span>:<span style="color:#ae81ff">3.5</span>, <span style="color:#e6db74">&#39;Alice&#39;</span>: <span style="color:#ae81ff">4.0</span>, <span style="color:#e6db74">&#39;Foo&#39;</span>: <span style="color:#ae81ff">2.2</span>}
 sorted_grades <span style="color:#f92672">=</span> {key:grades[key] <span style="color:#66d9ef">for</span> key <span style="color:#f92672">in</span> sorted(grades<span style="color:#f92672">.</span>keys())}
@@ -289,7 +455,7 @@ sorted_grades <span style="color:#f92672">=</span> {key:grades[key] <span style=
 print(sorted_grades)
 {<span style="color:#e6db74">&#39;Alice&#39;</span>: <span style="color:#ae81ff">4.0</span><span style="color:#e6db74">&#39;, Bob&#39;</span>: <span style="color:#ae81ff">3.5</span>, <span style="color:#e6db74">&#39;Foo&#39;</span>: <span style="color:#ae81ff">2.2</span>}
 
-</code></pre></div><h3 id="map-filter-and-reduce-python">Map, Filter, and Reduce (Python)<a href="#map-filter-and-reduce-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="map-filter-and-reduce-python">Map, Filter, and Reduce (Python)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#75715e"># MAP</span>
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">square</span>(x):
     <span style="color:#66d9ef">return</span> x<span style="color:#f92672">*</span>x
@@ -324,7 +490,7 @@ res <span style="color:#f92672">=</span> reduce(addition, x))
 
 print(res)
 <span style="color:#ae81ff">15</span>
-</code></pre></div><h3 id="python-string-methods-python">Python string methods (Python)<a href="#python-string-methods-python" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="python-string-methods-python">Python string methods (Python)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">
 string <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello, World!&#34;</span>
 
@@ -345,66 +511,66 @@ HELLO, WORLD<span style="color:#960050;background-color:#1e0010">!</span>
 
 print(string<span style="color:#f92672">.</span>lower())       <span style="color:#75715e"># convert all characters to lower-case</span>
 hello, world<span style="color:#960050;background-color:#1e0010">!</span>
-</code></pre></div><h3 id="reboot-a-linux-system-directly-to-the-firmware-setup-menu-linux">Reboot a Linux system directly to the firmware setup menu (Linux)<a href="#reboot-a-linux-system-directly-to-the-firmware-setup-menu-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="reboot-a-linux-system-directly-to-the-firmware-setup-menu-linux">Reboot a Linux system directly to the firmware setup menu (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ systemctl reboot --firmware-setup
-</code></pre></div><h3 id="joining-dictinary-keys-and-values-to-a-list-in-python-programming">Joining dictinary keys and values to a list in Python (Programming)<a href="#joining-dictinary-keys-and-values-to-a-list-in-python-programming" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="joining-dictinary-keys-and-values-to-a-list-in-python-programming">Joining dictinary keys and values to a list in Python (Programming)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#e6db74">&#39;_&#39;</span><span style="color:#f92672">.</span>join(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{!s}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">{!r}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(key, val) <span style="color:#66d9ef">for</span> (key, val) <span style="color:#f92672">in</span> d<span style="color:#f92672">.</span>items())
-</code></pre></div><h3 id="check-the-health-status-of-your-hard-drive-linux">Check the health status of your hard drive (Linux)<a href="#check-the-health-status-of-your-hard-drive-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="check-the-health-status-of-your-hard-drive-linux">Check the health status of your hard drive (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ badblocks -w -s -o error.log /dev/sdX     <span style="color:#75715e"># get X using lsblk</span>
-</code></pre></div><h3 id="how-to-load-reload-modules-ipython">How to load (reload) modules (iPython)<a href="#how-to-load-reload-modules-ipython" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="how-to-load-reload-modules-ipython">How to load (reload) modules (iPython)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">%</span>load_ext autoreload
 <span style="color:#f92672">%</span>autoreload <span style="color:#ae81ff">2</span>
-</code></pre></div><h3 id="power-off-an-external-hard-drive-linux">Power-off an external hard drive (Linux)<a href="#power-off-an-external-hard-drive-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="power-off-an-external-hard-drive-linux">Power-off an external hard drive (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ udiskctl power-off -b /dev/sdX    <span style="color:#75715e"># obtain X using lsblk</span>
-</code></pre></div><h3 id="rsync-your-data-linux">rsync your data (Linux)<a href="#rsync-your-data-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="rsync-your-data-linux">rsync your data (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ rsync -avzhP src dst --exclude-from<span style="color:#f92672">=</span>file.txt --include<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;.git/config&#34;</span>
-</code></pre></div><h3 id="recover-data-linux">Recover data (Linux)<a href="#recover-data-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="recover-data-linux">Recover data (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ddrescue -dr3 /dev/sdX imagename.image logfile
-</code></pre></div><h3 id="random-execution-of-a-linux-command-linux">Random execution of a Linux command (Linux)<a href="#random-execution-of-a-linux-command-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="random-execution-of-a-linux-command-linux">Random execution of a Linux command (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#f92672">[</span> <span style="color:#66d9ef">$((</span>RANDOM <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span><span style="color:#66d9ef">))</span> -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> command
-</code></pre></div><h3 id="open-a-file-in-vim-with-no-compatibility-vim">Open a file in VIM with no compatibility (Vim)<a href="#open-a-file-in-vim-with-no-compatibility-vim" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="open-a-file-in-vim-with-no-compatibility-vim">Open a file in VIM with no compatibility (Vim)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ vim -u NONE -u NORC fname
-</code></pre></div><h3 id="io-devices-latency-linux">IO devices latency (Linux)<a href="#io-devices-latency-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="io-devices-latency-linux">IO devices latency (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ioping /tmp/
 $ ioping -c <span style="color:#ae81ff">12</span> /tmp/    <span style="color:#75715e"># runs for 12 rounds</span>
 $ sudo ioping -R /dev/sdX         <span style="color:#75715e"># seek rate</span>
 $ sudo ioping -RL /dev/sdX        <span style="color:#75715e"># sequential speed</span>
-</code></pre></div><h3 id="copy-a-file-to-the-clipboard-linux">Copy a file to the clipboard (Linux)<a href="#copy-a-file-to-the-clipboard-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="copy-a-file-to-the-clipboard-linux">Copy a file to the clipboard (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ xclip -sel clip &lt; file
-</code></pre></div><h3 id="import-date-in-vim-vim">Import date in VIM (Vim)<a href="#import-date-in-vim-vim" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="import-date-in-vim-vim">Import date in VIM (Vim)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">:<span style="color:#a6e22e">read</span> !<span style="color:#a6e22e">date</span><span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><h3 id="import-the-output-of-a-linux-command-in-vim-vim">Import the output of a Linux command in Vim (Vim)<a href="#import-the-output-of-a-linux-command-in-vim-vim" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</span></code></pre></div><h3 id="import-the-output-of-a-linux-command-in-vim-vim">Import the output of a Linux command in Vim (Vim)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim">:<span style="color:#66d9ef">let</span> @<span style="color:#a6e22e">a</span>=<span style="color:#a6e22e">system</span>(<span style="color:#e6db74">&#34;command&#34;</span>)<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">In</span> <span style="color:#a6e22e">insert</span> <span style="color:#a6e22e">mode</span> <span style="color:#a6e22e">press</span> <span style="color:#a6e22e">Ctrl</span>+<span style="color:#a6e22e">R</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">then</span> <span style="color:#a6e22e">a</span><span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><h3 id="convert-a-bunch-of-png-files-to-a-video-linux">Convert a bunch of png files to a video (Linux)<a href="#convert-a-bunch-of-png-files-to-a-video-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</span></code></pre></div><h3 id="convert-a-bunch-of-png-files-to-a-video-linux">Convert a bunch of png files to a video (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ffmpeg -framerate 1/5 -patter_type glob -i <span style="color:#e6db74">&#34;*.png&#34;</span> -vf <span style="color:#e6db74">&#34;fps=95,format=yuv420p&#34;</span> output.mp4
-</code></pre></div><h3 id="convert-a-photo-into-ascii-art-linux">Convert a photo into ASCII art (Linux)<a href="#convert-a-photo-into-ascii-art-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="convert-a-photo-into-ascii-art-linux">Convert a photo into ASCII art (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ jp2a photo.jpg | tee photo.ascii
-</code></pre></div><h3 id="read-gz-files-without-extracting-them-linux">Read .gz files without extracting them (Linux)<a href="#read-gz-files-without-extracting-them-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="read-gz-files-without-extracting-them-linux">Read .gz files without extracting them (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ zmore file.gz
 $ zless file.gz
-</code></pre></div><h3 id="get-memory-information-linux">Get memory information (Linux)<a href="#get-memory-information-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="get-memory-information-linux">Get memory information (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo lshw -C memory -short
 
 $ sudo dmidecode -t memory
-</code></pre></div><h3 id="how-to-load-huge-files-in-python-programming">How to load huge files in Python (Programming)<a href="#how-to-load-huge-files-in-python-programming" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="how-to-load-huge-files-in-python-programming">How to load huge files in Python (Programming)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> mmap
 f <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;HUGE.txt&#34;</span>)
 mm <span style="color:#f92672">=</span> mmap<span style="color:#f92672">.</span>mmap(f<span style="color:#f92672">.</span>filend, length<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, access<span style="color:#f92672">=</span>mmap<span style="color:#f92672">.</span>ACCESS_READ, offset<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
 print(mm[<span style="color:#f92672">-</span><span style="color:#ae81ff">1000</span>:])
 
-</code></pre></div><h3 id="git-credential-storage-git">Git credential storage (Git)<a href="#git-credential-storage-git" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="git-credential-storage-git">Git credential storage (Git)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ git config --global credential.helper cache <span style="color:#e6db74">&#39;--timeout S&#39;</span>  <span style="color:#75715e"># S -&gt; seconds</span>
-</code></pre></div><h3 id="include-a-help-flag-in-makefiles-programming">Include a help flag in Makefiles (Programming)<a href="#include-a-help-flag-in-makefiles-programming" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="include-a-help-flag-in-makefiles-programming">Include a help flag in Makefiles (Programming)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-make" data-lang="make"><span style="color:#a6e22e">.PHONY</span><span style="color:#f92672">:</span>
     help
 
 <span style="color:#a6e22e">help</span><span style="color:#f92672">:</span>
     cat makefile | grep -oP <span style="color:#e6db74">&#34;^#\K(.*)&#34;</span>
-</code></pre></div><h3 id="copy-a-file-into-multiple-directories-linux">Copy a file into multiple directories (Linux)<a href="#copy-a-file-into-multiple-directories-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="copy-a-file-into-multiple-directories-linux">Copy a file into multiple directories (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo dir1 dir2 | xargs -n <span style="color:#ae81ff">1</span> cp file
 parallel cp file ::: dir1 dir2
-</code></pre></div><h3 id="how-to-run-a-elf-programming">How to run a ELF (Programming)<a href="#how-to-run-a-elf-programming" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="how-to-run-a-elf-programming">How to run a ELF (Programming)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ touch file
 $ cp /bin/ls .
 $ ./ls
@@ -416,14 +582,14 @@ $ strings ./ls | head -n <span style="color:#ae81ff">1</span>
 /lib64/ld-linux-x86-64.so.2
 $ /lib64/ld-linux-x86-64.so.2 ./ls
 file ls
-</code></pre></div><h3 id="set-an-alert-message-when-a-job-finishes-linux">Set an alert message when a job finishes (Linux)<a href="#set-an-alert-message-when-a-job-finishes-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="set-an-alert-message-when-a-job-finishes-linux">Set an alert message when a job finishes (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#f92672">{</span> execute_something_that_takes_time; xmessage DONE; <span style="color:#f92672">}</span>&amp;
 
-</code></pre></div><h3 id="dennis-ritchie-linuxprogrammin">Dennis Ritchie (Linux/Programmin)<a href="#dennis-ritchie-linuxprogrammin" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="dennis-ritchie-linuxprogrammin">Dennis Ritchie (Linux/Programmin)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ curl -L git.io/unix
-</code></pre></div><h3 id="play-tetris-linux">Play tetris (Linux)<a href="#play-tetris-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="play-tetris-linux">Play tetris (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ssh netris<span style="color:#ae81ff">\.</span>rocketnine<span style="color:#ae81ff">\.</span>space
-</code></pre></div><h3 id="python-scope-programming">Python scope (Programming)<a href="#python-scope-programming" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="python-scope-programming">Python scope (Programming)</h3>
 <p>LEGB:</p>
 <ul>
 <li><strong>L</strong>ocal (within a function)</li>
@@ -431,17 +597,17 @@ file ls
 <li><strong>G</strong>lobal (module)</li>
 <li><strong>B</strong>uilt-in (python) preassigned names</li>
 </ul>
-<h3 id="c-pointers-programming">C Pointers (Programming)<a href="#c-pointers-programming" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="c-pointers-programming">C Pointers (Programming)</h3>
 <ul>
 <li>ptr++ Evaluates ptr and then increments ptr by 1xbase_type_size</li>
 <li>*ptr++ Evaluates ptr, increments it, and dereferences the evaluated value</li>
 <li>int *ptr[10] Array of 10 pointers to integer (int *)</li>
 <li>int (*ptr)[10] Pointer to an array of 10 integers</li>
 </ul>
-<h3 id="delete-the-last-column-of-a-text-file-linux">Delete the last column of a text file (Linux)<a href="#delete-the-last-column-of-a-text-file-linux" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="delete-the-last-column-of-a-text-file-linux">Delete the last column of a text file (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ awk <span style="color:#e6db74">&#39;NF {NF-=1};1&#39;</span>&lt; input_file &gt; output_file
 $ awk <span style="color:#e6db74">&#39;NF {NF--};1&#39;</span>&lt; input_file &gt; output_file
-</code></pre></div><h3 id="automatic-variables-in-make-programming">Automatic variables in Make (Programming)<a href="#automatic-variables-in-make-programming" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="automatic-variables-in-make-programming">Automatic variables in Make (Programming)</h3>
 <ul>
 <li>$@: The target filename.</li>
 <li>$*: The target filename without the file extension.</li>
@@ -450,92 +616,101 @@ $ awk <span style="color:#e6db74">&#39;NF {NF--};1&#39;</span>&lt; input_file &g
 <li>$+: Similar to $^, but includes duplicates.</li>
 <li>$?: The names of all prerequisites that are newer than the target, separated by spaces.</li>
 </ul>
-
-      </div></div>
-
-  
-  
-<div class="pagination">
-    <div class="pagination__title">
-        <span class="pagination__title-h">Read other posts</span>
-        <hr />
-    </div>
-    <div class="pagination__buttons">
-        
-        <span class="button previous">
-            <a href="https://gdetor.github.io/posts/som/">
-                <span class="button__icon">←</span>
-                <span class="button__text">An introduction to self-organizing maps</span>
-            </a>
-        </span>
-        
-        
-        <span class="button next">
-            <a href="https://gdetor.github.io/posts/cloudlab/">
-                <span class="button__text">Organs-on-Chip-as-a-Service: A proposal bridging cloud services and scientific experiments</span>
-                <span class="button__icon">→</span>
-            </a>
-        </span>
-        
-    </div>
-</div>
+</section>
 
   
-
   
-
-</div>
-
-  </div>
-
-  
-    <footer class="footer">
-  <div class="footer__inner">
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/linux"
+      >Linux</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/vim"
+      >Vim</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/python"
+      >Python</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/c"
+      >C</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/git"
+      >Git</a
+    >
     
-      <div class="copyright copyright--user">
-        <span>ⓒ  GID, 2021-2022</span>
+  </footer>
+  
+
+  
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
     
-        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
-      </div>
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://gdetor.github.io/posts/som/"
+      ><span class="mr-1.5">←</span><span>An introduction to self-organizing maps</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://gdetor.github.io/posts/cloudlab/"
+      ><span>Organs-on-Chip-as-a-Service: A proposal bridging cloud services and scientific experiments</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="https://gdetor.github.io">GID</a>
   </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
 </footer>
 
-<script src="https://gdetor.github.io/assets/main.js"></script>
-<script src="https://gdetor.github.io/assets/prism.js"></script>
-
-
-
-
-<style>
-    #body a, #body span {
-        display: inline-block;
-        width: 100%;
-        text-align: center;
-        line-height: 1.7em;
-    }
-    h2 {
-        display: inline-block;
-    }
-    img.github, img.gitlab, img.rgate, img.orcid{
-        -webkit-filter: invert(1);
-        filter: invert(1);
-    }
-</style>
-
-<center>
-    <div>
-        <a class="inline-block px-2" href="https://github.com/gdetor"><h2><img class="image github" src="/github-square.svg" alt="Github" width="36"></h2></a>
-        <a class="inline-block" href="https://gitlab.com/gdetor"><h2><img class="image gitlab" src="/gitlab.svg" alt="Gitlab" width="36"></h2></a>
-        <a class="inline-block px-2" href="https://www.researchgate.net/profile/Georgios-Detorakis"><h2>
-         <img class="image rgate" src="/researchgate-square.svg" alt="RG" width="36"></h2></a>
-        <a class="inline-block px-2" href="https://orcid.org/0000-0001-5891-1702"><h2>
-         <img class="image orcid" src="/orcid-square.svg" alt="RG" width="36"></h2></a>
-    </div>
-</center>
-
-
-  
-</div>
-
-</body>
+  </body>
 </html>

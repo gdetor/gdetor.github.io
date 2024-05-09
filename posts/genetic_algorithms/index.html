@@ -1,55 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  
-    <title>Genetic Algorithms &amp; Island Models :: GID Webpage</title>
-  
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Blog post on genetic algorithms and island models" />
-<meta name="keywords" content="[gdetor, Georgios Detorakis, Georgios Is. Detorakis, georgios, detorakis]" />
-<meta name="robots" content="noodp" />
-<link rel="canonical" href="https://gdetor.github.io/posts/genetic_algorithms/" />
-
-
-
-
-<link rel="stylesheet" href="https://gdetor.github.io/assets/style.css">
-
-
-
-<link rel="stylesheet" href="https://gdetor.github.io/style.css">
-
-
-<link rel="apple-touch-icon" href="https://gdetor.github.io/img/apple-touch-icon-192x192.png">
-
-  <link rel="shortcut icon" href="https://gdetor.github.io/icons/favicon.ico">
-
-
-
-<meta name="twitter:card" content="summary" />
-
-  
-    <meta name="twitter:creator" content="Georgios Is. Detorakis" />
-
-
-
-<meta property="og:locale" content="en" />
-<meta property="og:type" content="article" />
-<meta property="og:title" content="Genetic Algorithms &amp; Island Models">
-<meta property="og:description" content="Blog post on genetic algorithms and island models" />
-<meta property="og:url" content="https://gdetor.github.io/posts/genetic_algorithms/" />
-<meta property="og:site_name" content="GID Webpage" />
-
-  
-    <meta property="og:image" content="https://gdetor.github.io/icons/favicon.ico">
-  
-
-<meta property="og:image:width" content="2048">
-<meta property="og:image:height" content="1024">
-
-
-  <meta property="article:published_time" content="2022-04-28 00:00:00 &#43;0000 UTC" />
+<!doctype html>
 
 
 
@@ -62,155 +11,349 @@
 
 
 
-<!DOCTYPE html>
 
-<html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
   <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
 
-    
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx" crossorigin="anonymous"></script>
+  
+  <title>Genetic Algorithms &amp; Island Models - GID</title>
 
-    
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
-        onload="renderMathInElement(document.body);"></script>
+  
+  <meta name="theme-color" />
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                    {left: "$$", right: "$$", display: true},
-                    {left: "$", right: "$", display: false}
-                ]
-            });
-        });
-    </script>
-  </head>
-</html>
+  
+  
+  
+  
+  <meta name="description" content="In this post, we explore genetic algorithms (GAs) and the so-called island model (IM). GAs and the IM are optimization methods used to maximize or minimize a cost function.
+What is Optimization? Let&rsquo;s see an example of an optimization problem we all face every day. Let&rsquo;s assume you&rsquo;d like to go and grab a couple of coffee from your favorite coffee shop. Typically, you ask Google to find the fastest way to the store from your current location." />
+  <meta name="author" content="Georgios Is. Detorakis" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://gdetor.github.io/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/theme.png" />
+
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://avatars.githubusercontent.com/u/7115299?v=4" />
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/github.svg" />
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/linkedin.svg" />
+  
+  
+
+  
+  
+  <script
+    defer
+    src="https://gdetor.github.io/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://gdetor.github.io/icons/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://gdetor.github.io/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.92.2" />
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Genetic Algorithms &amp; Island Models">
+<meta itemprop="description" content="Genetic algorithms (GAs) are a family of optimization algorithms that can solve constrained and unconstrained optimization problems by mimicking biological evolution. In this post, we introduce the fundamental concepts of GAs and the Island Model, an extension of GAs."><meta itemprop="datePublished" content="2022-04-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-04-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3315">
+<meta itemprop="keywords" content="genetic algorithms,GAIM,island model,optimization," />
+  
+  <meta property="og:title" content="Genetic Algorithms &amp; Island Models" />
+<meta property="og:description" content="Genetic algorithms (GAs) are a family of optimization algorithms that can solve constrained and unconstrained optimization problems by mimicking biological evolution. In this post, we introduce the fundamental concepts of GAs and the Island Model, an extension of GAs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gdetor.github.io/posts/genetic_algorithms/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-04-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-28T00:00:00+00:00" />
 
 
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Genetic Algorithms &amp; Island Models"/>
+<meta name="twitter:description" content="Genetic algorithms (GAs) are a family of optimization algorithms that can solve constrained and unconstrained optimization problems by mimicking biological evolution. In this post, we introduce the fundamental concepts of GAs and the Island Model, an extension of GAs."/>
+
+  
+  
+  
+  <link rel="canonical" href="https://gdetor.github.io/posts/genetic_algorithms/" />
+  
+  
 </head>
-<body class="orange">
 
-
-<div class="container center">
-
-  <header class="header">
-  <div class="header__inner">
-    <div class="header__logo">
-      <a href="/">
-  <div class="logo">
-    # GID
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://gdetor.github.io"
+      >GID</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
   </div>
-</a>
 
-    </div>
-    
-      <div class="menu-trigger">menu</div>
-    
-  </div>
-  
-    <nav class="menu">
-  <ul class="menu__inner menu__inner--desktop">
-    
-      
-        
-          <li><a href="/about">About</a></li>
-        
-      
-        
-          <li><a href="/research">Research</a></li>
-        
-      
-        
-          <li><a href="/software">Software</a></li>
-        
-      
-        
-          <li><a href="/publications">Publications</a></li>
-        
-      
-        
-          <li><a href="/artwork">Artwork</a></li>
-        
-      
-      
-    
-
-    
-  </ul>
-
-  <ul class="menu__inner menu__inner--mobile">
-    
-      
-        <li><a href="/about">About</a></li>
-      
-    
-      
-        <li><a href="/research">Research</a></li>
-      
-    
-      
-        <li><a href="/software">Software</a></li>
-      
-    
-      
-        <li><a href="/publications">Publications</a></li>
-      
-    
-      
-        <li><a href="/artwork">Artwork</a></li>
-      
-    
-    
-  </ul>
-</nav>
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
 
   
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/about/"
+        >About</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/research/"
+        >Research</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/software/"
+        >Software</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/publications/"
+        >Publications</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/artwork/"
+        >Artwork</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/gdetor"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/georgiosdetorakis"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+    </nav>
+    
+  </div>
 </header>
 
 
-  <div class="content">
-    
-<div class="post">
-  <h1 class="post-title">
-    <a href="https://gdetor.github.io/posts/genetic_algorithms/">Genetic Algorithms &amp; Island Models</a></h1>
-  <div class="post-meta">
-    
-      <span class="post-date">
-        2022-04-28
-        
-      </span>
-    
-    
-      <span class="post-author">:: Georgios Is. Detorakis</span>
-    
-    
-  </div>
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
 
-  
-  <span class="post-tags">
-    
-    #<a href="https://gdetor.github.io/tags/genetic-algorithms/">genetic algorithms</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/gaim/">GAIM</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/island-model/">island model</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/optimization/">optimization</a>&nbsp;
-    
-  </span>
-  
-  
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Genetic Algorithms &amp; Island Models</h1>
 
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Apr 28, 2022</time>
+      
+      
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Georgios Is. Detorakis</span>
+      <span class="mx-1">&middot;</span>
+      <span class="inline-item reading">16 minutes read</span>
+      
+    </div>
+    
+  </header>
 
-  
-
-  <div class="post-content"><div>
-        <p>In this post, we explore genetic algorithms (GAs) and the so-called
+  <section><div style="text-align: justify;">
+<p>In this post, we explore genetic algorithms (GAs) and the so-called
 island model (IM). GAs and the IM are optimization methods used to
 maximize or minimize a cost function.</p>
-<h2 id="what-is-optimization">What is Optimization?<a href="#what-is-optimization" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="what-is-optimization">What is Optimization?</h2>
 <p>Let&rsquo;s see an example of an optimization problem we all face every day. Let&rsquo;s
 assume you&rsquo;d like to go and grab a couple of coffee from your favorite coffee
 shop. Typically, you ask Google to find the fastest way to the store from your
@@ -242,18 +385,14 @@ magenta color. Figure 1B displays what is known as the Rastrigin function in
 one dimension. It is evident that this function has multiple local minima
 (<em>e.g.,</em>, magenta disc)  and maxima (green disc) as well as one global minimum
 at $(0, 0)$ (black disc).</p>
-
-  <figure class="center" >
-    <img src="/images/fun_extremes.png"   style="border-radius: 8px;"  />
-    
-      <figcaption class="center" >Figure 1. Global and local extremes for (A) $f(x)=x^2$, where the magenta disc indicates the global minimum at $(0, 0)$. (B) For Rastrigin $f(x) = 10 + x^2-10\cos(2\pi x)$, there is a global mimimum at $(0, 0)$ and many local mimima and maxima (for instance see the magenta and green discs, respectively).</figcaption>
-    
-  </figure>
-
-
+<figure><img src="/images/fun_extremes.png"
+         alt="Figure 1. Global and local extremes for (A) $f(x)=x^2$, where the magenta disc indicates the global minimum at $(0, 0)$. (B) For Rastrigin $f(x) = 10 &#43; x^2-10\cos(2\pi x)$, there is a global mimimum at $(0, 0)$ and many local mimima and maxima (for instance see the magenta and green discs, respectively)."/><figcaption>
+            <p>Figure 1. Global and local extremes for (A) $f(x)=x^2$, where the magenta disc indicates the global minimum at $(0, 0)$. (B) For Rastrigin $f(x) = 10 + x^2-10\cos(2\pi x)$, there is a global mimimum at $(0, 0)$ and many local mimima and maxima (for instance see the magenta and green discs, respectively).</p>
+        </figcaption>
+</figure>
 <p>Sometimes, it&rsquo;s easier to solve a minimization problem from a computational
 standpoint. In that case, we would minimize the function $ -f $.</p>
-<h2 id="what-is-a-genetic-algorithm">What is a Genetic Algorithm?<a href="#what-is-a-genetic-algorithm" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="what-is-a-genetic-algorithm">What is a Genetic Algorithm?</h2>
 <p>A genetic algorithm is an optimization method that mimics evolution to optimize
 a cost function. The entire set of the cost function parameters is called the
 genome. Each parameter consists of a gene. Because GA mimics how evolution
@@ -298,23 +437,19 @@ fitness (BSF). Figure 2A shows a typical example of average fitness and 2B a
 BSF. Upon the algorithm&rsquo;s termination, the individual with the best fitness
 function provides the genome (set of parameters) optimizes the cost function
 [3].</p>
-<h2 id="how-a-genetic-algorithm-works">How a Genetic Algorithm works?<a href="#how-a-genetic-algorithm-works" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="how-a-genetic-algorithm-works">How a Genetic Algorithm works?</h2>
 <p>Let&rsquo;s use an example to try to understand how GAs work.</p>
-<h3 id="example">Example<a href="#example" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="example">Example</h3>
 <p>Let&rsquo;s try to solve the XOR problem using a feed-forward neural network.  The
 XOR (exclusive OR) is a binary operator that returns true if and only if the
 operands are different. This means that if $ X = 1 $ (or $ X = 0 $) and $ Y = 0
 $ (or $ Y = 1 $) then $ X \oplus Y = 1 $ (same when ). If both $ X $ and $ Y $
 are zeros or ones, then $ X \oplus Y = 0 $.</p>
-
-  <figure class="center" >
-    <img src="/images/xor_net.png"   style="border-radius: 8px;"  />
-    
-      <figcaption class="center" >Figure 2. XOR neural networ.</figcaption>
-    
-  </figure>
-
-
+<figure><img src="/images/xor_net.png"
+         alt="Figure 2. XOR neural networ."/><figcaption>
+            <p>Figure 2. XOR neural networ.</p>
+        </figcaption>
+</figure>
 <p>Our neural network will consist of two input units (since the XOR operator is a
 binary one), two hidden units, and one output unit. Please see <a href="https://dev.to/jbahire/demystifying-the-xor-problem-1blk">here</a> for more details on why we choose such an architecture.
 Figure 2 shows the neural network we are about to use.  Let&rsquo;s optimize this
@@ -399,15 +534,11 @@ GA&rsquo;s best genome is optimal, and our neural network solves the XOR problem
 second observation is that we could have used only $500$ generations for this
 particular instance. The difficulty of the problem at hand usually determines
 the number of generations and the initial values of the genome.</p>
-
-  <figure class="center" >
-    <img src="/images/bsf_avg_fit.png"   style="border-radius: 8px;"  />
-    
-      <figcaption class="center" >Figure 3. BSF and average fitness for the optimization of the XOR fitness function.</figcaption>
-    
-  </figure>
-
-
+<figure><img src="/images/bsf_avg_fit.png"
+         alt="Figure 3. BSF and average fitness for the optimization of the XOR fitness function."/><figcaption>
+            <p>Figure 3. BSF and average fitness for the optimization of the XOR fitness function.</p>
+        </figcaption>
+</figure>
 <p>Bellow, you can find the source code of the Python script we used to optimize
 the XOR problem. As you can see, we combine Pytorch and PyGAIM to build
 a neural network and optimize the weights and the biases.</p>
@@ -535,7 +666,7 @@ called PyGAIM that simplifies GA-based optimization problem setup,
 and PyGAIM provides a scikit-learn-like interface.</p>
 <p>For more information about GAIM, its source code, and examples,
 you can visit its <a href="https://github.com/gdetor/gaim">Github</a> repository.</p>
-<h2 id="what-is-an-island-model">What is an Island Model?<a href="#what-is-an-island-model" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="what-is-an-island-model">What is an Island Model?</h2>
 <p>An island model is a computational method that runs multiple instances of GAs
 on the same optimization problem in a distributed and parallel fashion. In some
 cases, each island (another fancy word for process, thread, or computational
@@ -550,15 +681,11 @@ left).</p>
 <p>Figure 4 shows three basic topologies, (A) all-to-all, where every island
 connects to all other ones, (B) ring, and (C) star topology, where one island
 serves as a communication hub [5, 6, 7].</p>
-
-  <figure class="center" >
-    <img src="/images/island_model.png"   style="border-radius: 8px;"  />
-    
-      <figcaption class="center" >Figure 4. Island model topologies. (A) all-to-all, (B) ring, (C) star.</figcaption>
-    
-  </figure>
-
-
+<figure><img src="/images/island_model.png"
+         alt="Figure 4. Island model topologies. (A) all-to-all, (B) ring, (C) star."/><figcaption>
+            <p>Figure 4. Island model topologies. (A) all-to-all, (B) ring, (C) star.</p>
+        </figcaption>
+</figure>
 <p>Each island begins with a population of $N$ individuals where $$ N =
 \frac{K}{M} $$ where $ K $ is the number of all individuals, and $M$ is the
 number of islands.
@@ -579,7 +706,7 @@ of the search space. Furthermore, exchanging individuals between islands can
 help the overall optimization process avoid being stuck in some local
 minimum/maximum. That doesn&rsquo;t mean that the island model is impervious to local
 extrema.</p>
-<h2 id="when-should-we-use-gas">When should we use GAs?<a href="#when-should-we-use-gas" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="when-should-we-use-gas">When should we use GAs?</h2>
 <p>As we have seen, GAs can optimize virtually any function given
 a well-defined cost function (and that&rsquo;s the most challenging part of using
 GAs). However, there are some cases where we should try to use a GA
@@ -599,7 +726,7 @@ solution to the problem.</li>
 information about the system or the function they optimize to solve the
 optimization problem.</li>
 </ol>
-<h2 id="what-are-some-of-the-gas-applications">What are some of the GAs applications?<a href="#what-are-some-of-the-gas-applications" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="what-are-some-of-the-gas-applications">What are some of the GAs applications?</h2>
 <p>Here, you can find some of the GA&rsquo;s applications in real life. Although the
 the following list is not complete; you will glimpse where and how GAs are used.</p>
 <ol>
@@ -619,7 +746,8 @@ aircraft.</li>
 well-defined in combinatorial Optimization and has many applications in
 real-life issues.</li>
 </ol>
-<h3 id="cited-as">Cited as:<a href="#cited-as" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</div>
+<h3 id="cited-as">Cited as:</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">@article{detorakis2022geneticalg,
   title   = &#34;Genetic algorithms and island models&#34;,
   author  = &#34;Georgios Is. Detorakis&#34;,
@@ -627,120 +755,108 @@ real-life issues.</li>
   year    = &#34;2022&#34;,
   url     = &#34;https://gdetor.github.io/posts/genetics_algorithms&#34;
 }
-</code></pre></div><h3 id="references">References<a href="#references" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="references">References</h3>
 <ol>
-<li>D. A. Pierre, <em>Optimization theory with applications</em>,
-Courier Corporation, 1986.</li>
-<li>I. Goodfellow, B. Yoshua, and A. Courville, <em>Deep learning</em>,
-MIT press, 2016.</li>
-<li>K. De Jong, <em>Evolutionary computation</em>, Wiley Interdisciplinary Reviews:
-Computational Statistics, 2009, 1.1: 52-56.</li>
-<li>G. Is. Detorakis and A. Burton, <em>GAIM: A C++ library for Genetic Algorithms
-and Island Models</em>, Journal of Open Source Software, 2019, 4.44: 1839.</li>
-<li>D. Whitley, S. Rana, and R.B. Heckendorn, <em>The island model genetic
-algorithm: On separability, population size and convergence</em>,
-Journal of computing and information technology, 7:1, 33&ndash;47, 1999.</li>
-<li>D. Sudholt, <em>Parallel evolutionary algorithms</em>, Springer Handbook of
-Computational Intelligence, 929&ndash;959, 2015.</li>
-<li>W. N. Martin, J. Lienig, and J. P. Cohoon, <em>Parallel Genetic Algorithms Based
-on Punctuated Equilibria</em>, Handbook of Evolutionary Computation, IOP Publishing group,</li>
-<li></li>
-<li>Z. Skolicki, <em>An analysis of island models in evolutionary computation</em>,
-Proceedings of the 7th annual workshop on Genetic and evolutionary computation,
-386&ndash;389, 2005.</li>
-<li>Z. Skolicki, and K. De Jong, <em>The influence of migration sizes and intervals
-on island models</em>, Proceedings of the 7th annual conference on Genetic and
-evolutionary computation, 1295&ndash;1302, 2005.</li>
-<li>K. O. Stanley, and R. Miikkulainen, <em>Efficient evolution of neural network
-topologies</em>, Proceedings of the 2002 Congress on Evolutionary Computation.
-2, 1757&ndash;1762, 2002.</li>
+<li>D. A. Pierre, <em>Optimization theory with applications</em>, Courier Corporation, 1986.</li>
+<li>I. Goodfellow, B. Yoshua, and A. Courville, <em>Deep learning</em>, MIT press, 2016.</li>
+<li>K. De Jong, <em>Evolutionary computation</em>, Wiley Interdisciplinary Reviews: Computational Statistics, 2009, 1.1: 52-56.</li>
+<li>G. Is. Detorakis and A. Burton, <em>GAIM: A C++ library for Genetic Algorithms and Island Models</em>, Journal of Open Source Software, 2019, 4.44: 1839.</li>
+<li>D. Whitley, S. Rana, and R.B. Heckendorn, <em>The island model genetic algorithm: On separability, population size and convergence</em>, Journal of computing and information technology, 7:1, 33&ndash;47, 1999.</li>
+<li>D. Sudholt, <em>Parallel evolutionary algorithms</em>, Springer Handbook of Computational Intelligence, 929&ndash;959, 2015.</li>
+<li>W. N. Martin, J. Lienig, and J. P. Cohoon, <em>Parallel Genetic Algorithms Based on Punctuated Equilibria</em>, Handbook of Evolutionary Computation, IOP Publishing group, 1997.</li>
+<li>Z. Skolicki, <em>An analysis of island models in evolutionary computation</em>, Proceedings of the 7th annual workshop on Genetic and evolutionary computation, 386&ndash;389, 2005.</li>
+<li>Z. Skolicki, and K. De Jong, <em>The influence of migration sizes and intervals on island models</em>, Proceedings of the 7th annual conference on genetic and evolutionary computation, 1295&ndash;1302, 2005.</li>
+<li>K. O. Stanley, and R. Miikkulainen, <em>Efficient evolution of neural network topologies</em>, Proceedings of the 2002 Congress on Evolutionary Computation. 2, 1757&ndash;1762, 2002.</li>
 </ol>
-
-      </div></div>
-
-  
-  
-<div class="pagination">
-    <div class="pagination__title">
-        <span class="pagination__title-h">Read other posts</span>
-        <hr />
-    </div>
-    <div class="pagination__buttons">
-        
-        <span class="button previous">
-            <a href="https://gdetor.github.io/posts/errors/">
-                <span class="button__icon">←</span>
-                <span class="button__text">Time series forecasting error metrics</span>
-            </a>
-        </span>
-        
-        
-        <span class="button next">
-            <a href="https://gdetor.github.io/posts/math_tips/">
-                <span class="button__text">Simple mathematical tricks in Python</span>
-                <span class="button__icon">→</span>
-            </a>
-        </span>
-        
-    </div>
-</div>
+</section>
 
   
-
   
-
-</div>
-
-  </div>
-
-  
-    <footer class="footer">
-  <div class="footer__inner">
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/genetic-algorithms"
+      >genetic algorithms</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/gaim"
+      >GAIM</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/island-model"
+      >island model</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/optimization"
+      >optimization</a
+    >
     
-      <div class="copyright copyright--user">
-        <span>ⓒ  GID, 2021-2022</span>
+  </footer>
+  
+
+  
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
     
-        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
-      </div>
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://gdetor.github.io/posts/errors/"
+      ><span class="mr-1.5">←</span><span>Time series forecasting error metrics</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://gdetor.github.io/posts/math_tips/"
+      ><span>Simple mathematical tricks in Python</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="https://gdetor.github.io">GID</a>
   </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
 </footer>
 
-<script src="https://gdetor.github.io/assets/main.js"></script>
-<script src="https://gdetor.github.io/assets/prism.js"></script>
-
-
-
-
-<style>
-    #body a, #body span {
-        display: inline-block;
-        width: 100%;
-        text-align: center;
-        line-height: 1.7em;
-    }
-    h2 {
-        display: inline-block;
-    }
-    img.github, img.gitlab, img.rgate, img.orcid{
-        -webkit-filter: invert(1);
-        filter: invert(1);
-    }
-</style>
-
-<center>
-    <div>
-        <a class="inline-block px-2" href="https://github.com/gdetor"><h2><img class="image github" src="/github-square.svg" alt="Github" width="36"></h2></a>
-        <a class="inline-block" href="https://gitlab.com/gdetor"><h2><img class="image gitlab" src="/gitlab.svg" alt="Gitlab" width="36"></h2></a>
-        <a class="inline-block px-2" href="https://www.researchgate.net/profile/Georgios-Detorakis"><h2>
-         <img class="image rgate" src="/researchgate-square.svg" alt="RG" width="36"></h2></a>
-        <a class="inline-block px-2" href="https://orcid.org/0000-0001-5891-1702"><h2>
-         <img class="image orcid" src="/orcid-square.svg" alt="RG" width="36"></h2></a>
-    </div>
-</center>
-
-
-  
-</div>
-
-</body>
+  </body>
 </html>

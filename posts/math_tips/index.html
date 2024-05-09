@@ -1,55 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  
-    <title>Simple mathematical tricks in Python :: GID Webpage</title>
-  
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Blog post on math tricks in Python" />
-<meta name="keywords" content="[gdetor, Georgios Detorakis, Georgios Is. Detorakis, georgios, detorakis]" />
-<meta name="robots" content="noodp" />
-<link rel="canonical" href="https://gdetor.github.io/posts/math_tips/" />
-
-
-
-
-<link rel="stylesheet" href="https://gdetor.github.io/assets/style.css">
-
-
-
-<link rel="stylesheet" href="https://gdetor.github.io/style.css">
-
-
-<link rel="apple-touch-icon" href="https://gdetor.github.io/img/apple-touch-icon-192x192.png">
-
-  <link rel="shortcut icon" href="https://gdetor.github.io/icons/favicon.ico">
-
-
-
-<meta name="twitter:card" content="summary" />
-
-  
-    <meta name="twitter:creator" content="Georgios Is. Detorakis" />
-
-
-
-<meta property="og:locale" content="en" />
-<meta property="og:type" content="article" />
-<meta property="og:title" content="Simple mathematical tricks in Python">
-<meta property="og:description" content="Blog post on math tricks in Python" />
-<meta property="og:url" content="https://gdetor.github.io/posts/math_tips/" />
-<meta property="og:site_name" content="GID Webpage" />
-
-  
-    <meta property="og:image" content="https://gdetor.github.io/icons/favicon.ico">
-  
-
-<meta property="og:image:width" content="2048">
-<meta property="og:image:height" content="1024">
-
-
-  <meta property="article:published_time" content="2022-03-16 00:00:00 &#43;0000 UTC" />
+<!doctype html>
 
 
 
@@ -62,152 +11,350 @@
 
 
 
-<!DOCTYPE html>
 
-<html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
   <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
 
-    
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx" crossorigin="anonymous"></script>
+  
+  <title>Simple mathematical tricks in Python - GID</title>
 
-    
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
-        onload="renderMathInElement(document.body);"></script>
+  
+  <meta name="theme-color" />
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                    {left: "$$", right: "$$", display: true},
-                    {left: "$", right: "$", display: false}
-                ]
-            });
-        });
-    </script>
-  </head>
-</html>
+  
+  
+  
+  
+  <meta name="description" content="In this post, you can find some helpful mathematical tips and tricks in the Python programming language.
+Linear separability Two sets $ A $ and $ B $ in an $ n $ dimensional Euclidean space are linear separable if there exist $ n &#43; 1 $ numbers $ w_i \in \mathbb{R} $ such that every point $ a \in A $ satisfies
+$$ \sum_{i=1}^{n}w_i a_i &gt; k, $$
+and every point $ b \in B $ satisfies" />
+  <meta name="author" content="Georgios Is. Detorakis" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://gdetor.github.io/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/theme.png" />
+
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://avatars.githubusercontent.com/u/7115299?v=4" />
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/github.svg" />
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/linkedin.svg" />
+  
+  
+
+  
+  
+  <script
+    defer
+    src="https://gdetor.github.io/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://gdetor.github.io/icons/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://gdetor.github.io/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.92.2" />
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Simple mathematical tricks in Python">
+<meta itemprop="description" content="Here, you can find some helpful mathematical tips and tricks in Python."><meta itemprop="datePublished" content="2022-03-16T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-03-16T00:00:00+00:00" />
+<meta itemprop="wordCount" content="877">
+<meta itemprop="keywords" content="mathematics,math tips,math and python," />
+  
+  <meta property="og:title" content="Simple mathematical tricks in Python" />
+<meta property="og:description" content="Here, you can find some helpful mathematical tips and tricks in Python." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gdetor.github.io/posts/math_tips/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-03-16T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-03-16T00:00:00+00:00" />
 
 
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Simple mathematical tricks in Python"/>
+<meta name="twitter:description" content="Here, you can find some helpful mathematical tips and tricks in Python."/>
+
+  
+  
+  
+  <link rel="canonical" href="https://gdetor.github.io/posts/math_tips/" />
+  
+  
 </head>
-<body class="orange">
 
-
-<div class="container center">
-
-  <header class="header">
-  <div class="header__inner">
-    <div class="header__logo">
-      <a href="/">
-  <div class="logo">
-    # GID
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://gdetor.github.io"
+      >GID</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
   </div>
-</a>
 
-    </div>
-    
-      <div class="menu-trigger">menu</div>
-    
-  </div>
-  
-    <nav class="menu">
-  <ul class="menu__inner menu__inner--desktop">
-    
-      
-        
-          <li><a href="/about">About</a></li>
-        
-      
-        
-          <li><a href="/research">Research</a></li>
-        
-      
-        
-          <li><a href="/software">Software</a></li>
-        
-      
-        
-          <li><a href="/publications">Publications</a></li>
-        
-      
-        
-          <li><a href="/artwork">Artwork</a></li>
-        
-      
-      
-    
-
-    
-  </ul>
-
-  <ul class="menu__inner menu__inner--mobile">
-    
-      
-        <li><a href="/about">About</a></li>
-      
-    
-      
-        <li><a href="/research">Research</a></li>
-      
-    
-      
-        <li><a href="/software">Software</a></li>
-      
-    
-      
-        <li><a href="/publications">Publications</a></li>
-      
-    
-      
-        <li><a href="/artwork">Artwork</a></li>
-      
-    
-    
-  </ul>
-</nav>
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
 
   
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/about/"
+        >About</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/research/"
+        >Research</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/software/"
+        >Software</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/publications/"
+        >Publications</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/artwork/"
+        >Artwork</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/gdetor"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/georgiosdetorakis"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+    </nav>
+    
+  </div>
 </header>
 
 
-  <div class="content">
-    
-<div class="post">
-  <h1 class="post-title">
-    <a href="https://gdetor.github.io/posts/math_tips/">Simple mathematical tricks in Python</a></h1>
-  <div class="post-meta">
-    
-      <span class="post-date">
-        2022-03-16
-        
-      </span>
-    
-    
-      <span class="post-author">:: Georgios Is. Detorakis</span>
-    
-    
-  </div>
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
 
-  
-  <span class="post-tags">
-    
-    #<a href="https://gdetor.github.io/tags/mathematics/">mathematics</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/math-tips/">math tips</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/math-and-python/">math and python</a>&nbsp;
-    
-  </span>
-  
-  
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Simple mathematical tricks in Python</h1>
 
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Mar 16, 2022</time>
+      
+      
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Georgios Is. Detorakis</span>
+      <span class="mx-1">&middot;</span>
+      <span class="inline-item reading">5 minutes read</span>
+      
+    </div>
+    
+  </header>
 
-  
-
-  <div class="post-content"><div>
-        <p>In this post, you can find some helpful mathematical tips and tricks
+  <section><div style="text-align: justify;">
+<p>In this post, you can find some helpful mathematical tips and tricks
 in the Python programming language.</p>
-<h2 id="linear-separability">Linear separability<a href="#linear-separability" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="linear-separability">Linear separability</h2>
 <p>Two sets $ A $ and $ B $ in an $ n $ dimensional Euclidean space are linear
 separable if there exist $ n + 1 $ numbers $ w_i \in \mathbb{R} $ such that
 every point $ a \in A $ satisfies</p>
@@ -284,16 +431,12 @@ In Python, we can quickly check that using the function <code>ConvexHull</code> 
     plt<span style="color:#f92672">.</span>show()
 
 
-</code></pre></div>
-  <figure class="center" >
-    <img src="/images/convex_hulls.png"   style="border-radius: 8px;"  />
-    
-      <figcaption class="center" >Figure 1. Blobs and moons data sets along with their convex hulls. The blobs are linear separable since the convex hull of the blue set does not intersect or overlap with the convex hull of the orange data set. On the other hand, the moons data set is not linear separable. </figcaption>
-    
-  </figure>
-
-
-<h2 id="positive-definite-matrix">Positive definite matrix<a href="#positive-definite-matrix" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+</code></pre></div><figure><img src="/images/convex_hulls.png"
+         alt="Figure 1. Blobs and moons data sets along with their convex hulls. The blobs are linear separable since the convex hull of the blue set does not intersect or overlap with the convex hull of the orange data set. On the other hand, the moons data set is not linear separable."/><figcaption>
+            <p>Figure 1. Blobs and moons data sets along with their convex hulls. The blobs are linear separable since the convex hull of the blue set does not intersect or overlap with the convex hull of the orange data set. On the other hand, the moons data set is not linear separable.</p>
+        </figcaption>
+</figure>
+<h2 id="positive-definite-matrix">Positive definite matrix</h2>
 <p>Check if a given matrix $ \bf{A} $ is positive definite. If all the eigenvalues
 of matrix $ \bf{A} $ are positive then the matrix is positive definite.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#960050;background-color:#1e0010">$</span> A <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>], [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>]])
@@ -312,7 +455,7 @@ print(A)
 
 <span style="color:#960050;background-color:#1e0010">$</span> np<span style="color:#f92672">.</span>all(np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>eigvals(A) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>)
 <span style="color:#66d9ef">True</span>        <span style="color:#75715e"># A is positive definite</span>
-</code></pre></div><h2 id="random-matrix-with-predetermined-condition-number">Random matrix with predetermined condition number<a href="#random-matrix-with-predetermined-condition-number" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+</code></pre></div><h2 id="random-matrix-with-predetermined-condition-number">Random matrix with predetermined condition number</h2>
 <p>You can generate a random matrix with predetermined condition number by
 following method:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#960050;background-color:#1e0010">$</span> cond <span style="color:#f92672">=</span> <span style="color:#ae81ff">3.0</span>
@@ -338,7 +481,7 @@ following method:</p>
 Desired condition number: <span style="color:#ae81ff">3.0</span>
 <span style="color:#960050;background-color:#1e0010">$</span> print(<span style="color:#e6db74">&#34;Actual condition number&#34;</span>, np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>cond(B))
 Actual condition number: <span style="color:#ae81ff">2.9999999999999973</span>
-</code></pre></div><h2 id="integer-operations">Integer operations<a href="#integer-operations" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+</code></pre></div><h2 id="integer-operations">Integer operations</h2>
 <p>Fast integer division by two (rounded down). In this case, we have to
 perform a bit shift to the right by $ k $. $ k $ indicates the power of two
 $ 2^k $.</p>
@@ -374,92 +517,90 @@ $ -n $.</p>
 <span style="color:#ae81ff">2</span>
 <span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">12</span> <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">12</span>
 <span style="color:#ae81ff">4</span>
-</code></pre></div>
-      </div></div>
+</code></pre></div></div>
+</section>
 
   
   
-<div class="pagination">
-    <div class="pagination__title">
-        <span class="pagination__title-h">Read other posts</span>
-        <hr />
-    </div>
-    <div class="pagination__buttons">
-        
-        <span class="button previous">
-            <a href="https://gdetor.github.io/posts/genetic_algorithms/">
-                <span class="button__icon">←</span>
-                <span class="button__text">Genetic Algorithms &amp; Island Models</span>
-            </a>
-        </span>
-        
-        
-        <span class="button next">
-            <a href="https://gdetor.github.io/posts/demos/">
-                <span class="button__text">Research Demos</span>
-                <span class="button__icon">→</span>
-            </a>
-        </span>
-        
-    </div>
-</div>
-
-  
-
-  
-
-</div>
-
-  </div>
-
-  
-    <footer class="footer">
-  <div class="footer__inner">
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/mathematics"
+      >mathematics</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/math-tips"
+      >math tips</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/math-and-python"
+      >math and python</a
+    >
     
-      <div class="copyright copyright--user">
-        <span>ⓒ  GID, 2021-2022</span>
+  </footer>
+  
+
+  
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
     
-        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
-      </div>
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://gdetor.github.io/posts/genetic_algorithms/"
+      ><span class="mr-1.5">←</span><span>Genetic Algorithms &amp; Island Models</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://gdetor.github.io/posts/demos/"
+      ><span>Research Demos</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="https://gdetor.github.io">GID</a>
   </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
 </footer>
 
-<script src="https://gdetor.github.io/assets/main.js"></script>
-<script src="https://gdetor.github.io/assets/prism.js"></script>
-
-
-
-
-<style>
-    #body a, #body span {
-        display: inline-block;
-        width: 100%;
-        text-align: center;
-        line-height: 1.7em;
-    }
-    h2 {
-        display: inline-block;
-    }
-    img.github, img.gitlab, img.rgate, img.orcid{
-        -webkit-filter: invert(1);
-        filter: invert(1);
-    }
-</style>
-
-<center>
-    <div>
-        <a class="inline-block px-2" href="https://github.com/gdetor"><h2><img class="image github" src="/github-square.svg" alt="Github" width="36"></h2></a>
-        <a class="inline-block" href="https://gitlab.com/gdetor"><h2><img class="image gitlab" src="/gitlab.svg" alt="Gitlab" width="36"></h2></a>
-        <a class="inline-block px-2" href="https://www.researchgate.net/profile/Georgios-Detorakis"><h2>
-         <img class="image rgate" src="/researchgate-square.svg" alt="RG" width="36"></h2></a>
-        <a class="inline-block px-2" href="https://orcid.org/0000-0001-5891-1702"><h2>
-         <img class="image orcid" src="/orcid-square.svg" alt="RG" width="36"></h2></a>
-    </div>
-</center>
-
-
-  
-</div>
-
-</body>
+  </body>
 </html>

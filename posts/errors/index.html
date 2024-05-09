@@ -1,55 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  
-    <title>Time series forecasting error metrics :: GID Webpage</title>
-  
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Blog post on time series forecasting error metrics" />
-<meta name="keywords" content="[gdetor, Georgios Detorakis, Georgios Is. Detorakis, georgios, detorakis]" />
-<meta name="robots" content="noodp" />
-<link rel="canonical" href="https://gdetor.github.io/posts/errors/" />
-
-
-
-
-<link rel="stylesheet" href="https://gdetor.github.io/assets/style.css">
-
-
-
-<link rel="stylesheet" href="https://gdetor.github.io/style.css">
-
-
-<link rel="apple-touch-icon" href="https://gdetor.github.io/img/apple-touch-icon-192x192.png">
-
-  <link rel="shortcut icon" href="https://gdetor.github.io/icons/favicon.ico">
-
-
-
-<meta name="twitter:card" content="summary" />
-
-  
-    <meta name="twitter:creator" content="Georgios Is. Detorakis" />
-
-
-
-<meta property="og:locale" content="en" />
-<meta property="og:type" content="article" />
-<meta property="og:title" content="Time series forecasting error metrics">
-<meta property="og:description" content="Blog post on time series forecasting error metrics" />
-<meta property="og:url" content="https://gdetor.github.io/posts/errors/" />
-<meta property="og:site_name" content="GID Webpage" />
-
-  
-    <meta property="og:image" content="https://gdetor.github.io/icons/favicon.ico">
-  
-
-<meta property="og:image:width" content="2048">
-<meta property="og:image:height" content="1024">
-
-
-  <meta property="article:published_time" content="2022-05-05 00:00:00 &#43;0000 UTC" />
+<!doctype html>
 
 
 
@@ -62,158 +11,345 @@
 
 
 
-<!DOCTYPE html>
 
-<html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
   <head>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" integrity="sha384-R4558gYOUz8mP9YWpZJjofhk+zx0AS11p36HnD2ZKj/6JR5z27gSSULCNHIRReVs" crossorigin="anonymous">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
 
-    
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" integrity="sha384-z1fJDqw8ZApjGO3/unPWUPsIymfsJmyrDVWC8Tv/a1HeOtGmkwNd/7xUS0Xcnvsx" crossorigin="anonymous"></script>
+  
+  <title>Time series forecasting error metrics - GID</title>
 
-    
-    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" integrity="sha384-+XBljXPPiv+OzfbB3cVmLHf4hdUFHlWNZN5spNQ7rmHTXpd7WvJum6fIACpNNfIR" crossorigin="anonymous"
-        onload="renderMathInElement(document.body);"></script>
+  
+  <meta name="theme-color" />
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            renderMathInElement(document.body, {
-                delimiters: [
-                    {left: "$$", right: "$$", display: true},
-                    {left: "$", right: "$", display: false}
-                ]
-            });
-        });
-    </script>
-  </head>
-</html>
+  
+  
+  
+  
+  <meta name="description" content="In this post, we are going to explore the basic error measures used in time-series forecasting. Error measures provide a way to quantify the quality of a forecasting algorithm (e.g., the performance). First, we briefly introduce time series and the fundamental terms of forecasting. Second, we will introduce the most commonly used error measures and give some examples. Finally, we provide a complete example of using errors in a real-life forecasting scenario." />
+  <meta name="author" content="Georgios Is. Detorakis" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://gdetor.github.io/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/theme.png" />
+
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://avatars.githubusercontent.com/u/7115299?v=4" />
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/github.svg" />
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/linkedin.svg" />
+  
+  
+
+  
+  
+  <script
+    defer
+    src="https://gdetor.github.io/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://gdetor.github.io/icons/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://gdetor.github.io/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.92.2" />
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Time series forecasting error metrics">
+<meta itemprop="description" content="Error measures provide a way to quantify the quality of a forecasting algorithm (*e.g.*, performance). We briefly introduce time series and the fundamental terms of forecasting. We will then introduce the most commonly used error measures and give some examples. We provide an example of how to use error metrics in a real-life forecasting scenario."><meta itemprop="datePublished" content="2022-05-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-05-05T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3012">
+<meta itemprop="keywords" content="mean squared error,MSE,MAE,mean absolute error,time series,R2,coefficient of determination," />
+  
+  <meta property="og:title" content="Time series forecasting error metrics" />
+<meta property="og:description" content="Error measures provide a way to quantify the quality of a forecasting algorithm (*e.g.*, performance). We briefly introduce time series and the fundamental terms of forecasting. We will then introduce the most commonly used error measures and give some examples. We provide an example of how to use error metrics in a real-life forecasting scenario." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gdetor.github.io/posts/errors/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-05T00:00:00+00:00" />
 
 
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Time series forecasting error metrics"/>
+<meta name="twitter:description" content="Error measures provide a way to quantify the quality of a forecasting algorithm (*e.g.*, performance). We briefly introduce time series and the fundamental terms of forecasting. We will then introduce the most commonly used error measures and give some examples. We provide an example of how to use error metrics in a real-life forecasting scenario."/>
+
+  
+  
+  
+  <link rel="canonical" href="https://gdetor.github.io/posts/errors/" />
+  
+  
 </head>
-<body class="orange">
 
-
-<div class="container center">
-
-  <header class="header">
-  <div class="header__inner">
-    <div class="header__logo">
-      <a href="/">
-  <div class="logo">
-    # GID
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://gdetor.github.io"
+      >GID</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
   </div>
-</a>
 
-    </div>
-    
-      <div class="menu-trigger">menu</div>
-    
-  </div>
-  
-    <nav class="menu">
-  <ul class="menu__inner menu__inner--desktop">
-    
-      
-        
-          <li><a href="/about">About</a></li>
-        
-      
-        
-          <li><a href="/research">Research</a></li>
-        
-      
-        
-          <li><a href="/software">Software</a></li>
-        
-      
-        
-          <li><a href="/publications">Publications</a></li>
-        
-      
-        
-          <li><a href="/artwork">Artwork</a></li>
-        
-      
-      
-    
-
-    
-  </ul>
-
-  <ul class="menu__inner menu__inner--mobile">
-    
-      
-        <li><a href="/about">About</a></li>
-      
-    
-      
-        <li><a href="/research">Research</a></li>
-      
-    
-      
-        <li><a href="/software">Software</a></li>
-      
-    
-      
-        <li><a href="/publications">Publications</a></li>
-      
-    
-      
-        <li><a href="/artwork">Artwork</a></li>
-      
-    
-    
-  </ul>
-</nav>
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
 
   
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/about/"
+        >About</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/research/"
+        >Research</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/software/"
+        >Software</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/publications/"
+        >Publications</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/artwork/"
+        >Artwork</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/gdetor"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/georgiosdetorakis"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+    </nav>
+    
+  </div>
 </header>
 
 
-  <div class="content">
-    
-<div class="post">
-  <h1 class="post-title">
-    <a href="https://gdetor.github.io/posts/errors/">Time series forecasting error metrics</a></h1>
-  <div class="post-meta">
-    
-      <span class="post-date">
-        2022-05-05
-        
-      </span>
-    
-    
-      <span class="post-author">:: Georgios Is. Detorakis</span>
-    
-    
-  </div>
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
 
-  
-  <span class="post-tags">
-    
-    #<a href="https://gdetor.github.io/tags/mean-squared-error/">mean squared error</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/mse/">MSE</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/mae/">MAE</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/mean-absolute-error/">mean absolute error</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/time-series/">time series</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/r2/">R2</a>&nbsp;
-    
-    #<a href="https://gdetor.github.io/tags/coefficient-of-determination/">coefficient of determination</a>&nbsp;
-    
-  </span>
-  
-  
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Time series forecasting error metrics</h1>
 
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>May 5, 2022</time>
+      
+      
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Georgios Is. Detorakis</span>
+      <span class="mx-1">&middot;</span>
+      <span class="inline-item reading">15 minutes read</span>
+      
+    </div>
+    
+  </header>
 
-  
-
-  <div class="post-content"><div>
-        <p>In this post, we are going to explore the basic error measures
+  <section><div style="text-align: justify;">
+<p>In this post, we are going to explore the basic error measures
 used in time-series forecasting. Error measures provide a way
 to quantify the quality of a forecasting algorithm (<em>e.g.</em>, the
 performance). First, we briefly introduce time series and the
@@ -221,7 +357,7 @@ fundamental terms of forecasting. Second, we will introduce the
 most commonly used error measures and give some examples. Finally,
 we provide a complete example of using errors in a real-life
 forecasting scenario.</p>
-<h2 id="what-is-a-time-series">What is a time series<a href="#what-is-a-time-series" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="what-is-a-time-series">What is a time series</h2>
 <p>A time series is a series of data points indexed in time order in
 layman&rsquo;s terms [1, 2].
 A few examples of time series are</p>
@@ -235,15 +371,11 @@ to September 1960.  In all the examples in this post, we are going to
 use this dataset, so if you would like to try the examples by yourself;
 you can download the data from Kaggle
 <a href="https://www.kaggle.com/datasets/rakannimer/air-passengers">here</a>.</p>
-
-  <figure class="center" >
-    <img src="/images/passengers.png"   style="border-radius: 8px;"  />
-    
-      <figcaption class="center" >Figure 1. An example of a time series showing the number of air passengers per month.</figcaption>
-    
-  </figure>
-
-
+<figure><img src="/images/passengers.png"
+         alt="Figure 1. An example of a time series showing the number of air passengers per month."/><figcaption>
+            <p>Figure 1. An example of a time series showing the number of air passengers per month.</p>
+        </figcaption>
+</figure>
 <p>A more rigorous definition of a time series found in [1] (Chapter 1, pg 1)
 is given below:</p>
 <p>Let $ k \in \mathbf{N}, T \subseteq \mathbf{R} $. A function
@@ -267,7 +399,7 @@ is finite,</li>
 a time series: $ y[1], y[2], \ldots , y[N] $, where
 $ N \in \mathbb{N} $ or $ y[t] $, where $t=1, \ldots , N $.</p>
 </blockquote>
-<h2 id="more-terminology">More terminology<a href="#more-terminology" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="more-terminology">More terminology</h2>
 <p>Before we dive into the post, let&rsquo;s give some valuable terminology for the
 unfamiliar reader.</p>
 <ul>
@@ -291,7 +423,7 @@ $ \epsilon[t] = y[t] - \hat{y}[t] $.</li>
 patterns over the same period—for instance, increasing prices before and
 over the Christmas holidays.</li>
 </ul>
-<h2 id="four-basic-predictors">Four basic predictors<a href="#four-basic-predictors" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<h2 id="four-basic-predictors">Four basic predictors</h2>
 <p>So far, we have seen what a time series and the basic terminology is.
 Now, we will explore some essential predictors or models and see how
 we can use them to perform forecasting.</p>
@@ -305,12 +437,12 @@ are a few references where the reader can find more details on that matter
 [3, 4, 5, 6]). However, we will introduce the four elementary
 predictors since some error measures use some of them to estimate the
 prediction errors.</p>
-<h4 id="naive-predictor">Naive predictor<a href="#naive-predictor" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<h4 id="naive-predictor">Naive predictor</h4>
 <p>The most straightforward predictor we can imagine is the <em>naive</em> one,
 and it gets the last observed value and returns it as the predicted
 value.</p>
 <p>$$ \hat{y}[t + h | t] = y[t]. $$</p>
-<h4 id="seasonal-predictor">Seasonal predictor<a href="#seasonal-predictor" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<h4 id="seasonal-predictor">Seasonal predictor</h4>
 <p>We can use the seasonal predictor when we know that our time series
 has a seasonal component (seasonality). It is a natural extension of
 the naive one, and we can describe it as:</p>
@@ -318,11 +450,11 @@ the naive one, and we can describe it as:</p>
 <p>$ P $ is $ \Big[\frac{h-1}{S}\Big] $, where $ \Big[ x \Big] $ is the
 integer part of $ x $. $ P $ reflects the number of years&ndash;365 days&ndash;
 have passed prior to time $ t + h $.</p>
-<h4 id="average-predictor">Average predictor<a href="#average-predictor" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<h4 id="average-predictor">Average predictor</h4>
 <p>This predictor receives historical and present values as input,
 computes their average (or mean), and returns it as a prediction.</p>
 <p>$$ \hat{y}[t+h|t] = \bar{y} = \frac{1}{N} \sum_{t=1}^{N} y[t] .$$</p>
-<h4 id="drift-predictor">Drift predictor<a href="#drift-predictor" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<h4 id="drift-predictor">Drift predictor</h4>
 <p>Another variation of the naive predictor, only this time
 we allow to the predicted value to <em>drift</em> (fluctuate) over time,</p>
 <p>$$ \hat{y}[t+h|t] = y[t] + \frac{h}{t-1} \sum_{j=2}^{t} (y[j]-y[j-1]) = y[t] + h\Big( \frac{y[t] - y[1]}{t - 1} \Big). $$</p>
@@ -333,16 +465,12 @@ the air passengers data (brown line).
 The blue line represents the naive predictor, the green line the
 seasonal, the orange line shows the average predictor, and finally,
 the pink line indicates the drift predictor.</p>
-
-  <figure class="center" >
-    <img src="/images/naive_predictors.png"   style="border-radius: 8px;"  />
-    
-      <figcaption class="center" >Figure 2. Forecasts of montly air passengers. Naive predictor (blue line), naive seasonal (green), average (orange), drift (pink).</figcaption>
-    
-  </figure>
-
-
-<h2 id="forecasting-error-measures">Forecasting error measures<a href="#forecasting-error-measures" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<figure><img src="/images/naive_predictors.png"
+         alt="Figure 2. Forecasts of montly air passengers. Naive predictor (blue line), naive seasonal (green), average (orange), drift (pink)."/><figcaption>
+            <p>Figure 2. Forecasts of montly air passengers. Naive predictor (blue line), naive seasonal (green), average (orange), drift (pink).</p>
+        </figcaption>
+</figure>
+<h2 id="forecasting-error-measures">Forecasting error measures</h2>
 <p>So why do we need error measures? The general idea is to quantify
 the distance between an actual observation (target) and a predicted
 one. Particularly when we train a model to learn how to predict
@@ -372,7 +500,7 @@ signal and $ \epsilon[t] $ the error signal.</p>
 </blockquote>
 <p>And now, we are ready to introduce the error measures and some examples
 demonstrating their behavior.</p>
-<h4 id="example">Example<a href="#example" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<h4 id="example">Example</h4>
 <p>In the following sections, we use some basic examples to demonstrate how the
 reader can implement the error measures in Python.
 We provide a custom implementation of the error measure and a Sklearn one in
@@ -388,7 +516,7 @@ y_true <span style="color:#f92672">=</span> np<span style="color:#f92672">.</spa
 
 y_pred <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.3</span>, <span style="color:#ae81ff">2.6</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2.4</span>, <span style="color:#ae81ff">1.2</span>])      <span style="color:#75715e"># This is y_hat (prediction)</span>
 
-</code></pre></div><h3 id="mean-absolute-error-mae">Mean Absolute Error (MAE)<a href="#mean-absolute-error-mae" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="mean-absolute-error-mae">Mean Absolute Error (MAE)</h3>
 <p>The MAE is the most straightforward error measure, and as it&rsquo;s
 name signifies it is just the difference between a target (or desired)
 value and model&rsquo;s prediction. MAE is defined as:</p>
@@ -400,7 +528,7 @@ by looking at its definition its sensitivity to outliers (<em>e.g.</em>,
 values in the time series that stick further away from any other value).
 Outliers can drag the MAE to higher values, thus affecting the error.
 However, there are ways to handle outliers and fix that issue (see here [8, 9]).</p>
-<h4 id="example-1">Example<a href="#example-1" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<h4 id="example-1">Example</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> mean_absolute_error
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">MAE</span>(y_true, y_pred):
@@ -413,7 +541,7 @@ print(MAE(y, y_hat))
 
 print(mean_absolute_error(y, y_hat))
 <span style="color:#ae81ff">0.2333333333333333</span>
-</code></pre></div><h3 id="mean-absolute-percentage-error-mape">Mean Absolute Percentage Error (MAPE)<a href="#mean-absolute-percentage-error-mape" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="mean-absolute-percentage-error-mape">Mean Absolute Percentage Error (MAPE)</h3>
 <p>MAPE computes the error between a target and a prediction signal
 as a ratio of the error $ \epsilon[t] $ and the target signal. More
 precisely,</p>
@@ -428,7 +556,7 @@ that when the denominator is close to zero or zero, the MAPE is too
 large or cannot be defined. Moreover, MAPE is susceptible to skewness,
 since the term $ \frac{1}{y[t]} $ depends only on the observed data
 (not on the model&rsquo;s predictions).</p>
-<h4 id="example-2">Example<a href="#example-2" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<h4 id="example-2">Example</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> mean_absolute_percentage_error
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">MAPE</span>(y_true, y_pred):
@@ -441,7 +569,7 @@ print(MAPE(y, y_hat))
     
 print(mean_absolute_percentage_error(y, y_hat))
 <span style="color:#ae81ff">0.19555555555555554</span>                 
-</code></pre></div><h3 id="mean-squared-error-mse">Mean Squared Error (MSE)<a href="#mean-squared-error-mse" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="mean-squared-error-mse">Mean Squared Error (MSE)</h3>
 <p>The MSE is one of the most used error measures in Machine and
 Deep learning. It computes the average of the square of the errors
 between target and prediction signals. We define the MSE as:</p>
@@ -467,7 +595,7 @@ bias and high variance [12]. Ideally, we would like to find a balance
 between bias and variance. That&rsquo;s why sometimes we have to penalize
 our model during training using regularization techniques (this is
 out of the scope of the present post).</p>
-<h4 id="example-3">Example<a href="#example-3" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<h4 id="example-3">Example</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> mean_squared_error
 
 <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">MSE</span>(y_true, y_pred):
@@ -480,7 +608,7 @@ print(MSE(y_true, y_pred))
     
 print(mean_squared_error(y_true, y_pred))
 <span style="color:#ae81ff">0.08333333333333333</span>
-</code></pre></div><h3 id="symmetric-mean-absolute-percentage-error-smape">Symmetric Mean Absolute Percentage Error (SMAPE)<a href="#symmetric-mean-absolute-percentage-error-smape" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="symmetric-mean-absolute-percentage-error-smape">Symmetric Mean Absolute Percentage Error (SMAPE)</h3>
 <p>SMAPE computes the error between the target and the prediction signals
 as a ratio of the error with the sum of the absolute values of actual
 and prediction values.
@@ -498,7 +626,7 @@ $ y[t] = 11 $.  In the former case, $ SMAPE  = 4.7 % $ and in
 the latter case $ SMAPE = 4.3 % $. We see that we get two different
 error values for the same target when our predictor returns
 different predictions.</p>
-<h3 id="mean-absolute-scaled-error-mase">Mean Absolute Scaled Error (MASE)<a href="#mean-absolute-scaled-error-mase" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="mean-absolute-scaled-error-mase">Mean Absolute Scaled Error (MASE)</h3>
 <p>MASE is a metric that computes the error ratio between the
 target and the model&rsquo;s prediction to a naive predictor&rsquo;s error (forecaster).</p>
 <p>The following equation gives the MASE,</p>
@@ -514,7 +642,7 @@ one, the naive forecaster performs better than our model. MASE can
 be problematic only when the actual (target) signal is only zero values.
 In that case the naive predictor will be zero ad infinitum and thus
 the MASE will be undefined.</p>
-<h3 id="coefficient-of-determination-cod-or-r">Coefficient of Determination (CoD) or R²<a href="#coefficient-of-determination-cod-or-r" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<h3 id="coefficient-of-determination-cod-or-r">Coefficient of Determination (CoD) or R²</h3>
 <p>The $ R^2 $ or Coefficient of Determination is an error measure
 frequently used in evaluating regression models (<em>goodness of fit</em>
 or <em>best-fit line</em>). $ R^2 $ counts how many of the target data
@@ -539,7 +667,7 @@ better predictor than our model. Moreover, from the first definition
 of $ R^2 $, we see a direct relation between $ R^2 $ and MSE. While
 the $ R^2 $ increases, the MSE tends to approach zero. When we have
 an ideal predictor, $ MSE = 0 $ and $ r^2 = 1 $.</p>
-<h4 id="example-4">Example<a href="#example-4" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h4>
+<h4 id="example-4">Example</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> r2_score
 <span style="color:#f92672">from</span> numpy <span style="color:#f92672">import</span> var
 
@@ -553,13 +681,14 @@ print(R2(y_true, y_pred))
     
 print(r2_score(y_true, y_pred))
 <span style="color:#ae81ff">0.9351351351351351</span>
-</code></pre></div><h2 id="summary">Summary<a href="#summary" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+</code></pre></div><h2 id="summary">Summary</h2>
 <p>In this post, we briefly introduced the concept of time series and the most
 frequently used error measures in forecasting. we described the pros and cons
 of each measure so the reader can decide which one best suits their needs.
 If you find any typos or errors, or you have any other comments, please feel
 free to report them (you can find contact information <a href="/about">here</a>).</p>
-<h3 id="cited-as">Cited as:<a href="#cited-as" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</div>
+<h3 id="cited-as">Cited as:</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">@article{detorakis2022errors-timeseries,
   title   = &#34;Time series and forecasting error measures&#34;,
   author  = &#34;Georgios Is. Detorakis&#34;,
@@ -567,7 +696,7 @@ free to report them (you can find contact information <a href="/about">here</a>)
   year    = &#34;2022&#34;,
   url     = &#34;https://gdetor.github.io/posts/errors&#34;
 }
-</code></pre></div><h3 id="references">References<a href="#references" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+</code></pre></div><h3 id="references">References</h3>
 <ol>
 <li>J. Beran, <em>Mathematical Foundations of Time Series Analysis A Concise
 Introduction</em>, Springer, 2017.</li>
@@ -596,92 +725,113 @@ error for regression models</em>, Neurocomputing, 2016.</li>
 <li>C. M. Bishop, and N. M. Nasrabadi, <em>Pattern recognition and machine learning</em>,
 New York: Springer, 2006.</li>
 </ol>
-
-      </div></div>
-
-  
-  
-<div class="pagination">
-    <div class="pagination__title">
-        <span class="pagination__title-h">Read other posts</span>
-        <hr />
-    </div>
-    <div class="pagination__buttons">
-        
-        <span class="button previous">
-            <a href="https://gdetor.github.io/posts/normalization/">
-                <span class="button__icon">←</span>
-                <span class="button__text">Useful data transformations</span>
-            </a>
-        </span>
-        
-        
-        <span class="button next">
-            <a href="https://gdetor.github.io/posts/genetic_algorithms/">
-                <span class="button__text">Genetic Algorithms &amp; Island Models</span>
-                <span class="button__icon">→</span>
-            </a>
-        </span>
-        
-    </div>
-</div>
+</section>
 
   
-
   
-
-</div>
-
-  </div>
-
-  
-    <footer class="footer">
-  <div class="footer__inner">
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/mean-squared-error"
+      >mean squared error</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/mse"
+      >MSE</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/mae"
+      >MAE</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/mean-absolute-error"
+      >mean absolute error</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/time-series"
+      >time series</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/r2"
+      >R2</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/coefficient-of-determination"
+      >coefficient of determination</a
+    >
     
-      <div class="copyright copyright--user">
-        <span>ⓒ  GID, 2021-2022</span>
+  </footer>
+  
+
+  
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
     
-        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
-      </div>
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://gdetor.github.io/posts/normalization/"
+      ><span class="mr-1.5">←</span><span>Useful data transformations</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://gdetor.github.io/posts/genetic_algorithms/"
+      ><span>Genetic Algorithms &amp; Island Models</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="https://gdetor.github.io">GID</a>
   </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
 </footer>
 
-<script src="https://gdetor.github.io/assets/main.js"></script>
-<script src="https://gdetor.github.io/assets/prism.js"></script>
-
-
-
-
-<style>
-    #body a, #body span {
-        display: inline-block;
-        width: 100%;
-        text-align: center;
-        line-height: 1.7em;
-    }
-    h2 {
-        display: inline-block;
-    }
-    img.github, img.gitlab, img.rgate, img.orcid{
-        -webkit-filter: invert(1);
-        filter: invert(1);
-    }
-</style>
-
-<center>
-    <div>
-        <a class="inline-block px-2" href="https://github.com/gdetor"><h2><img class="image github" src="/github-square.svg" alt="Github" width="36"></h2></a>
-        <a class="inline-block" href="https://gitlab.com/gdetor"><h2><img class="image gitlab" src="/gitlab.svg" alt="Gitlab" width="36"></h2></a>
-        <a class="inline-block px-2" href="https://www.researchgate.net/profile/Georgios-Detorakis"><h2>
-         <img class="image rgate" src="/researchgate-square.svg" alt="RG" width="36"></h2></a>
-        <a class="inline-block px-2" href="https://orcid.org/0000-0001-5891-1702"><h2>
-         <img class="image orcid" src="/orcid-square.svg" alt="RG" width="36"></h2></a>
-    </div>
-</center>
-
-
-  
-</div>
-
-</body>
+  </body>
 </html>
