@@ -14,8 +14,8 @@
       <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://gdetor.github.io/posts/normalization/</guid>
-      <description>This post briefly introduces fundamental data transformations such as mean subtraction (centering data), normalization, standardization, difference transform, and power transform. Furthermore, we provide simple examples of Python code on how to apply those transforms to real data. Moreover, we heavily rely on the sklearn Python package [1].
-Mean subtraction Let&amp;rsquo;s assume we have some data in a vector $ {\bf x} $, and we know that the mean value of $ {\bf x} $ is not zero.</description>
+      <description>This post briefly introduces fundamental data transformations such as mean subtraction (centering data), normalization, standardization, difference transform, and power transform. Furthermore, we provide simple examples of Python code for applying those transforms to real data. Moreover, we heavily rely on the sklearn Python package [1].
+Mean subtraction Let&amp;rsquo;s assume we have some data in a vector $ {\bf x} $, and know that the mean value of $ {\bf x} $ is not zero.</description>
     </item>
     
   </channel>

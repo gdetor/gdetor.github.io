@@ -14,7 +14,7 @@
       <pubDate>Fri, 29 Dec 2023 00:00:00 +0000</pubDate>
       
       <guid>https://gdetor.github.io/posts/som/</guid>
-      <description>This post presents the classical self-organizing map algorithm proposed by Grossberg [1] and Teuvo Kohonen [2]. We explain the fundamental aspects of the algorithm and its applications, and we offer a basic implementation in Pytorch.
+      <description>This post presents the classical self-organizing map algorithm proposed by Grossberg [1] and Teuvo Kohonen [2]. We explain the algorithm&amp;rsquo;s fundamental aspects and applications and offer a basic implementation in Pytorch.
 Introduction Let us begin with a prevalent problem in science. We often have to deal with data that live in a high-dimensional space $\mathcal{X} \in \mathbb{R}^k$. When $k &amp;gt; 3$, things get rough for people who need help to visualize what&amp;rsquo;s happening.</description>
     </item>
     

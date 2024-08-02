@@ -61,8 +61,8 @@
   
   
   
-  <meta name="description" content="This post briefly introduces fundamental data transformations such as mean subtraction (centering data), normalization, standardization, difference transform, and power transform. Furthermore, we provide simple examples of Python code on how to apply those transforms to real data. Moreover, we heavily rely on the sklearn Python package [1].
-Mean subtraction Let&rsquo;s assume we have some data in a vector $ {\bf x} $, and we know that the mean value of $ {\bf x} $ is not zero." />
+  <meta name="description" content="This post briefly introduces fundamental data transformations such as mean subtraction (centering data), normalization, standardization, difference transform, and power transform. Furthermore, we provide simple examples of Python code for applying those transforms to real data. Moreover, we heavily rely on the sklearn Python package [1].
+Mean subtraction Let&rsquo;s assume we have some data in a vector $ {\bf x} $, and know that the mean value of $ {\bf x} $ is not zero." />
   <meta name="author" content="Georgios Is. Detorakis" />
   
 
@@ -162,7 +162,7 @@ Mean subtraction Let&rsquo;s assume we have some data in a vector $ {\bf x} $, a
   <meta itemprop="name" content="Useful data transformations">
 <meta itemprop="description" content="Fundamental data transformations such as mean subtraction (centering data), normalization, and standardization are standard preprocessing steps for many algorithms. Therefore, in this post, we provide some information regarding different basic data transformations as well as simple examples of Python code for applying those transforms to real data."><meta itemprop="datePublished" content="2022-10-13T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2022-10-13T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1358">
+<meta itemprop="wordCount" content="1333">
 <meta itemprop="keywords" content="normalization,standardize,scaling,centered,difference transform,power transform," />
   
   <meta property="og:title" content="Useful data transformations" />
@@ -353,12 +353,12 @@ Mean subtraction Let&rsquo;s assume we have some data in a vector $ {\bf x} $, a
 <p>This post briefly introduces fundamental data transformations such as mean
 subtraction (centering data), normalization, standardization, difference
 transform, and power transform. Furthermore, we provide simple examples of
-Python code on how to apply those transforms to real data. Moreover, we heavily
+Python code for applying those transforms to real data. Moreover, we heavily
 rely on the <em>sklearn</em> Python package [1].</p>
 <h2 id="mean-subtraction">Mean subtraction</h2>
-<p>Let&rsquo;s assume we have some data in a vector $ {\bf x} $, and we know that the
+<p>Let&rsquo;s assume we have some data in a vector $ {\bf x} $, and know that the
 mean value of $ {\bf x} $ is not zero. We could force the mean to be zero by
-subtracting the mean from each element in the vector $ {\bf x} $. Thus we center
+subtracting the mean from each element in the vector $ {\bf x} $. Thus, we center
 the data when we apply the following transform:</p>
 <p>$$ {\bf z} = {\bf x} - \bar{x}, \quad (1) $$</p>
 <p>where $ \bar{x} $ is the mean of $ {\bf x} $. Another important use of this
@@ -404,14 +404,14 @@ Z <span style="color:#f92672">=</span> scaler<span style="color:#f92672">.</span
 like to use machine learning models on them. Naturally, weight and height
 measure different physical quantities and thus are in various scales and units
 (height is usually between $ 10 $ and $ 200 $ kilograms, and height is between
-$ 0 $ to $ 2 $ m). So, <em>how do we use those data</em>? One solution is to
+$ 0 $ to $ 2 $ m). So, <em>how do we use that data</em>? One solution is to
 standardize the data using the z-score</p>
 <p>$$  {\bf z} = \frac{{\bf x} - \bar{x}}{\sigma}, \quad (4)  $$</p>
 <p>where $ {\bf x} $ is the vector that holds the data, $ \bar{x} $ is the mean
-value of $ {\bf x} $, and $ \sigma $ is the standard deviation. When we
-standardize, our data ti means they will have a zero mean and a unit standard
-deviation. We usually apply a standardization transformation when we know
-that our data follow a Gaussian-like distribution.</p>
+value of $ {\bf x} $, and $ \sigma $ is the standard deviation.
+Standardizing our data means they will have a zero mean and a unit standard
+deviation. We usually apply a standardization transformation when we know that
+our data follow a Gaussian-like distribution.</p>
 <p>In Python, we can standardize our data using the preprocessing functions
 provided by the <em>sklearn</em> package [3]. Here is an example:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
@@ -428,7 +428,7 @@ Z <span style="color:#f92672">=</span> scaler<span style="color:#f92672">.</span
 <ul>
 <li>Before <em>PCA</em>. Sometimes data points with high variance get weighted
 more and dominate the principal components.</li>
-<li>Before clustering algorithms such as <em>kNN</em>. Clustering algorithms are based
+<li>Before clustering algorithms such as <em>k-means</em>. Clustering algorithms are based
 on the notion of distance as a similarity measure; thus, data with a wide
 range of features will affect the distances of the clustering algorithm more.</li>
 <li>Before <em>SVM</em>. Classic SVM tries to maximize the distance
@@ -449,7 +449,7 @@ immune to a wide range of features:</p>
 </ul>
 <h2 id="difference-transform">Difference transform</h2>
 <p>A difference transform is most useful when we are dealing with time series.
-In case there is a trend in a time series, and we would like to get rid of it,
+If there is a trend in a time series, and we would like to eliminate it,
 we can apply a difference transform by subtracting the value at time $ t-1 $
 from the current time $ t $ value. More precisely,</p>
 <p>$$ x[t] = x[t] - x[t-1], \quad (5) $$</p>
@@ -491,12 +491,12 @@ snippet provides two functions to apply and reverse the difference transform.</p
     x_diff_prime_inv <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>r_[x[<span style="color:#ae81ff">0</span>], x_diff_prime]<span style="color:#f92672">.</span>cumsum()
     print(x_diff_prime_inv)		<span style="color:#75715e"># [1 2 3 4 5 6 7 8 9]</span>
 </code></pre></div><h2 id="power-transform">Power transform</h2>
-<p>We can apply a power transform when we want to make our data distribution look
-more like Gaussian. At the same time, a power transformation will also stabilize
-the variance of our data. There are two major power transforms, the Cox-Box [4]
-and the Yeo-Johnson [5]. The <em>sklearn</em> Python package supports Cox-Box and
-Yeo-Johnson transforms, and the Box-Cox transform requires strictly positive
-data. On the other hand, Yeo-Johnson supports positive and negative data [6].
+<p>We can apply a power transform to make our data look more ``normal''
+(Gaussian-like) and stabilize its variance. There are two major power transforms:
+the Cox-Box [4] and the Yeo-Johnson [5]. The <em>sklearn</em> Python package supports
+both Cox-Box and Yeo-Johnson transforms. The Box-Cox transform requires strictly
+positive data, while the Yeo-Johnson transform supports both positive and negative
+data [6].
 The following code snippet demonstrates how we can apply them to our data.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
 <span style="color:#f92672">from</span> sklearn.preprocessing <span style="color:#f92672">import</span> PowerTransformer
@@ -517,7 +517,7 @@ print(Z)
 <span style="color:#75715e"># [-1.71002627  1.17246013 -1.55389497  0.91312675 -0.02584321  0.19532181</span>
 <span style="color:#75715e">#  -0.08403872  1.48983064  0.03445026 -0.43138641]</span>
 </code></pre></div><h2 id="summary">Summary</h2>
-<p>We went through five essential data transforms, centering data,
+<p>We examined five essential data transforms: centering data,
 normalization, standardization, difference, and power transform. We briefly
 described the math behind those transformations and provided some Python
 functions based on <em>sklearn</em> that implement those transformations.</p>

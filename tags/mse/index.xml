@@ -14,7 +14,8 @@
       <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://gdetor.github.io/posts/errors/</guid>
-      <description>In this post, we are going to explore the basic error measures used in time-series forecasting. Error measures provide a way to quantify the quality of a forecasting algorithm (e.g., the performance). First, we briefly introduce time series and the fundamental terms of forecasting. Second, we will introduce the most commonly used error measures and give some examples. Finally, we provide a complete example of using errors in a real-life forecasting scenario.</description>
+      <description>In this post, we will explore the basic error measures used in time-series forecasting. Error measures provide a way to quantify the quality of a forecasting algorithm (e.g., the performance). First, we briefly introduce time series and the fundamental terms of forecasting. Second, we will introduce the most commonly used error measures and give examples. Finally, we provide a complete example of using errors in a real-life forecasting scenario.
+What is a time series A time series is a series of data points indexed in time order in layman&amp;rsquo;s terms [1, 2].</description>
     </item>
     
   </channel>

@@ -14,8 +14,8 @@
       <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://gdetor.github.io/posts/acf_pacf/</guid>
-      <description>This post aims to provide some theoretical background on autocorrelation functions and how we can use it to analyse time series. Furthremore, we show how to use the autocorrelation (ACF) function and the Partial Autocorrelation (PACF) functions to determine the parameters for an ARMA model.
-Brief introduction to time series In a previous post (see here) we introduced some basic definitions and terminology about time series. To avoid forcing the reader to move back and forth we repeat those very same definitions here.</description>
+      <description>This post aims to provide some theoretical background on autocorrelation functions and how to use them to analyze time series. Furthermore, we show how to use the Autocorrelation (ACF) function and the Partial Autocorrelation (PACF) function to determine the parameters for an ARMA model.
+Brief introduction to time series In a previous post (see here), we introduced some basic definitions and terminology about time series. We repeat the same definitions here to avoid forcing the reader to move back and forth.</description>
     </item>
     
     <item>
@@ -24,7 +24,8 @@ Brief introduction to time series In a previous post (see here) we introduced so
       <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
       
       <guid>https://gdetor.github.io/posts/errors/</guid>
-      <description>In this post, we are going to explore the basic error measures used in time-series forecasting. Error measures provide a way to quantify the quality of a forecasting algorithm (e.g., the performance). First, we briefly introduce time series and the fundamental terms of forecasting. Second, we will introduce the most commonly used error measures and give some examples. Finally, we provide a complete example of using errors in a real-life forecasting scenario.</description>
+      <description>In this post, we will explore the basic error measures used in time-series forecasting. Error measures provide a way to quantify the quality of a forecasting algorithm (e.g., the performance). First, we briefly introduce time series and the fundamental terms of forecasting. Second, we will introduce the most commonly used error measures and give examples. Finally, we provide a complete example of using errors in a real-life forecasting scenario.
+What is a time series A time series is a series of data points indexed in time order in layman&amp;rsquo;s terms [1, 2].</description>
     </item>
     
   </channel>

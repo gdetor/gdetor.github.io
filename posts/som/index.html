@@ -61,7 +61,7 @@
   
   
   
-  <meta name="description" content="This post presents the classical self-organizing map algorithm proposed by Grossberg [1] and Teuvo Kohonen [2]. We explain the fundamental aspects of the algorithm and its applications, and we offer a basic implementation in Pytorch.
+  <meta name="description" content="This post presents the classical self-organizing map algorithm proposed by Grossberg [1] and Teuvo Kohonen [2]. We explain the algorithm&rsquo;s fundamental aspects and applications and offer a basic implementation in Pytorch.
 Introduction Let us begin with a prevalent problem in science. We often have to deal with data that live in a high-dimensional space $\mathcal{X} \in \mathbb{R}^k$. When $k &gt; 3$, things get rough for people who need help to visualize what&rsquo;s happening." />
   <meta name="author" content="Georgios Is. Detorakis" />
   
@@ -162,7 +162,7 @@ Introduction Let us begin with a prevalent problem in science. We often have to 
   <meta itemprop="name" content="An introduction to self-organizing maps">
 <meta itemprop="description" content="This post introduces the classical self-organizing map (SOM) algorithm proposed by Grossberg and later by Kohonen. We explain the algorithm&#39;s fundamental aspects and implement it on Pytorch."><meta itemprop="datePublished" content="2023-12-29T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-12-29T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2151">
+<meta itemprop="wordCount" content="2125">
 <meta itemprop="keywords" content="SOM,Kohonen,neural networks,self-organizing map,pytorch," />
   
   <meta property="og:title" content="An introduction to self-organizing maps" />
@@ -343,28 +343,26 @@ Introduction Let us begin with a prevalent problem in science. We often have to 
       <span class="mx-1">&middot;</span>
       <span>Georgios Is. Detorakis</span>
       <span class="mx-1">&middot;</span>
-      <span class="inline-item reading">11 minutes read</span>
+      <span class="inline-item reading">10 minutes read</span>
       
     </div>
     
   </header>
 
   <section><div style="text-align: justify;">
-<p>This post presents the classical self-organizing map algorithm proposed by
-Grossberg [1] and Teuvo Kohonen [2]. We explain the fundamental aspects of the
-algorithm and its applications, and we offer a basic implementation in Pytorch.</p>
+<p>This post presents the classical self-organizing map algorithm proposed by Grossberg [1] and Teuvo Kohonen [2]. We explain the algorithm&rsquo;s fundamental aspects and applications and offer a basic implementation in Pytorch.</p>
 <h2 id="introduction">Introduction</h2>
 <p>Let us begin with a prevalent problem in science. We often have to deal with
 data that <em>live</em> in a high-dimensional space $\mathcal{X} \in \mathbb{R}^k$.
 When $k &gt; 3$, things get rough for people who need help to visualize
-what&rsquo;s happening. Moreover, many algorithms we use daily cannot operate fast
-enough in such high-dimensional spaces [3, 4]. Therefore, we rely on methods
+what&rsquo;s happening. Moreover, many algorithms cannot operate fast
+enough in high-dimensional spaces [3, 4]. Therefore, we rely on methods
 that reduce the dimensionality without compromising or losing much information.</p>
 <p>One such method is a self-organizing map or SOM. SOM is an unsupervised
 learning algorithm that maps a high-dimensional space into a lower-dimensional
 one through an artificial neural network.
 In a more mathematical context, the idea behind an unsupervised learning
-problem and particularly a self-organizing map, is to learn the input
+problem and mainly a self-organizing map, is to learn the input
 distribution, meaning we are looking at an approximation for the joint
 distribution $p(x, y)$, where $x$ represents input samples and $y$ the output,
 without making any assumptions about causality.</p>
@@ -382,17 +380,17 @@ of units/neurons) represent poor, rich, or in-between countries [http://www.cis.
 There are many other applications, but providing an exhaustive list is out of
 the scope of this post.</p>
 <h3 id="notation-and-terminology">Notation and Terminology</h3>
-<p>Before diving into the details and the implementation of the SOM algorithms,
-we must define some mathematical quantities and determine the terminology we
-will use. The SOM is implemented as a neural network $\mathcal{F}({\bf \theta})$
+<p>Before diving into the details and implementing the SOM algorithms,
+we must define some mathematical quantities and determine out terminology.
+The SOM is implemented as a neural network $\mathcal{F}({\bf \theta})$
 that maps a high-dimensional manifold $ \mathcal{X} \in \mathbb{R}^k $
-to a low-dimensional predefined latice $\mathcal{Y} \in \mathbb{R}^m$, where
-$ m \ll k $. The input to the SOM is a vector $ {\bf x} \in \mathcal{X} $ and
-the weights, $ {\bf w} $ of the neural network that learn the representations
+to a low-dimensional predefined lattice $\mathcal{Y} \in \mathbb{R}^m$, where
+$ m \ll k $. The input to the SOM is a vector $ {\bf x} \in \mathcal{X} $, and
+the weights, $ {\bf w} $, of the neural network that learns the representations
 are called <em>code words</em> and the set of the code words,
 $ \mathcal{W} = {\bf w_1, \ldots, w_n} $, is called a <em>codebook</em>.
 The cardinal number of $\mathcal{W}$ is the number of units we use in the
-low-level lattice or the number of neural network&rsquo;s units.
+low-level lattice or the number of neural network units.
 We let $ d(\cdot, \cdot) $ be the Minkowski distance
 defined as
 $$ d({\bf x}, {\bf y}) = \Big( \sum_{i=1}^{k} |x_i - y_i|^p \Big)^{\frac{1}{p}}, \qquad (1) $$
@@ -403,21 +401,21 @@ distance functions such as the Euclidean distance ($p=2$) or the Manhattan ($p=1
 main idea behind the SOM algorithm in plain words, and then we will give the
 pseudocode and its implementation along with some examples.</p>
 <figure><img src="/images/somtraining.png"
-         alt="Figure 1. Illustration of SOM algorithm steps. At the beginning (t=0), we see that the winner unit (BMU, center of yellow disc) that is closer to the current sample (white disc) has been identified. The SOM algorithm adjusts the codebook based on a neighborhood function (yellow disc) such that the map will come closer to the sample. After all the iterations have been exhausted, the SOM has learned the representation (black grid) of the input distribution (blue cloud). This figure is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported (Wikipedia)"/><figcaption>
-            <p>Figure 1. Illustration of SOM algorithm steps. At the beginning (t=0), we see that the winner unit (BMU, center of yellow disc) that is closer to the current sample (white disc) has been identified. The SOM algorithm adjusts the codebook based on a neighborhood function (yellow disc) such that the map will come closer to the sample. After all the iterations have been exhausted, the SOM has learned the representation (black grid) of the input distribution (blue cloud). This figure is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported (Wikipedia)</p>
+         alt="Figure 1. Illustration of SOM algorithm steps. At the beginning (t=0), we see that the winner unit (BMU, center of yellow disc) that is closer to the current sample (white disc) has been identified. The SOM algorithm adjusts the codebook based on a neighborhood function (yellow disc) so the map will come closer to the sample. After all the iterations had been exhausted, the SOM learned the representation (black grid) of the input distribution (blue cloud). This figure is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported (Wikipedia)."/><figcaption>
+            <p>Figure 1. Illustration of SOM algorithm steps. At the beginning (t=0), we see that the winner unit (BMU, center of yellow disc) that is closer to the current sample (white disc) has been identified. The SOM algorithm adjusts the codebook based on a neighborhood function (yellow disc) so the map will come closer to the sample. After all the iterations had been exhausted, the SOM learned the representation (black grid) of the input distribution (blue cloud). This figure is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported (Wikipedia).</p>
         </figcaption>
 </figure>
 <p>The first step is to initialize the codebook; we usually do that by assigning
 random values to the code words. Once we initialize the codebook, we start the
 learning iteration. At each iteration or epoch, we draw a sample ${\bf x}$ from
-the input space $ \mathcal{X} $, and we compute the distance of that sample
+the input space $ \mathcal{X} $ and compute the distance of that sample
 from all the code words. We select the code word with the smallest distance
 from ${\bf x}$ such that
 $$ i_{\text{BMU}} = \text{BMU} = \text{arg}\min_{i\in \mathbb{N}^+} \left\{ d({\bf x}, {\bf w}^t_i) \right\}, \qquad (2) $$</p>
 <p>and we call that unit (neuron) the best matching unit (BMU) or the winner unit.</p>
 <p>Figure 1 shows a random initialization of the codebook (black grid) that contains
 two-dimensional code words ($ \mathcal{X} \in \mathbb{R}^2$). The white disc
-represents the sample ${\bf x}$ we draw. After we compute all the distances
+represents the sample ${\bf x}$ we drew. After we compute all the distances
 between that sample and all the grid points, we observe that the closest point
 of the grid to that sample is the one at the center of the yellow disc.</p>
 <p>So now the next step is to update the code words ${\bf w}_i$ ($i = 1, \ldots, n$)
@@ -427,15 +425,15 @@ by moving them towards the sample ${\bf x}$ according to the following equation:
 <p>$$ h(t, \text{BMU}; \sigma(t)) = \exp\Big( \Big( \frac{d({\bf w}^t_{\text{BMU}}, {\bf w}^t_i)}{\sigma(t)} \Big)^2 \Big), \qquad(4) $$</p>
 <p>where $t$ is the current iteration (or time step or epoch). $\epsilon(t)$ and
 $\sigma(t)$ are the time-dependent learning rate and
-neighborhood function&rsquo;s variance, respectively.They both decay exponentially
+neighborhood function&rsquo;s variance, respectively. They both decay exponentially
 based on $ z_i \Big( \frac{z_f}{z_i} \Big)^{\frac{t}{t_f}} $, where $z_i$ and
 $z_f$ are the initial and final values, respectively ($z = {\epsilon, \sigma}$).
-We assume that $z_i \gg z_f$ for the initial and final values. The idea behind
+We assume $z_i \gg z_f$ for the initial and final values. The idea behind
 a time-dependent decaying learning rate is to freeze learning after some time,
 and a decaying variance of the neighborhood function guarantees that as the
 learning progresses, the number of units that get to update their weights
-decreases. Moreover, at the beginning of learning the radius of the
-neighborhood function should be large enough, and at the end of learning,
+decreases. Moreover, at the beginning of learning, the radius of the
+neighborhood function should be large enough. At the end of learning,
 we should keep the radius small such that only one or zero neighbors are within
 the immediate vicinity of the BMU.</p>
 <p>Figure 2 shows the pseudocode of the SOM algorithm. The algorithm presented
@@ -450,8 +448,8 @@ examples.</p>
         </figcaption>
 </figure>
 <h2 id="pytorch-implementation">Pytorch Implementation</h2>
-<p>The source code below is the implementation of the SOM algorithm given in
-Figure 2. The implementation is a simple <em>translation</em> of the pseudocode to
+<p>The source code below implements the SOM algorithm given in
+Figure 2. It is a simple <em>translation</em> of the pseudocode to
 Python. In this implementation, we contain all the parameters and the codebooks
 in $[0, 1]^k$, where $k \in \mathbb{N}^+$. We also consider the neighborhood
 function a Gaussian, and the final time $t_f = 1$. The metric $d(\cdot, \cdot)$
@@ -543,7 +541,7 @@ input space (and thus the samples we used to train our neural network). The
 white discs are the units of our SOM.</p>
 <h3 id="ring-in--mathbbr2-">Ring in $ \mathbb{R}^2 $</h3>
 <p>The second example is again related to space $[0, 1] \times [0, 1] $, only this
-time we draw uniformly points from a ring, rendering this problem a little a
+time we draw uniformly points from a ring, rendering this problem a little
 bit harder for the SOM algorithm since there is a hole in the center of our
 distribution. Figure 3B shows the input space distribution in red dots, and
 again, we see that the SOM algorithm has captured the input space. The code
@@ -554,7 +552,7 @@ The parameters for this experiment are the same as before.</p>
 <h2 id="evaluate-a-som">Evaluate a SOM</h2>
 <p>When measuring the quality of a self-organized map, there is no one measure to
 rule them all. People use many different measures in the literature to measure
-how good or how bad a self-organized map is. Three well-known measures are:</p>
+how good or bad a self-organized map is. Three well-known measures are:</p>
 <ul>
 <li>
 <p>The quantization error (or distortion), which is the average distance of the
@@ -607,7 +605,7 @@ map also tries to find non-existent data in the ring&rsquo;s hole.</p>
 </div>
 <h2 id="summary">Summary</h2>
 <p>In this post, we introduced some fundamental ideas of self-organizing maps.
-We tried to convey the gist of how the SOM algorithm works and provided a
+We tried to convey how the SOM algorithm works and provided a
 simple Python implementation using Pytorch. Finally, we tested our implementation
 on two basic examples: a two-dimensional distribution of a rectangle and one of
 a two-dimensional disc. In both cases, we see how the SOM algorithm learns the

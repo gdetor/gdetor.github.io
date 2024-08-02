@@ -61,8 +61,8 @@
   
   
   
-  <meta name="description" content="This post aims to provide some theoretical background on autocorrelation functions and how we can use it to analyse time series. Furthremore, we show how to use the autocorrelation (ACF) function and the Partial Autocorrelation (PACF) functions to determine the parameters for an ARMA model.
-Brief introduction to time series In a previous post (see here) we introduced some basic definitions and terminology about time series. To avoid forcing the reader to move back and forth we repeat those very same definitions here." />
+  <meta name="description" content="This post aims to provide some theoretical background on autocorrelation functions and how to use them to analyze time series. Furthermore, we show how to use the Autocorrelation (ACF) function and the Partial Autocorrelation (PACF) function to determine the parameters for an ARMA model.
+Brief introduction to time series In a previous post (see here), we introduced some basic definitions and terminology about time series. We repeat the same definitions here to avoid forcing the reader to move back and forth." />
   <meta name="author" content="Georgios Is. Detorakis" />
   
 
@@ -162,7 +162,7 @@ Brief introduction to time series In a previous post (see here) we introduced so
   <meta itemprop="name" content="Autocorrelation Functions for Time Series">
 <meta itemprop="description" content="This post provides some theoretical background on autocorrelation functions and how to use them to analyze time series. Furthermore, we show how to use the autocorrelation (ACF) function and the Partial Autocorrelation (PACF) functions to determine the parameters for an ARMA model."><meta itemprop="datePublished" content="2022-10-13T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2022-10-13T00:00:00+00:00" />
-<meta itemprop="wordCount" content="4621">
+<meta itemprop="wordCount" content="4560">
 <meta itemprop="keywords" content="ACF,PACF,autocorrelation,partial autocorrelation,time series," />
   
   <meta property="og:title" content="Autocorrelation Functions for Time Series" />
@@ -350,16 +350,12 @@ Brief introduction to time series In a previous post (see here) we introduced so
   </header>
 
   <section><div style="text-align: justify;">
-<p>This post aims to provide some theoretical background on autocorrelation functions
-and how we can use it to analyse time series. Furthremore, we show how to use
-the autocorrelation (ACF) function and the Partial Autocorrelation (PACF) functions
-to determine the parameters for an ARMA model.</p>
+<p>This post aims to provide some theoretical background on autocorrelation functions and how to use them to analyze time series. Furthermore, we show how to use the Autocorrelation (ACF) function and the Partial Autocorrelation (PACF) function to determine the parameters for an ARMA model.</p>
 <h2 id="brief-introduction-to-time-series">Brief introduction to time series</h2>
-<p>In a previous post (see <a href="https://gdetor.github.io/posts/errors">here</a>) we
-introduced some basic definitions and terminology about time series. To avoid
-forcing the reader to move back and forth we repeat those very same definitions
-here.</p>
-<p>In layman&rsquo;s terms, a time series is a series of observations (or data points)
+<p>In a previous post (see <a href="https://gdetor.github.io/posts/errors">here</a>), we
+introduced some basic definitions and terminology about time series. We repeat the
+same definitions here to avoid forcing the reader to move back and forth.</p>
+<p>In layperson&rsquo;s terms, a time series is a series of observations (or data points)
 indexed in time order [1, 2].
 A few examples of time series are</p>
 <ul>
@@ -368,8 +364,8 @@ A few examples of time series are</p>
 <li>The biosignals recorded from electroencephalogram or electrocardiogram</li>
 </ul>
 <p>Figure 1 shows the number of air passengers per month from January 1949
-to September 1960.  In all the examples in this post, we are going to
-use this dataset, so if you would like to try the examples by yourself;
+to September 1960. We are going to use this dataset in all the examples in this post,
+so if you would like to try the examples by yourself;
 you can download the data from Kaggle
 <a href="https://www.kaggle.com/datasets/rakannimer/air-passengers">here</a>.</p>
 <figure><img src="/images/passengers.png"
@@ -407,7 +403,7 @@ with mean $ \mu_t $ and the time series $ x[s] $ at time $ s_1, s_2, \ldots, s_N
 with mean $ \mu_s $ is givenb by following formula:</p>
 <p>$$ \rho(s, t) = \frac{\mathbb{E}[(x[s]-\mu_s)(x[t]-\mu_t)]}{\mathbb{E}[(x[s]-\mu_s)^2] \mathbb{E}[(x[t]-\mu_t)^2]}.  \qquad (1)  $$</p>
 <p>Another way to express the ACF is through the autocovariance function.
-By plugging the equation of correlation</p>
+By plugging the equation of covariance</p>
 <p>$$ \gamma(s, t) = \text{cov}(x[s], x[t]) = \mathbb{E}[(x[s]-\mu_s)(x[t]-\mu_t)], $$
 into equation (1) we obtain
 $$ \rho(s, t) = \frac{\gamma(s, t)}{\sqrt{\gamma(s, s) \gamma(t, t)}}.  $$</p>
@@ -420,7 +416,7 @@ a time series with itself is the variance of the signal (<em>i.e.</em>, $ \gamma
 and second, the autocorrelation of a time series x[t] with itself is one (<em>i.e.</em>, $ \rho(t, t) = 1 $).</p>
 </blockquote>
 <p>Let&rsquo;s now explain the autocorrelation in layperson&rsquo;s terms and give some
-intuition on the information we obtain by using it. Let&rsquo;s start with the
+intuition on the information we obtain. Let&rsquo;s start with the
 very notion of a time series. In a time series, the data points are ordered
 temporally. Thus, extra information is stored in a time series, meaning we
 can determine how past data (historical data) can affect present or future
@@ -428,8 +424,8 @@ values or the correlation between those points. Therefore, autocorrelation
 or serial correlation is nothing more than the correlation of a data point
 with its past values (previous times).</p>
 <h3 id="how-to-compute-acf">How to compute ACF</h3>
-<p>Therefore, to estimate the ACF, we start by evaluating the correlation
-of the original time series with itself (zero lag). Then we introduce a
+<p>Therefore, to estimate the ACF, we start by evaluating the original time series'
+correlation with itself (zero lag). Then, we introduce a
 lag into our original time series and estimate the correlation between
 the original time series and its lagged version. We repeat those steps until
 we exhaust the predetermined number of lags. The table below shows an example
@@ -518,12 +514,12 @@ Python package.</p>
 [<span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">0.5714285714285714</span>, <span style="color:#ae81ff">0.17857142857142858</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.14285714285714285</span>]
 
 </code></pre></div><p>The above code snippet shows how to implement a naive autocorrelation
-algorithm. Now, let&rsquo;s compute the ACF but this time using the <em>statsmodels</em>
+algorithm. Now, let&rsquo;s compute the ACF, but this time using the <em>statsmodels</em>
 Python package (if you haven&rsquo;t installed the statsmodels package, you will
 find all the installation information <a href="https://www.statsmodels.org/dev/install.html">here</a>).
 The package <em>statsmodels</em> provides tools for the estimation of different
-statistical models, as well as for conducting statistical tests and statistical
-data exploration. We will use the TSA submodule, which contains time series
+statistical models, statistical tests and statistical
+data exploration tools. We will use the TSA submodule containing time series
 analysis and prediction tools.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">&gt;&gt;</span> <span style="color:#f92672">from</span> statsmodels.tsa.stattools <span style="color:#f92672">import</span> acf       <span style="color:#75715e"># import ACF</span>
 
@@ -554,7 +550,7 @@ measurement (or a data point) at a given time index $ t $ affects a data point
 at time $ t - k $ ($ k $ is the lag). In that case, the formula for estimating
 ACF considers all the intermediate data points $ t + 1, t + 2, \ldots, t + k - 1 $
 until it reaches the $ t + k $. Now, the PACF ignores the information in the
-intermediate data points; hence it is called partial.</p>
+intermediate data points; hence, it is called partial.</p>
 <p>Let&rsquo;s now give a more rigorous mathematical definition of PACF. Assume that we
 have a time series x[t], then the PACF is defined as</p>
 <p>$$ \rho_{\text{partial}}(t, t) = \text{corr}(x[t+1], x[t]) \quad for k = 1, $$</p>
@@ -577,7 +573,7 @@ time series $ x[t] = 1, 2, 3, 4, 5, 6, 7 $.</p>
 array([ <span style="color:#ae81ff">1.00000000e+00</span>,  <span style="color:#ae81ff">1.00000000e+00</span>,  <span style="color:#ae81ff">1.55431223e-15</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">3.33333333e-01</span>])
 </code></pre></div><p>In the code snippet above, we specified the algorithm for estimating the PCAF
 to be the ordinary least squares. It is relatively simple to implement the OLS
-method from scratch. We will use the function <code>lagmat</code> of statsmodels which
+method from scratch. We will use the function <code>lagmat</code> of statsmodels, which
 creates a $ 2d $ array of lags, and we will separate the zero lag signal,
 which is the original data. Finally, we will use the <em>Numpy</em> function <code>lstsq</code>
 to estimate the parameters of the least squares and thus compute the PACF.</p>
@@ -603,19 +599,19 @@ pacf <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1.0</span
 
 <span style="color:#f92672">&gt;&gt;</span> print(pacf)
 [<span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">1.000000000000001</span>, <span style="color:#ae81ff">1.5543122344752192e-15</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.33333333333333415</span>]
-</code></pre></div><p>Keep in mind that here we used the method of least squares, and if one
-wants to use a different approach to estimate the PACF, the values will
+</code></pre></div><p>Remember that we used the least squares method. If we had used a<br>
+a different approach to estimate the PACF, the values would
 differ from the ones in the code snippet above. Moreover, the function
-<code>lstsq</code> receives an argument named <code>rcond</code> which is a cut-off ratio
+<code>lstsq</code> receives an argument named <code>rcond</code>, a cut-off ratio
 for small singular values of <code>x_lagged</code>.</p>
 <h2 id="visualization-of-acf-and-pacf">Visualization of ACF and PACF</h2>
-<p>Up to now, we have defined ACF and PACF and learned how to estimate them
-given a time series. Now we will explore the visualization of ACF and PACF
+<p>We have now defined ACF and PACF and learned how to estimate them
+given a time series. Now, we will explore the visualization of ACF and PACF
 and learn how to interpret their graphical representations. To better
 demonstrate the power of ACF and PACF visualization, we will apply those
-two methods to the airport passengers' data set (see Figure 1). To simplify
-things we will use the functions <code>plot_acf</code> and <code>plot_pacf</code> provided by the
-Python module <em>statsmodels</em>.</p>
+two methods to the airport passengers' data set (see Figure 1).
+We will use the functions <code>plot_acf</code> and <code>plot_pacf</code> provided by the
+Python module <em>statsmodels</em> to simplify things.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
 <span style="color:#f92672">import</span> matplotlib.pylab <span style="color:#66d9ef">as</span> plt
 
@@ -652,16 +648,16 @@ plt<span style="color:#f92672">.</span>show()
 
 </code></pre></div><p>After running the script above, we get the plots of ACF and PACF,
 as depicted in Figure 2. The left panel shows the ACF, and the right
-is the PACF. Blue-shaded areas indicate the confidence interval cone,
-and each point outside that cone is considered significant ($ 95 $%
-confidence). In simple words, whatever is within that cone is considered
-to be zero.</p>
+is the PACF. Blue-shaded areas indicate the confidence interval cone;
+each point outside is considered significant ($ 95 $%
+confidence). But, whatever is within that cone is regarded
+as zero.</p>
 <figure><img src="/images/acf_pacf.png"
          alt="Figure 2. ACF and PACF on airport passengers data set. Left panel - ACF, right panel PACF."/><figcaption>
             <p>Figure 2. ACF and PACF on airport passengers data set. Left panel - ACF, right panel PACF.</p>
         </figcaption>
 </figure>
-<p>We observe that the first component in the ACF and PACF plots equals one,
+<p>We observe that the first component in the ACF and PACF plots is equal to one,
 as we expected (and have already discussed). A second apparent observation
 is the reflection of the original&rsquo;s data periodicity in the ACF plot. The
 most important part of those graphic representations is the number of
@@ -710,7 +706,7 @@ backshift operator acts on a time series element and returns the previous
 element as its name reveals. For instance, if $ x[t] = \begin{Bmatrix} x[1], x[2], \ldots, \end{Bmatrix} $
 is a time series then $ Bx[t] = x[t-1] $ for each $ t &gt; 1 $. The lag
 operator $ L $ acts in the same way $ Lx[t] = x[t-1] $. Furthermore,
-both operators can be raised in integer powers, $ L^k x[t] = t[t-k] $.</p>
+we can raise both operators in integer powers, $ L^k x[t] = x[t-k] $.</p>
 </blockquote>
 <p>Another way to write equation (4) is to use the lag operator, and thus
 $$ \Big(1 - \sum_{i=1}^{p} \phi[i] L^i \Big) x[t]  =\Big(1 + \sum_{i=1}^{q} \theta[i] L^i \Big) \epsilon[t]. $$</p>
@@ -719,13 +715,15 @@ $$ \Big(1 - \sum_{i=1}^{p} \phi[i] L^i \Big) x[t]  =\Big(1 + \sum_{i=1}^{q} \the
 mean and variance (autocovariance) over time. For instance, the passengers'
 data in Figure 1 are non-stationary since an upward trend indicates that
 the mean increases over time. However, because the variance does not change,
-we will call that time series non-stationary in the sense of mean. You can
+we will call that time series non-stationary in the sense of mean.
 You can find more details about stationarity <a href="https://en.wikipedia.org/wiki/Stationary_process#Weak_or_wide-sense_stationarity">here</a>
-and in [1].<br>
-<strong>Differencing</strong>
+and in [1].</p>
+</blockquote>
+<blockquote>
+<p><strong>Differencing</strong>
 The time series in Figure 1 are non-stationary in the sense of mean (see
 <strong>Stationarity</strong>). One way to eliminate the non-stationarity is to
-apply a differencing transform, $ x'[t] = x[t] - x[t-1] $ (for instance,
+apply a differencing transform, $ x^{\prime}[t] = x[t] - x[t-1] $ (for instance,
 in Python, we could use the <code>diff()</code> function to apply the differencing
 transform on the original time series.</p>
 </blockquote>
@@ -737,7 +735,7 @@ of the time series observations. Differencing non-stationary time series can
 cancel the non-stationarity (in many time series applications, one has to apply
 a differencing transformation on the data to remove the non-stationarity [5]).</p>
 <p>$$ x[t] - \alpha[1] x[t-1] - \cdots - \alpha[p] x[t-p] = \epsilon[t] + \theta[1]\epsilon[t-1] + \cdots + \theta[q] \epsilon[t-q], \qquad (5) $$</p>
-<p>and using the lag operator, equation (5) recast</p>
+<p>and using the lag operator, equation (5) recasts</p>
 <p>$$ \Big(1 - \sum_{i=1}^{p} \alpha[i] L^i \Big) x[t] = \Big( 1 + \sum_{i=1}^{q} \theta[i] L^i \Big) \epsilon[t]. $$</p>
 <p>The parameters of the autoregressive part are $ \alpha[i] $ and of the moving
 average are $ \theta[i] $. $ \epsilon[t] $ are error <em>i.i.d</em> variables (sampled
@@ -750,9 +748,9 @@ from a normal distribution with zero mean).</p>
 </ul>
 <h2 id="how-to-use-acf-and-pacf-in-time-series-analysis">How to use ACF and PACF in time series analysis</h2>
 <p>In this section, we present several applications of the ACF and PACF. The most
-practical applications are the determination of the order of AR(p), MA(q), ARMA(p, q),
+useful application is to determine the order of AR(p), MA(q), ARMA(p, q),
 and ARIMA(p, d, q) models.</p>
-<p>Let&rsquo;s begin by examining some basic examples of AR, MA, ARMA, and ARIMA models
+<p>Let&rsquo;s examine some basic examples of AR, MA, ARMA, and ARIMA models
 and see what conclusions we can draw. For simplicity&rsquo;s sake, we first consider
 a signal generated from a normal distribution with zero mean, white noise,
 Figure 3A. When we estimate its ACF and PACF (Figure 3B and 3C), we notice that
@@ -765,8 +763,8 @@ model with order $ p = 1 $, meaning that the data shown in Figure 3D have been
 generated by $ x[t] = 0.6 * x[t-1] + \epsilon[t] $, where $ \epsilon[t] $ is
 white noise. First, let&rsquo;s take a look at the ACF plot in Figure 3E. We notice
 four lags with strong correlations besides the zero lag component, meaning there
-is a structure in the data, and they are not completely random. Moreover, we see
-that the non-significant components (lags $ k &gt; 1 $) follow a geometric decay.
+is a structure in the data, and they are not entirely random. Moreover,
+the non-significant components (lags $ k &gt; 1 $) follow a geometric decay.
 The PACF plot in panel 3F of Figure 3 has only one strong correlation at lag $ k = 1 $,
 verifying that the data come from an AR(1) model.</p>
 <figure><img src="/images/acf_examples.png"
@@ -781,7 +779,7 @@ examining the ACF plot in Figure 3H, we see strong correlations besides lag
 $ k = 0 $, which means that the data come from a process that is not completely
 random. In the PACF plot in Figure 3I, several lag components have strong
 correlations, and the PACF decays geometrically.</p>
-<p>AThe final example regards a periodic time series with period $ T $. Figure 3J
+<p>The final example regards a periodic time series with period $ T $. Figure 3J
 shows a sinusoidal signal $ g(t) = \sin(2 \pi t \frac{1}{T}) + \epsilon $ with
 additive white noise, $ \epsilon $, and $ T = \frac{1}{10} $. Because
 there are several components with strong correlations in the ACF and PACF plots,
@@ -792,56 +790,52 @@ on the frequency ($ k = 10 $) is the strongest in the graph. Therefore, if we
 needed to know the frequency of the raw data without knowing the model, we could
 infer the period by looking into the ACF plot.</p>
 <h3 id="a-few-remarks-on-acf-and-pacf-plots">A few remarks on ACF and PACF plots</h3>
-<p>Let&rsquo;s now draw some conclusions and give some remarks regarding the ACF and
+<p>Let&rsquo;s now draw some conclusions and remarks regarding the ACF and
 PACF and how to use them to identify an underlying model in raw data.</p>
 <ul>
 <li>When a time series (or a signal) contains a moving average term (MA),
 we can determine the exact order of the MA by counting the components
 with strong correlations in an ACF plot. That&rsquo;s true even when the
 underlying model is a high-order MA.</li>
-<li>There is an autoregressive term (AR) in the raw data when the PACF plot
-has strong correlations up to some lag $ k &gt; 0 $. The number of those
+<li>When the PACF plot has strong correlations up to some lag $ k &gt; 0 $, there is
+an autoregressive term (AR) in the raw data. The number of those
 elements determines the order $ p $ of the AR($ p $) model.</li>
-<li>When a strong positive correlation exists and the PACF oscillates to zero,
+<li>When a strong positive correlation exists and the PACF oscillates around zero,
 then there is a moving average, MA, term. The same holds when the zero lag
 is negative, and the PACF decays geometrically to zero.</li>
-<li>Another case is when the PACF has strong correlations up to a lag $ k $,
-then decays geometrically to zero. The data can be modeled in that case by
-an ARMA(p, q) model.</li>
+<li>If the PACF shows strong correlations up to a lag $ k $ and then
+decays geometrically to zero, it suggests that the data can be effectively
+modeled by an ARMA(p, q) model.</li>
 </ul>
 <h2 id="why-do-we-need-models-like-arp-maq-and-others-">Why do we need models like AR(p), MA(q), and others ?</h2>
-<p>So far, we have seen the ACF and PACF and how to estimate them given
-a time series. Moreover, we have seen how to use the ACF and PACF plots
-in determining the parameters of models such as AR(p) or MA(q). However,
-there is one question we still need to answer. <em>Why do we need models
-like AR(p) in the first place?</em> The answer is for describing raw data
-with a mathematical model that will allow us to make predictions (forecasting)
-of future values of our system.</p>
+<p>So far, we have seen the ACF and PACF and how to estimate them, given a time series.
+Moreover, we have seen how to use the ACF and PACF plots to determine the parameters
+of models such as AR(p) or MA(q). However, there is one question we still need
+to answer. <em>Why do we need models like AR(p) in the first place?</em>
+The answer is to describe raw data with a mathematical model that will allow us
+to make predictions (forecasting) of future values of our system.</p>
 <p>Let&rsquo;s be more specific. Assume that we obtain some raw data (observations)
 like the ones in Figure 1 showing the number of airport passengers per
 month for the years $ 1949 - 1960 $. Suppose we would like to know the number
-of passengers in the next month or in two months. In other words, we would like
+of passengers in the next month or two months. In other words, we would like
 to predict the number of passengers in the future using known historical (past)
 observations.</p>
-<p>One way to predict future values would be to assume that the number of
-passengers will keep growing following the current trend. However, that
-would need to be more accurate since we do not have a model for the
-underlying processes that describe our observations. A solution to that
-problem would be to apply the analysis we have already used. First, we
-would estimate the ACF and PACf and visualize the results. From ACF and
-PACF plots, we would find out the type of model (AR(p), MA(q), or other)
-that best fits our observations. Once we know that our observations follow
-a, let&rsquo;s assume, AR(p) model with order $ p $, we can use that model to
-make predictions. More precisely, we could use equation (2) to fit the data
-and then use the fitted equation to make predictions for future values.
-Below, we give a Python code demonstrating how we can make predictions
-using the <em>statsmodels</em> module.</p>
-<p>First, let&rsquo;s create the data set, which follows an AR(1) model. For that
+<p>One way to predict future values would be to assume that the number of passengers
+will keep growing following the current trend. However, that must be more accurate
+since we need a model for the underlying processes that describe our observations.
+A solution to that problem would be to apply the analysis we have already used.
+First, we would estimate the ACF and PACF and visualize the results. From ACF
+and PACF plots, we would find out the type of model (AR(p), MA(q), or other)
+that best fits our observations. Once we know that our observations follow a,
+let’s assume, AR(p) model with order $ p $, we can use that model to make predictions.
+More precisely, we could use equation (2) to fit the data and then the fitted
+equation to predict future values. Below, we provide Python code demonstrating
+how to make predictions using the <em>statsmodels</em> module.</p>
+<p>First, let&rsquo;s create the data set following an AR(1) model. For that
 reason, we will use the model in Figure 2D. The equation that describes
 the dynamics is $ x[t] = 0.6 * x[t-1] + \epsilon[t] $ (see the section
 about the AR(p) model). In a real-life situation, we won&rsquo;t create the data
-set; instead, we will have to obtain them somehow, for instance, collect
-them by ourselves.</p>
+set; instead, we will have to obtain it somehow.</p>
 <p>In the first code snippet, we show how to build the data set from
 scratch.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
@@ -860,7 +854,7 @@ x <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0.5</span>]	
 for training (fitting) the parameters of our AR model and one for
 testing the fitted model. The training data set is usually larger
 than the testing one. Therefore, we use $ 70 $% of the data for
-training and the remaining $ 30 $% for testing. Remember that
+training and $ 30 $% for testing. Remember that
 we have already performed our analysis in Figures 2E and 2F, where
 we estimated the ACF and PACF. Thus, we know that the underlying
 process for those observations is an AR(1), and we need three
@@ -897,9 +891,8 @@ plt<span style="color:#f92672">.</span>plot()
 functions, ACF and PACF. We introduced the AR(p), MA(q), ARMA(p, q), and ARIMA(p, d, q)
 models, and we showed how one could use the ACF and PACF to determine the
 parameters p, q, and d. Moreover, we provided a few examples and Python code
-snippets on how to use the <em>statsmodels</em> <code>acf</code> and <code>pacf</code> functions. Finally,
-we give a simple example of using models such as AR(p) to make predictions for
-future values.</p>
+snippets on using the <em>statsmodels</em> <code>acf</code> and <code>pacf</code> functions. Finally,
+we give a simple example of using AR(p) models to predict future values.</p>
 </div>
 <h3 id="cited-as">Cited as</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">@article{detorakis2022acfpacf,

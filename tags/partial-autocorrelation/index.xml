@@ -14,8 +14,8 @@
       <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
       
       <guid>https://gdetor.github.io/posts/acf_pacf/</guid>
-      <description>This post aims to provide some theoretical background on autocorrelation functions and how we can use it to analyse time series. Furthremore, we show how to use the autocorrelation (ACF) function and the Partial Autocorrelation (PACF) functions to determine the parameters for an ARMA model.
-Brief introduction to time series In a previous post (see here) we introduced some basic definitions and terminology about time series. To avoid forcing the reader to move back and forth we repeat those very same definitions here.</description>
+      <description>This post aims to provide some theoretical background on autocorrelation functions and how to use them to analyze time series. Furthermore, we show how to use the Autocorrelation (ACF) function and the Partial Autocorrelation (PACF) function to determine the parameters for an ARMA model.
+Brief introduction to time series In a previous post (see here), we introduced some basic definitions and terminology about time series. We repeat the same definitions here to avoid forcing the reader to move back and forth.</description>
     </item>
     
   </channel>

@@ -61,7 +61,8 @@
   
   
   
-  <meta name="description" content="In this post, we are going to explore the basic error measures used in time-series forecasting. Error measures provide a way to quantify the quality of a forecasting algorithm (e.g., the performance). First, we briefly introduce time series and the fundamental terms of forecasting. Second, we will introduce the most commonly used error measures and give some examples. Finally, we provide a complete example of using errors in a real-life forecasting scenario." />
+  <meta name="description" content="In this post, we will explore the basic error measures used in time-series forecasting. Error measures provide a way to quantify the quality of a forecasting algorithm (e.g., the performance). First, we briefly introduce time series and the fundamental terms of forecasting. Second, we will introduce the most commonly used error measures and give examples. Finally, we provide a complete example of using errors in a real-life forecasting scenario.
+What is a time series A time series is a series of data points indexed in time order in layman&rsquo;s terms [1, 2]." />
   <meta name="author" content="Georgios Is. Detorakis" />
   
 
@@ -161,7 +162,7 @@
   <meta itemprop="name" content="Time series forecasting error metrics">
 <meta itemprop="description" content="Error measures provide a way to quantify the quality of a forecasting algorithm (*e.g.*, performance). We briefly introduce time series and the fundamental terms of forecasting. We will then introduce the most commonly used error measures and give some examples. We provide an example of how to use error metrics in a real-life forecasting scenario."><meta itemprop="datePublished" content="2022-05-05T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2022-05-05T00:00:00+00:00" />
-<meta itemprop="wordCount" content="3012">
+<meta itemprop="wordCount" content="2944">
 <meta itemprop="keywords" content="mean squared error,MSE,MAE,mean absolute error,time series,R2,coefficient of determination," />
   
   <meta property="og:title" content="Time series forecasting error metrics" />
@@ -342,19 +343,19 @@
       <span class="mx-1">&middot;</span>
       <span>Georgios Is. Detorakis</span>
       <span class="mx-1">&middot;</span>
-      <span class="inline-item reading">15 minutes read</span>
+      <span class="inline-item reading">14 minutes read</span>
       
     </div>
     
   </header>
 
   <section><div style="text-align: justify;">
-<p>In this post, we are going to explore the basic error measures
+<p>In this post, we will explore the basic error measures
 used in time-series forecasting. Error measures provide a way
 to quantify the quality of a forecasting algorithm (<em>e.g.</em>, the
 performance). First, we briefly introduce time series and the
 fundamental terms of forecasting. Second, we will introduce the
-most commonly used error measures and give some examples. Finally,
+most commonly used error measures and give examples. Finally,
 we provide a complete example of using errors in a real-life
 forecasting scenario.</p>
 <h2 id="what-is-a-time-series">What is a time series</h2>
@@ -367,9 +368,7 @@ A few examples of time series are</p>
 <li>The biosignals recorded from electroencephalogram or electrocardiogram</li>
 </ul>
 <p>Figure 1 shows the number of air passengers per month from January 1949
-to September 1960.  In all the examples in this post, we are going to
-use this dataset, so if you would like to try the examples by yourself;
-you can download the data from Kaggle
+to September 1960. You can download the data from Kaggle
 <a href="https://www.kaggle.com/datasets/rakannimer/air-passengers">here</a>.</p>
 <figure><img src="/images/passengers.png"
          alt="Figure 1. An example of a time series showing the number of air passengers per month."/><figcaption>
@@ -406,16 +405,15 @@ unfamiliar reader.</p>
 <li><strong>Observed data</strong> ($ (y_t)_{t\in T} $ or $ y[t] $) This is the
 data we obtain by observing a system or a process.</li>
 <li><strong>Predictive model</strong> Is a mathematical representation of observed data.</li>
-<li><strong>Target</strong> ($ y[t] $) This is the gound truth signal we use to train
+<li><strong>Target</strong> ($ y[t] $) This is the ground truth signal we use to train
 a predictor.</li>
 <li><strong>Horizon</strong> ($ h $) Is the number of points or steps we predict in
 the future.</li>
 <li><strong>Prediction</strong> ($ \hat{y}[t] = y[t+h] $) This is a value that predictor
 returns.</li>
-<li><strong>Forecasting</strong> Is the process of prediction future values from historical
+<li><strong>Forecasting</strong> Is the process of predicting future values from historical
 and present data.</li>
-<li><strong>Outlier</strong> It is a significantly different value from other values
-in a time series.</li>
+<li><strong>Outlier</strong> This value significantly differs from other time series values.</li>
 <li><strong>Error</strong> ($ \epsilon[t] $) is the difference between the target signal
 and the prediction of our model. The error is given by
 $ \epsilon[t] = y[t] - \hat{y}[t] $.</li>
@@ -424,9 +422,8 @@ patterns over the same period—for instance, increasing prices before and
 over the Christmas holidays.</li>
 </ul>
 <h2 id="four-basic-predictors">Four basic predictors</h2>
-<p>So far, we have seen what a time series and the basic terminology is.
-Now, we will explore some essential predictors or models and see how
-we can use them to perform forecasting.</p>
+<p>So far, we have seen what a time series is and the basic terminology.
+Now, we will explore some essential predictors or models and see how to use them to forecast.</p>
 <p>As we&rsquo;ve already seen, a predictor is a statistical (or mathematical)
 model that receives as input historical and present data and returns one
 (one-step ahead forecasting, $ h = 1$) or multiple future values
@@ -438,9 +435,8 @@ are a few references where the reader can find more details on that matter
 predictors since some error measures use some of them to estimate the
 prediction errors.</p>
 <h4 id="naive-predictor">Naive predictor</h4>
-<p>The most straightforward predictor we can imagine is the <em>naive</em> one,
-and it gets the last observed value and returns it as the predicted
-value.</p>
+<p>The most straightforward predictor we can imagine is the <em>naive</em> one. It takes
+the last observed value and returns it as the predicted value:</p>
 <p>$$ \hat{y}[t + h | t] = y[t]. $$</p>
 <h4 id="seasonal-predictor">Seasonal predictor</h4>
 <p>We can use the seasonal predictor when we know that our time series
@@ -452,7 +448,7 @@ integer part of $ x $. $ P $ reflects the number of years&ndash;365 days&ndash;
 have passed prior to time $ t + h $.</p>
 <h4 id="average-predictor">Average predictor</h4>
 <p>This predictor receives historical and present values as input,
-computes their average (or mean), and returns it as a prediction.</p>
+computes their average (or mean), and returns it as a prediction:</p>
 <p>$$ \hat{y}[t+h|t] = \bar{y} = \frac{1}{N} \sum_{t=1}^{N} y[t] .$$</p>
 <h4 id="drift-predictor">Drift predictor</h4>
 <p>Another variation of the naive predictor, only this time
@@ -460,28 +456,25 @@ we allow to the predicted value to <em>drift</em> (fluctuate) over time,</p>
 <p>$$ \hat{y}[t+h|t] = y[t] + \frac{h}{t-1} \sum_{j=2}^{t} (y[j]-y[j-1]) = y[t] + h\Big( \frac{y[t] - y[1]}{t - 1} \Big). $$</p>
 <p>You can picture this predictor as a line drawn from the first
 observation to the last one and beyond, where beyond is the prediction.</p>
-<p>Figure 2 shows the predictions in each of the cases mentioned above for
-the air passengers data (brown line).
-The blue line represents the naive predictor, the green line the
-seasonal, the orange line shows the average predictor, and finally,
-the pink line indicates the drift predictor.</p>
+<p>Figure 2 shows the predictions in each of the cases mentioned above for the air
+passenger data (brown line). The blue line represents the naive predictor,
+the green line represents the seasonal predictor, the orange line represents
+the average predictor, and the pink line indicates the drift predictor.</p>
 <figure><img src="/images/naive_predictors.png"
          alt="Figure 2. Forecasts of montly air passengers. Naive predictor (blue line), naive seasonal (green), average (orange), drift (pink)."/><figcaption>
             <p>Figure 2. Forecasts of montly air passengers. Naive predictor (blue line), naive seasonal (green), average (orange), drift (pink).</p>
         </figcaption>
 </figure>
 <h2 id="forecasting-error-measures">Forecasting error measures</h2>
-<p>So why do we need error measures? The general idea is to quantify
-the distance between an actual observation (target) and a predicted
-one. Particularly when we train a model to learn how to predict
-future values, we have to measure the error between the actual
-observations and the predicted ones, so the minimization of the
-error leads to a better model.</p>
-<p>When we teach a model, we need to use some penalties to help the
-model improve the predictions. The error measures listed below do
-precisely that. They measure how far the model&rsquo;s predictions are
-from the ground truth and penalize the model accordingly. Usually,
-the smaller the error, the better the predictor.</p>
+<p>So why do we need error measures? The general idea is to quantify the distance
+between an actual observation (target) and a predicted one. Particularly when
+we train a model to learn how to predict future values, we have to measure the
+error between the actual and predicted observations.
+Hence, minimizing the error leads to a better model.</p>
+<p>When we teach a model, we need to use penalties to help it improve its predictions.
+The error measures listed below do precisely that. They measure how far the
+model’s predictions are from the ground truth and penalize the model accordingly.
+Usually, the smaller the error, the better the predictor.</p>
 <p>Another reason we need error measures is to evaluate the performance
 of our model in real-life scenarios. We might have a trained model
 that performs some forecasting, and we would like to investigate the
@@ -490,9 +483,9 @@ between the historical data we will collect in the future and the
 model&rsquo;s predictions.</p>
 <p>We already said that developing and training a predictor is out of
 the scope of the present post. Therefore, we will use historical
-data and add some Gaussian noise to them to fake the predictions.
+data and add Gaussian noise to fake the predictions.
 Furthermore, we adopt the discrete-time signals time indexing, meaning
-that $ y[t] $ is the value of the time series at time index $ t $.
+that $ y[t] $ is the time series value at time index $ t $.
 A similar way would be $ y_t $, where $ t $ is the time index.</p>
 <blockquote>
 <p><strong>Reminder</strong> $ y[t] $ is the target signal, $ \hat{y}[t] $ the prediction
@@ -502,13 +495,11 @@ signal and $ \epsilon[t] $ the error signal.</p>
 demonstrating their behavior.</p>
 <h4 id="example">Example</h4>
 <p>In the following sections, we use some basic examples to demonstrate how the
-reader can implement the error measures in Python.
-We provide a custom implementation of the error measure and a Sklearn one in
-every case.
-We provide a custom implementation of the error measure and a Sklearn one in
-every case. The reader should rely more on the Sklearn [7] implementation since
-it&rsquo;s generic and optimized. We provide the custom implementation so the reader
-can understand better the mathematical formulas.</p>
+reader can implement the error measures in Python. In every case, we provide a
+custom implementation of the error measure and a Sklearn one. The reader should
+rely more on the Sklearn [7] implementation since it’s generic and optimized.
+We provide a custom implementation so the reader can better understand the
+mathematical formulas.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
 np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>seed(<span style="color:#ae81ff">13</span>)
 
@@ -517,14 +508,14 @@ y_true <span style="color:#f92672">=</span> np<span style="color:#f92672">.</spa
 y_pred <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.3</span>, <span style="color:#ae81ff">2.6</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2.4</span>, <span style="color:#ae81ff">1.2</span>])      <span style="color:#75715e"># This is y_hat (prediction)</span>
 
 </code></pre></div><h3 id="mean-absolute-error-mae">Mean Absolute Error (MAE)</h3>
-<p>The MAE is the most straightforward error measure, and as it&rsquo;s
-name signifies it is just the difference between a target (or desired)
+<p>The MAE is the most straightforward error measure, and as its
+name signifies, it is just the difference between a target (or desired)
 value and model&rsquo;s prediction. MAE is defined as:</p>
 <p>$$ \frac{1}{N} \sum_{t=1}^{N} |y[t] - \hat{y}[t]| = \frac{1}{N} \sum_{t=1}^{N} | \epsilon[t] |. $$</p>
 <p>By observing the definition of MAE, we can see that MAE is
-scale-dependent, meaning that both signals, target, and prediction,
+scale-dependent, meaning that both signals, target and prediction,
 must be of the same scale. Another drawback of MAE that we can identify
-by looking at its definition its sensitivity to outliers (<em>e.g.</em>,
+by its definition is its sensitivity to outliers (<em>e.g.</em>,
 values in the time series that stick further away from any other value).
 Outliers can drag the MAE to higher values, thus affecting the error.
 However, there are ways to handle outliers and fix that issue (see here [8, 9]).</p>
@@ -549,13 +540,12 @@ precisely,</p>
 <p>MAPE is a helpful error measure when it serves as a loss function
 in training and validating a regression model [10]. This error measure is not
 susceptible to global scaling of the target signal.</p>
-<p>Again by observing the definition of MAPE above, we can draw some
-conclusions about this measure. MAPE can be problematic when the actual
-values are zero or close to zero. We can see from the definition above
-that when the denominator is close to zero or zero, the MAPE is too
-large or cannot be defined. Moreover, MAPE is susceptible to skewness,
-since the term $ \frac{1}{y[t]} $ depends only on the observed data
-(not on the model&rsquo;s predictions).</p>
+<p>Again, we can draw some conclusions about this measure by observing the
+definition of MAPE above. MAPE can be problematic when the actual values are
+zero or near zero. We can see from the definition above that when the denominator
+is close to zero or zero, the MAPE is too large or cannot be defined.
+Moreover, MAPE is susceptible to skewness since the term $ \frac{1}{y[t]} $
+depends only on the observed data (not on the model&rsquo;s predictions).</p>
 <h4 id="example-2">Example</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> mean_absolute_percentage_error
 
@@ -584,12 +574,12 @@ signal is significant [11].</p>
 <p>MSE combines the <em>bias</em> and the <em>variance</em> of a prediction. More
 precisely, $ MSE = b^2 + Var $, where $b$ is the bias term and
 $ Var $ is the variance. The bias reflects the assumptions the
-model makes to simplify the process of finding answers. The more
+model makes to simplify finding answers. The more
 assumptions a model makes, the larger the bias. On the other hand,
 variance refers to how the answers given by the model are subject
 to change when we present different training/testing data to the
 model. Usually, linear models such as <em>Linear Regression</em> and
-<em>Logistic Regression</em> have high bias and low variance. Nonlinear
+<em>Logistic Regression</em> has high bias and low variance. Nonlinear
 models such as <em>Decision Trees</em>,  <em>SVM</em>, and <em>kNN</em> have low
 bias and high variance [12]. Ideally, we would like to find a balance
 between bias and variance. That&rsquo;s why sometimes we have to penalize
@@ -616,12 +606,12 @@ The mathematical definition for SMAPE is:</p>
 <p>$$ SMAPE = \frac{100\%}{N} \sum_{t=1}^{N} \frac{| \epsilon [t] |}{(| y[t]| + | \hat{y}[t] |)} $$</p>
 <p>And as we can see from that definition, SMAPE is bounded from
 above and below, $ 0 \leq SMAPE \leq 100 $. Another remark we
-can make based on  SMAPE&rsquo;s definition: when both a target and
+can make based on  SMAPE&rsquo;s definition is that when both a target and
 a prediction value are zero, the SMAPE is not defined. If only
 the actual or target value is zero, $ SMAPE = 100 $. Finally,
-SMAPE can cause troubles when  let&rsquo;s say a prediction is
+SMAPE can cause troubles when, let&rsquo;s say, a prediction is
 $ \hat{y}[t] = 10 $ the first time and $ \hat{y}[t] = 12 $ the
-second time, while in both cases the target (actual) value is
+second time, while in both cases, the target (actual) value is
 $ y[t] = 11 $.  In the former case, $ SMAPE  = 4.7 % $ and in
 the latter case $ SMAPE = 4.3 % $. We see that we get two different
 error values for the same target when our predictor returns
@@ -636,11 +626,11 @@ $ S $ we can use the following MASE formula instead:</p>
 <p>$$ MASE = \frac{\frac{1}{N} \sum_{t=1}^{N} | \epsilon[t] | }{\frac{1}{N-S} \sum_{t=S+1}^{N} | y[t] - y[t-S] | }. $$</p>
 <p>MASE is scale-invariant, meaning that it&rsquo;s immune to any scaling
 we perform on the observed data. MASE is symmetric, which implies
-that it penalizes equally the positive and the negative (as well
-as big and small) forecast errors. When MASE error is greater than
+that it penalizes both positive and negative (as well
+as big and small) forecast errors equally. When the MASE error exceeds
 one, the naive forecaster performs better than our model. MASE can
-be problematic only when the actual (target) signal is only zero values.
-In that case the naive predictor will be zero ad infinitum and thus
+only be problematic when the actual (target) signal has zero values.
+In that case, the naive predictor will be zero ad infinitum; thus,
 the MASE will be undefined.</p>
 <h3 id="coefficient-of-determination-cod-or-r">Coefficient of Determination (CoD) or R²</h3>
 <p>The $ R^2 $ or Coefficient of Determination is an error measure
@@ -658,10 +648,10 @@ of response variables. SST reflects the total variation of actual
 values (targets) from the mean value of all the values of response
 variables.</p>
 <p>$R^2$ is bounded from above, $R^2 \leq 1$, since the fraction term
-lives always in the interval $ [0, 1] $. In the case of training a
+lives always in the interval $ [0, 1] $. In the case of training, a
 regression model $ R^2 $ is bounded from bellow $ 0 \leq R^2 \leq 1 $.
 For the test/validation data, $ R^2 $ can be negative when MSE is
-large or the total variance of the target (actual) signal is too
+large, or the total variance of the target (actual) signal is too
 small. A negative $ R^2 $ implies that the term $ \bar{y} $ is a
 better predictor than our model. Moreover, from the first definition
 of $ R^2 $, we see a direct relation between $ R^2 $ and MSE. While
@@ -682,11 +672,7 @@ print(R2(y_true, y_pred))
 print(r2_score(y_true, y_pred))
 <span style="color:#ae81ff">0.9351351351351351</span>
 </code></pre></div><h2 id="summary">Summary</h2>
-<p>In this post, we briefly introduced the concept of time series and the most
-frequently used error measures in forecasting. we described the pros and cons
-of each measure so the reader can decide which one best suits their needs.
-If you find any typos or errors, or you have any other comments, please feel
-free to report them (you can find contact information <a href="/about">here</a>).</p>
+<p>In this post, we briefly introduced the concept of time series and the most frequently used error measures in forecasting. We described the pros and cons of each measure so the reader can decide which one best suits their needs. If you find any typos or errors, or you have any other comments, please feel free to report them (you can find contact information <a href="/about">here</a>).</p>
 </div>
 <h3 id="cited-as">Cited as:</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">@article{detorakis2022errors-timeseries,
