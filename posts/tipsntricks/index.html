@@ -161,7 +161,7 @@
   <meta itemprop="name" content="Tips &amp; Tricks (Linux/Vim/Git/Programming)">
 <meta itemprop="description" content="In this post you can find various simple tricks and tips for Linux, Vim, Git, Python and many other stuff. All the material provided in this page has been suggested by many different sources such as Command Line Magic, Mastering Vim, kernel_perspective, nixCraft, and Linux Today. The material is free and can be redistributed and/or modified. There is no any warranty that they work for you or are suitable to your need."><meta itemprop="datePublished" content="2023-12-18T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-12-18T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1287">
+<meta itemprop="wordCount" content="1397">
 <meta itemprop="keywords" content="Linux,Vim,Python,C,Git," />
   
   <meta property="og:title" content="Tips &amp; Tricks (Linux/Vim/Git/Programming)" />
@@ -359,7 +359,15 @@ be redistributed and/or modified. There is no any warranty that
 they work for you or are suitable to your need. The author of this page is
 not responsible for any damage this material may cause.</p>
 </div>
-<h3 id="how-to-count-the-lines-of-specific-files-in-a-dir-linux">How to count the lines of specific files in a dir (Linux)</h3>
+<h3 id="pass-the-output-of-a-command-list-to-another-command-using--linux-bash-zsh">Pass the output of a command (list) to another command using | (Linux, Bash, ZSH)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ diff &lt;<span style="color:#f92672">(</span>ls dirA<span style="color:#f92672">)</span> &lt;<span style="color:#f92672">(</span>ls dirB<span style="color:#f92672">)</span>&gt;&gt;
+</code></pre></div><h3 id="how-to-stop-a-bash-script-on-errors-linux-bash">How to stop a bash script on errors (Linux, Bash)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">set -e  <span style="color:#75715e"># stops a script on errors</span>
+
+set -u  <span style="color:#75715e"># stops a script on unset variables</span>
+
+set -o pipefail     <span style="color:#75715e"># makes a pipe to fail if any command fails</span>
+</code></pre></div><h3 id="how-to-count-the-lines-of-specific-files-in-a-dir-linux">How to count the lines of specific files in a dir (Linux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ find . -name <span style="color:#e6db74">&#34;*.c&#34;</span> | sed <span style="color:#e6db74">&#39;s/.*/&#34;&amp;&#34;/&#39;</span> | xargs wc -l    <span style="color:#75715e"># assumed C files</span>
 </code></pre></div><h3 id="override-the-tmux-sessions-numbering-manually-tmux">Override the Tmux session&rsquo;s numbering manually (Tmux)</h3>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ tmux new -s <span style="color:#ae81ff">1</span> -d -P
@@ -615,6 +623,14 @@ $ awk <span style="color:#e6db74">&#39;NF {NF--};1&#39;</span>&lt; input_file &g
 <li>$^: The filenames of all the prerequisites, separated by spaces, discard duplicates.</li>
 <li>$+: Similar to $^, but includes duplicates.</li>
 <li>$?: The names of all prerequisites that are newer than the target, separated by spaces.</li>
+</ul>
+<h3 id="useful-google-search-commands">Useful Google Search Commands</h3>
+<ul>
+<li>Site: Search a specific site for specific keywords</li>
+<li>Before, After: Seach before or after a specific period of time</li>
+<li>filetype: Return results in a specific file type (e.g., PDF)</li>
+<li>$30..$50: Return a range of prices, values, etc</li>
+<li>&ldquo;laptops -apple&rdquo; Searche for laptops except apple&rsquo;s ones</li>
 </ul>
 </section>
 
