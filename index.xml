@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2024, Georgios Is. Detorakis.</copyright>
-    <lastBuildDate>Fri, 29 Dec 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 28 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tips &amp; Tricks (Linux/Vim/Git/Programming)</title>
+      <link>https://gdetor.github.io/posts/tipsntricks/</link>
+      <pubDate>Sat, 28 Sep 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/posts/tipsntricks/</guid>
+      <description>In this post you can find various simple tricks and tips for Linux, Vim, Git, Python and many other stuff. All the material provided in this page has been suggested by many different sources such as Command Line Magic, Mastering Vim, kernel_perspective, nixCraft, and Linux Today. The material is free and can be redistributed and/or modified. There is no any warranty that they work for you or are suitable to your need.</description>
+    </item>
+    
     <item>
       <title>An introduction to self-organizing maps</title>
       <link>https://gdetor.github.io/posts/som/</link>
@@ -16,15 +25,6 @@
       <guid>https://gdetor.github.io/posts/som/</guid>
       <description>This post presents the classical self-organizing map algorithm proposed by Grossberg [1] and Teuvo Kohonen [2]. We explain the algorithm&amp;rsquo;s fundamental aspects and applications and offer a basic implementation in Pytorch.
 Introduction Let us begin with a prevalent problem in science. We often have to deal with data that live in a high-dimensional space $\mathcal{X} \in \mathbb{R}^k$. When $k &amp;gt; 3$, things get rough for people who need help to visualize what&amp;rsquo;s happening.</description>
-    </item>
-    
-    <item>
-      <title>Tips &amp; Tricks (Linux/Vim/Git/Programming)</title>
-      <link>https://gdetor.github.io/posts/tipsntricks/</link>
-      <pubDate>Mon, 18 Dec 2023 00:00:00 +0000</pubDate>
-      
-      <guid>https://gdetor.github.io/posts/tipsntricks/</guid>
-      <description>In this post you can find various simple tricks and tips for Linux, Vim, Git, Python and many other stuff. All the material provided in this page has been suggested by many different sources such as Command Line Magic, Mastering Vim, kernel_perspective, nixCraft, and Linux Today. The material is free and can be redistributed and/or modified. There is no any warranty that they work for you or are suitable to your need.</description>
     </item>
     
     <item>
@@ -75,18 +75,6 @@ What is a time series A time series is a series of data points indexed in time o
       <guid>https://gdetor.github.io/posts/genetic_algorithms/</guid>
       <description>In this post, we explore genetic algorithms (GAs) and the so-called island model (IM). GAs and the IM are optimization methods used to maximize or minimize a cost function.
 What is Optimization? Let&amp;rsquo;s see an example of an optimization problem we all face every day. Let&amp;rsquo;s assume you&amp;rsquo;d like to go and grab a couple of coffee from your favorite coffee shop. Typically, you ask Google to find the fastest way to the store from your current location.</description>
-    </item>
-    
-    <item>
-      <title>Simple mathematical tricks in Python</title>
-      <link>https://gdetor.github.io/posts/math_tips/</link>
-      <pubDate>Wed, 16 Mar 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://gdetor.github.io/posts/math_tips/</guid>
-      <description>In this post, you can find some helpful mathematical tips and tricks in the Python programming language.
-Linear separability Two sets $ A $ and $ B $ in an $ n $ dimensional Euclidean space are linear separable if there exist $ n + 1 $ numbers $ w_i \in \mathbb{R} $ such that every point $ a \in A $ satisfies
-$$ \sum_{i=1}^{n}w_i a_i &amp;gt; k, $$
-and every point $ b \in B $ satisfies</description>
     </item>
     
     <item>
@@ -154,6 +142,17 @@ N. P.</description>
       
       <guid>https://gdetor.github.io/research/</guid>
       <description>Neuromorphic Computing Georgios was involved in developing neuromorphic devices capable of embedded and online learning. He was one of the core developers of the software simulator for the Neural and Synaptic Array Transceiver Framework (in collaboration with Intel Corporation Research Labs, the Universities of California Irvine, and San Diego). He investigated how natural mechanisms of biological brains can lead to more efficient and biologically plausible machine learning algorithms suitable for neuromorphic devices.</description>
+    </item>
+    
+    <item>
+      <title>Simple mathematical tricks in Python</title>
+      <link>https://gdetor.github.io/posts/math_tips/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/posts/math_tips/</guid>
+      <description>In this post, you can find some helpful mathematical tips and tricks in the Python programming language.
+Eigenvalue Level Repulsion Imaging we have two matrices ${\bf A}, {\bf B}$ $\in \mathbb{R}^n$, that are both symmetric. Then, we know that both matrices have $n$ eigenvalues (multiplicity). Let&amp;rsquo;s start now, gradually morphing ${\bf A}$ to ${\bf B}$ using the following formula
+$$ {\bf A}[t] = (1 - t) {\bf A} + t {\bf B}, $$</description>
     </item>
     
     <item>
