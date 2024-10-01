@@ -6,11 +6,12 @@
     <description>Recent content in math and python on GID</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>Copyright © 2024, Georgios Is. Detorakis.</copyright><atom:link href="https://gdetor.github.io/tags/math-and-python/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>Copyright © 2024, Georgios Is. Detorakis.</copyright>
+    <lastBuildDate>Tue, 01 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/tags/math-and-python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Simple mathematical tricks in Python</title>
       <link>https://gdetor.github.io/posts/math_tips/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
       
       <guid>https://gdetor.github.io/posts/math_tips/</guid>
       <description>In this post, you can find some helpful mathematical tips and tricks in the Python programming language.

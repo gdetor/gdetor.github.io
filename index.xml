@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2024, Georgios Is. Detorakis.</copyright>
-    <lastBuildDate>Sat, 28 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Simple mathematical tricks in Python</title>
+      <link>https://gdetor.github.io/posts/math_tips/</link>
+      <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/posts/math_tips/</guid>
+      <description>In this post, you can find some helpful mathematical tips and tricks in the Python programming language.
+Eigenvalue Level Repulsion Imaging we have two matrices ${\bf A}, {\bf B}$ $\in \mathbb{R}^n$, that are both symmetric. Then, we know that both matrices have $n$ eigenvalues (multiplicity). Let&amp;rsquo;s start now, gradually morphing ${\bf A}$ to ${\bf B}$ using the following formula
+$$ {\bf A}[t] = (1 - t) {\bf A} + t {\bf B}, $$</description>
+    </item>
+    
     <item>
       <title>Tips &amp; Tricks (Linux/Vim/Git/Programming)</title>
       <link>https://gdetor.github.io/posts/tipsntricks/</link>
@@ -142,17 +153,6 @@ N. P.</description>
       
       <guid>https://gdetor.github.io/research/</guid>
       <description>Neuromorphic Computing Georgios was involved in developing neuromorphic devices capable of embedded and online learning. He was one of the core developers of the software simulator for the Neural and Synaptic Array Transceiver Framework (in collaboration with Intel Corporation Research Labs, the Universities of California Irvine, and San Diego). He investigated how natural mechanisms of biological brains can lead to more efficient and biologically plausible machine learning algorithms suitable for neuromorphic devices.</description>
-    </item>
-    
-    <item>
-      <title>Simple mathematical tricks in Python</title>
-      <link>https://gdetor.github.io/posts/math_tips/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://gdetor.github.io/posts/math_tips/</guid>
-      <description>In this post, you can find some helpful mathematical tips and tricks in the Python programming language.
-Eigenvalue Level Repulsion Imaging we have two matrices ${\bf A}, {\bf B}$ $\in \mathbb{R}^n$, that are both symmetric. Then, we know that both matrices have $n$ eigenvalues (multiplicity). Let&amp;rsquo;s start now, gradually morphing ${\bf A}$ to ${\bf B}$ using the following formula
-$$ {\bf A}[t] = (1 - t) {\bf A} + t {\bf B}, $$</description>
     </item>
     
     <item>
