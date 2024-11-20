@@ -20,15 +20,6 @@ Hence, we provide a simple Python code that can compute the points $(x, y)$ wher
     </item>
     
     <item>
-      <title>Tips &amp; Tricks (Linux/Vim/Git/Programming)</title>
-      <link>https://gdetor.github.io/posts/tipsntricks/</link>
-      <pubDate>Sat, 28 Sep 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://gdetor.github.io/posts/tipsntricks/</guid>
-      <description>In this post you can find various simple tricks and tips for Linux, Vim, Git, Python and many other stuff. All the material provided in this page has been suggested by many different sources such as Command Line Magic, Mastering Vim, kernel_perspective, nixCraft, and Linux Today. The material is free and can be redistributed and/or modified. There is no any warranty that they work for you or are suitable to your need.</description>
-    </item>
-    
-    <item>
       <title>An introduction to self-organizing maps</title>
       <link>https://gdetor.github.io/posts/som/</link>
       <pubDate>Fri, 29 Dec 2023 00:00:00 +0000</pubDate>
