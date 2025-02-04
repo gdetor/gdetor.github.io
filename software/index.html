@@ -38,6 +38,8 @@
 
 
 
+
+
 <html
   class="not-ready lg:text-base"
   style="--bg: #faf8f1"
@@ -152,6 +154,12 @@ Miscellaneous  omnipyseed Omnipyseed is a tiny and simple Python package that ca
   <link rel="icon" href="https://gdetor.github.io/icons/favicon.ico" />
   <link rel="apple-touch-icon" href="https://gdetor.github.io/apple-touch-icon.png" />
 
+  <link rel="stylesheet" href="/css/highlight.css" />
+  
+  
+  
+  
+ 
   
   <meta name="generator" content="Hugo 0.92.2" />
 
@@ -165,7 +173,7 @@ Miscellaneous  omnipyseed Omnipyseed is a tiny and simple Python package that ca
 Miscellaneous  omnipyseed Omnipyseed is a tiny and simple Python package that can be used to seed random number generators (RNGs) of Python, Numpy, and Pytorch.
   Programming Language: Python Source Code:  .inline-svg { display: inline-block; height: 1.0rem; width: 1.0rem; top: 0.1rem; position: relative; }     PyPi  timeseries_imputlorer Imputlorer is a collection of scripts implementing univariate time series imputation methods relying on sklearn.">
 
-<meta itemprop="wordCount" content="2202">
+<meta itemprop="wordCount" content="2206">
 <meta itemprop="keywords" content="" />
   
   <meta property="og:title" content="Software" />
@@ -194,6 +202,11 @@ Miscellaneous  omnipyseed Omnipyseed is a tiny and simple Python package that ca
 </head>
 
   <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+    <script src="/js/copybutton.js"></script>
+    
+
     <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
   <div class="relative z-50 mr-auto flex items-center">
     <a
@@ -502,7 +515,7 @@ an LSTM, a MLP, and a TCN for time series forecasting.</p>
 <div style="text-align: justify;">
 <p>Autoencoders are a type of artificial neural networks that can learn efficient
 codings of unlabeled data. Autoencoders learn the code by trying to map the
-identity function (<strong>e.g.</strong>, they try to reconstruct the input at their output
+identity function (<em>e.g.</em>, they try to reconstruct the input at their output
 layer). This repository contains four types of autoencoders: (i) a standard
 linear autoencoder (AE and Variational AE), (ii) an LSTM autoencoder (AE and
 VAE), (iii) a convolutional autoencoder, and finally a causal convolutional
@@ -632,7 +645,7 @@ distribution over its set of inputs through a contrastive divergence algorithm.<
 <h3 id="annealed-importance-sampling-pyais">Annealed Importance Sampling (pyAIS)</h3>
 <div style="text-align: justify;">
 <p>When one has to compute the partition function Z of a probability distribution
-(Z = \sum_{x}f(x), where p(x) = \frac{1}{Z}f(x)) often applies an Importance
+($ Z = \sum_{x}f(x) $, where $ p(x) = \frac{1}{Z}f(x) $) often applies an Importance
 Sampling (IS) method. The issue with IS is the choice of its single
 hyperparameter, namelly the proposal distribution. Annealed Importance Sampling
 overcomes that problem by creating intermediate distributions. AIS does this
@@ -1116,12 +1129,12 @@ the <em>src</em> directory.</p>
 
 
     </main>
-
+	
     <footer
   class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
 >
   <div class="mr-auto">
-    &copy; 2024
+    &copy; 2025
     <a class="link" href="https://gdetor.github.io">GID</a>
   </div>
   <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
@@ -1136,5 +1149,6 @@ the <em>src</em> directory.</p>
   >
 </footer>
 
+    
   </body>
 </html>
