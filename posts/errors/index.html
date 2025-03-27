@@ -170,7 +170,7 @@ What is a time series A time series is a series of data points indexed in time o
   <meta itemprop="name" content="Time series forecasting error metrics">
 <meta itemprop="description" content="Error measures provide a way to quantify the quality of a forecasting algorithm (*e.g.*, performance). We briefly introduce time series and the fundamental terms of forecasting. We will then introduce the most commonly used error measures and give some examples. We provide an example of how to use error metrics in a real-life forecasting scenario."><meta itemprop="datePublished" content="2022-05-05T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2022-05-05T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2944">
+<meta itemprop="wordCount" content="2905">
 <meta itemprop="keywords" content="mean squared error,MSE,MAE,mean absolute error,time series,R2,coefficient of determination," />
   
   <meta property="og:title" content="Time series forecasting error metrics" />
@@ -527,11 +527,8 @@ value and model&rsquo;s prediction. MAE is defined as:</p>
 <p>$$ \frac{1}{N} \sum_{t=1}^{N} |y[t] - \hat{y}[t]| = \frac{1}{N} \sum_{t=1}^{N} | \epsilon[t] |. $$</p>
 <p>By observing the definition of MAE, we can see that MAE is
 scale-dependent, meaning that both signals, target and prediction,
-must be of the same scale. Another drawback of MAE that we can identify
-by its definition is its sensitivity to outliers (<em>e.g.</em>,
-values in the time series that stick further away from any other value).
-Outliers can drag the MAE to higher values, thus affecting the error.
-However, there are ways to handle outliers and fix that issue (see here [8, 9]).</p>
+must be of the same scale. However, MAE is robust to outliers.
+(see [8, 9] for ways to handle outliers and fix related issues).</p>
 <h4 id="example-1">Example</h4>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> mean_absolute_error
 
