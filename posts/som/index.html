@@ -170,7 +170,7 @@ Introduction Let us begin with a prevalent problem in science. We often have to 
   <meta itemprop="name" content="An introduction to self-organizing maps">
 <meta itemprop="description" content="This post introduces the classical self-organizing map (SOM) algorithm proposed by Grossberg and later by Kohonen. We explain the algorithm&#39;s fundamental aspects and implement it on Pytorch."><meta itemprop="datePublished" content="2023-12-29T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-12-29T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2125">
+<meta itemprop="wordCount" content="2126">
 <meta itemprop="keywords" content="SOM,Kohonen,neural networks,self-organizing map,pytorch," />
   
   <meta property="og:title" content="An introduction to self-organizing maps" />
@@ -581,7 +581,7 @@ by the map. The lower the $\mathcal{E_Q}$, the better.</p>
 input data and how well the topology of the map preserves the input space.
 The topographic error is computed as
 $\mathcal{E_{T}} = \frac{1}{|\mathcal{X}|} \sum_{{\bf x} \in \mathcal{X}}^{}I({\bf x}) $,
-where $I({\bf x}) = 1$ when the BMU and the second best matching unit are
+where $I({\bf x}) = 1$ when the BMU and the second best matching unit are not
 neighbors, and zero otherwise. The lower the value of the $\mathcal{E_{T}}$,
 the better.</p>
 </li>
