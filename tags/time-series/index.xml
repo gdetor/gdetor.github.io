@@ -7,7 +7,16 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2024, Georgios Is. Detorakis.</copyright>
-    <lastBuildDate>Thu, 13 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/tags/time-series/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 23 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/tags/time-series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How do we compute a Gramian Angular Field (GAF) for time series?</title>
+      <link>https://gdetor.github.io/posts/gaf/</link>
+      <pubDate>Wed, 23 Apr 2025 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/posts/gaf/</guid>
+      <description>Here, we briefly introduce the Gramian Angular Field (GAF) method proposed by [1] to convert time series into images without losing much information. Thus, we can use those images with deep neural networks and computer vision methods to analyze or classify time series. Following [1], we present the main idea behind GAF: to obtain a matrix of similarities between temporal data points of a time series. To do so, the authors in [1] introduced the following algorithm:</description>
+    </item>
+    
     <item>
       <title>Autocorrelation Functions for Time Series</title>
       <link>https://gdetor.github.io/posts/acf_pacf/</link>

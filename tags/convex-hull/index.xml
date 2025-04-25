@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>convex hull on GID</title>
+    <link>https://gdetor.github.io/tags/convex-hull/</link>
+    <description>Recent content in convex hull on GID</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright © 2024, Georgios Is. Detorakis.</copyright>
+    <lastBuildDate>Tue, 01 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/tags/convex-hull/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How do we verify linear separability with Python?</title>
+      <link>https://gdetor.github.io/posts/linear_separability/</link>
+      <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/posts/linear_separability/</guid>
+      <description>Two sets $ A $ and $ B $ in an $ n $ dimensional Euclidean space are linear separable if there exist $ n + 1 $ numbers $ w_i \in \mathbb{R} $ such that every point $ a \in A $ satisfies
+$$ \sum_{i=1}^{n}w_i a_i &amp;gt; k, $$
+and every point $ b \in B $ satisfies
+$$ \sum_{i=1}^{n}w_i b_i &amp;lt; k, $$
+where $ k \in \mathbb{R} $ defines a linear border (e.</description>
+    </item>
+    
+  </channel>
+</rss>

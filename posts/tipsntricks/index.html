@@ -169,7 +169,7 @@
   <meta itemprop="name" content="Tips &amp; Tricks (Linux/Vim/Git/Programming)">
 <meta itemprop="description" content="Here, you can find some helpful tips and tricks."><meta itemprop="datePublished" content="2024-11-20T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2024-11-20T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1545">
+<meta itemprop="wordCount" content="1578">
 <meta itemprop="keywords" content="Linux,Vim,Python,C,Git," />
   
   <meta property="og:title" content="Tips &amp; Tricks (Linux/Vim/Git/Programming)" />
@@ -391,6 +391,13 @@ $ xinput set-button-map <span style="color:#ae81ff">19</span> <span style="color
 
 $ xinput set-button-map <span style="color:#ae81ff">14</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">3</span> <span style="color:#75715e"># For disabling the middle button</span>
 $ xinput set-button-map <span style="color:#ae81ff">19</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">3</span> <span style="color:#75715e"># For disabling the middle button</span>
+</code></pre></div><h3 id="how-to-run-scp-through-ssh-tunnel-linux">How to run SCP through SSH Tunnel (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ssh -L 1234:&lt;remote_address&gt;:22 &lt;user@gateway&gt;@address_of_gateway&gt;
+
+<span style="color:#75715e"># $ ssh -L 1234:&lt;remote_address&gt;:22 &lt;user@gateway&gt;@&lt;address_of_gateway&gt; cat -</span>
+<span style="color:#75715e"># cat - keeps it running</span>
+
+$ scp -P <span style="color:#ae81ff">1234</span> &lt;user@remote_machine&gt;@127.0.0.1:path_to_file file_name_to_copy
 </code></pre></div><h3 id="pass-the-output-of-a-command-list-to-another-command-using--linux-bash-zsh">Pass the output of a command (list) to another command using | (Linux, Bash, ZSH)</h3>
 <div class="highlight" tabwidth="4"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ diff &lt;<span style="color:#f92672">(</span>ls dirA<span style="color:#f92672">)</span> &lt;<span style="color:#f92672">(</span>ls dirB<span style="color:#f92672">)</span>&gt;&gt;
 </code></pre></div><h3 id="how-to-stop-a-bash-script-on-errors-linux-bash">How to stop a bash script on errors (Linux, Bash)</h3>
@@ -710,11 +717,17 @@ $ awk <span style="color:#e6db74">&#39;NF {NF--};1&#39;</span>&lt; input_file &g
   
   <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
     
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://gdetor.github.io/posts/gaf/"
+      ><span class="mr-1.5">←</span><span>How do we compute a Gramian Angular Field (GAF) for time series?</span></a
+    >
+    
     
     <a
       class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
-      href="https://gdetor.github.io/posts/math_tips/"
-      ><span>Simple mathematical tricks in Python</span><span class="ml-1.5">→</span></a
+      href="https://gdetor.github.io/posts/eigs_level_repulsion/"
+      ><span>Eigenvalue level repulsion</span><span class="ml-1.5">→</span></a
     >
     
   </nav>

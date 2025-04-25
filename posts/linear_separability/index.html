@@ -1,0 +1,536 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>How do we verify linear separability with Python? - GID</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="Two sets $ A $ and $ B $ in an $ n $ dimensional Euclidean space are linear separable if there exist $ n &#43; 1 $ numbers $ w_i \in \mathbb{R} $ such that every point $ a \in A $ satisfies
+$$ \sum_{i=1}^{n}w_i a_i &gt; k, $$
+and every point $ b \in B $ satisfies
+$$ \sum_{i=1}^{n}w_i b_i &lt; k, $$
+where $ k \in \mathbb{R} $ defines a linear border (e." />
+  <meta name="author" content="Georgios Is. Detorakis" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://gdetor.github.io/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/theme.png" />
+
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://avatars.githubusercontent.com/u/7115299?v=4" />
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/github.svg" />
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/linkedin.svg" />
+  
+  
+
+  
+  
+  <script
+    defer
+    src="https://gdetor.github.io/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://gdetor.github.io/icons/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://gdetor.github.io/apple-touch-icon.png" />
+
+  <link rel="stylesheet" href="/css/highlight.css" />
+  
+  
+  
+  
+ 
+  
+  <meta name="generator" content="Hugo 0.92.2" />
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="How do we verify linear separability with Python?">
+<meta itemprop="description" content="This post briefly introduces how to check if two sets are linear separable using Python."><meta itemprop="datePublished" content="2024-10-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-10-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="480">
+<meta itemprop="keywords" content="linear separability,convex hull,math and python," />
+  
+  <meta property="og:title" content="How do we verify linear separability with Python?" />
+<meta property="og:description" content="This post briefly introduces how to check if two sets are linear separable using Python." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gdetor.github.io/posts/linear_separability/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-10-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-10-01T00:00:00+00:00" />
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="How do we verify linear separability with Python?"/>
+<meta name="twitter:description" content="This post briefly introduces how to check if two sets are linear separable using Python."/>
+
+  
+  
+  
+  <link rel="canonical" href="https://gdetor.github.io/posts/linear_separability/" />
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+    <script src="/js/copybutton.js"></script>
+    
+
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://gdetor.github.io"
+      >GID</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/about/"
+        >About</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/research/"
+        >Research</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/software/"
+        >Software</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/publications/"
+        >Publications</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/artwork/"
+        >Artwork</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/gdetor"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/georgiosdetorakis"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">How do we verify linear separability with Python?</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Oct 1, 2024</time>
+      
+      
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Georgios Is. Detorakis</span>
+      <span class="mx-1">&middot;</span>
+      <span class="inline-item reading">3 minutes read</span>
+      
+    </div>
+    
+  </header>
+
+  <section><div style="text-align: justify;">
+<p>Two sets $ A $ and $ B $ in an $ n $ dimensional Euclidean space are linear
+separable if there exist $ n + 1 $ numbers $ w_i \in \mathbb{R} $ such that
+every point $ a \in A $ satisfies</p>
+<p>$$ \sum_{i=1}^{n}w_i a_i &gt; k,  $$</p>
+<p>and every point $ b \in B $ satisfies</p>
+<p>$$ \sum_{i=1}^{n}w_i b_i &lt; k,  $$</p>
+<p>where $ k \in \mathbb{R} $ defines a linear border (<em>e.g.,</em> a line) between
+data points of the two sets.</p>
+<p>In layperson&rsquo;s terms, let&rsquo;s say we have two two-dimensional data sets (<em>e.g.</em>,
+each data point is described by two coordinates, x and y). These two sets are
+linearly separable if we can draw at least one line that will separate the
+points of set A from those of set B.</p>
+<p>Many times we have to solve a classification or clustering problem. If we
+could know <em>a priori</em> if the involved sets are linearly separable, we could
+choose the appropriate classification algorithm. For instance, if the data
+sets are not linearly separable, we won&rsquo;t be able to use a linear classifier.</p>
+<p>Therefore, one way to know if the sets at hand are linear separable is to
+compute the convex hull of each set and check if those convex hulls intersect
+or one contains the other, or they overlap. If any of those three conditions
+is true, then we know that the two sets are <strong>not</strong> linearly separable.
+In Python, we can quickly check that using the function <code>ConvexHull</code> of
+<em>Scipy</em>. Here is an example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> matplotlib.pylab <span style="color:#66d9ef">as</span> plt
+
+<span style="color:#f92672">from</span> sklearn.datasets <span style="color:#f92672">import</span> make_moons, make_blobs
+<span style="color:#f92672">from</span> scipy.spatial <span style="color:#f92672">import</span> ConvexHull
+
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+    S <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>       <span style="color:#75715e"># size of scatter plot point</span>
+    blobs <span style="color:#f92672">=</span> make_blobs(n_samples<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, centers<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">13</span>)
+    moons <span style="color:#f92672">=</span> make_moons(n_samples<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>)
+
+    fig <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">13</span>, <span style="color:#ae81ff">11</span>))
+    ax1 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">221</span>)
+    Xb, Yb <span style="color:#f92672">=</span> blobs
+    x1b <span style="color:#f92672">=</span> Xb[Yb <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>]
+    x2b <span style="color:#f92672">=</span> Xb[Yb <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>]
+    ax1<span style="color:#f92672">.</span>scatter(x1b[:, <span style="color:#ae81ff">0</span>], x1b[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
+    ax1<span style="color:#f92672">.</span>scatter(x2b[:, <span style="color:#ae81ff">0</span>], x2b[:, <span style="color:#ae81ff">1</span>], c<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;orange&#34;</span>, s<span style="color:#f92672">=</span>S)
+    ax1<span style="color:#f92672">.</span>set_xticks([])
+    ax1<span style="color:#f92672">.</span>set_yticks([])
+
+    ax2 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">222</span>)
+    X, Y <span style="color:#f92672">=</span> moons
+    x1 <span style="color:#f92672">=</span> X[Y <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>]
+    x2 <span style="color:#f92672">=</span> X[Y <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>]
+    ax2<span style="color:#f92672">.</span>scatter(x1[:, <span style="color:#ae81ff">0</span>], x1[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
+    ax2<span style="color:#f92672">.</span>scatter(x2[:, <span style="color:#ae81ff">0</span>], x2[:, <span style="color:#ae81ff">1</span>], c<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;orange&#34;</span>, s<span style="color:#f92672">=</span>S)
+    ax2<span style="color:#f92672">.</span>set_xticks([])
+    ax2<span style="color:#f92672">.</span>set_yticks([])
+
+    ax3 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">223</span>)
+    ch1 <span style="color:#f92672">=</span> ConvexHull(x1b)			<span style="color:#75715e"># Compute the convex hull</span>
+    ax3<span style="color:#f92672">.</span>scatter(x1b[:, <span style="color:#ae81ff">0</span>], x1b[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
+    ax3<span style="color:#f92672">.</span>plot(x1b[ch1<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">0</span>], x1b[ch1<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">1</span>], lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, c<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>)
+    ch2 <span style="color:#f92672">=</span> ConvexHull(x2b)
+    ax3<span style="color:#f92672">.</span>scatter(x2b[:, <span style="color:#ae81ff">0</span>], x2b[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
+    ax3<span style="color:#f92672">.</span>plot(x2b[ch2<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">0</span>], x2b[ch2<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">1</span>], lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, c<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>)
+    ax3<span style="color:#f92672">.</span>set_xticks([])
+    ax3<span style="color:#f92672">.</span>set_yticks([])
+
+    ax4 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">224</span>)
+    ch1 <span style="color:#f92672">=</span> ConvexHull(x1)
+    ax4<span style="color:#f92672">.</span>scatter(x1[:, <span style="color:#ae81ff">0</span>], x1[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
+    ax4<span style="color:#f92672">.</span>plot(x1[ch1<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">0</span>], x1[ch1<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">1</span>], lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, c<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>)
+    ch2 <span style="color:#f92672">=</span> ConvexHull(x2)
+    ax4<span style="color:#f92672">.</span>scatter(x2[:, <span style="color:#ae81ff">0</span>], x2[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
+    ax4<span style="color:#f92672">.</span>plot(x2[ch2<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">0</span>], x2[ch2<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">1</span>], lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, c<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>)
+    ax4<span style="color:#f92672">.</span>set_xticks([])
+    ax4<span style="color:#f92672">.</span>set_yticks([])
+
+    plt<span style="color:#f92672">.</span>savefig(<span style="color:#e6db74">&#34;convec_hulls.png&#34;</span>)
+    plt<span style="color:#f92672">.</span>show()
+
+</code></pre></div><figure><img src="/images/convex_hulls.png"
+         alt="Figure 1. Blobs and moons data sets along with their convex hulls. The blobs are linear separable since the convex hull of the blue set does not intersect or overlap with the convex hull of the orange data set. On the other hand, the moons data set is not linear separable."/><figcaption>
+            <p>Figure 1. Blobs and moons data sets along with their convex hulls. The blobs are linear separable since the convex hull of the blue set does not intersect or overlap with the convex hull of the orange data set. On the other hand, the moons data set is not linear separable.</p>
+        </figcaption>
+</figure>
+</div>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/linear-separability"
+      >linear separability</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/convex-hull"
+      >convex hull</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/math-and-python"
+      >math and python</a
+    >
+    
+  </footer>
+  
+
+  
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://gdetor.github.io/posts/eigs_level_repulsion/"
+      ><span class="mr-1.5">←</span><span>Eigenvalue level repulsion</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://gdetor.github.io/posts/curves_intersection/"
+      ><span>Intersection points of curves</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+	
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2025
+    <a class="link" href="https://gdetor.github.io">GID</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+    
+  </body>
+</html>

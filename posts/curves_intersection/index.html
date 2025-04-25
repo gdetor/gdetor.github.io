@@ -1,0 +1,582 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Intersection points of curves - GID</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="We often need to compute the points where two lines intersect or where a function intersects the x-axis (zero crossing). Here, we provide a Python script that does precisely that. Computes the points where two curves (lines, time series, etc.) intersect.
+Hence, we provide a simple Python code that can compute the points $(x, y)$ where two curves, $ f(t) $ and g(t), intersect. The first step, and the easy one, is to take two points, one from each curve, $ (t_1, Y_f) $, and $ (t_1, Y_g) $, compute their distance, and check if it is smaller than an $ \epsilon $, where $ \epsilon $ is a tiny number close to zero." />
+  <meta name="author" content="Georgios Is. Detorakis" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://gdetor.github.io/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/theme.png" />
+
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://avatars.githubusercontent.com/u/7115299?v=4" />
+  
+  
+
+  
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/github.svg" />
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/linkedin.svg" />
+  
+  
+
+  
+  
+  <script
+    defer
+    src="https://gdetor.github.io/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  
+  
+  <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://gdetor.github.io/icons/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://gdetor.github.io/apple-touch-icon.png" />
+
+  <link rel="stylesheet" href="/css/highlight.css" />
+  
+  
+  
+  
+ 
+  
+  <meta name="generator" content="Hugo 0.92.2" />
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Intersection points of curves">
+<meta itemprop="description" content="A brief tutorial on how to compute intesection points between two curves."><meta itemprop="datePublished" content="2024-10-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-10-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="683">
+<meta itemprop="keywords" content="intersection points,curves,mathematics,math tips,math and python," />
+  
+  <meta property="og:title" content="Intersection points of curves" />
+<meta property="og:description" content="A brief tutorial on how to compute intesection points between two curves." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gdetor.github.io/posts/curves_intersection/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-10-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-10-01T00:00:00+00:00" />
+
+
+  
+  <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Intersection points of curves"/>
+<meta name="twitter:description" content="A brief tutorial on how to compute intesection points between two curves."/>
+
+  
+  
+  
+  <link rel="canonical" href="https://gdetor.github.io/posts/curves_intersection/" />
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    
+    
+    <script src="/js/copybutton.js"></script>
+    
+
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://gdetor.github.io"
+      >GID</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/about/"
+        >About</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/research/"
+        >Research</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/software/"
+        >Software</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/publications/"
+        >Publications</a
+      >
+      
+      <a
+        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/artwork/"
+        >Artwork</a
+      >
+      
+    </nav>
+    
+
+    
+    <nav
+      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+    >
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/gdetor"
+        target="_blank"
+        rel="me"
+      >
+        github
+      </a>
+      
+      <a
+        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/georgiosdetorakis"
+        target="_blank"
+        rel="me"
+      >
+        linkedin
+      </a>
+      
+    </nav>
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Intersection points of curves</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Oct 1, 2024</time>
+      
+      
+      
+      
+      <span class="mx-1">&middot;</span>
+      <span>Georgios Is. Detorakis</span>
+      <span class="mx-1">&middot;</span>
+      <span class="inline-item reading">4 minutes read</span>
+      
+    </div>
+    
+  </header>
+
+  <section><div style="text-align: justify;">
+<p>We often need to compute the points where two lines intersect or where a function intersects
+the x-axis (zero crossing). Here, we provide a Python script that does precisely that.
+Computes the points where two curves (lines, time series, etc.) intersect.</p>
+<p>Hence, we provide a simple Python code that can compute the points $(x, y)$ where
+two curves, $ f(t) $ and g(t), intersect. The first step, and the easy one, is
+to take two points, one from each curve, $ (t_1, Y_f) $, and $ (t_1, Y_g) $,
+compute their distance, and check if it is smaller than an $ \epsilon $, where
+$ \epsilon $ is a tiny number close to zero. If that&rsquo;s the case, then we are
+done and have found the intersection point being $ (t_1, Y_f) $. However, if
+the distance is larger than $ \epsilon $, we have to check for any crossing
+point. We first consider a new function $ h(t) = f(t) - g(t $, and we evaluate
+that function on the points $ (t_0, Y_f^0) $, $ (t_0, Y_g^0) $,
+$ (t_1, Y_f^1) $, and $ (t_1, Y_g^1) $.
+Thus, we obtain $ \delta_0 = Y_f^0 - Y_g^0 $ and $ \delta_1 = Y_f^1 - Y_g^1 $.
+If the product $ \delta_0 \delta_1 &lt; 0 $, then from Bolzano&rsquo;s theorem, we know
+that the two lines must intersect, and the intersection point $ (t^{\ast}, y^{\ast}) $
+is:</p>
+<p>$$ (t^{\ast}, y^{\ast}) =  \Big( \frac{-t_0 \delta_1 + t_1 \delta_0}{\Delta}, \frac{Y_f^0 Y_g^1 - Y_f^1 Y_g^0}{\Delta}  \Big), $$
+where $ \Delta = Y_f^0 - Y_g^0 - Y_f^1 + Y_g^1 $.
+The coordinates of the point $ (t^{\ast}, y^{\ast}) $ are derived by computing
+the following determinant(s) (which gives us the intersection point):</p>
+<figure><img src="/images/determinant.png"/>
+</figure>
+<p>When one runs the Python code provided in the above snippet, one obtains the
+results shown in the Figure below.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+<span style="color:#f92672">import</span> matplotlib.pylab <span style="color:#66d9ef">as</span> plt
+<span style="color:#f92672">import</span> matplotlib.style <span style="color:#66d9ef">as</span> style
+
+style<span style="color:#f92672">.</span>use(<span style="color:#e6db74">&#39;tableau-colorblind10&#39;</span>)
+
+params <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;font.size&#39;</span>: <span style="color:#ae81ff">14</span>,
+          }
+plt<span style="color:#f92672">.</span>rcParams<span style="color:#f92672">.</span>update(params)
+
+eps <span style="color:#f92672">=</span> <span style="color:#ae81ff">1e-12</span>
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">findCrossings</span>(X, Y, t<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+    <span style="color:#66d9ef">if</span> len(X) <span style="color:#f92672">!=</span> len(Y):
+        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>
+
+    <span style="color:#66d9ef">if</span> t <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+        t <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(len(X))
+
+    crossings <span style="color:#f92672">=</span> []
+    deltaOld <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+    tPrev, xOld, yOld <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>, <span style="color:#66d9ef">None</span>, <span style="color:#66d9ef">None</span>
+    <span style="color:#66d9ef">for</span> tCurr, xNew, yNew <span style="color:#f92672">in</span> zip(t, X, Y):
+        deltaNew <span style="color:#f92672">=</span> yNew <span style="color:#f92672">-</span> xNew
+        <span style="color:#75715e"># When the difference of two points is virtually zero then accept that</span>
+        <span style="color:#75715e"># as a crossing point (x, y)</span>
+        <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>abs(deltaNew) <span style="color:#f92672">&lt;</span> eps:
+            crossings<span style="color:#f92672">.</span>append((tCurr, xNew))
+        <span style="color:#75715e"># Otherwise check if the product of the differences is negative and then </span>
+        <span style="color:#75715e"># from Bolzano&#39;s theorem we know that there should be a crossing. To find</span>
+        <span style="color:#75715e"># the intersection we compute the determinant as it is defined in the text</span>
+        <span style="color:#75715e"># above and compute the crossing point (x, y)</span>
+        <span style="color:#66d9ef">elif</span> deltaNew <span style="color:#f92672">*</span> deltaOld <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>:
+            denom <span style="color:#f92672">=</span> deltaOld <span style="color:#f92672">-</span> deltaNew
+            crossings<span style="color:#f92672">.</span>append(((<span style="color:#f92672">-</span>deltaNew <span style="color:#f92672">*</span> tPrev <span style="color:#f92672">+</span> deltaOld <span style="color:#f92672">*</span> tCurr) <span style="color:#f92672">/</span> denom,
+                              (xNew <span style="color:#f92672">*</span> yOld <span style="color:#f92672">-</span> yNew <span style="color:#f92672">*</span> xOld) <span style="color:#f92672">/</span> denom))
+        tPrev, xOld, yOld, deltaOld <span style="color:#f92672">=</span> tCurr, xNew, yNew, deltaNew
+    <span style="color:#66d9ef">return</span> crossings
+
+
+<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">nicePlot</span>(t, x, y, crossing_pts, ax):
+    <span style="color:#e6db74">&#34;&#34;&#34; A simple plotting function
+</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+    ax<span style="color:#f92672">.</span>plot(t, x, <span style="color:#e6db74">&#39;b-&#39;</span>, alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">0.7</span>, lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+    ax<span style="color:#f92672">.</span>plot(t, y, <span style="color:#e6db74">&#39;k-&#39;</span>, alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">0.7</span>, lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
+    ax<span style="color:#f92672">.</span>plot(<span style="color:#f92672">*</span>zip(<span style="color:#f92672">*</span>crossing_pts),
+            ls<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>,
+            color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;orange&#39;</span>,
+            marker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;o&#39;</span>,
+            alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">1.</span>,
+            ms<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>)
+    ax<span style="color:#f92672">.</span>set_xticks([])
+    ax<span style="color:#f92672">.</span>set_yticks([])
+
+
+<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+    N <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>
+
+    fig <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">19</span>, <span style="color:#ae81ff">5</span>))
+    ax <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">131</span>)
+    <span style="color:#75715e"># Two curves that do not intesect thus no crossing points</span>
+    t <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#f92672">-</span>np<span style="color:#f92672">.</span>pi, np<span style="color:#f92672">.</span>pi, N)
+    x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sin(t <span style="color:#f92672">*</span> <span style="color:#ae81ff">.08</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1.4</span>)<span style="color:#f92672">*</span>np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>uniform(<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.9</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+    y <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>np<span style="color:#f92672">.</span>cos(t <span style="color:#f92672">*</span> <span style="color:#ae81ff">.07</span><span style="color:#f92672">+</span><span style="color:#ae81ff">.1</span>)<span style="color:#f92672">*</span>np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>uniform(<span style="color:#ae81ff">0.7</span>, <span style="color:#ae81ff">1.0</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+    crossing_pts <span style="color:#f92672">=</span> findCrossings(x, y, t<span style="color:#f92672">=</span>t)
+    nicePlot(t, x, y, crossing_pts, ax)
+
+    <span style="color:#75715e"># Two time series intesecting at multiple points</span>
+    ax <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">132</span>)
+    t <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(N)
+    x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, (N,))
+    y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, (N,))
+    crossing_pts <span style="color:#f92672">=</span> findCrossings(x, y, t<span style="color:#f92672">=</span>t)
+    nicePlot(t, x, y, crossing_pts, ax)
+
+    <span style="color:#75715e"># x^2 intersecting at two points with the line x</span>
+    ax <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">133</span>)
+    t <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, N)
+    x <span style="color:#f92672">=</span> t<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>
+    y <span style="color:#f92672">=</span> t
+    crossing_pts <span style="color:#f92672">=</span> findCrossings(x, y, t<span style="color:#f92672">=</span>t)
+    nicePlot(t, x, y, crossing_pts, ax)
+
+    plt<span style="color:#f92672">.</span>show()
+</code></pre></div><p>When one runs the Python code provided in the above snippet then they obtain
+the results shown in the Figure below.</p>
+<figure><img src="/images/crossings.png"
+         alt="Figure 1. Three exampels of identifying crossing points between two curves. The orange discs indicate the crossing points."/><figcaption>
+            <p>Figure 1. Three exampels of identifying crossing points between two curves. The orange discs indicate the crossing points.</p>
+        </figcaption>
+</figure>
+</div>
+</section>
+
+  
+  
+  <footer class="mt-12 flex flex-wrap">
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/intersection-points"
+      >intersection points</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/curves"
+      >curves</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/mathematics"
+      >mathematics</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/math-tips"
+      >math tips</a
+    >
+     
+    <a
+      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+      href="https://gdetor.github.io/tags/math-and-python"
+      >math and python</a
+    >
+    
+  </footer>
+  
+
+  
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://gdetor.github.io/posts/linear_separability/"
+      ><span class="mr-1.5">←</span><span>How do we verify linear separability with Python?</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://gdetor.github.io/posts/math_tips/"
+      ><span>Simple mathematical tricks in Python</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+	
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2025
+    <a class="link" href="https://gdetor.github.io">GID</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+    
+  </body>
+</html>

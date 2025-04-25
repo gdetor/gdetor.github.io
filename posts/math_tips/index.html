@@ -64,8 +64,8 @@
   
   
   <meta name="description" content="In this post, you can find some helpful mathematical tips and tricks in the Python programming language.
-Intersection points of curves We often need to compute the points where two lines intersect or where a function intersects the x-axis (zero crossing). Here, we provide a Python script that does precisely that. Computes the points where two curves (lines, time series, etc.) intersect.
-Hence, we provide a simple Python code that can compute the points $(x, y)$ where two curves, $ f(t) $ and g(t), intersect." />
+Positive definite matrix Check if a given matrix $ \bf{A} $ is positive definite. If all the eigenvalues of matrix $ \bf{A} $ are positive then the matrix is positive definite.
+$ A = np.array([[1, 2], [2, 1]]) $ print(A) [[1 2] [2 1]] $ np.all(np.linalg.eigvals(A) &gt; 0) False # A is not a positive definite matrix $ A = np." />
   <meta name="author" content="Georgios Is. Detorakis" />
   
 
@@ -171,7 +171,7 @@ Hence, we provide a simple Python code that can compute the points $(x, y)$ wher
   <meta itemprop="name" content="Simple mathematical tricks in Python">
 <meta itemprop="description" content="Here, you can find some helpful mathematical tips and tricks in Python."><meta itemprop="datePublished" content="2024-10-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2024-10-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="1958">
+<meta itemprop="wordCount" content="395">
 <meta itemprop="keywords" content="mathematics,math tips,math and python," />
   
   <meta property="og:title" content="Simple mathematical tricks in Python" />
@@ -357,7 +357,7 @@ Hence, we provide a simple Python code that can compute the points $(x, y)$ wher
       <span class="mx-1">&middot;</span>
       <span>Georgios Is. Detorakis</span>
       <span class="mx-1">&middot;</span>
-      <span class="inline-item reading">10 minutes read</span>
+      <span class="inline-item reading">2 minutes read</span>
       
     </div>
     
@@ -366,289 +366,6 @@ Hence, we provide a simple Python code that can compute the points $(x, y)$ wher
   <section><div style="text-align: justify;">
 <p>In this post, you can find some helpful mathematical tips and tricks
 in the Python programming language.</p>
-<h2 id="intersection-points-of-curves">Intersection points of curves</h2>
-<p>We often need to compute the points where two lines intersect or where a function intersects
-the x-axis (zero crossing). Here, we provide a Python script that does precisely that.
-Computes the points where two curves (lines, time series, etc.) intersect.</p>
-<p>Hence, we provide a simple Python code that can compute the points $(x, y)$ where
-two curves, $ f(t) $ and g(t), intersect. The first step, and the easy one, is
-to take two points, one from each curve, $ (t_1, Y_f) $, and $ (t_1, Y_g) $,
-compute their distance, and check if it is smaller than an $ \epsilon $, where
-$ \epsilon $ is a tiny number close to zero. If that&rsquo;s the case, then we are
-done and have found the intersection point being $ (t_1, Y_f) $. However, if
-the distance is larger than $ \epsilon $, we have to check for any crossing
-point. We first consider a new function $ h(t) = f(t) - g(t $, and we evaluate
-that function on the points $ (t_0, Y_f^0) $, $ (t_0, Y_g^0) $,
-$ (t_1, Y_f^1) $, and $ (t_1, Y_g^1) $.
-Thus, we obtain $ \delta_0 = Y_f^0 - Y_g^0 $ and $ \delta_1 = Y_f^1 - Y_g^1 $.
-If the product $ \delta_0 \delta_1 &lt; 0 $, then from Bolzano&rsquo;s theorem, we know
-that the two lines must intersect, and the intersection point $ (t^{\ast}, y^{\ast}) $
-is:</p>
-<p>$$ (t^{\ast}, y^{\ast}) =  \Big( \frac{-t_0 \delta_1 + t_1 \delta_0}{\Delta}, \frac{Y_f^0 Y_g^1 - Y_f^1 Y_g^0}{\Delta}  \Big), $$
-where $ \Delta = Y_f^0 - Y_g^0 - Y_f^1 + Y_g^1 $.
-The coordinates of the point $ (t^{\ast}, y^{\ast}) $ are derived by computing
-the following determinant(s) (which gives us the intersection point):</p>
-<figure><img src="/images/determinant.png"/>
-</figure>
-<p>When one runs the Python code provided in the above snippet, one obtains the
-results shown in the Figure below.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-<span style="color:#f92672">import</span> matplotlib.pylab <span style="color:#66d9ef">as</span> plt
-<span style="color:#f92672">import</span> matplotlib.style <span style="color:#66d9ef">as</span> style
-
-style<span style="color:#f92672">.</span>use(<span style="color:#e6db74">&#39;tableau-colorblind10&#39;</span>)
-
-params <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;font.size&#39;</span>: <span style="color:#ae81ff">14</span>,
-          }
-plt<span style="color:#f92672">.</span>rcParams<span style="color:#f92672">.</span>update(params)
-
-eps <span style="color:#f92672">=</span> <span style="color:#ae81ff">1e-12</span>
-
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">findCrossings</span>(X, Y, t<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
-    <span style="color:#66d9ef">if</span> len(X) <span style="color:#f92672">!=</span> len(Y):
-        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>
-
-    <span style="color:#66d9ef">if</span> t <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
-        t <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(len(X))
-
-    crossings <span style="color:#f92672">=</span> []
-    deltaOld <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-    tPrev, xOld, yOld <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>, <span style="color:#66d9ef">None</span>, <span style="color:#66d9ef">None</span>
-    <span style="color:#66d9ef">for</span> tCurr, xNew, yNew <span style="color:#f92672">in</span> zip(t, X, Y):
-        deltaNew <span style="color:#f92672">=</span> yNew <span style="color:#f92672">-</span> xNew
-        <span style="color:#75715e"># When the difference of two points is virtually zero then accept that</span>
-        <span style="color:#75715e"># as a crossing point (x, y)</span>
-        <span style="color:#66d9ef">if</span> np<span style="color:#f92672">.</span>abs(deltaNew) <span style="color:#f92672">&lt;</span> eps:
-            crossings<span style="color:#f92672">.</span>append((tCurr, xNew))
-        <span style="color:#75715e"># Otherwise check if the product of the differences is negative and then </span>
-        <span style="color:#75715e"># from Bolzano&#39;s theorem we know that there should be a crossing. To find</span>
-        <span style="color:#75715e"># the intersection we compute the determinant as it is defined in the text</span>
-        <span style="color:#75715e"># above and compute the crossing point (x, y)</span>
-        <span style="color:#66d9ef">elif</span> deltaNew <span style="color:#f92672">*</span> deltaOld <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0</span>:
-            denom <span style="color:#f92672">=</span> deltaOld <span style="color:#f92672">-</span> deltaNew
-            crossings<span style="color:#f92672">.</span>append(((<span style="color:#f92672">-</span>deltaNew <span style="color:#f92672">*</span> tPrev <span style="color:#f92672">+</span> deltaOld <span style="color:#f92672">*</span> tCurr) <span style="color:#f92672">/</span> denom,
-                              (xNew <span style="color:#f92672">*</span> yOld <span style="color:#f92672">-</span> yNew <span style="color:#f92672">*</span> xOld) <span style="color:#f92672">/</span> denom))
-        tPrev, xOld, yOld, deltaOld <span style="color:#f92672">=</span> tCurr, xNew, yNew, deltaNew
-    <span style="color:#66d9ef">return</span> crossings
-
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">nicePlot</span>(t, x, y, crossing_pts, ax):
-    <span style="color:#e6db74">&#34;&#34;&#34; A simple plotting function
-</span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
-    ax<span style="color:#f92672">.</span>plot(t, x, <span style="color:#e6db74">&#39;b-&#39;</span>, alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">0.7</span>, lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
-    ax<span style="color:#f92672">.</span>plot(t, y, <span style="color:#e6db74">&#39;k-&#39;</span>, alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">0.7</span>, lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>)
-    ax<span style="color:#f92672">.</span>plot(<span style="color:#f92672">*</span>zip(<span style="color:#f92672">*</span>crossing_pts),
-            ls<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>,
-            color<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;orange&#39;</span>,
-            marker<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;o&#39;</span>,
-            alpha<span style="color:#f92672">=</span><span style="color:#ae81ff">1.</span>,
-            ms<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>)
-    ax<span style="color:#f92672">.</span>set_xticks([])
-    ax<span style="color:#f92672">.</span>set_yticks([])
-
-
-<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
-    N <span style="color:#f92672">=</span> <span style="color:#ae81ff">20</span>
-
-    fig <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">19</span>, <span style="color:#ae81ff">5</span>))
-    ax <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">131</span>)
-    <span style="color:#75715e"># Two curves that do not intesect thus no crossing points</span>
-    t <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#f92672">-</span>np<span style="color:#f92672">.</span>pi, np<span style="color:#f92672">.</span>pi, N)
-    x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sin(t <span style="color:#f92672">*</span> <span style="color:#ae81ff">.08</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1.4</span>)<span style="color:#f92672">*</span>np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>uniform(<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.9</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
-    y <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>np<span style="color:#f92672">.</span>cos(t <span style="color:#f92672">*</span> <span style="color:#ae81ff">.07</span><span style="color:#f92672">+</span><span style="color:#ae81ff">.1</span>)<span style="color:#f92672">*</span>np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>uniform(<span style="color:#ae81ff">0.7</span>, <span style="color:#ae81ff">1.0</span>) <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
-    crossing_pts <span style="color:#f92672">=</span> findCrossings(x, y, t<span style="color:#f92672">=</span>t)
-    nicePlot(t, x, y, crossing_pts, ax)
-
-    <span style="color:#75715e"># Two time series intesecting at multiple points</span>
-    ax <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">132</span>)
-    t <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>arange(N)
-    x <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, (N,))
-    y <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>normal(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, (N,))
-    crossing_pts <span style="color:#f92672">=</span> findCrossings(x, y, t<span style="color:#f92672">=</span>t)
-    nicePlot(t, x, y, crossing_pts, ax)
-
-    <span style="color:#75715e"># x^2 intersecting at two points with the line x</span>
-    ax <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">133</span>)
-    t <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, N)
-    x <span style="color:#f92672">=</span> t<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>
-    y <span style="color:#f92672">=</span> t
-    crossing_pts <span style="color:#f92672">=</span> findCrossings(x, y, t<span style="color:#f92672">=</span>t)
-    nicePlot(t, x, y, crossing_pts, ax)
-
-    plt<span style="color:#f92672">.</span>show()
-
-
-</code></pre></div><p>When one runs the Python code provided in the above snippet then they obtain
-the results shown in the Figure below.</p>
-<figure><img src="/images/crossings.png"
-         alt="Figure 1. Three exampels of identifying crossing points between two curves. The orange discs indicate the crossing points."/><figcaption>
-            <p>Figure 1. Three exampels of identifying crossing points between two curves. The orange discs indicate the crossing points.</p>
-        </figcaption>
-</figure>
-<h2 id="eigenvalue-level-repulsion">Eigenvalue Level Repulsion</h2>
-<p>Imaging we have two matrices ${\bf A}, {\bf B}$ $\in \mathbb{R}^n$, that are
-both symmetric. Then, we know that
-both matrices have $n$ eigenvalues (multiplicity). Let&rsquo;s start now, gradually
-morphing ${\bf A}$ to ${\bf B}$ using the following formula</p>
-<p>$$ {\bf A}[t] = (1 - t) {\bf A} + t {\bf B}, $$</p>
-<p>where $t \in [0, 1]$.
-What will happen is that matrix ${\bf A}$ will have multiple eigenvalues with
-probability zero, given we have chosen the matrices properly from the set of
-all real symmetric matrices. In other words, there will be no time $t$ when
-matrix ${\bf A}$ won&rsquo;t have $n$ eigenvalues. We can see an example in Figure $2$
-below.</p>
-<figure><img src="/images/eig_values_repulsion.png"
-         alt="Figure 2. Eigenvalue level repulsion. Notice that as we move from $t=0$ to $t=1$ the eigenvalues of matrix ${\bf A}$ morph to those of ${\bf B}$ and at any instance matrix ${\bf A}$ has $10$ eigenvalues (see the dimension of the matrix ${\bf A}$ in the code snippet below, which is $10$)."/><figcaption>
-            <p>Figure 2. Eigenvalue level repulsion. Notice that as we move from $t=0$ to $t=1$ the eigenvalues of matrix ${\bf A}$ morph to those of ${\bf B}$ and at any instance matrix ${\bf A}$ has $10$ eigenvalues (see the dimension of the matrix ${\bf A}$ in the code snippet below, which is $10$).</p>
-        </figcaption>
-</figure>
-<p>The Python code below shows how one can compute the eigenvalue level repulsion.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-<span style="color:#f92672">import</span> matplotlib.pylab <span style="color:#66d9ef">as</span> plt
-<span style="color:#f92672">import</span> matplotlib.style <span style="color:#66d9ef">as</span> style
-
-style<span style="color:#f92672">.</span>use(<span style="color:#e6db74">&#39;tableau-colorblind10&#39;</span>)
-
-params <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;font.size&#39;</span>: <span style="color:#ae81ff">14</span>,
-          }
-plt<span style="color:#f92672">.</span>rcParams<span style="color:#f92672">.</span>update(params)
-
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">keig</span>(A, k):
-    <span style="color:#75715e"># Compute the eigenvalues of a matrix, sort them and then choose the k fisrt of them</span>
-    kth_eig <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>sort(np<span style="color:#f92672">.</span>linalg<span style="color:#f92672">.</span>eigvals(A))[k]
-    <span style="color:#66d9ef">return</span> kth_eig
-
-
-<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
-    np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>seed(<span style="color:#ae81ff">1</span>)
-
-    <span style="color:#75715e"># Randomly select two matrices A and B and make sure they are symmetric</span>
-    n, nnodes <span style="color:#f92672">=</span> <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">50</span>
-    A <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randn(n, n)
-    A <span style="color:#f92672">=</span> A <span style="color:#f92672">+</span> A<span style="color:#f92672">.</span>conj()<span style="color:#f92672">.</span>T
-    B <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randn(n, n)
-    B <span style="color:#f92672">=</span> B <span style="color:#f92672">+</span> B<span style="color:#f92672">.</span>conj()<span style="color:#f92672">.</span>T
-
-    <span style="color:#75715e"># Define the discretization of interval [0, 1]</span>
-    t <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, nnodes)
-
-    <span style="color:#75715e"># Run over t and compute the eigenvalues</span>
-    res <span style="color:#f92672">=</span> []
-    <span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> range(n):
-        tmp_mat <span style="color:#f92672">=</span> []
-        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(nnodes):
-            tmp_mat<span style="color:#f92672">.</span>append(keig((<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> t[i]) <span style="color:#f92672">*</span> A <span style="color:#f92672">+</span> t[i] <span style="color:#f92672">*</span> B, k))
-        res<span style="color:#f92672">.</span>append(tmp_mat)
-
-    <span style="color:#75715e"># Plot the results</span>
-    min_ <span style="color:#f92672">=</span> int(min(min(res)))
-    max_ <span style="color:#f92672">=</span> int(max(max(res)))
-
-    fig <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">13</span>, <span style="color:#ae81ff">6</span>))
-    ax <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">111</span>)
-    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n):
-        <span style="color:#75715e"># label numbering should start from 1 not 0   </span>
-        ax<span style="color:#f92672">.</span>plot(t, res[i], <span style="color:#e6db74">&#39;-x&#39;</span>, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Eigenvalue &#34;</span><span style="color:#f92672">+</span>str(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>))
-    ax<span style="color:#f92672">.</span>set_xlabel(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;$t$&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>, weight<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bold&#34;</span>)
-    ax<span style="color:#f92672">.</span>set_ylabel(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;$\lambda_{A(t)}$&#34;</span>, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>, weight<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bold&#34;</span>)
-    ax<span style="color:#f92672">.</span>set_xticks([i<span style="color:#f92672">/</span><span style="color:#ae81ff">10</span> <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">11</span>)])
-    ticks <span style="color:#f92672">=</span> ax<span style="color:#f92672">.</span>get_xticks()
-    ax<span style="color:#f92672">.</span>set_xticklabels(ticks, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">14</span>, weight<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bold&#39;</span>)
-    ax<span style="color:#f92672">.</span>set_yticks([i <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(min_, max_)])
-    ticks <span style="color:#f92672">=</span> ax<span style="color:#f92672">.</span>get_yticks()
-    ax<span style="color:#f92672">.</span>set_yticklabels(ticks, fontsize<span style="color:#f92672">=</span><span style="color:#ae81ff">14</span>, weight<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;bold&#39;</span>)
-
-    pos <span style="color:#f92672">=</span> ax<span style="color:#f92672">.</span>get_position()
-    ax<span style="color:#f92672">.</span>set_position([pos<span style="color:#f92672">.</span>x0, pos<span style="color:#f92672">.</span>y0, pos<span style="color:#f92672">.</span>width <span style="color:#f92672">*</span> <span style="color:#ae81ff">0.9</span>, pos<span style="color:#f92672">.</span>height])
-    ax<span style="color:#f92672">.</span>legend(loc<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;center right&#39;</span>, bbox_to_anchor<span style="color:#f92672">=</span>(<span style="color:#ae81ff">1.25</span>, <span style="color:#ae81ff">0.5</span>))
-
-    ax<span style="color:#f92672">.</span>set_title(<span style="color:#e6db74">&#34;Eigenvalue Repulsion&#34;</span>)
-    plt<span style="color:#f92672">.</span>show()
-
-</code></pre></div><h2 id="linear-separability">Linear separability</h2>
-<p>Two sets $ A $ and $ B $ in an $ n $ dimensional Euclidean space are linear
-separable if there exist $ n + 1 $ numbers $ w_i \in \mathbb{R} $ such that
-every point $ a \in A $ satisfies</p>
-<p>$$ \sum_{i=1}^{n}w_i a_i &gt; k,  $$</p>
-<p>and every point $ b \in B $ satisfies</p>
-<p>$$ \sum_{i=1}^{n}w_i b_i &lt; k,  $$</p>
-<p>where $ k \in \mathbb{R} $ defines a linear border (<em>e.g.,</em> a line) between
-data points of the two sets.</p>
-<p>In layperson&rsquo;s terms, let&rsquo;s say we have two two-dimensional data sets (<em>e.g.</em>,
-each data point is described by two coordinates, x and y). These two sets are
-linearly separable if we can draw at least one line that will separate the
-points of set A from those of set B.</p>
-<p>Many times we have to solve a classification or clustering problem. If we
-could know <em>a priori</em> if the involved sets are linearly separable, we could
-choose the appropriate classification algorithm. For instance, if the data
-sets are not linearly separable, we won&rsquo;t be able to use a linear classifier.</p>
-<p>Therefore, one way to know if the sets at hand are linear separable is to
-compute the convex hull of each set and check if those convex hulls intersect
-or one contains the other, or they overlap. If any of those three conditions
-is true, then we know that the two sets are <strong>not</strong> linearly separable.
-In Python, we can quickly check that using the function <code>ConvexHull</code> of
-<em>Scipy</em>. Here is an example:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> matplotlib.pylab <span style="color:#66d9ef">as</span> plt
-
-<span style="color:#f92672">from</span> sklearn.datasets <span style="color:#f92672">import</span> make_moons, make_blobs
-<span style="color:#f92672">from</span> scipy.spatial <span style="color:#f92672">import</span> ConvexHull
-
-
-<span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
-    S <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>       <span style="color:#75715e"># size of scatter plot point</span>
-    blobs <span style="color:#f92672">=</span> make_blobs(n_samples<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>, centers<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, random_state<span style="color:#f92672">=</span><span style="color:#ae81ff">13</span>)
-    moons <span style="color:#f92672">=</span> make_moons(n_samples<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>)
-
-    fig <span style="color:#f92672">=</span> plt<span style="color:#f92672">.</span>figure(figsize<span style="color:#f92672">=</span>(<span style="color:#ae81ff">13</span>, <span style="color:#ae81ff">11</span>))
-    ax1 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">221</span>)
-    Xb, Yb <span style="color:#f92672">=</span> blobs
-    x1b <span style="color:#f92672">=</span> Xb[Yb <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>]
-    x2b <span style="color:#f92672">=</span> Xb[Yb <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>]
-    ax1<span style="color:#f92672">.</span>scatter(x1b[:, <span style="color:#ae81ff">0</span>], x1b[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
-    ax1<span style="color:#f92672">.</span>scatter(x2b[:, <span style="color:#ae81ff">0</span>], x2b[:, <span style="color:#ae81ff">1</span>], c<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;orange&#34;</span>, s<span style="color:#f92672">=</span>S)
-    ax1<span style="color:#f92672">.</span>set_xticks([])
-    ax1<span style="color:#f92672">.</span>set_yticks([])
-
-    ax2 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">222</span>)
-    X, Y <span style="color:#f92672">=</span> moons
-    x1 <span style="color:#f92672">=</span> X[Y <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>]
-    x2 <span style="color:#f92672">=</span> X[Y <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>]
-    ax2<span style="color:#f92672">.</span>scatter(x1[:, <span style="color:#ae81ff">0</span>], x1[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
-    ax2<span style="color:#f92672">.</span>scatter(x2[:, <span style="color:#ae81ff">0</span>], x2[:, <span style="color:#ae81ff">1</span>], c<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;orange&#34;</span>, s<span style="color:#f92672">=</span>S)
-    ax2<span style="color:#f92672">.</span>set_xticks([])
-    ax2<span style="color:#f92672">.</span>set_yticks([])
-
-    ax3 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">223</span>)
-    ch1 <span style="color:#f92672">=</span> ConvexHull(x1b)			<span style="color:#75715e"># Compute the convex hull</span>
-    ax3<span style="color:#f92672">.</span>scatter(x1b[:, <span style="color:#ae81ff">0</span>], x1b[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
-    ax3<span style="color:#f92672">.</span>plot(x1b[ch1<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">0</span>], x1b[ch1<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">1</span>], lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, c<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>)
-    ch2 <span style="color:#f92672">=</span> ConvexHull(x2b)
-    ax3<span style="color:#f92672">.</span>scatter(x2b[:, <span style="color:#ae81ff">0</span>], x2b[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
-    ax3<span style="color:#f92672">.</span>plot(x2b[ch2<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">0</span>], x2b[ch2<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">1</span>], lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, c<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>)
-    ax3<span style="color:#f92672">.</span>set_xticks([])
-    ax3<span style="color:#f92672">.</span>set_yticks([])
-
-    ax4 <span style="color:#f92672">=</span> fig<span style="color:#f92672">.</span>add_subplot(<span style="color:#ae81ff">224</span>)
-    ch1 <span style="color:#f92672">=</span> ConvexHull(x1)
-    ax4<span style="color:#f92672">.</span>scatter(x1[:, <span style="color:#ae81ff">0</span>], x1[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
-    ax4<span style="color:#f92672">.</span>plot(x1[ch1<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">0</span>], x1[ch1<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">1</span>], lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, c<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>)
-    ch2 <span style="color:#f92672">=</span> ConvexHull(x2)
-    ax4<span style="color:#f92672">.</span>scatter(x2[:, <span style="color:#ae81ff">0</span>], x2[:, <span style="color:#ae81ff">1</span>], s<span style="color:#f92672">=</span>S)
-    ax4<span style="color:#f92672">.</span>plot(x2[ch2<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">0</span>], x2[ch2<span style="color:#f92672">.</span>vertices, <span style="color:#ae81ff">1</span>], lw<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, c<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;k&#39;</span>)
-    ax4<span style="color:#f92672">.</span>set_xticks([])
-    ax4<span style="color:#f92672">.</span>set_yticks([])
-
-    plt<span style="color:#f92672">.</span>savefig(<span style="color:#e6db74">&#34;convec_hulls.png&#34;</span>)
-    plt<span style="color:#f92672">.</span>show()
-
-
-</code></pre></div><figure><img src="/images/convex_hulls.png"
-         alt="Figure 3. Blobs and moons data sets along with their convex hulls. The blobs are linear separable since the convex hull of the blue set does not intersect or overlap with the convex hull of the orange data set. On the other hand, the moons data set is not linear separable."/><figcaption>
-            <p>Figure 3. Blobs and moons data sets along with their convex hulls. The blobs are linear separable since the convex hull of the blue set does not intersect or overlap with the convex hull of the orange data set. On the other hand, the moons data set is not linear separable.</p>
-        </figcaption>
-</figure>
 <h2 id="positive-definite-matrix">Positive definite matrix</h2>
 <p>Check if a given matrix $ \bf{A} $ is positive definite. If all the eigenvalues
 of matrix $ \bf{A} $ are positive then the matrix is positive definite.</p>
@@ -766,8 +483,8 @@ $ -n $.</p>
     
     <a
       class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
-      href="https://gdetor.github.io/posts/tipsntricks/"
-      ><span class="mr-1.5">←</span><span>Tips &amp; Tricks (Linux/Vim/Git/Programming)</span></a
+      href="https://gdetor.github.io/posts/curves_intersection/"
+      ><span class="mr-1.5">←</span><span>Intersection points of curves</span></a
     >
     
     

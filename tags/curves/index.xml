@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>curves on GID</title>
+    <link>https://gdetor.github.io/tags/curves/</link>
+    <description>Recent content in curves on GID</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Copyright © 2024, Georgios Is. Detorakis.</copyright>
+    <lastBuildDate>Tue, 01 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/tags/curves/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Intersection points of curves</title>
+      <link>https://gdetor.github.io/posts/curves_intersection/</link>
+      <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://gdetor.github.io/posts/curves_intersection/</guid>
+      <description>We often need to compute the points where two lines intersect or where a function intersects the x-axis (zero crossing). Here, we provide a Python script that does precisely that. Computes the points where two curves (lines, time series, etc.) intersect.
+Hence, we provide a simple Python code that can compute the points $(x, y)$ where two curves, $ f(t) $ and g(t), intersect. The first step, and the easy one, is to take two points, one from each curve, $ (t_1, Y_f) $, and $ (t_1, Y_g) $, compute their distance, and check if it is smaller than an $ \epsilon $, where $ \epsilon $ is a tiny number close to zero.</description>
+    </item>
+    
+  </channel>
+</rss>
