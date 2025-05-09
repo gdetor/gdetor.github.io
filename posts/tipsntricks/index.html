@@ -1,0 +1,593 @@
+<!doctype html>
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg:#faf8f1"
+  lang="en-us"
+  dir="ltr"
+><head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Tips &amp; Tricks (Linux/Vim/Git/Programming) - GID</title>
+
+  
+  <meta name="theme-color" />
+
+  <meta name="description" content="
+In this post you can find various simple tricks and tips for Linux, Vim,
+Git, Python and many other stuff. All the material provided in this page has
+been suggested by many different sources such as
+Command Line Magic, Mastering Vim,
+kernel_perspective, nixCraft,
+and Linux Today. The material is free and can
+be redistributed and/or modified. There is no any warranty that
+they work for you or are suitable to your need. The author of this page is
+not responsible for any damage this material may cause." />
+  <meta name="author" content="Georgios Is. Detorakis" /><link rel="preload stylesheet" as="style" href="https://gdetor.github.io/main.min.css" />
+
+  
+  <link rel="preload" as="image" href="https://gdetor.github.io/theme.png" />
+
+  <link rel="preload" as="image" href="https://avatars.githubusercontent.com/u/7115299?v=4" />
+
+  <link rel="preload" as="image" href="https://gdetor.github.io/github.svg" /><link rel="preload" as="image" href="https://gdetor.github.io/linkedin.svg" />
+
+  <script
+    defer
+    src="https://gdetor.github.io/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script><link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
+  integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
+  crossorigin="anonymous"
+/>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js"
+  integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t"
+  crossorigin="anonymous"
+></script>
+<script
+  defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
+  integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
+  crossorigin="anonymous"
+></script><script>
+  document.addEventListener('DOMContentLoaded', () =>
+    renderMathInElement(document.body, {
+      
+      
+      delimiters: [
+        { left: '$$', right: '$$', display: true },
+        { left: '$', right: '$', display: false },
+      ],
+      
+      throwOnError: false,
+    }),
+  );
+</script>
+
+
+  
+  <link
+    rel="icon"
+    href="https://gdetor.github.io/icons/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="https://gdetor.github.io/apple-touch-icon.png"
+  />
+
+  <meta name="generator" content="Hugo 0.147.2">
+  <meta itemprop="name" content="Tips & Tricks (Linux/Vim/Git/Programming)">
+  <meta itemprop="description" content="Here, you can find some helpful tips and tricks.">
+  <meta itemprop="datePublished" content="2024-11-20T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2024-11-20T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1584">
+  <meta itemprop="keywords" content="Linux,Vim,Python,C,Git"><meta property="og:url" content="https://gdetor.github.io/posts/tipsntricks/">
+  <meta property="og:site_name" content="GID">
+  <meta property="og:title" content="Tips & Tricks (Linux/Vim/Git/Programming)">
+  <meta property="og:description" content="Here, you can find some helpful tips and tricks.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-11-20T00:00:00+00:00">
+    <meta property="article:modified_time" content="2024-11-20T00:00:00+00:00">
+    <meta property="article:tag" content="Linux">
+    <meta property="article:tag" content="Vim">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="C">
+    <meta property="article:tag" content="Git">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Tips & Tricks (Linux/Vim/Git/Programming)">
+  <meta name="twitter:description" content="Here, you can find some helpful tips and tricks.">
+
+  <link rel="canonical" href="https://gdetor.github.io/posts/tipsntricks/" />
+</head>
+<body
+    class="bg-(--bg) text-black antialiased duration-200 ease-out [-webkit-tap-highlight-color:transparent] dark:text-white"
+  ><header
+  class="mx-auto flex h-[4.5rem] max-w-(--w) px-8 whitespace-nowrap lg:justify-center"
+>
+  <div class="relative z-50 flex items-center ltr:mr-auto rtl:ml-auto">
+    <a
+      class="-translate-y-[1px] text-2xl font-medium"
+      href="https://gdetor.github.io/"
+      >GID</a
+    >
+    <div
+      class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden ltr:-mr-8 rtl:-ml-8"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full flex-col justify-center bg-(--bg) pb-16 duration-200 select-none lg:static lg:h-auto lg:flex-row lg:bg-transparent! lg:pb-0 lg:transition-none"
+  ><nav
+      class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-10 rtl:space-x-reverse"
+    ><a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/about/"
+        >About</a
+      ><a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/research/"
+        >Research</a
+      ><a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/software/"
+        >Software</a
+      ><a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/publications/"
+        >Publications</a
+      ><a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+        href="/artwork/"
+        >Artwork</a
+      ></nav><nav
+      class="mt-12 flex justify-center space-x-10 lg:mt-0 lg:items-center ltr:lg:ml-14 rtl:space-x-reverse rtl:lg:mr-14 dark:invert"
+    >
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./github.svg)"
+        href="https://github.com/gdetor"
+        target="_blank"
+        rel="me"
+      >github</a>
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./linkedin.svg)"
+        href="https://linkedin.com/in/georgiosdetorakis"
+        target="_blank"
+        rel="me"
+      >linkedin</a>
+    </nav>
+  </div>
+</header>
+<main
+      class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"
+    ><article>
+  <header class="mb-14">
+    <h1 class="my-0! pb-2.5">Tips &amp; Tricks (Linux/Vim/Git/Programming)</h1><div class="text-xs antialiased opacity-60"><time>Nov 20, 2024</time><span class="mx-1">&middot;</span>
+      <span>Georgios Is. Detorakis</span>
+      <span class="mx-1">&middot;</span>
+      <span>8&nbsp minutes read &nbsp / &nbsp1584&nbsp words</span>
+    </div></header>
+
+  <section><div style="text-align: justify;">
+<p>In this post you can find various simple tricks and tips for Linux, Vim,
+Git, Python and many other stuff. All the material provided in this page has
+been suggested by many different sources such as
+<a href="https://twitter.com/climagic">Command Line Magic</a>, <a href="https://twitter.com/MasteringVim">Mastering Vim</a>,
+<a href="https://twitter.com/unix_byte">kernel_perspective</a>, <a href="https://twitter.com/nixcraft">nixCraft</a>,
+and <a href="https://twitter.com/linuxtoday">Linux Today</a>. The material is free and can
+be redistributed and/or modified. There is no any warranty that
+they work for you or are suitable to your need. The author of this page is
+not responsible for any damage this material may cause.</p>
+<h3 id="how-to-change-your-mouse-buttons-functionality">How to change your mouse buttons functionality</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ xinput list
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ⎡ Virtual core pointer                      id=2    [master pointer  (3)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ⎜   ↳ Virtual core XTEST pointer            id=4    [slave  pointer  (2)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ⎜   ↳ Massdrop Inc. CTRL Keyboard Consumer Control  id=12   [slave  pointer  (2)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ⎜   ↳ Logitech USB Receiver Keyboard        id=14   [slave  pointer  (2)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ⎜   ↳ Logitech USB Receiver                 id=19   [slave  pointer  (2)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># ⎣ Virtual core keyboard                     id=3    [master keyboard (2)]</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># </span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># The pointer is indicated by the id= in the list above</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># some mice might not present with two pointers</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ xinput set-button-map <span style="color:#ae81ff">14</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">3</span> <span style="color:#75715e"># For left, middle, right buttons</span>
+</span></span><span style="display:flex;"><span>$ xinput set-button-map <span style="color:#ae81ff">19</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">3</span> <span style="color:#75715e"># For left, middle, right buttons</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ xinput set-button-map <span style="color:#ae81ff">14</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">3</span> <span style="color:#75715e"># For disabling the middle button</span>
+</span></span><span style="display:flex;"><span>$ xinput set-button-map <span style="color:#ae81ff">19</span> <span style="color:#ae81ff">1</span> <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">3</span> <span style="color:#75715e"># For disabling the middle button</span>
+</span></span></code></pre></div><h3 id="how-to-run-scp-through-ssh-tunnel-linux">How to run SCP through SSH Tunnel (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ssh -L 1234:&lt;remote_address&gt;:22 &lt;user@gateway&gt;@address_of_gateway&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># $ ssh -L 1234:&lt;remote_address&gt;:22 &lt;user@gateway&gt;@&lt;address_of_gateway&gt; cat -</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># cat - keeps it running</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ scp -P <span style="color:#ae81ff">1234</span> &lt;user@remote_machine&gt;@127.0.0.1:path_to_file file_name_to_copy
+</span></span></code></pre></div><h3 id="pass-the-output-of-a-command-list-to-another-command-using--linux-bash-zsh">Pass the output of a command (list) to another command using | (Linux, Bash, ZSH)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ diff &lt;<span style="color:#f92672">(</span>ls dirA<span style="color:#f92672">)</span> &lt;<span style="color:#f92672">(</span>ls dirB<span style="color:#f92672">)</span>&gt;&gt;
+</span></span></code></pre></div><h3 id="how-to-stop-a-bash-script-on-errors-linux-bash">How to stop a bash script on errors (Linux, Bash)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>set -e  <span style="color:#75715e"># stops a script on errors</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>set -u  <span style="color:#75715e"># stops a script on unset variables</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>set -o pipefail     <span style="color:#75715e"># makes a pipe to fail if any command fails</span>
+</span></span></code></pre></div><h3 id="how-to-count-the-lines-of-specific-files-in-a-dir-linux">How to count the lines of specific files in a dir (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ find . -name <span style="color:#e6db74">&#34;*.c&#34;</span> | sed <span style="color:#e6db74">&#39;s/.*/&#34;&amp;&#34;/&#39;</span> | xargs wc -l    <span style="color:#75715e"># assumed C files</span>
+</span></span></code></pre></div><h3 id="override-the-tmux-sessions-numbering-manually-tmux">Override the Tmux session&rsquo;s numbering manually (Tmux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tmux new -s <span style="color:#ae81ff">1</span> -d -P
+</span></span></code></pre></div><h3 id="how-to-check-if-file-a-contains-all-lines-of-file-b-linux">How to check if file A contains all lines of file B (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ comm -13 &lt;<span style="color:#f92672">(</span>sort -u fileA<span style="color:#f92672">)</span> &lt;<span style="color:#f92672">(</span>sort -u fileB<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># if the output is empty that means all the lines of fileB are in the fileA to0</span>
+</span></span></code></pre></div><h3 id="how-to-delete-all-files-except-one-or-few-files-with-extensions-linux">How to delete all files except one or few files with extensions (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ rm -v !<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;filaneme_youd_like_to_keep&#34;</span><span style="color:#f92672">)</span>     <span style="color:#75715e"># verbose mode</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ rm -i !<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;foo&#34;</span>|<span style="color:#e6db74">&#34;bar&#34;</span><span style="color:#f92672">)</span>   <span style="color:#75715e"># interactive mode - keep files foo and bar</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ rm -v <span style="color:#f92672">(</span>*.pdf | *.odt<span style="color:#f92672">)</span>  <span style="color:#75715e"># keep files with extensions pdf and odt</span>
+</span></span></code></pre></div><h3 id="how-to-avoid-nested-loops-python">How to avoid nested loops (Python)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> itertools <span style="color:#f92672">import</span> product
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>]
+</span></span><span style="display:flex;"><span>y <span style="color:#f92672">=</span> [<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>]
+</span></span><span style="display:flex;"><span>z <span style="color:#f92672">=</span> [<span style="color:#ae81ff">8</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">10</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i, j, k <span style="color:#f92672">in</span> product(x, y, z):
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span> <span style="color:#75715e"># do something with x, y, and z</span>
+</span></span></code></pre></div><h3 id="eval-function-python">Eval function (Python)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">foo</span>(x, y, operator):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> eval(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>x<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span>operator<span style="color:#e6db74">}</span><span style="color:#e6db74"> </span><span style="color:#e6db74">{</span>b<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>x, y <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>
+</span></span><span style="display:flex;"><span>operator <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;+&#34;</span>
+</span></span><span style="display:flex;"><span>print(foo(x, y, operator))
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">9</span>
+</span></span></code></pre></div><h3 id="how-to-share-files-with-samba-linux">How to share files with SAMBA (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo apt install samba        <span style="color:#75715e"># Install samba packages on Ubuntu/Debian</span>
+</span></span><span style="display:flex;"><span>$ mkdir samba_shared_folder     <span style="color:#75715e"># Create a temporary folder</span>
+</span></span><span style="display:flex;"><span>$ vim /etc/samba/smb.conf
+</span></span></code></pre></div><p>Add the following section to the <code>smb.conf</code> file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>[<span style="color:#a6e22e">samba_share</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">comment</span> = <span style="color:#a6e22e">Samba</span> <span style="color:#a6e22e">on</span> <span style="color:#a6e22e">local</span> <span style="color:#a6e22e">network</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">path</span> = <span style="color:#e6db74">/home/</span><span style="color:#a6e22e">username</span>/<span style="color:#a6e22e">path_to_samba_shared_folder</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">read</span> <span style="color:#a6e22e">only</span> = <span style="color:#a6e22e">no</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">browsable</span> = <span style="color:#a6e22e">yes</span>
+</span></span></code></pre></div><p>Then run the following commands:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo service smbd restart
+</span></span><span style="display:flex;"><span>$ sudo ufw allow samba      <span style="color:#75715e"># net filter firewall</span>
+</span></span><span style="display:flex;"><span>$ sudo smbpasswd -a username
+</span></span></code></pre></div><p>To access the SAMBA shared folder, either use any manager such as Nautilus
+or through the terminal:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ smbclient -L //hostname/samba_shared_folder
+</span></span></code></pre></div><h3 id="share-a-file-using-python-linux-python">Share a file using Python (Linux, Python)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ mkdir temproot
+</span></span><span style="display:flex;"><span>$ cd temproot
+</span></span><span style="display:flex;"><span>$ ln -s FILE_TO_BE_SHARED
+</span></span><span style="display:flex;"><span>$ python3 -mhttp.server     <span style="color:#75715e"># file now is accessible at http://other_machine_ip:8000/</span>
+</span></span></code></pre></div><h3 id="compress-an-executable-using-upx-linux">Compress an executable using UPX (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ upx -n compressed_exec_name source_exec_name
+</span></span></code></pre></div><h3 id="copymove-a-file-into-the-directory-you-were-just-in-linux">Copy/move a file into the directory you were just in (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ cp <span style="color:#f92672">(</span>or mv<span style="color:#f92672">)</span> FILENAME <span style="color:#e6db74">&#34;</span>$OLDPWD<span style="color:#e6db74">/&#34;</span>
+</span></span></code></pre></div><h3 id="find-big-files-linux">Find big files (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ find / -type f -size +XXXM    <span style="color:#75715e"># where XXX is the desired size in MB</span>
+</span></span></code></pre></div><h3 id="detect-any-vulnerabilities-on-your-system-linux">Detect any vulnerabilities on your system (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ grep -r . /sys/devices/system/cpu/vulnerabilities/
+</span></span></code></pre></div><h3 id="remove-duplicates-from-pythons-list-python">Remove duplicates from Python&rsquo;s list (Python)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>collection <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>collection <span style="color:#f92672">=</span> list(set(collection))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(collection)
+</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>]
+</span></span></code></pre></div><h3 id="merge-two-dictionaries-in-python-python">Merge two dictionaries in Python (Python)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>dict1 <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;a&#39;</span>: <span style="color:#ae81ff">1</span>}
+</span></span><span style="display:flex;"><span>dict2 <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;b&#39;</span>: <span style="color:#ae81ff">2</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>dict <span style="color:#f92672">=</span> {<span style="color:#f92672">**</span>dict1, <span style="color:#f92672">**</span>dict2}
+</span></span></code></pre></div><h3 id="filter-a-list-in-python-python">Filter a list in Python (Python)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>mylist <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>, <span style="color:#ae81ff">8</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>filtered_list <span style="color:#f92672">=</span> list(filter(<span style="color:#66d9ef">lambda</span> x: x<span style="color:#f92672">%</span><span style="color:#ae81ff">2</span><span style="color:#f92672">==</span><span style="color:#ae81ff">0</span>, mylist))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(filtered_list)
+</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">7</span>]
+</span></span></code></pre></div><h3 id="sort-a-python-dictionary-by-values">Sort a Python dictionary by values</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>grades <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;Bob&#39;</span>:<span style="color:#ae81ff">3.5</span>, <span style="color:#e6db74">&#39;Alice&#39;</span>: <span style="color:#ae81ff">4.0</span>, <span style="color:#e6db74">&#39;Foo&#39;</span>: <span style="color:#ae81ff">2.2</span>}
+</span></span><span style="display:flex;"><span>sorted_grades <span style="color:#f92672">=</span> {k:v <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> sorted(grades<span style="color:#f92672">.</span>items(), key<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x:x[<span style="color:#ae81ff">1</span>])}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(sorted_grades)
+</span></span><span style="display:flex;"><span>{<span style="color:#e6db74">&#39;Foo&#39;</span>: <span style="color:#ae81ff">2.2</span>, <span style="color:#e6db74">&#39;Bob&#39;</span>: <span style="color:#ae81ff">3.5</span>, <span style="color:#e6db74">&#39;Alice&#39;</span>: <span style="color:#ae81ff">4.0</span>}
+</span></span></code></pre></div><h3 id="sort-a-python-dictionary-by-keys">Sort a Python dictionary by keys</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>grades <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;Bob&#39;</span>:<span style="color:#ae81ff">3.5</span>, <span style="color:#e6db74">&#39;Alice&#39;</span>: <span style="color:#ae81ff">4.0</span>, <span style="color:#e6db74">&#39;Foo&#39;</span>: <span style="color:#ae81ff">2.2</span>}
+</span></span><span style="display:flex;"><span>sorted_grades <span style="color:#f92672">=</span> {key:grades[key] <span style="color:#66d9ef">for</span> key <span style="color:#f92672">in</span> sorted(grades<span style="color:#f92672">.</span>keys())}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(sorted_grades)
+</span></span><span style="display:flex;"><span>{<span style="color:#e6db74">&#39;Alice&#39;</span>: <span style="color:#ae81ff">4.0</span><span style="color:#e6db74">&#39;, Bob&#39;</span>: <span style="color:#ae81ff">3.5</span>, <span style="color:#e6db74">&#39;Foo&#39;</span>: <span style="color:#ae81ff">2.2</span>}
+</span></span></code></pre></div><h3 id="map-filter-and-reduce-python">Map, Filter, and Reduce (Python)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># MAP</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">square</span>(x):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> x<span style="color:#f92672">*</span>x
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>]
+</span></span><span style="display:flex;"><span>res <span style="color:#f92672">=</span> map(square, x)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># res = map(lambda y:y*y, x)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(res)
+</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">9</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">25</span>, <span style="color:#ae81ff">36</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># FILTER</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">less_than_10</span>(x):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> x <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">10</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> x
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> [<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">10</span>, <span style="color:#ae81ff">12</span>, <span style="color:#ae81ff">14</span>]
+</span></span><span style="display:flex;"><span>res <span style="color:#f92672">=</span> list(filter(less_than_10, x))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(res)
+</span></span><span style="display:flex;"><span>[<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># REDUCE</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">addition</span>(x,y):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> x <span style="color:#f92672">+</span> y
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> functools <span style="color:#f92672">import</span> reduce
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> [<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>]
+</span></span><span style="display:flex;"><span>res <span style="color:#f92672">=</span> reduce(addition, x))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(res)
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">15</span>
+</span></span></code></pre></div><h3 id="python-string-methods-python">Python string methods (Python)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>string <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Hello, World!&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(string<span style="color:#f92672">.</span>isalpha())    <span style="color:#75715e"># check if all characters are letters</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(string<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;Hello&#34;</span>, <span style="color:#e6db74">&#34;Hi&#34;</span>))    <span style="color:#75715e"># replace Hello with Hi</span>
+</span></span><span style="display:flex;"><span>Hi, World<span style="color:#960050;background-color:#1e0010">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(string<span style="color:#f92672">.</span>count(<span style="color:#e6db74">&#34;World&#34;</span>))    <span style="color:#75715e"># count the occurrences of word World</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span> 
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(string<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;!&#34;</span>))     <span style="color:#75715e"># return the position of character &#39;!&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(string<span style="color:#f92672">.</span>upper())       <span style="color:#75715e"># capitalize all characters</span>
+</span></span><span style="display:flex;"><span>HELLO, WORLD<span style="color:#960050;background-color:#1e0010">!</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(string<span style="color:#f92672">.</span>lower())       <span style="color:#75715e"># convert all characters to lower-case</span>
+</span></span><span style="display:flex;"><span>hello, world<span style="color:#960050;background-color:#1e0010">!</span>
+</span></span></code></pre></div><h3 id="reboot-a-linux-system-directly-to-the-firmware-setup-menu-linux">Reboot a Linux system directly to the firmware setup menu (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ systemctl reboot --firmware-setup
+</span></span></code></pre></div><h3 id="joining-dictinary-keys-and-values-to-a-list-in-python-programming">Joining dictinary keys and values to a list in Python (Programming)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#39;_&#39;</span><span style="color:#f92672">.</span>join(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{!s}</span><span style="color:#e6db74">_</span><span style="color:#e6db74">{!r}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(key, val) <span style="color:#66d9ef">for</span> (key, val) <span style="color:#f92672">in</span> d<span style="color:#f92672">.</span>items())
+</span></span></code></pre></div><h3 id="check-the-health-status-of-your-hard-drive-linux">Check the health status of your hard drive (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ badblocks -w -s -o error.log /dev/sdX     <span style="color:#75715e"># get X using lsblk</span>
+</span></span></code></pre></div><h3 id="how-to-load-reload-modules-ipython">How to load (reload) modules (iPython)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">%</span>load_ext autoreload
+</span></span><span style="display:flex;"><span><span style="color:#f92672">%</span>autoreload <span style="color:#ae81ff">2</span>
+</span></span></code></pre></div><h3 id="power-off-an-external-hard-drive-linux">Power-off an external hard drive (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ udiskctl power-off -b /dev/sdX    <span style="color:#75715e"># obtain X using lsblk</span>
+</span></span></code></pre></div><h3 id="rsync-your-data-linux">rsync your data (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ rsync -avzhP src dst --exclude-from<span style="color:#f92672">=</span>file.txt --include<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;.git/config&#34;</span>
+</span></span></code></pre></div><h3 id="recover-data-linux">Recover data (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ddrescue -dr3 /dev/sdX imagename.image logfile
+</span></span></code></pre></div><h3 id="random-execution-of-a-linux-command-linux">Random execution of a Linux command (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ <span style="color:#f92672">[</span> <span style="color:#66d9ef">$((</span>RANDOM <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span><span style="color:#66d9ef">))</span> -eq <span style="color:#ae81ff">0</span> <span style="color:#f92672">]</span> <span style="color:#f92672">&amp;&amp;</span> command
+</span></span></code></pre></div><h3 id="open-a-file-in-vim-with-no-compatibility-vim">Open a file in VIM with no compatibility (Vim)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ vim -u NONE -u NORC fname
+</span></span></code></pre></div><h3 id="io-devices-latency-linux">IO devices latency (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ioping /tmp/
+</span></span><span style="display:flex;"><span>$ ioping -c <span style="color:#ae81ff">12</span> /tmp/    <span style="color:#75715e"># runs for 12 rounds</span>
+</span></span><span style="display:flex;"><span>$ sudo ioping -R /dev/sdX         <span style="color:#75715e"># seek rate</span>
+</span></span><span style="display:flex;"><span>$ sudo ioping -RL /dev/sdX        <span style="color:#75715e"># sequential speed</span>
+</span></span></code></pre></div><h3 id="copy-a-file-to-the-clipboard-linux">Copy a file to the clipboard (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ xclip -sel clip &lt; file
+</span></span></code></pre></div><h3 id="import-date-in-vim-vim">Import date in VIM (Vim)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:<span style="color:#a6e22e">read</span> !<span style="color:#a6e22e">date</span>
+</span></span></code></pre></div><h3 id="import-the-output-of-a-linux-command-in-vim-vim">Import the output of a Linux command in Vim (Vim)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-vim" data-lang="vim"><span style="display:flex;"><span>:<span style="color:#66d9ef">let</span> @<span style="color:#a6e22e">a</span>=<span style="color:#a6e22e">system</span>(<span style="color:#e6db74">&#34;command&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">In</span> <span style="color:#a6e22e">insert</span> <span style="color:#a6e22e">mode</span> <span style="color:#a6e22e">press</span> <span style="color:#a6e22e">Ctrl</span>+<span style="color:#a6e22e">R</span> <span style="color:#a6e22e">and</span> <span style="color:#a6e22e">then</span> <span style="color:#a6e22e">a</span>
+</span></span></code></pre></div><h3 id="convert-a-bunch-of-png-files-to-a-video-linux">Convert a bunch of png files to a video (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ffmpeg -framerate 1/5 -patter_type glob -i <span style="color:#e6db74">&#34;*.png&#34;</span> -vf <span style="color:#e6db74">&#34;fps=95,format=yuv420p&#34;</span> output.mp4
+</span></span></code></pre></div><h3 id="convert-a-photo-into-ascii-art-linux">Convert a photo into ASCII art (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ jp2a photo.jpg | tee photo.ascii
+</span></span></code></pre></div><h3 id="read-gz-files-without-extracting-them-linux">Read .gz files without extracting them (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ zmore file.gz
+</span></span><span style="display:flex;"><span>$ zless file.gz
+</span></span></code></pre></div><h3 id="get-memory-information-linux">Get memory information (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ sudo lshw -C memory -short
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ sudo dmidecode -t memory
+</span></span></code></pre></div><h3 id="how-to-load-huge-files-in-python-programming">How to load huge files in Python (Programming)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> mmap
+</span></span><span style="display:flex;"><span>f <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#34;HUGE.txt&#34;</span>)
+</span></span><span style="display:flex;"><span>mm <span style="color:#f92672">=</span> mmap<span style="color:#f92672">.</span>mmap(f<span style="color:#f92672">.</span>filend, length<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, access<span style="color:#f92672">=</span>mmap<span style="color:#f92672">.</span>ACCESS_READ, offset<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>print(mm[<span style="color:#f92672">-</span><span style="color:#ae81ff">1000</span>:])
+</span></span></code></pre></div><h3 id="git-credential-storage-git">Git credential storage (Git)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ git config --global credential.helper cache <span style="color:#e6db74">&#39;--timeout S&#39;</span>  <span style="color:#75715e"># S -&gt; seconds</span>
+</span></span></code></pre></div><h3 id="include-a-help-flag-in-makefiles-programming">Include a help flag in Makefiles (Programming)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-make" data-lang="make"><span style="display:flex;"><span><span style="color:#a6e22e">.PHONY</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    help
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">help</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    cat makefile | grep -oP <span style="color:#e6db74">&#34;^#\K(.*)&#34;</span>
+</span></span></code></pre></div><h3 id="copy-a-file-into-multiple-directories-linux">Copy a file into multiple directories (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo dir1 dir2 | xargs -n <span style="color:#ae81ff">1</span> cp file
+</span></span><span style="display:flex;"><span>parallel cp file ::: dir1 dir2
+</span></span></code></pre></div><h3 id="how-to-run-a-elf-programming">How to run a ELF (Programming)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ touch file
+</span></span><span style="display:flex;"><span>$ cp /bin/ls .
+</span></span><span style="display:flex;"><span>$ ./ls
+</span></span><span style="display:flex;"><span>file ls
+</span></span><span style="display:flex;"><span>$ chmod -x ./ls
+</span></span><span style="display:flex;"><span>$ ./ls
+</span></span><span style="display:flex;"><span>-bash: ./ls: Permission denied
+</span></span><span style="display:flex;"><span>$ strings ./ls | head -n <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>/lib64/ld-linux-x86-64.so.2
+</span></span><span style="display:flex;"><span>$ /lib64/ld-linux-x86-64.so.2 ./ls
+</span></span><span style="display:flex;"><span>file ls
+</span></span></code></pre></div><h3 id="set-an-alert-message-when-a-job-finishes-linux">Set an alert message when a job finishes (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ <span style="color:#f92672">{</span> execute_something_that_takes_time; xmessage DONE; <span style="color:#f92672">}</span>&amp;
+</span></span></code></pre></div><h3 id="dennis-ritchie-linuxprogrammin">Dennis Ritchie (Linux/Programmin)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ curl -L git.io/unix
+</span></span></code></pre></div><h3 id="play-tetris-linux">Play tetris (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ ssh netris<span style="color:#ae81ff">\.</span>rocketnine<span style="color:#ae81ff">\.</span>space
+</span></span></code></pre></div><h3 id="delete-the-last-column-of-a-text-file-linux">Delete the last column of a text file (Linux)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ awk <span style="color:#e6db74">&#39;NF {NF-=1};1&#39;</span>&lt; input_file &gt; output_file
+</span></span><span style="display:flex;"><span>$ awk <span style="color:#e6db74">&#39;NF {NF--};1&#39;</span>&lt; input_file &gt; output_file
+</span></span></code></pre></div><h3 id="python-scope-programming">Python scope (Programming)</h3>
+<p>LEGB:</p>
+<ul>
+<li><strong>L</strong>ocal (within a function)</li>
+<li><strong>E</strong>nclosing functions locals</li>
+<li><strong>G</strong>lobal (module)</li>
+<li><strong>B</strong>uilt-in (python) preassigned names</li>
+</ul>
+<h3 id="c-pointers-programming">C Pointers (Programming)</h3>
+<ul>
+<li>ptr++ Evaluates ptr and then increments ptr by 1xbase_type_size</li>
+<li>*ptr++ Evaluates ptr, increments it, and dereferences the evaluated value</li>
+<li>int *ptr[10] Array of 10 pointers to integer (int *)</li>
+<li>int (*ptr)[10] Pointer to an array of 10 integers</li>
+</ul>
+<h3 id="automatic-variables-in-make-programming">Automatic variables in Make (Programming)</h3>
+<ol>
+<li>$@: The target filename.</li>
+<li>$*: The target filename without the file extension.</li>
+<li>$&lt;: The first prerequisite filename.</li>
+<li>$^: The filenames of all the prerequisites, separated by spaces, discard duplicates.</li>
+<li>$+: Similar to 4, but includes duplicates.</li>
+<li>$?: The names of all prerequisites that are newer than the target, separated by spaces.</li>
+</ol>
+<h3 id="useful-google-search-commands">Useful Google Search Commands</h3>
+<ol>
+<li>Site: Search a specific site for specific keywords</li>
+<li>Before, After: Seach before or after a specific period of time</li>
+<li>filetype: Return results in a specific file type (e.g., PDF)</li>
+<li>$30..$50: Return a range of prices, values, etc</li>
+<li>&ldquo;laptops -apple&rdquo; Searche for laptops except apple&rsquo;s ones</li>
+</ol>
+</div>
+</section>
+
+  <footer class="mt-12 flex flex-wrap"><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://gdetor.github.io/tags/linux"
+      >Linux</a
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://gdetor.github.io/tags/vim"
+      >Vim</a
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://gdetor.github.io/tags/python"
+      >Python</a
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://gdetor.github.io/tags/c"
+      >C</a
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
+      href="https://gdetor.github.io/tags/git"
+      >Git</a
+    ></footer><nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg leading-[1.2]! *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  ><a class="ltr:pr-3 rtl:pl-3" href="https://gdetor.github.io/posts/gaf/"
+      ><span class="ltr:mr-1.5 rtl:ml-1.5">←</span><span>How do we compute a Gramian Angular Field (GAF) for time series?</span></a
+    ><a
+      class="justify-end pl-3 ltr:ml-auto rtl:mr-auto"
+      href="https://gdetor.github.io/posts/eigs_level_repulsion/"
+      ><span>Eigenvalue level repulsion</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    ></nav></article></main><footer
+  class="mx-auto flex h-[4.5rem] max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
+>
+  <div class="mr-auto">Copyright © 2024, Georgios Is. Detorakis.</div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >powered by hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >hugo-paper</a
+  >
+</footer>
+</body>
+</html>

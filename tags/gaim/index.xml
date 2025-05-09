@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GAIM on GID</title>
+    <link>https://gdetor.github.io/tags/gaim/</link>
+    <description>Recent content in GAIM on GID</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>Copyright © 2024, Georgios Is. Detorakis.</copyright>
+    <lastBuildDate>Thu, 28 Apr 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://gdetor.github.io/tags/gaim/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Genetic Algorithms &amp; Island Models</title>
+      <link>https://gdetor.github.io/posts/genetic_algorithms/</link>
+      <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
+      <guid>https://gdetor.github.io/posts/genetic_algorithms/</guid>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;In this post, we explore genetic algorithms (GAs) and the so-called&#xA;island model (IM). GAs and the IM are optimization methods used to&#xA;maximize or minimize a cost function.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-is-optimization&#34;&gt;What is Optimization?&lt;/h2&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s see an example of an optimization problem we all face every day. Let&amp;rsquo;s&#xA;assume you&amp;rsquo;d like to go and grab a couple of coffee from your favorite coffee&#xA;shop. Typically, you ask Google to find the fastest way to the store from your&#xA;current location. But let&amp;rsquo;s forget about technology for now.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

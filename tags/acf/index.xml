@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ACF on GID</title>
+    <link>https://gdetor.github.io/tags/acf/</link>
+    <description>Recent content in ACF on GID</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>Copyright © 2024, Georgios Is. Detorakis.</copyright>
+    <lastBuildDate>Thu, 13 Oct 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://gdetor.github.io/tags/acf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Autocorrelation Functions for Time Series</title>
+      <link>https://gdetor.github.io/posts/acf_pacf/</link>
+      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://gdetor.github.io/posts/acf_pacf/</guid>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;This post aims to provide some theoretical background on autocorrelation functions and how to use them to analyze time series. Furthermore, we show how to use the Autocorrelation (ACF) function and the Partial Autocorrelation (PACF) function to determine the parameters for an ARMA model.&lt;/p&gt;&#xA;&lt;h2 id=&#34;brief-introduction-to-time-series&#34;&gt;Brief introduction to time series&lt;/h2&gt;&#xA;&lt;p&gt;In a previous post (see &lt;a href=&#34;https://gdetor.github.io/posts/errors&#34;&gt;here&lt;/a&gt;), we&#xA;introduced some basic definitions and terminology about time series. We repeat the&#xA;same definitions here to avoid forcing the reader to move back and forth.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

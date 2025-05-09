@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Convex Hull on GID</title>
+    <link>https://gdetor.github.io/tags/convex-hull/</link>
+    <description>Recent content in Convex Hull on GID</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>Copyright © 2024, Georgios Is. Detorakis.</copyright>
+    <lastBuildDate>Tue, 01 Oct 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://gdetor.github.io/tags/convex-hull/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How do we verify linear separability with Python?</title>
+      <link>https://gdetor.github.io/posts/linear_separability/</link>
+      <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://gdetor.github.io/posts/linear_separability/</guid>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;Two sets $ A $ and $ B $ in an $ n $ dimensional Euclidean space are linearly&#xA;separable if there exist $ n + 1 $ numbers $ w_i \in \mathbb{R} $ such that&#xA;every point $ a \in A $ satisfies&lt;/p&gt;&#xA;&lt;p&gt;$$ \sum_{i=1}^{n}w_i a_i &amp;gt; k,  $$&lt;/p&gt;&#xA;&lt;p&gt;and every point $ b \in B $ satisfies&lt;/p&gt;&#xA;&lt;p&gt;$$ \sum_{i=1}^{n}w_i b_i &amp;lt; k,  $$&lt;/p&gt;&#xA;&lt;p&gt;where $ k \in \mathbb{R} $ defines a linear border (&lt;em&gt;e.g.,&lt;/em&gt; a line) between&#xA;data points of the two sets.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

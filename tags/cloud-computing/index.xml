@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cloud Computing on GID</title>
+    <link>https://gdetor.github.io/tags/cloud-computing/</link>
+    <description>Recent content in Cloud Computing on GID</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <copyright>Copyright © 2024, Georgios Is. Detorakis.</copyright>
+    <lastBuildDate>Mon, 28 Nov 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://gdetor.github.io/tags/cloud-computing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Organs-on-Chip-as-a-Service: A proposal bridging cloud services and scientific experiments</title>
+      <link>https://gdetor.github.io/posts/cloudlab/</link>
+      <pubDate>Mon, 28 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>https://gdetor.github.io/posts/cloudlab/</guid>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;&#xA;&lt;p&gt;Technological advancements enable delicate and complex experiments on small-scale&#xA;devices, such as organs-on-chips, improving and accelerating research. At the same&#xA;time, an ever-increasing diversity of hardware platforms is accessible via&#xA;cloud services. This perspective article describes our vision for the future of&#xA;organs-on-chips. We present the main idea behind organs-on-chips as a cloud service,&#xA;a brief description of the proposed infrastructure, and some applications.&lt;/p&gt;&#xA;&lt;h3 id=&#34;keywors&#34;&gt;Keywors&lt;/h3&gt;&#xA;&lt;p&gt;Organs-on-chips, tissue-as-a-service, cloud computing, neuroscience, experiments&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
