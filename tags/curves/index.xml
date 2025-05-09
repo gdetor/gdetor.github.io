@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>curves on GID</title>
+    <title>Curves on GID</title>
     <link>https://gdetor.github.io/tags/curves/</link>
-    <description>Recent content in curves on GID</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Curves on GID</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Copyright © 2024, Georgios Is. Detorakis.</copyright>
-    <lastBuildDate>Tue, 01 Oct 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/tags/curves/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 01 Oct 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://gdetor.github.io/tags/curves/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Intersection points of curves</title>
       <link>https://gdetor.github.io/posts/curves_intersection/</link>
       <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
-      
       <guid>https://gdetor.github.io/posts/curves_intersection/</guid>
-      <description>We often need to compute the points where two lines intersect or where a function intersects the x-axis (zero crossing). Here, we provide a Python script that does precisely that. Computes the points where two curves (lines, time series, etc.) intersect.
-Hence, we provide a simple Python code that can compute the points $(x, y)$ where two curves, $ f(t) $ and g(t), intersect. The first step, and the easy one, is to take two points, one from each curve, $ (t_1, Y_f) $, and $ (t_1, Y_g) $, compute their distance, and check if it is smaller than an $ \epsilon $, where $ \epsilon $ is a tiny number close to zero.</description>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;We often need to compute the points where two lines intersect or where a function intersects&#xA;the x-axis (zero crossing). Here, we provide a Python script that does precisely that.&#xA;Computes the points where two curves (lines, time series, etc.) intersect.&lt;/p&gt;&#xA;&lt;p&gt;Hence, we provide a simple Python code that can compute the points $(x, y)$ where&#xA;two curves, $ f(t) $ and g(t), intersect. The first step, and the easy one, is&#xA;to take two points, one from each curve, $ (t_1, Y_f) $, and $ (t_1, Y_g) $,&#xA;compute their distance, and check if it is smaller than an $ \epsilon $, where&#xA;$ \epsilon $ is a tiny number close to zero. If that&amp;rsquo;s the case, then we are&#xA;done and have found the intersection point being $ (t_1, Y_f) $. However, if&#xA;the distance is larger than $ \epsilon $, we have to check for any crossing&#xA;point. We first consider a new function $ h(t) = f(t) - g(t $, and we evaluate&#xA;that function on the points $ (t_0, Y_f^0) $, $ (t_0, Y_g^0) $,&#xA;$ (t_1, Y_f^1) $, and $ (t_1, Y_g^1) $.&#xA;Thus, we obtain $ \delta_0 = Y_f^0 - Y_g^0 $ and $ \delta_1 = Y_f^1 - Y_g^1 $.&#xA;If the product $ \delta_0 \delta_1 &amp;lt; 0 $, then from Bolzano&amp;rsquo;s theorem, we know&#xA;that the two lines must intersect, and the intersection point $ (t^{\ast}, y^{\ast}) $&#xA;is:&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

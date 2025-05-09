@@ -1,22 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>normalization on GID</title>
+    <title>Normalization on GID</title>
     <link>https://gdetor.github.io/tags/normalization/</link>
-    <description>Recent content in normalization on GID</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Normalization on GID</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Copyright © 2024, Georgios Is. Detorakis.</copyright>
-    <lastBuildDate>Thu, 13 Oct 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/tags/normalization/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 13 Oct 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://gdetor.github.io/tags/normalization/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Useful data transformations</title>
       <link>https://gdetor.github.io/posts/normalization/</link>
       <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://gdetor.github.io/posts/normalization/</guid>
-      <description>This post briefly introduces fundamental data transformations such as mean subtraction (centering data), normalization, standardization, difference transform, and power transform. Furthermore, we provide simple examples of Python code for applying those transforms to real data. Moreover, we heavily rely on the sklearn Python package [1].
-Mean subtraction Let&amp;rsquo;s assume we have some data in a vector $ {\bf x} $, and know that the mean value of $ {\bf x} $ is not zero.</description>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;This post briefly introduces fundamental data transformations such as mean&#xA;subtraction (centering data), normalization, standardization, difference&#xA;transform, and power transform. Furthermore, we provide simple examples of&#xA;Python code for applying those transforms to real data. Moreover, we heavily&#xA;rely on the &lt;em&gt;sklearn&lt;/em&gt; Python package [1].&lt;/p&gt;&#xA;&lt;h2 id=&#34;mean-subtraction&#34;&gt;Mean subtraction&lt;/h2&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s assume we have some data in a vector $ {\bf x} $, and know that the&#xA;mean value of $ {\bf x} $ is not zero. We could force the mean to be zero by&#xA;subtracting the mean from each element in the vector $ {\bf x} $. Thus, we center&#xA;the data when we apply the following transform:&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

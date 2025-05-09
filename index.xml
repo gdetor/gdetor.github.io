@@ -4,210 +4,143 @@
     <title>GID</title>
     <link>https://gdetor.github.io/</link>
     <description>Recent content on GID</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Copyright © 2024, Georgios Is. Detorakis.</copyright>
-    <lastBuildDate>Wed, 23 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How do we compute a Gramian Angular Field (GAF) for time series?</title>
-      <link>https://gdetor.github.io/posts/gaf/</link>
-      <pubDate>Wed, 23 Apr 2025 00:00:00 +0000</pubDate>
-      
-      <guid>https://gdetor.github.io/posts/gaf/</guid>
-      <description>Here, we briefly introduce the Gramian Angular Field (GAF) method proposed by [1] to convert time series into images without losing much information. Thus, we can use those images with deep neural networks and computer vision methods to analyze or classify time series. Following [1], we present the main idea behind GAF: to obtain a matrix of similarities between temporal data points of a time series. To do so, the authors in [1] introduced the following algorithm:</description>
-    </item>
-    
-    <item>
-      <title>Tips &amp; Tricks (Linux/Vim/Git/Programming)</title>
-      <link>https://gdetor.github.io/posts/tipsntricks/</link>
-      <pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://gdetor.github.io/posts/tipsntricks/</guid>
-      <description>In this post you can find various simple tricks and tips for Linux, Vim, Git, Python and many other stuff. All the material provided in this page has been suggested by many different sources such as Command Line Magic, Mastering Vim, kernel_perspective, nixCraft, and Linux Today. The material is free and can be redistributed and/or modified. There is no any warranty that they work for you or are suitable to your need.</description>
-    </item>
-    
-    <item>
-      <title>Eigenvalue level repulsion</title>
-      <link>https://gdetor.github.io/posts/eigs_level_repulsion/</link>
-      <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://gdetor.github.io/posts/eigs_level_repulsion/</guid>
-      <description>Imaging we have two matrices ${\bf A}, {\bf B}$ $\in \mathbb{R}^n$, that are both symmetric. Then, we know that both matrices have $n$ eigenvalues (multiplicity). Let&amp;rsquo;s start now, gradually morphing ${\bf A}$ to ${\bf B}$ using the following formula
-$$ {\bf A}[t] = (1 - t) {\bf A} + t {\bf B}, $$
-where $t \in [0, 1]$. What will happen is that matrix ${\bf A}$ will have multiple eigenvalues with probability zero, given we have chosen the matrices properly from the set of all real symmetric matrices.</description>
-    </item>
-    
-    <item>
-      <title>How do we verify linear separability with Python?</title>
-      <link>https://gdetor.github.io/posts/linear_separability/</link>
-      <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://gdetor.github.io/posts/linear_separability/</guid>
-      <description>Two sets $ A $ and $ B $ in an $ n $ dimensional Euclidean space are linear separable if there exist $ n + 1 $ numbers $ w_i \in \mathbb{R} $ such that every point $ a \in A $ satisfies
-$$ \sum_{i=1}^{n}w_i a_i &amp;gt; k, $$
-and every point $ b \in B $ satisfies
-$$ \sum_{i=1}^{n}w_i b_i &amp;lt; k, $$
-where $ k \in \mathbb{R} $ defines a linear border (e.</description>
-    </item>
-    
-    <item>
-      <title>Intersection points of curves</title>
-      <link>https://gdetor.github.io/posts/curves_intersection/</link>
-      <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://gdetor.github.io/posts/curves_intersection/</guid>
-      <description>We often need to compute the points where two lines intersect or where a function intersects the x-axis (zero crossing). Here, we provide a Python script that does precisely that. Computes the points where two curves (lines, time series, etc.) intersect.
-Hence, we provide a simple Python code that can compute the points $(x, y)$ where two curves, $ f(t) $ and g(t), intersect. The first step, and the easy one, is to take two points, one from each curve, $ (t_1, Y_f) $, and $ (t_1, Y_g) $, compute their distance, and check if it is smaller than an $ \epsilon $, where $ \epsilon $ is a tiny number close to zero.</description>
-    </item>
-    
-    <item>
-      <title>Simple mathematical tricks in Python</title>
-      <link>https://gdetor.github.io/posts/math_tips/</link>
-      <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
-      
-      <guid>https://gdetor.github.io/posts/math_tips/</guid>
-      <description>In this post, you can find some helpful mathematical tips and tricks in the Python programming language.
-Positive definite matrix Check if a given matrix $ \bf{A} $ is positive definite. If all the eigenvalues of matrix $ \bf{A} $ are positive then the matrix is positive definite.
-$ A = np.array([[1, 2], [2, 1]]) $ print(A) [[1 2] [2 1]] $ np.all(np.linalg.eigvals(A) &amp;gt; 0) False # A is not a positive definite matrix $ A = np.</description>
-    </item>
-    
+    <lastBuildDate>Wed, 23 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://gdetor.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>An introduction to self-organizing maps</title>
       <link>https://gdetor.github.io/posts/som/</link>
       <pubDate>Fri, 29 Dec 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://gdetor.github.io/posts/som/</guid>
-      <description>This post presents the classical self-organizing map algorithm proposed by Grossberg [1] and Teuvo Kohonen [2]. We explain the algorithm&amp;rsquo;s fundamental aspects and applications and offer a basic implementation in Pytorch.
-Introduction Let us begin with a prevalent problem in science. We often have to deal with data that live in a high-dimensional space $\mathcal{X} \in \mathbb{R}^k$. When $k &amp;gt; 3$, things get rough for people who need help to visualize what&amp;rsquo;s happening.</description>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;This post presents the classical self-organizing map algorithm proposed by Grossberg [1] and Teuvo Kohonen [2]. We explain the algorithm&amp;rsquo;s fundamental aspects and applications and offer a basic implementation in Pytorch.&lt;/p&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Let us begin with a prevalent problem in science. We often have to deal with&#xA;data that &lt;em&gt;live&lt;/em&gt; in a high-dimensional space $\mathcal{X} \in \mathbb{R}^k$.&#xA;When $k &amp;gt; 3$, things get rough for people who need help to visualize&#xA;what&amp;rsquo;s happening. Moreover, many algorithms cannot operate fast&#xA;enough in high-dimensional spaces [3, 4]. Therefore, we rely on methods&#xA;that reduce the dimensionality without compromising or losing much information.&lt;/p&gt;</description>
     </item>
-    
-    <item>
-      <title>Organs-on-Chip-as-a-Service: A proposal bridging cloud services and scientific experiments</title>
-      <link>https://gdetor.github.io/posts/cloudlab/</link>
-      <pubDate>Mon, 28 Nov 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://gdetor.github.io/posts/cloudlab/</guid>
-      <description>Abstract Technological advancements enable delicate and complex experiments on small-scale devices, such as organs-on-chips, improving and accelerating research. At the same time, an ever-increasing diversity of hardware platforms is accessible via cloud services. This perspective article describes our vision for the future of organs-on-chips. We present the main idea behind organs-on-chips as a cloud service, a brief description of the proposed infrastructure, and some applications.
-Keywors Organs-on-chips, tissue-as-a-service, cloud computing, neuroscience, experiments</description>
-    </item>
-    
-    <item>
-      <title>Autocorrelation Functions for Time Series</title>
-      <link>https://gdetor.github.io/posts/acf_pacf/</link>
-      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://gdetor.github.io/posts/acf_pacf/</guid>
-      <description>This post aims to provide some theoretical background on autocorrelation functions and how to use them to analyze time series. Furthermore, we show how to use the Autocorrelation (ACF) function and the Partial Autocorrelation (PACF) function to determine the parameters for an ARMA model.
-Brief introduction to time series In a previous post (see here), we introduced some basic definitions and terminology about time series. We repeat the same definitions here to avoid forcing the reader to move back and forth.</description>
-    </item>
-    
-    <item>
-      <title>Useful data transformations</title>
-      <link>https://gdetor.github.io/posts/normalization/</link>
-      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://gdetor.github.io/posts/normalization/</guid>
-      <description>This post briefly introduces fundamental data transformations such as mean subtraction (centering data), normalization, standardization, difference transform, and power transform. Furthermore, we provide simple examples of Python code for applying those transforms to real data. Moreover, we heavily rely on the sklearn Python package [1].
-Mean subtraction Let&amp;rsquo;s assume we have some data in a vector $ {\bf x} $, and know that the mean value of $ {\bf x} $ is not zero.</description>
-    </item>
-    
-    <item>
-      <title>Time series forecasting error metrics</title>
-      <link>https://gdetor.github.io/posts/errors/</link>
-      <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
-      
-      <guid>https://gdetor.github.io/posts/errors/</guid>
-      <description>In this post, we will explore the basic error measures used in time-series forecasting. Error measures provide a way to quantify the quality of a forecasting algorithm (e.g., the performance). First, we briefly introduce time series and the fundamental terms of forecasting. Second, we will introduce the most commonly used error measures and give examples. Finally, we provide a complete example of using errors in a real-life forecasting scenario.
-What is a time series A time series is a series of data points indexed in time order in layman&amp;rsquo;s terms [1, 2].</description>
-    </item>
-    
     <item>
       <title>Genetic Algorithms &amp; Island Models</title>
       <link>https://gdetor.github.io/posts/genetic_algorithms/</link>
       <pubDate>Thu, 28 Apr 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://gdetor.github.io/posts/genetic_algorithms/</guid>
-      <description>In this post, we explore genetic algorithms (GAs) and the so-called island model (IM). GAs and the IM are optimization methods used to maximize or minimize a cost function.
-What is Optimization? Let&amp;rsquo;s see an example of an optimization problem we all face every day. Let&amp;rsquo;s assume you&amp;rsquo;d like to go and grab a couple of coffee from your favorite coffee shop. Typically, you ask Google to find the fastest way to the store from your current location.</description>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;In this post, we explore genetic algorithms (GAs) and the so-called&#xA;island model (IM). GAs and the IM are optimization methods used to&#xA;maximize or minimize a cost function.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-is-optimization&#34;&gt;What is Optimization?&lt;/h2&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s see an example of an optimization problem we all face every day. Let&amp;rsquo;s&#xA;assume you&amp;rsquo;d like to go and grab a couple of coffee from your favorite coffee&#xA;shop. Typically, you ask Google to find the fastest way to the store from your&#xA;current location. But let&amp;rsquo;s forget about technology for now.&lt;/p&gt;</description>
     </item>
-    
+    <item>
+      <title>Autocorrelation Functions for Time Series</title>
+      <link>https://gdetor.github.io/posts/acf_pacf/</link>
+      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://gdetor.github.io/posts/acf_pacf/</guid>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;This post aims to provide some theoretical background on autocorrelation functions and how to use them to analyze time series. Furthermore, we show how to use the Autocorrelation (ACF) function and the Partial Autocorrelation (PACF) function to determine the parameters for an ARMA model.&lt;/p&gt;&#xA;&lt;h2 id=&#34;brief-introduction-to-time-series&#34;&gt;Brief introduction to time series&lt;/h2&gt;&#xA;&lt;p&gt;In a previous post (see &lt;a href=&#34;https://gdetor.github.io/posts/errors&#34;&gt;here&lt;/a&gt;), we&#xA;introduced some basic definitions and terminology about time series. We repeat the&#xA;same definitions here to avoid forcing the reader to move back and forth.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Time series forecasting error metrics</title>
+      <link>https://gdetor.github.io/posts/errors/</link>
+      <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
+      <guid>https://gdetor.github.io/posts/errors/</guid>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;In this post, we will explore the basic error measures&#xA;used in time-series forecasting. Error measures provide a way&#xA;to quantify the quality of a forecasting algorithm (&lt;em&gt;e.g.&lt;/em&gt;, the&#xA;performance). First, we briefly introduce time series and the&#xA;fundamental terms of forecasting. Second, we will introduce the&#xA;most commonly used error measures and give examples. Finally,&#xA;we provide a complete example of using errors in a real-life&#xA;forecasting scenario.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Useful data transformations</title>
+      <link>https://gdetor.github.io/posts/normalization/</link>
+      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://gdetor.github.io/posts/normalization/</guid>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;This post briefly introduces fundamental data transformations such as mean&#xA;subtraction (centering data), normalization, standardization, difference&#xA;transform, and power transform. Furthermore, we provide simple examples of&#xA;Python code for applying those transforms to real data. Moreover, we heavily&#xA;rely on the &lt;em&gt;sklearn&lt;/em&gt; Python package [1].&lt;/p&gt;&#xA;&lt;h2 id=&#34;mean-subtraction&#34;&gt;Mean subtraction&lt;/h2&gt;&#xA;&lt;p&gt;Let&amp;rsquo;s assume we have some data in a vector $ {\bf x} $, and know that the&#xA;mean value of $ {\bf x} $ is not zero. We could force the mean to be zero by&#xA;subtracting the mean from each element in the vector $ {\bf x} $. Thus, we center&#xA;the data when we apply the following transform:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Organs-on-Chip-as-a-Service: A proposal bridging cloud services and scientific experiments</title>
+      <link>https://gdetor.github.io/posts/cloudlab/</link>
+      <pubDate>Mon, 28 Nov 2022 00:00:00 +0000</pubDate>
+      <guid>https://gdetor.github.io/posts/cloudlab/</guid>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;h2 id=&#34;abstract&#34;&gt;Abstract&lt;/h2&gt;&#xA;&lt;p&gt;Technological advancements enable delicate and complex experiments on small-scale&#xA;devices, such as organs-on-chips, improving and accelerating research. At the same&#xA;time, an ever-increasing diversity of hardware platforms is accessible via&#xA;cloud services. This perspective article describes our vision for the future of&#xA;organs-on-chips. We present the main idea behind organs-on-chips as a cloud service,&#xA;a brief description of the proposed infrastructure, and some applications.&lt;/p&gt;&#xA;&lt;h3 id=&#34;keywors&#34;&gt;Keywors&lt;/h3&gt;&#xA;&lt;p&gt;Organs-on-chips, tissue-as-a-service, cloud computing, neuroscience, experiments&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How do we compute a Gramian Angular Field (GAF) for time series?</title>
+      <link>https://gdetor.github.io/posts/gaf/</link>
+      <pubDate>Wed, 23 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://gdetor.github.io/posts/gaf/</guid>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;Here, we briefly introduce the Gramian Angular Field (GAF) method proposed by [1] to convert time series into images without losing much information. Thus, we can use those images with deep neural networks and computer vision methods to analyze or classify time series.&#xA;Following [1], we present the main idea behind GAF: to obtain a matrix of similarities between temporal data points of a time series. To do so, the authors in [1] introduced the following algorithm:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Tips &amp; Tricks (Linux/Vim/Git/Programming)</title>
+      <link>https://gdetor.github.io/posts/tipsntricks/</link>
+      <pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://gdetor.github.io/posts/tipsntricks/</guid>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;In this post you can find various simple tricks and tips for Linux, Vim,&#xA;Git, Python and many other stuff. All the material provided in this page has&#xA;been suggested by many different sources such as&#xA;&lt;a href=&#34;https://twitter.com/climagic&#34;&gt;Command Line Magic&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/MasteringVim&#34;&gt;Mastering Vim&lt;/a&gt;,&#xA;&lt;a href=&#34;https://twitter.com/unix_byte&#34;&gt;kernel_perspective&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/nixcraft&#34;&gt;nixCraft&lt;/a&gt;,&#xA;and &lt;a href=&#34;https://twitter.com/linuxtoday&#34;&gt;Linux Today&lt;/a&gt;. The material is free and can&#xA;be redistributed and/or modified. There is no any warranty that&#xA;they work for you or are suitable to your need. The author of this page is&#xA;not responsible for any damage this material may cause.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Eigenvalue level repulsion</title>
+      <link>https://gdetor.github.io/posts/eigs_level_repulsion/</link>
+      <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://gdetor.github.io/posts/eigs_level_repulsion/</guid>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;Imaging we have two matrices ${\bf A}, {\bf B}$ $\in \mathbb{R}^n$, that are&#xA;both symmetric. Then, we know that&#xA;both matrices have $n$ eigenvalues (multiplicity). Let&amp;rsquo;s start now, gradually&#xA;morphing ${\bf A}$ to ${\bf B}$ using the following formula&lt;/p&gt;&#xA;&lt;p&gt;$$ {\bf A}[t] = (1 - t) {\bf A} + t {\bf B}, $$&lt;/p&gt;&#xA;&lt;p&gt;where $t \in [0, 1]$.&#xA;What will happen is that matrix ${\bf A}$ will have multiple eigenvalues with&#xA;probability zero, given we have chosen the matrices properly from the set of&#xA;all real symmetric matrices. In other words, there will be no time $t$ when&#xA;matrix ${\bf A}$ won&amp;rsquo;t have $n$ eigenvalues. We can see an example in Figure $1$&#xA;below.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>How do we verify linear separability with Python?</title>
+      <link>https://gdetor.github.io/posts/linear_separability/</link>
+      <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://gdetor.github.io/posts/linear_separability/</guid>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;Two sets $ A $ and $ B $ in an $ n $ dimensional Euclidean space are linearly&#xA;separable if there exist $ n + 1 $ numbers $ w_i \in \mathbb{R} $ such that&#xA;every point $ a \in A $ satisfies&lt;/p&gt;&#xA;&lt;p&gt;$$ \sum_{i=1}^{n}w_i a_i &amp;gt; k,  $$&lt;/p&gt;&#xA;&lt;p&gt;and every point $ b \in B $ satisfies&lt;/p&gt;&#xA;&lt;p&gt;$$ \sum_{i=1}^{n}w_i b_i &amp;lt; k,  $$&lt;/p&gt;&#xA;&lt;p&gt;where $ k \in \mathbb{R} $ defines a linear border (&lt;em&gt;e.g.,&lt;/em&gt; a line) between&#xA;data points of the two sets.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Intersection points of curves</title>
+      <link>https://gdetor.github.io/posts/curves_intersection/</link>
+      <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://gdetor.github.io/posts/curves_intersection/</guid>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;We often need to compute the points where two lines intersect or where a function intersects&#xA;the x-axis (zero crossing). Here, we provide a Python script that does precisely that.&#xA;Computes the points where two curves (lines, time series, etc.) intersect.&lt;/p&gt;&#xA;&lt;p&gt;Hence, we provide a simple Python code that can compute the points $(x, y)$ where&#xA;two curves, $ f(t) $ and g(t), intersect. The first step, and the easy one, is&#xA;to take two points, one from each curve, $ (t_1, Y_f) $, and $ (t_1, Y_g) $,&#xA;compute their distance, and check if it is smaller than an $ \epsilon $, where&#xA;$ \epsilon $ is a tiny number close to zero. If that&amp;rsquo;s the case, then we are&#xA;done and have found the intersection point being $ (t_1, Y_f) $. However, if&#xA;the distance is larger than $ \epsilon $, we have to check for any crossing&#xA;point. We first consider a new function $ h(t) = f(t) - g(t $, and we evaluate&#xA;that function on the points $ (t_0, Y_f^0) $, $ (t_0, Y_g^0) $,&#xA;$ (t_1, Y_f^1) $, and $ (t_1, Y_g^1) $.&#xA;Thus, we obtain $ \delta_0 = Y_f^0 - Y_g^0 $ and $ \delta_1 = Y_f^1 - Y_g^1 $.&#xA;If the product $ \delta_0 \delta_1 &amp;lt; 0 $, then from Bolzano&amp;rsquo;s theorem, we know&#xA;that the two lines must intersect, and the intersection point $ (t^{\ast}, y^{\ast}) $&#xA;is:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Simple mathematical tricks in Python</title>
+      <link>https://gdetor.github.io/posts/math_tips/</link>
+      <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://gdetor.github.io/posts/math_tips/</guid>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;In this post, you can find some helpful mathematical tips and tricks&#xA;in the Python programming language.&lt;/p&gt;&#xA;&lt;h2 id=&#34;positive-definite-matrix&#34;&gt;Positive definite matrix&lt;/h2&gt;&#xA;&lt;p&gt;Check if a given matrix $ \bf{A} $ is positive definite. If all the eigenvalues&#xA;of matrix $ \bf{A} $ are positive then the matrix is positive definite.&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-py3&#34; data-lang=&#34;py3&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 1&lt;/span&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt; A &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;array([[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;], [&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]])&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 2&lt;/span&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt; print(A)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 3&lt;/span&gt;&lt;span&gt;[[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 4&lt;/span&gt;&lt;span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 5&lt;/span&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 6&lt;/span&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;all(np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;linalg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;eigvals(A) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 7&lt;/span&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;False&lt;/span&gt;       &lt;span style=&#34;color:#75715e&#34;&gt;# A is not a positive definite matrix&lt;/span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 8&lt;/span&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 9&lt;/span&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt; A &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;array([[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;], [&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;], [&lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;, &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;]])&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;10&lt;/span&gt;&lt;span&gt;print(A)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;11&lt;/span&gt;&lt;span&gt;[[ &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;  &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;12&lt;/span&gt;&lt;span&gt; [&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;  &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;13&lt;/span&gt;&lt;span&gt; [ &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;  &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;]]&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;14&lt;/span&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;15&lt;/span&gt;&lt;span&gt;&lt;span style=&#34;color:#960050;background-color:#1e0010&#34;&gt;$&lt;/span&gt; np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;all(np&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;linalg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;eigvals(A) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;16&lt;/span&gt;&lt;span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;True&lt;/span&gt;        &lt;span style=&#34;color:#75715e&#34;&gt;# A is positive definite&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&#xA;&lt;h2 id=&#34;random-matrix-with-predetermined-condition-number&#34;&gt;Random matrix with predetermined condition number&lt;/h2&gt;&#xA;&lt;p&gt;You can generate a random matrix with predetermined condition number by&#xA;following method:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Research Demos</title>
       <link>https://gdetor.github.io/posts/demos/</link>
       <pubDate>Tue, 13 Apr 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://gdetor.github.io/posts/demos/</guid>
-      <description>The following videos demonstrate a computation model of primary somatosensory cortex undergoing self-organization. The model relies on Neural Field [1]. The complete mathematical/computational model as well as all the details and results are given in [2] and [3].
- Self-organization of receptive fields (RFs)    Evolution of a single RF during self-organization    Evolution of multiple RFs during self-organization     References  Dynamics of pattern formation in lateral-inhibition type neural fields A Neural Field Model of the Somatosensory Cortex: Formation, Maintenance and Reorganization of Ordered Topographic Maps Structure of receptive fields in a computational model of area 3b of primary sensory cortex  </description>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;The following videos demonstrate a computation model of primary somatosensory&#xA;cortex undergoing self-organization. The model relies on Neural Field [1].&#xA;The complete mathematical/computational model as well as all the details&#xA;and results are given in [2] and [3].&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;self-organization-of-receptive-fields-rfs&#34;&gt;Self-organization of receptive fields (RFs)&lt;/h3&gt;&#xA;&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;&#xA;      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube-nocookie.com/embed/JU0PKFpagUo?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;&#xA;    &lt;/div&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;evolution-of-a-single-rf-during-self-organization&#34;&gt;Evolution of a single RF during self-organization&lt;/h3&gt;&#xA;&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;&#xA;      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube-nocookie.com/embed/UzosJK8YOU0?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;&#xA;    &lt;/div&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;evolution-of-multiple-rfs-during-self-organization&#34;&gt;Evolution of multiple RFs during self-organization&lt;/h3&gt;&#xA;&lt;div style=&#34;position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;&#34;&gt;&#xA;      &lt;iframe allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen&#34; loading=&#34;eager&#34; referrerpolicy=&#34;strict-origin-when-cross-origin&#34; src=&#34;https://www.youtube-nocookie.com/embed/F8JOQs2MYN4?autoplay=0&amp;amp;controls=1&amp;amp;end=0&amp;amp;loop=0&amp;amp;mute=0&amp;amp;start=0&#34; style=&#34;position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;&#34; title=&#34;YouTube video&#34;&gt;&lt;/iframe&gt;&#xA;    &lt;/div&gt;&#xA;&lt;hr&gt;&#xA;&lt;/div&gt;&#xA;&lt;h3 id=&#34;references&#34;&gt;References&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://link.springer.com/article/10.1007/BF00337259&#34;&gt;Dynamics of pattern formation in lateral-inhibition type neural fields&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0040257&#34;&gt;A Neural Field Model of the Somatosensory Cortex: Formation, Maintenance and Reorganization of Ordered Topographic Maps&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.frontiersin.org/articles/10.3389/fncom.2014.00076/full&#34;&gt;Structure of receptive fields in a computational model of area 3b of primary sensory cortex&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
     </item>
-    
     <item>
       <title></title>
       <link>https://gdetor.github.io/staticart/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://gdetor.github.io/staticart/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>About</title>
       <link>https://gdetor.github.io/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://gdetor.github.io/about/</guid>
-      <description>Hi, my name is Georgios Is. Detorakis, and I’m a computational neuroscientist (🧠) and machine learning engineer (🤖). On this website, you can find information about my research, any software I have developed, and some artwork related to neuroscience I have created over the years.
-Currently, I am working as a full-time machine learning engineer developing algorithms for time-series analysis and forecasting (with applications in biosignals and financial data).
-Here you can find my complete CV (or a less extensive résumé).</description>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;Hi, my name is Georgios Is. Detorakis, and I’m a computational neuroscientist (🧠)&#xA;and machine learning engineer (🤖). On this website, you can find information about&#xA;my research, any software I have developed, and some artwork related to&#xA;neuroscience I have created over the years.&lt;/p&gt;&#xA;&lt;p&gt;Currently, I am working as a full-time machine learning engineer developing&#xA;algorithms for time-series analysis and forecasting (with applications in&#xA;biosignals and financial data).&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Artwork</title>
       <link>https://gdetor.github.io/artwork/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://gdetor.github.io/artwork/</guid>
-      <description>Here are some scientific figures and images. The material provided on this webpage is distributed under the CC BY-SA 4.0 DEED license.
-   Basal Ganglia Circuitry Extracellular Recordings Neural Populations              Closed-loop DBS on Basal Ganglia Crossbar Array Ball and Stick Neuron&amp;rsquo;s Model              Topological Data Analysis Topologies XOR Neural Network              Tensor Deep Galerkin Method Layer Skip Connection (ResNet)           </description>
+      <description>&lt;p&gt;Here are some scientific figures and images. The material provided on this webpage is distributed&#xA;under the &lt;a href=&#34;https://creativecommons.org/licenses/by-sa/4.0/deed.en&#34;&gt;CC BY-SA 4.0 DEED&lt;/a&gt; license.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;Basal Ganglia Circuitry&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;Extracellular Recordings&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;Neural Populations&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/bg.svg&#34;&gt;&#xA;  &lt;img src=&#34;https://gdetor.github.io/staticart/img/bg.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;&#xA;&#xA;&lt;/a&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/extracellular.svg&#34;&gt;&#xA;  &lt;img src=&#34;https://gdetor.github.io/staticart/img/extracellular.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;&#xA;&#xA;&lt;/a&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/np.svg&#34;&gt;&#xA;  &lt;img src=&#34;https://gdetor.github.io/staticart/img/np.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;&#xA;&#xA;&lt;/a&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;Closed-loop DBS on Basal Ganglia&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;Crossbar Array&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;Ball and Stick Neuron&amp;rsquo;s Model&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/closed_dbs.svg&#34;&gt;&#xA;  &lt;img src=&#34;https://gdetor.github.io/staticart/img/closed_dbs.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;&#xA;&#xA;&lt;/a&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/crossbar.svg&#34;&gt;&#xA;  &lt;img src=&#34;https://gdetor.github.io/staticart/img/crossbar.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;&#xA;&#xA;&lt;/a&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/ball-stick.svg&#34;&gt;&#xA;  &lt;img src=&#34;https://gdetor.github.io/staticart/img/ball-stick.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;&#xA;&#xA;&lt;/a&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;Topological Data Analysis&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;Topologies&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;XOR Neural Network&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/persistance.svg&#34;&gt;&#xA;  &lt;img src=&#34;https://gdetor.github.io/staticart/img/persistance_.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;&#xA;&#xA;&lt;/a&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/topologies.svg&#34;&gt;&#xA;  &lt;img src=&#34;https://gdetor.github.io/staticart/img/topologies_.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;&#xA;&#xA;&lt;/a&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/xor_net.svg&#34;&gt;&#xA;  &lt;img src=&#34;https://gdetor.github.io/staticart/img/xor_net_.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;&#xA;&#xA;&lt;/a&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;Tensor&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;Deep Galerkin Method Layer&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;Skip Connection (ResNet)&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/tensor.svg&#34;&gt;&#xA;  &lt;img src=&#34;https://gdetor.github.io/staticart/img/tensor_.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;&#xA;&#xA;&lt;/a&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/dgm_nn.svg&#34;&gt;&#xA;  &lt;img src=&#34;https://gdetor.github.io/staticart/img/dgm_nn_.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;&#xA;&#xA;&lt;/a&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;https://gdetor.github.io/staticart/img/skip_connection.svg&#34;&gt;&#xA;  &lt;img src=&#34;https://gdetor.github.io/staticart/img/skip_connection_.png&#34;  class=&#34;center&#34;  style=&#34;border-radius:8px&#34;  /&gt;&#xA;&#xA;&lt;/a&gt;&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;</description>
     </item>
-    
     <item>
       <title>Publications</title>
       <link>https://gdetor.github.io/publications/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://gdetor.github.io/publications/</guid>
-      <description>Research Articles (peer-reviewed)   Neural sampling machine with stochastic synapse allows brain-like learning and inference
-S. Dutta, G. Detorakis, A. Khanna, B. Grisafe, E. Neftci, and S. Datta
-Nature Communications 13, 2571, 2022, DOI:10.1038/s41467-022-30305-8
-[Article]
-  OpenPelt: Python Framework for Thermoelectric Temperature Control System Development
-R. Parise and G. Is. Detorakis
-The Journal of Open Source Software, 7(73), 4306, DOI:https://doi.org/10.21105/joss.04306
-[Article]
-  Randomized Self Organizing Map
-N. P.</description>
+      <description>&lt;h2 id=&#34;research-articles-peer-reviewed&#34;&gt;Research Articles (peer-reviewed)&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Neural sampling machine with stochastic synapse allows brain-like learning and inference&lt;/strong&gt;&lt;br&gt;&#xA;S. Dutta, G. Detorakis, A. Khanna, B. Grisafe, E. Neftci, and S. Datta&lt;br&gt;&#xA;Nature Communications 13, 2571, 2022, DOI:10.1038/s41467-022-30305-8&lt;br&gt;&#xA;&lt;a href=&#34;https://www.nature.com/articles/s41467-022-30305-8&#34;&gt;[Article]&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;OpenPelt: Python Framework for Thermoelectric Temperature Control System Development&lt;/strong&gt;&lt;br&gt;&#xA;R. Parise and G. Is. Detorakis&lt;br&gt;&#xA;The Journal of Open Source Software, 7(73), 4306, DOI:https://doi.org/10.21105/joss.04306&lt;br&gt;&#xA;&lt;a href=&#34;https://joss.theoj.org/papers/10.21105/joss.04306&#34;&gt;[Article]&lt;/a&gt;&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;&lt;strong&gt;Randomized Self Organizing Map&lt;/strong&gt;&lt;br&gt;&#xA;N. P. Rougier and G. Is. Detorakis&lt;br&gt;&#xA;Neural Computation, 33(8), 2021, DOI:https://doi.org/10.1162/neco_a_01406&#xA;&lt;a href=&#34;https://direct.mit.edu/neco/article-abstract/33/8/2241/101860/Randomized-Self-Organizing-Map?redirectedFrom=fulltext&#34;&gt;[Article]&lt;/a&gt;&#xA;&lt;a href=&#34;https://arxiv.org/abs/2011.09534&#34;&gt;[arXiv]&lt;/a&gt;&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Research</title>
       <link>https://gdetor.github.io/research/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://gdetor.github.io/research/</guid>
-      <description>Neuromorphic Computing Georgios was involved in developing neuromorphic devices capable of embedded and online learning. He was one of the core developers of the software simulator for the Neural and Synaptic Array Transceiver Framework (in collaboration with Intel Corporation Research Labs, the Universities of California Irvine, and San Diego). He investigated how natural mechanisms of biological brains can lead to more efficient and biologically plausible machine learning algorithms suitable for neuromorphic devices.</description>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;h2 id=&#34;neuromorphic-computing&#34;&gt;Neuromorphic Computing&lt;/h2&gt;&#xA;&lt;p&gt;Georgios was involved in developing neuromorphic devices capable of embedded&#xA;and online learning. He was one of the core developers of the software simulator&#xA;for the Neural and Synaptic Array Transceiver Framework (in collaboration with Intel&#xA;Corporation Research Labs, the Universities of California Irvine, and San Diego).&#xA;He investigated how natural mechanisms of biological brains can lead to more&#xA;efficient and biologically plausible machine learning algorithms suitable for&#xA;neuromorphic devices.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Software</title>
       <link>https://gdetor.github.io/software/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://gdetor.github.io/software/</guid>
-      <description>Gists  Here you can find some code snippets or short source code for complete programs that might interest you.
-Miscellaneous  omnipyseed Omnipyseed is a tiny and simple Python package that can be used to seed random number generators (RNGs) of Python, Numpy, and Pytorch.
-  Programming Language: Python Source Code:  .inline-svg { display: inline-block; height: 1.0rem; width: 1.0rem; top: 0.1rem; position: relative; }     PyPi  timeseries_imputlorer Imputlorer is a collection of scripts implementing univariate time series imputation methods relying on sklearn.</description>
+      <description>&lt;h2 id=&#34;gists&#34;&gt;Gists&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://gist.github.com/gdetor&#34;&gt;Here&lt;/a&gt; you can find some code snippets or short&#xA;source code for complete programs that might interest you.&lt;/p&gt;&#xA;&lt;h2 id=&#34;miscellaneous&#34;&gt;Miscellaneous&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h3 id=&#34;omnipyseed&#34;&gt;omnipyseed&lt;/h3&gt;&#xA;&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;Omnipyseed is a tiny and simple Python package that can be used to seed random&#xA;number generators (RNGs) of Python, Numpy, and Pytorch.&lt;/p&gt;&#xA;&lt;/div&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Programming Language: Python&lt;/li&gt;&#xA;&lt;li&gt;Source Code: &lt;a href=&#34;https://github.com/gdetor/omnipyseed&#34;&gt;&lt;style&gt;&#xA;    .inline-svg {&#xA;      display: inline-block;&#xA;      height: 1.0rem;&#xA;      width: 1.0rem;&#xA;      top: 0.1rem;&#xA;      position: relative;&#xA;    }&#xA;&lt;/style&gt;&#xA;&#xA;&lt;span class=&#34;inline-svg&#34; &gt;&lt;svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 448 512&#34;&gt;&lt;!-- Font Awesome Free 5.15.3 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) --&gt;&lt;path fill=&#34;currentColor&#34; d=&#34;M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z&#34;/&gt;&lt;/svg&gt;&#xA;&lt;/span&gt;&#xA;&#xA;&#xA;&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://pypi.org/project/omnipyseed/&#34;&gt;PyPi&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;timeseries_imputlorer&#34;&gt;timeseries_imputlorer&lt;/h3&gt;&#xA;&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;Imputlorer is a collection of scripts implementing univariate time series&#xA;imputation methods relying on &lt;code&gt;sklearn&lt;/code&gt;. In addition, the repository provides&#xA;statistical tools for evaluating and comparing the performance of different&#xA;imputation techniques. Furthermore, it allows the user to test the imputed&#xA;data in regression problems via the XGBoost regressor. The user can optimize&#xA;the XGBoost hyperparameters using Ray Tune.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

@@ -4,18 +4,17 @@
     <title>Python on GID</title>
     <link>https://gdetor.github.io/tags/python/</link>
     <description>Recent content in Python on GID</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Copyright © 2024, Georgios Is. Detorakis.</copyright>
-    <lastBuildDate>Wed, 20 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 20 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://gdetor.github.io/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Tips &amp; Tricks (Linux/Vim/Git/Programming)</title>
       <link>https://gdetor.github.io/posts/tipsntricks/</link>
       <pubDate>Wed, 20 Nov 2024 00:00:00 +0000</pubDate>
-      
       <guid>https://gdetor.github.io/posts/tipsntricks/</guid>
-      <description>In this post you can find various simple tricks and tips for Linux, Vim, Git, Python and many other stuff. All the material provided in this page has been suggested by many different sources such as Command Line Magic, Mastering Vim, kernel_perspective, nixCraft, and Linux Today. The material is free and can be redistributed and/or modified. There is no any warranty that they work for you or are suitable to your need.</description>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;In this post you can find various simple tricks and tips for Linux, Vim,&#xA;Git, Python and many other stuff. All the material provided in this page has&#xA;been suggested by many different sources such as&#xA;&lt;a href=&#34;https://twitter.com/climagic&#34;&gt;Command Line Magic&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/MasteringVim&#34;&gt;Mastering Vim&lt;/a&gt;,&#xA;&lt;a href=&#34;https://twitter.com/unix_byte&#34;&gt;kernel_perspective&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/nixcraft&#34;&gt;nixCraft&lt;/a&gt;,&#xA;and &lt;a href=&#34;https://twitter.com/linuxtoday&#34;&gt;Linux Today&lt;/a&gt;. The material is free and can&#xA;be redistributed and/or modified. There is no any warranty that&#xA;they work for you or are suitable to your need. The author of this page is&#xA;not responsible for any damage this material may cause.&lt;/p&gt;</description>
     </item>
-    
   </channel>
 </rss>

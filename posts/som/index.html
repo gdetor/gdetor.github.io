@@ -6,46 +6,12 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <html
   class="not-ready lg:text-base"
-  style="--bg: #faf8f1"
+  style="--bg:#faf8f1"
   lang="en-us"
->
-  <head>
+  dir="ltr"
+><head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta
@@ -59,59 +25,29 @@
   
   <meta name="theme-color" />
 
-  
-  
-  
-  
-  <meta name="description" content="This post presents the classical self-organizing map algorithm proposed by Grossberg [1] and Teuvo Kohonen [2]. We explain the algorithm&rsquo;s fundamental aspects and applications and offer a basic implementation in Pytorch.
-Introduction Let us begin with a prevalent problem in science. We often have to deal with data that live in a high-dimensional space $\mathcal{X} \in \mathbb{R}^k$. When $k &gt; 3$, things get rough for people who need help to visualize what&rsquo;s happening." />
-  <meta name="author" content="Georgios Is. Detorakis" />
-  
+  <meta name="description" content="
+This post presents the classical self-organizing map algorithm proposed by Grossberg [1] and Teuvo Kohonen [2]. We explain the algorithm&rsquo;s fundamental aspects and applications and offer a basic implementation in Pytorch.
+Introduction
+Let us begin with a prevalent problem in science. We often have to deal with
+data that live in a high-dimensional space $\mathcal{X} \in \mathbb{R}^k$.
+When $k &gt; 3$, things get rough for people who need help to visualize
+what&rsquo;s happening. Moreover, many algorithms cannot operate fast
+enough in high-dimensional spaces [3, 4]. Therefore, we rely on methods
+that reduce the dimensionality without compromising or losing much information." />
+  <meta name="author" content="Georgios Is. Detorakis" /><link rel="preload stylesheet" as="style" href="https://gdetor.github.io/main.min.css" />
 
-  
-  
-  
-  
-  
-  
-  <link rel="preload stylesheet" as="style" href="https://gdetor.github.io/main.min.css" />
-
-  
-  
-  
-  
   
   <link rel="preload" as="image" href="https://gdetor.github.io/theme.png" />
 
-  
-  
-  
-  
   <link rel="preload" as="image" href="https://avatars.githubusercontent.com/u/7115299?v=4" />
-  
-  
 
-  
-  
-  <link rel="preload" as="image" href="https://gdetor.github.io/github.svg" />
-  
-  <link rel="preload" as="image" href="https://gdetor.github.io/linkedin.svg" />
-  
-  
+  <link rel="preload" as="image" href="https://gdetor.github.io/github.svg" /><link rel="preload" as="image" href="https://gdetor.github.io/linkedin.svg" />
 
-  
-  
   <script
     defer
     src="https://gdetor.github.io/highlight.min.js"
     onload="hljs.initHighlightingOnLoad();"
-  ></script>
-  
-
-  
-  
-  
-  <link
+  ></script><link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
   integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
@@ -128,9 +64,7 @@ Introduction Let us begin with a prevalent problem in science. We often have to 
   src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
   integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
   crossorigin="anonymous"
-></script>
-
-<script>
+></script><script>
   document.addEventListener('DOMContentLoaded', () =>
     renderMathInElement(document.body, {
       
@@ -145,82 +79,67 @@ Introduction Let us begin with a prevalent problem in science. We often have to 
   );
 </script>
 
-  
-  
-  
 
   
-  <link rel="icon" href="https://gdetor.github.io/icons/favicon.ico" />
-  <link rel="apple-touch-icon" href="https://gdetor.github.io/apple-touch-icon.png" />
+  <link
+    rel="icon"
+    href="https://gdetor.github.io/icons/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="https://gdetor.github.io/apple-touch-icon.png"
+  />
 
-  <link rel="stylesheet" href="/css/highlight.css" />
-  
-  
-  
-  
- 
-  
-  <meta name="generator" content="Hugo 0.92.2" />
-
-  
-  
-  
-  
-  
+  <meta name="generator" content="Hugo 0.147.2">
   <meta itemprop="name" content="An introduction to self-organizing maps">
-<meta itemprop="description" content="This post introduces the classical self-organizing map (SOM) algorithm proposed by Grossberg and later by Kohonen. We explain the algorithm&#39;s fundamental aspects and implement it on Pytorch."><meta itemprop="datePublished" content="2023-12-29T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2023-12-29T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2126">
-<meta itemprop="keywords" content="SOM,Kohonen,neural networks,self-organizing map,pytorch," />
-  
-  <meta property="og:title" content="An introduction to self-organizing maps" />
-<meta property="og:description" content="This post introduces the classical self-organizing map (SOM) algorithm proposed by Grossberg and later by Kohonen. We explain the algorithm&#39;s fundamental aspects and implement it on Pytorch." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://gdetor.github.io/posts/som/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2023-12-29T00:00:00+00:00" />
-<meta property="article:modified_time" content="2023-12-29T00:00:00+00:00" />
+  <meta itemprop="description" content="This post introduces the classical self-organizing map (SOM) algorithm proposed by Grossberg and later by Kohonen. We explain the algorithm&#39;s fundamental aspects and implement it on Pytorch.">
+  <meta itemprop="datePublished" content="2023-12-29T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2023-12-29T00:00:00+00:00">
+  <meta itemprop="wordCount" content="2190">
+  <meta itemprop="keywords" content="SOM,Kohonen,Neural Networks,Self-Organizing Map,Pytorch"><meta property="og:url" content="https://gdetor.github.io/posts/som/">
+  <meta property="og:site_name" content="GID">
+  <meta property="og:title" content="An introduction to self-organizing maps">
+  <meta property="og:description" content="This post introduces the classical self-organizing map (SOM) algorithm proposed by Grossberg and later by Kohonen. We explain the algorithm&#39;s fundamental aspects and implement it on Pytorch.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2023-12-29T00:00:00+00:00">
+    <meta property="article:modified_time" content="2023-12-29T00:00:00+00:00">
+    <meta property="article:tag" content="SOM">
+    <meta property="article:tag" content="Kohonen">
+    <meta property="article:tag" content="Neural Networks">
+    <meta property="article:tag" content="Self-Organizing Map">
+    <meta property="article:tag" content="Pytorch">
 
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="An introduction to self-organizing maps">
+  <meta name="twitter:description" content="This post introduces the classical self-organizing map (SOM) algorithm proposed by Grossberg and later by Kohonen. We explain the algorithm&#39;s fundamental aspects and implement it on Pytorch.">
 
-  
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="An introduction to self-organizing maps"/>
-<meta name="twitter:description" content="This post introduces the classical self-organizing map (SOM) algorithm proposed by Grossberg and later by Kohonen. We explain the algorithm&#39;s fundamental aspects and implement it on Pytorch."/>
-
-  
-  
-  
   <link rel="canonical" href="https://gdetor.github.io/posts/som/" />
-  
-  
 </head>
-
-  <body class="text-black duration-200 ease-out dark:text-white">
-    
-    
-    <script src="/js/copybutton.js"></script>
-    
-
-    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
-  <div class="relative z-50 mr-auto flex items-center">
+<body
+    class="bg-(--bg) text-black antialiased duration-200 ease-out [-webkit-tap-highlight-color:transparent] dark:text-white"
+  ><header
+  class="mx-auto flex h-[4.5rem] max-w-(--w) px-8 whitespace-nowrap lg:justify-center"
+>
+  <div class="relative z-50 flex items-center ltr:mr-auto rtl:ml-auto">
     <a
-      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
-      href="https://gdetor.github.io"
+      class="-translate-y-[1px] text-2xl font-medium"
+      href="https://gdetor.github.io/"
       >GID</a
     >
     <div
-      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
       role="button"
       aria-label="Dark"
     ></div>
   </div>
 
   <div
-    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    class="btn-menu relative z-50 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden ltr:-mr-8 rtl:-ml-8"
     role="button"
     aria-label="Menu"
   ></div>
-
-  
 
   <script>
     
@@ -266,101 +185,58 @@ Introduction Let us begin with a prevalent problem in science. We often have to 
   </script>
 
   <div
-    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
-  >
-    
-    
-    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full flex-col justify-center bg-(--bg) pb-16 duration-200 select-none lg:static lg:h-auto lg:flex-row lg:bg-transparent! lg:pb-0 lg:transition-none"
+  ><nav
+      class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-10 rtl:space-x-reverse"
+    ><a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
         href="/about/"
         >About</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+      ><a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
         href="/research/"
         >Research</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+      ><a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
         href="/software/"
         >Software</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+      ><a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
         href="/publications/"
         >Publications</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+      ><a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
         href="/artwork/"
         >Artwork</a
-      >
-      
-    </nav>
-    
-
-    
-    <nav
-      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+      ></nav><nav
+      class="mt-12 flex justify-center space-x-10 lg:mt-0 lg:items-center ltr:lg:ml-14 rtl:space-x-reverse rtl:lg:mr-14 dark:invert"
     >
-      
       <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
         style="--url: url(./github.svg)"
         href="https://github.com/gdetor"
         target="_blank"
         rel="me"
-      >
-        github
-      </a>
-      
+      >github</a>
       <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
         style="--url: url(./linkedin.svg)"
         href="https://linkedin.com/in/georgiosdetorakis"
         target="_blank"
         rel="me"
-      >
-        linkedin
-      </a>
-      
+      >linkedin</a>
     </nav>
-    
   </div>
 </header>
-
-
-    <main
-      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
-    >
-      
-
-<article>
-  <header class="mb-16">
-    <h1 class="!my-0 pb-2.5">An introduction to self-organizing maps</h1>
-
-    
-    <div class="text-sm antialiased opacity-60">
-      
-      <time>Dec 29, 2023</time>
-      
-      
-      
-      
-      <span class="mx-1">&middot;</span>
+<main
+      class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"
+    ><article>
+  <header class="mb-14">
+    <h1 class="my-0! pb-2.5">An introduction to self-organizing maps</h1><div class="text-xs antialiased opacity-60"><time>Dec 29, 2023</time><span class="mx-1">&middot;</span>
       <span>Georgios Is. Detorakis</span>
       <span class="mx-1">&middot;</span>
-      <span class="inline-item reading">10 minutes read</span>
-      
-    </div>
-    
-  </header>
+      <span>11&nbsp minutes read &nbsp / &nbsp2190&nbsp words</span>
+    </div></header>
 
   <section><div style="text-align: justify;">
 <p>This post presents the classical self-organizing map algorithm proposed by Grossberg [1] and Teuvo Kohonen [2]. We explain the algorithm&rsquo;s fundamental aspects and applications and offer a basic implementation in Pytorch.</p>
@@ -414,9 +290,9 @@ distance functions such as the Euclidean distance ($p=2$) or the Manhattan ($p=1
 main idea behind the SOM algorithm in plain words, and then we will give the
 pseudocode and its implementation along with some examples.</p>
 <figure><img src="/images/somtraining.png"
-         alt="Figure 1. Illustration of SOM algorithm steps. At the beginning (t=0), we see that the winner unit (BMU, center of yellow disc) that is closer to the current sample (white disc) has been identified. The SOM algorithm adjusts the codebook based on a neighborhood function (yellow disc) so the map will come closer to the sample. After all the iterations had been exhausted, the SOM learned the representation (black grid) of the input distribution (blue cloud). This figure is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported (Wikipedia)."/><figcaption>
-            <p>Figure 1. Illustration of SOM algorithm steps. At the beginning (t=0), we see that the winner unit (BMU, center of yellow disc) that is closer to the current sample (white disc) has been identified. The SOM algorithm adjusts the codebook based on a neighborhood function (yellow disc) so the map will come closer to the sample. After all the iterations had been exhausted, the SOM learned the representation (black grid) of the input distribution (blue cloud). This figure is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported (Wikipedia).</p>
-        </figcaption>
+    alt="Figure 1. Illustration of SOM algorithm steps. At the beginning (t=0), we see that the winner unit (BMU, center of yellow disc) that is closer to the current sample (white disc) has been identified. The SOM algorithm adjusts the codebook based on a neighborhood function (yellow disc) so the map will come closer to the sample. After all the iterations had been exhausted, the SOM learned the representation (black grid) of the input distribution (blue cloud). This figure is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported (Wikipedia)."><figcaption>
+      <p>Figure 1. Illustration of SOM algorithm steps. At the beginning (t=0), we see that the winner unit (BMU, center of yellow disc) that is closer to the current sample (white disc) has been identified. The SOM algorithm adjusts the codebook based on a neighborhood function (yellow disc) so the map will come closer to the sample. After all the iterations had been exhausted, the SOM learned the representation (black grid) of the input distribution (blue cloud). This figure is licensed under the Creative Commons Attribution-Share Alike 3.0 Unported (Wikipedia).</p>
+    </figcaption>
 </figure>
 <p>The first step is to initialize the codebook; we usually do that by assigning
 random values to the code words. Once we initialize the codebook, we start the
@@ -456,9 +332,9 @@ algorithm runs offline and uses the entire data set at each iteration, called
 batch SOM. In this post, we will implement the online algorithm used in our
 examples.</p>
 <figure><img src="/images/som_algo.png"
-         alt="Figure 2. Self-organizing map basic algorithm."/><figcaption>
-            <p>Figure 2. Self-organizing map basic algorithm.</p>
-        </figcaption>
+    alt="Figure 2. Self-organizing map basic algorithm."><figcaption>
+      <p>Figure 2. Self-organizing map basic algorithm.</p>
+    </figcaption>
 </figure>
 <h2 id="pytorch-implementation">Pytorch Implementation</h2>
 <p>The source code below implements the SOM algorithm given in
@@ -467,81 +343,80 @@ Python. In this implementation, we contain all the parameters and the codebooks
 in $[0, 1]^k$, where $k \in \mathbb{N}^+$. We also consider the neighborhood
 function a Gaussian, and the final time $t_f = 1$. The metric $d(\cdot, \cdot)$
 is the Euclidean distance ($p=2$ in Equation 1).</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-<span style="color:#f92672">import</span> matplotlib.pylab <span style="color:#66d9ef">as</span> plt
-
-<span style="color:#f92672">import</span> torch
-<span style="color:#f92672">from</span> torch <span style="color:#f92672">import</span> nn
-
-
-<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SOM</span>(nn<span style="color:#f92672">.</span>Module):
-    <span style="color:#66d9ef">def</span> __init__(self,
-                 n_units<span style="color:#f92672">=</span><span style="color:#ae81ff">16</span>,
-                 dim<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>,
-                 iters<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>,
-                 lrate<span style="color:#f92672">=</span>(<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.01</span>),
-                 sigma<span style="color:#f92672">=</span>(<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.01</span>)):
-        super()<span style="color:#f92672">.</span>__init__()
-        self<span style="color:#f92672">.</span>n_units <span style="color:#f92672">=</span> n_units				<span style="color:#75715e"># Number of units (n in main text)</span>
-        self<span style="color:#f92672">.</span>dim <span style="color:#f92672">=</span> dim						<span style="color:#75715e"># Code words dim (k in main text)</span>
-        self<span style="color:#f92672">.</span>iters <span style="color:#f92672">=</span> iters
-        self<span style="color:#f92672">.</span>lrate_i <span style="color:#f92672">=</span> lrate[<span style="color:#ae81ff">0</span>]
-        self<span style="color:#f92672">.</span>lrate_f <span style="color:#f92672">=</span> lrate[<span style="color:#ae81ff">1</span>]
-        self<span style="color:#f92672">.</span>sigma_i <span style="color:#f92672">=</span> sigma[<span style="color:#ae81ff">0</span>]
-        self<span style="color:#f92672">.</span>sigma_f <span style="color:#f92672">=</span> sigma[<span style="color:#ae81ff">1</span>]
-
-		<span style="color:#75715e"># Initialize the code words</span>
-        self<span style="color:#f92672">.</span>initCodebook()
-        
-		<span style="color:#75715e"># Initialize a two-dimensional grid</span>
-        self<span style="color:#f92672">.</span>initLatice()
-
-		<span style="color:#75715e"># Pre-compute the time array, learning rate, and variance</span>
-        self<span style="color:#f92672">.</span>t <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, steps<span style="color:#f92672">=</span>iters)
-        self<span style="color:#f92672">.</span>lrate <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>lrate_i <span style="color:#f92672">*</span> (self<span style="color:#f92672">.</span>lrate_f <span style="color:#f92672">/</span> self<span style="color:#f92672">.</span>lrate_i)<span style="color:#f92672">**</span>self<span style="color:#f92672">.</span>t
-        self<span style="color:#f92672">.</span>sigma <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>sigma_i <span style="color:#f92672">*</span> (self<span style="color:#f92672">.</span>sigma_f <span style="color:#f92672">/</span> self<span style="color:#f92672">.</span>sigma_i)<span style="color:#f92672">**</span>self<span style="color:#f92672">.</span>t
-
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initCodebook</span>(self):
-    	<span style="color:#e6db74">&#34;&#34;&#34; Initialize the code words using random values drawn from a 
-</span><span style="color:#e6db74">    	uniform distribution in [0, 0.01).
-</span><span style="color:#e6db74">    	&#34;&#34;&#34;</span>
-        self<span style="color:#f92672">.</span>codebook <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>ones([self<span style="color:#f92672">.</span>n_units<span style="color:#f92672">*</span>self<span style="color:#f92672">.</span>n_units, self<span style="color:#f92672">.</span>dim])
-        nn<span style="color:#f92672">.</span>init<span style="color:#f92672">.</span>uniform_(self<span style="color:#f92672">.</span>codebook, a<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, b<span style="color:#f92672">=</span><span style="color:#ae81ff">0.01</span>)
-
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initLatice</span>(self):
-    	<span style="color:#e6db74">&#34;&#34;&#34; Initialize a two-dimensional grid (latice) on which units
-</span><span style="color:#e6db74">    	(or neurons) are placed. Moreover, computes the distances between all
-</span><span style="color:#e6db74">    	the pairs within the grid.
-</span><span style="color:#e6db74">    	
-</span><span style="color:#e6db74">    	&#34;&#34;&#34;</span>
-        line <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, steps<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>n_units)
-        grid_x, grid_y <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>meshgrid(line, line, indexing<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ij&#34;</span>)
-        p <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cat((grid_x<span style="color:#f92672">.</span>flatten()<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>),
-                       grid_y<span style="color:#f92672">.</span>flatten()<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)), dim<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
-        self<span style="color:#f92672">.</span>dist <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cdist(p, p)
-
-    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fit</span>(self, X):
-    	<span style="color:#e6db74">&#34;&#34;&#34; Fit the input data X to a two-dimensional SOM.
-</span><span style="color:#e6db74">    	&#34;&#34;&#34;</span>
-        <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>iters):
-        	
-        	<span style="color:#75715e"># Sample the input space</span>
-        	x <span style="color:#f92672">=</span> X[np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(X<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>])]			
-
-			<span style="color:#75715e"># Find the BMU</span>
-            BMU <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>argmin((((self<span style="color:#f92672">.</span>codebook <span style="color:#f92672">-</span> x))<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>)<span style="color:#f92672">.</span>sum(dim<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>))
-
-			<span style="color:#75715e"># Compute the neighborhood function</span>
-            h <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>(self<span style="color:#f92672">.</span>dist[BMU]<span style="color:#f92672">/</span>self<span style="color:#f92672">.</span>sigma[t])<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>)<span style="color:#f92672">.</span>unsqueeze(<span style="color:#ae81ff">1</span>)
-
-			<span style="color:#75715e"># Update the codebook</span>
-            self<span style="color:#f92672">.</span>codebook <span style="color:#f92672">-=</span> self<span style="color:#f92672">.</span>lrate[t] <span style="color:#f92672">*</span> h <span style="color:#f92672">*</span> (self<span style="color:#f92672">.</span>codebook <span style="color:#f92672">-</span> x)
-
-</code></pre></div><h2 id="examples">Examples</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py3" data-lang="py3"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#f92672">import</span> matplotlib.pylab <span style="color:#66d9ef">as</span> plt
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#f92672">import</span> torch
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span><span style="color:#f92672">from</span> torch <span style="color:#f92672">import</span> nn
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SOM</span>(nn<span style="color:#f92672">.</span>Module):
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>                 n_units<span style="color:#f92672">=</span><span style="color:#ae81ff">16</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>                 dim<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>                 iters<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>,
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span>                 lrate<span style="color:#f92672">=</span>(<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.01</span>),
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>                 sigma<span style="color:#f92672">=</span>(<span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.01</span>)):
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>        super()<span style="color:#f92672">.</span><span style="color:#a6e22e">__init__</span>()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>        self<span style="color:#f92672">.</span>n_units <span style="color:#f92672">=</span> n_units				<span style="color:#75715e"># Number of units (n in main text)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>        self<span style="color:#f92672">.</span>dim <span style="color:#f92672">=</span> dim						<span style="color:#75715e"># Code words dim (k in main text)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>        self<span style="color:#f92672">.</span>iters <span style="color:#f92672">=</span> iters
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19</span><span>        self<span style="color:#f92672">.</span>lrate_i <span style="color:#f92672">=</span> lrate[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20</span><span>        self<span style="color:#f92672">.</span>lrate_f <span style="color:#f92672">=</span> lrate[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21</span><span>        self<span style="color:#f92672">.</span>sigma_i <span style="color:#f92672">=</span> sigma[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22</span><span>        self<span style="color:#f92672">.</span>sigma_f <span style="color:#f92672">=</span> sigma[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24</span><span>		<span style="color:#75715e"># Initialize the code words</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25</span><span>        self<span style="color:#f92672">.</span>initCodebook()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26</span><span>        
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27</span><span>		<span style="color:#75715e"># Initialize a two-dimensional grid</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28</span><span>        self<span style="color:#f92672">.</span>initLatice()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30</span><span>		<span style="color:#75715e"># Pre-compute the time array, learning rate, and variance</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31</span><span>        self<span style="color:#f92672">.</span>t <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, steps<span style="color:#f92672">=</span>iters)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32</span><span>        self<span style="color:#f92672">.</span>lrate <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>lrate_i <span style="color:#f92672">*</span> (self<span style="color:#f92672">.</span>lrate_f <span style="color:#f92672">/</span> self<span style="color:#f92672">.</span>lrate_i)<span style="color:#f92672">**</span>self<span style="color:#f92672">.</span>t
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33</span><span>        self<span style="color:#f92672">.</span>sigma <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>sigma_i <span style="color:#f92672">*</span> (self<span style="color:#f92672">.</span>sigma_f <span style="color:#f92672">/</span> self<span style="color:#f92672">.</span>sigma_i)<span style="color:#f92672">**</span>self<span style="color:#f92672">.</span>t
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">35</span><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initCodebook</span>(self):
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">36</span><span>    	<span style="color:#e6db74">&#34;&#34;&#34; Initialize the code words using random values drawn from a 
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">37</span><span><span style="color:#e6db74">    	uniform distribution in [0, 0.01).
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">38</span><span><span style="color:#e6db74">    	&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">39</span><span>        self<span style="color:#f92672">.</span>codebook <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>ones([self<span style="color:#f92672">.</span>n_units<span style="color:#f92672">*</span>self<span style="color:#f92672">.</span>n_units, self<span style="color:#f92672">.</span>dim])
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">40</span><span>        nn<span style="color:#f92672">.</span>init<span style="color:#f92672">.</span>uniform_(self<span style="color:#f92672">.</span>codebook, a<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, b<span style="color:#f92672">=</span><span style="color:#ae81ff">0.01</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">41</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">42</span><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initLatice</span>(self):
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">43</span><span>    	<span style="color:#e6db74">&#34;&#34;&#34; Initialize a two-dimensional grid (latice) on which units
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">44</span><span><span style="color:#e6db74">    	(or neurons) are placed. Moreover, computes the distances between all
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">45</span><span><span style="color:#e6db74">    	the pairs within the grid.
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">46</span><span><span style="color:#e6db74">    	
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">47</span><span><span style="color:#e6db74">    	&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">48</span><span>        line <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>linspace(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, steps<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>n_units)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">49</span><span>        grid_x, grid_y <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>meshgrid(line, line, indexing<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ij&#34;</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">50</span><span>        p <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cat((grid_x<span style="color:#f92672">.</span>flatten()<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>),
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">51</span><span>                       grid_y<span style="color:#f92672">.</span>flatten()<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1</span>)), dim<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">52</span><span>        self<span style="color:#f92672">.</span>dist <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cdist(p, p)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">53</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">54</span><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">fit</span>(self, X):
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">55</span><span>    	<span style="color:#e6db74">&#34;&#34;&#34; Fit the input data X to a two-dimensional SOM.
+</span></span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">56</span><span><span style="color:#e6db74">    	&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">57</span><span>        <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>iters):
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">58</span><span>        	
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">59</span><span>        	<span style="color:#75715e"># Sample the input space</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">60</span><span>        	x <span style="color:#f92672">=</span> X[np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>randint(X<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>])]			
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">61</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">62</span><span>			<span style="color:#75715e"># Find the BMU</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">63</span><span>            BMU <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>argmin((((self<span style="color:#f92672">.</span>codebook <span style="color:#f92672">-</span> x))<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>)<span style="color:#f92672">.</span>sum(dim<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>))
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">64</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">65</span><span>			<span style="color:#75715e"># Compute the neighborhood function</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">66</span><span>            h <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>exp(<span style="color:#f92672">-</span>(self<span style="color:#f92672">.</span>dist[BMU]<span style="color:#f92672">/</span>self<span style="color:#f92672">.</span>sigma[t])<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>)<span style="color:#f92672">.</span>unsqueeze(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">67</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">68</span><span>			<span style="color:#75715e"># Update the codebook</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">69</span><span>            self<span style="color:#f92672">.</span>codebook <span style="color:#f92672">-=</span> self<span style="color:#f92672">.</span>lrate[t] <span style="color:#f92672">*</span> h <span style="color:#f92672">*</span> (self<span style="color:#f92672">.</span>codebook <span style="color:#f92672">-</span> x)</span></span></code></pre></div>
+<h2 id="examples">Examples</h2>
 <figure><img src="/images/som_maps.png"
-         alt="Figure 3. Self-organizing maps. (A) Shows a self-organizing map  of the unit square $[0, 1]^2$, and (B) shows a a map for a ring in $[-1, 1]^2$."/><figcaption>
-            <p>Figure 3. Self-organizing maps. (A) Shows a self-organizing map  of the unit square $[0, 1]^2$, and (B) shows a a map for a ring in $[-1, 1]^2$.</p>
-        </figcaption>
+    alt="Figure 3. Self-organizing maps. (A) Shows a self-organizing map  of the unit square $[0, 1]^2$, and (B) shows a a map for a ring in $[-1, 1]^2$."><figcaption>
+      <p>Figure 3. Self-organizing maps. (A) Shows a self-organizing map  of the unit square $[0, 1]^2$, and (B) shows a a map for a ring in $[-1, 1]^2$.</p>
+    </figcaption>
 </figure>
 <h3 id="square-in--mathbbr2-">Square in $ \mathbb{R}^2 $</h3>
 <p>Our first example is to map a two-dimensional rectangular distribution in the
@@ -595,25 +470,25 @@ Still, the map needs to fit the data distribution better. We can see that the
 map also tries to find non-existent data in the ring&rsquo;s hole.</p>
 <div class="data-table" role="region" tabindex="0" aria-labelledby="table-caption-table1">
   <table class="table optional CSS class declaration" id="table1" itemscope itemtype="https://schema.org/Table"><caption id="table-caption-table1" itemprop="about"><b>Table</b> ${\bf 1}$ SOM Errors. Quantization $\mathcal{E_Q}$ and topographic $\mathcal{E_T}$ errors for the square and ring distributions.</caption>
-<thead>
-<tr>
-<th style="text-align:center">Example</th>
-<th style="text-align:center">$\mathcal{E_Q} $</th>
-<th style="text-align:center">$\mathcal{E_{T}}$</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">Square</td>
-<td style="text-align:center">$0.034$</td>
-<td style="text-align:center">$0.028$</td>
-</tr>
-<tr>
-<td style="text-align:center">Ring</td>
-<td style="text-align:center">$0.255$</td>
-<td style="text-align:center">$0.04$</td>
-</tr>
-</tbody>
+  <thead>
+      <tr>
+          <th style="text-align: center">Example</th>
+          <th style="text-align: center">$\mathcal{E_Q} $</th>
+          <th style="text-align: center">$\mathcal{E_{T}}$</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: center">Square</td>
+          <td style="text-align: center">$0.034$</td>
+          <td style="text-align: center">$0.028$</td>
+      </tr>
+      <tr>
+          <td style="text-align: center">Ring</td>
+          <td style="text-align: center">$0.255$</td>
+          <td style="text-align: center">$0.04$</td>
+      </tr>
+  </tbody>
 </table>
 </div>
 <h2 id="summary">Summary</h2>
@@ -628,14 +503,14 @@ representations and correctly maps the input distribution.</p>
 <a href="https://gist.github.com/gdetor/379c2e3897d474894f42735b5b1ba641">here</a>.</p>
 </div>
 <h3 id="cite-as">Cite as</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">@article{detorakis2023som,
-  title   = &#34;An introduction to self-organizing maps&#34;,
-  author  = &#34;Georgios Is. Detorakis&#34;,
-  journal = &#34;gdetor.github.io&#34;,
-  year    = &#34;2023&#34;,
-  url     = &#34;https://gdetor.github.io/posts/som&#34;
-}
-</code></pre></div><h3 id="references">References</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>@article{detorakis2023som,
+</span></span><span style="display:flex;"><span>  title   = &#34;An introduction to self-organizing maps&#34;,
+</span></span><span style="display:flex;"><span>  author  = &#34;Georgios Is. Detorakis&#34;,
+</span></span><span style="display:flex;"><span>  journal = &#34;gdetor.github.io&#34;,
+</span></span><span style="display:flex;"><span>  year    = &#34;2023&#34;,
+</span></span><span style="display:flex;"><span>  url     = &#34;https://gdetor.github.io/posts/som&#34;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="references">References</h3>
 <ol>
 <li>Grossberg S., <em>Physiological interpretation of the self-organizing map algorithm</em>, 1994.</li>
 <li>Kohonen T., <em>Self-organized formation of topologically correct feature maps</em>, Biol Cybern., 1982;43(1):59–69.</li>
@@ -645,100 +520,46 @@ representations and correctly maps the input distribution.</p>
 </ol>
 </section>
 
-  
-  
-  <footer class="mt-12 flex flex-wrap">
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+  <footer class="mt-12 flex flex-wrap"><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
       href="https://gdetor.github.io/tags/som"
       >SOM</a
-    >
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
       href="https://gdetor.github.io/tags/kohonen"
       >Kohonen</a
-    >
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
       href="https://gdetor.github.io/tags/neural-networks"
       >neural networks</a
-    >
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
       href="https://gdetor.github.io/tags/self-organizing-map"
       >self-organizing map</a
-    >
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
       href="https://gdetor.github.io/tags/pytorch"
       >pytorch</a
-    >
-    
-  </footer>
-  
-
-  
-  
-  
-  
-  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
-    
-    <a
-      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
-      href="https://gdetor.github.io/posts/math_tips/"
-      ><span class="mr-1.5">←</span><span>Simple mathematical tricks in Python</span></a
-    >
-    
-    
-    <a
-      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
-      href="https://gdetor.github.io/posts/cloudlab/"
-      ><span>Organs-on-Chip-as-a-Service: A proposal bridging cloud services and scientific experiments</span><span class="ml-1.5">→</span></a
-    >
-    
-  </nav>
-  
-  
-
-  
-  
-
-  
-  
-
-  
-
-
-  
-</article>
-
-
-    </main>
-	
-    <footer
-  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+    ></footer><nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg leading-[1.2]! *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  ><a
+      class="justify-end pl-3 ltr:ml-auto rtl:mr-auto"
+      href="https://gdetor.github.io/posts/genetic_algorithms/"
+      ><span>Genetic Algorithms &amp; Island Models</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    ></nav></article></main><footer
+  class="mx-auto flex h-[4.5rem] max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
 >
-  <div class="mr-auto">
-    &copy; 2025
-    <a class="link" href="https://gdetor.github.io">GID</a>
-  </div>
+  <div class="mr-auto">Copyright © 2024, Georgios Is. Detorakis.</div>
   <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
-    >Powered by Hugo️️</a
+    >powered by hugo️️</a
   >️
   <a
     class="link"
     href="https://github.com/nanxiaobei/hugo-paper"
     rel="noopener"
     target="_blank"
-    >✎ Paper</a
+    >hugo-paper</a
   >
 </footer>
-
-    
-  </body>
+</body>
 </html>

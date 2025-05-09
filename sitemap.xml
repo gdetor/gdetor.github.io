@@ -2,6 +2,24 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://gdetor.github.io/posts/som/</loc>
+    <lastmod>2023-12-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/posts/genetic_algorithms/</loc>
+    <lastmod>2022-04-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/posts/acf_pacf/</loc>
+    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/posts/errors/</loc>
+    <lastmod>2022-05-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/posts/normalization/</loc>
+    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://gdetor.github.io/posts/cloudlab/</loc>
+    <lastmod>2022-11-28T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://gdetor.github.io/tags/gaf/</loc>
     <lastmod>2025-04-23T00:00:00+00:00</lastmod>
   </url><url>
@@ -80,9 +98,6 @@
     <loc>https://gdetor.github.io/posts/math_tips/</loc>
     <lastmod>2024-10-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://gdetor.github.io/posts/som/</loc>
-    <lastmod>2023-12-29T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://gdetor.github.io/tags/kohonen/</loc>
     <lastmod>2023-12-29T00:00:00+00:00</lastmod>
   </url><url>
@@ -104,9 +119,6 @@
     <loc>https://gdetor.github.io/tags/neuroscience/</loc>
     <lastmod>2022-11-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://gdetor.github.io/posts/cloudlab/</loc>
-    <lastmod>2022-11-28T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://gdetor.github.io/tags/organs-on-chips/</loc>
     <lastmod>2022-11-28T00:00:00+00:00</lastmod>
   </url><url>
@@ -120,9 +132,6 @@
     <lastmod>2022-10-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://gdetor.github.io/tags/autocorrelation/</loc>
-    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://gdetor.github.io/posts/acf_pacf/</loc>
     <lastmod>2022-10-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://gdetor.github.io/tags/centered/</loc>
@@ -149,9 +158,6 @@
     <loc>https://gdetor.github.io/tags/standardize/</loc>
     <lastmod>2022-10-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://gdetor.github.io/posts/normalization/</loc>
-    <lastmod>2022-10-13T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://gdetor.github.io/tags/coefficient-of-determination/</loc>
     <lastmod>2022-05-05T00:00:00+00:00</lastmod>
   </url><url>
@@ -170,16 +176,10 @@
     <loc>https://gdetor.github.io/tags/r2/</loc>
     <lastmod>2022-05-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://gdetor.github.io/posts/errors/</loc>
-    <lastmod>2022-05-05T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>https://gdetor.github.io/tags/gaim/</loc>
     <lastmod>2022-04-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://gdetor.github.io/tags/genetic-algorithms/</loc>
-    <lastmod>2022-04-28T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://gdetor.github.io/posts/genetic_algorithms/</loc>
     <lastmod>2022-04-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://gdetor.github.io/tags/island-model/</loc>
@@ -192,7 +192,6 @@
     <lastmod>2021-04-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://gdetor.github.io/staticart/</loc>
-    <priority>0</priority>
   </url><url>
     <loc>https://gdetor.github.io/about/</loc>
   </url><url>

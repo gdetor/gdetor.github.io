@@ -1,41 +1,34 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>time series on GID</title>
+    <title>Time Series on GID</title>
     <link>https://gdetor.github.io/tags/time-series/</link>
-    <description>Recent content in time series on GID</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <description>Recent content in Time Series on GID</description>
+    <generator>Hugo</generator>
     <language>en-us</language>
     <copyright>Copyright © 2024, Georgios Is. Detorakis.</copyright>
-    <lastBuildDate>Wed, 23 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://gdetor.github.io/tags/time-series/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>How do we compute a Gramian Angular Field (GAF) for time series?</title>
-      <link>https://gdetor.github.io/posts/gaf/</link>
-      <pubDate>Wed, 23 Apr 2025 00:00:00 +0000</pubDate>
-      
-      <guid>https://gdetor.github.io/posts/gaf/</guid>
-      <description>Here, we briefly introduce the Gramian Angular Field (GAF) method proposed by [1] to convert time series into images without losing much information. Thus, we can use those images with deep neural networks and computer vision methods to analyze or classify time series. Following [1], we present the main idea behind GAF: to obtain a matrix of similarities between temporal data points of a time series. To do so, the authors in [1] introduced the following algorithm:</description>
-    </item>
-    
+    <lastBuildDate>Wed, 23 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://gdetor.github.io/tags/time-series/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Autocorrelation Functions for Time Series</title>
       <link>https://gdetor.github.io/posts/acf_pacf/</link>
       <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://gdetor.github.io/posts/acf_pacf/</guid>
-      <description>This post aims to provide some theoretical background on autocorrelation functions and how to use them to analyze time series. Furthermore, we show how to use the Autocorrelation (ACF) function and the Partial Autocorrelation (PACF) function to determine the parameters for an ARMA model.
-Brief introduction to time series In a previous post (see here), we introduced some basic definitions and terminology about time series. We repeat the same definitions here to avoid forcing the reader to move back and forth.</description>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;This post aims to provide some theoretical background on autocorrelation functions and how to use them to analyze time series. Furthermore, we show how to use the Autocorrelation (ACF) function and the Partial Autocorrelation (PACF) function to determine the parameters for an ARMA model.&lt;/p&gt;&#xA;&lt;h2 id=&#34;brief-introduction-to-time-series&#34;&gt;Brief introduction to time series&lt;/h2&gt;&#xA;&lt;p&gt;In a previous post (see &lt;a href=&#34;https://gdetor.github.io/posts/errors&#34;&gt;here&lt;/a&gt;), we&#xA;introduced some basic definitions and terminology about time series. We repeat the&#xA;same definitions here to avoid forcing the reader to move back and forth.&lt;/p&gt;</description>
     </item>
-    
     <item>
       <title>Time series forecasting error metrics</title>
       <link>https://gdetor.github.io/posts/errors/</link>
       <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://gdetor.github.io/posts/errors/</guid>
-      <description>In this post, we will explore the basic error measures used in time-series forecasting. Error measures provide a way to quantify the quality of a forecasting algorithm (e.g., the performance). First, we briefly introduce time series and the fundamental terms of forecasting. Second, we will introduce the most commonly used error measures and give examples. Finally, we provide a complete example of using errors in a real-life forecasting scenario.
-What is a time series A time series is a series of data points indexed in time order in layman&amp;rsquo;s terms [1, 2].</description>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;In this post, we will explore the basic error measures&#xA;used in time-series forecasting. Error measures provide a way&#xA;to quantify the quality of a forecasting algorithm (&lt;em&gt;e.g.&lt;/em&gt;, the&#xA;performance). First, we briefly introduce time series and the&#xA;fundamental terms of forecasting. Second, we will introduce the&#xA;most commonly used error measures and give examples. Finally,&#xA;we provide a complete example of using errors in a real-life&#xA;forecasting scenario.&lt;/p&gt;</description>
     </item>
-    
+    <item>
+      <title>How do we compute a Gramian Angular Field (GAF) for time series?</title>
+      <link>https://gdetor.github.io/posts/gaf/</link>
+      <pubDate>Wed, 23 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>https://gdetor.github.io/posts/gaf/</guid>
+      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;Here, we briefly introduce the Gramian Angular Field (GAF) method proposed by [1] to convert time series into images without losing much information. Thus, we can use those images with deep neural networks and computer vision methods to analyze or classify time series.&#xA;Following [1], we present the main idea behind GAF: to obtain a matrix of similarities between temporal data points of a time series. To do so, the authors in [1] introduced the following algorithm:&lt;/p&gt;</description>
+    </item>
   </channel>
 </rss>

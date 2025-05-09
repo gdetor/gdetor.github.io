@@ -6,46 +6,12 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <html
   class="not-ready lg:text-base"
-  style="--bg: #faf8f1"
+  style="--bg:#faf8f1"
   lang="en-us"
->
-  <head>
+  dir="ltr"
+><head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta
@@ -59,59 +25,29 @@
   
   <meta name="theme-color" />
 
-  
-  
-  
-  
-  <meta name="description" content="In this post, we will explore the basic error measures used in time-series forecasting. Error measures provide a way to quantify the quality of a forecasting algorithm (e.g., the performance). First, we briefly introduce time series and the fundamental terms of forecasting. Second, we will introduce the most commonly used error measures and give examples. Finally, we provide a complete example of using errors in a real-life forecasting scenario.
-What is a time series A time series is a series of data points indexed in time order in layman&rsquo;s terms [1, 2]." />
-  <meta name="author" content="Georgios Is. Detorakis" />
-  
+  <meta name="description" content="
+In this post, we will explore the basic error measures
+used in time-series forecasting. Error measures provide a way
+to quantify the quality of a forecasting algorithm (e.g., the
+performance). First, we briefly introduce time series and the
+fundamental terms of forecasting. Second, we will introduce the
+most commonly used error measures and give examples. Finally,
+we provide a complete example of using errors in a real-life
+forecasting scenario." />
+  <meta name="author" content="Georgios Is. Detorakis" /><link rel="preload stylesheet" as="style" href="https://gdetor.github.io/main.min.css" />
 
-  
-  
-  
-  
-  
-  
-  <link rel="preload stylesheet" as="style" href="https://gdetor.github.io/main.min.css" />
-
-  
-  
-  
-  
   
   <link rel="preload" as="image" href="https://gdetor.github.io/theme.png" />
 
-  
-  
-  
-  
   <link rel="preload" as="image" href="https://avatars.githubusercontent.com/u/7115299?v=4" />
-  
-  
 
-  
-  
-  <link rel="preload" as="image" href="https://gdetor.github.io/github.svg" />
-  
-  <link rel="preload" as="image" href="https://gdetor.github.io/linkedin.svg" />
-  
-  
+  <link rel="preload" as="image" href="https://gdetor.github.io/github.svg" /><link rel="preload" as="image" href="https://gdetor.github.io/linkedin.svg" />
 
-  
-  
   <script
     defer
     src="https://gdetor.github.io/highlight.min.js"
     onload="hljs.initHighlightingOnLoad();"
-  ></script>
-  
-
-  
-  
-  
-  <link
+  ></script><link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css"
   integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI"
@@ -128,9 +64,7 @@ What is a time series A time series is a series of data points indexed in time o
   src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js"
   integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05"
   crossorigin="anonymous"
-></script>
-
-<script>
+></script><script>
   document.addEventListener('DOMContentLoaded', () =>
     renderMathInElement(document.body, {
       
@@ -145,82 +79,68 @@ What is a time series A time series is a series of data points indexed in time o
   );
 </script>
 
-  
-  
-  
 
   
-  <link rel="icon" href="https://gdetor.github.io/icons/favicon.ico" />
-  <link rel="apple-touch-icon" href="https://gdetor.github.io/apple-touch-icon.png" />
+  <link
+    rel="icon"
+    href="https://gdetor.github.io/icons/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="https://gdetor.github.io/apple-touch-icon.png"
+  />
 
-  <link rel="stylesheet" href="/css/highlight.css" />
-  
-  
-  
-  
- 
-  
-  <meta name="generator" content="Hugo 0.92.2" />
-
-  
-  
-  
-  
-  
+  <meta name="generator" content="Hugo 0.147.2">
   <meta itemprop="name" content="Time series forecasting error metrics">
-<meta itemprop="description" content="Error measures provide a way to quantify the quality of a forecasting algorithm (*e.g.*, performance). We briefly introduce time series and the fundamental terms of forecasting. We will then introduce the most commonly used error measures and give some examples. We provide an example of how to use error metrics in a real-life forecasting scenario."><meta itemprop="datePublished" content="2022-05-05T00:00:00+00:00" />
-<meta itemprop="dateModified" content="2022-05-05T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2905">
-<meta itemprop="keywords" content="mean squared error,MSE,MAE,mean absolute error,time series,R2,coefficient of determination," />
-  
-  <meta property="og:title" content="Time series forecasting error metrics" />
-<meta property="og:description" content="Error measures provide a way to quantify the quality of a forecasting algorithm (*e.g.*, performance). We briefly introduce time series and the fundamental terms of forecasting. We will then introduce the most commonly used error measures and give some examples. We provide an example of how to use error metrics in a real-life forecasting scenario." />
-<meta property="og:type" content="article" />
-<meta property="og:url" content="https://gdetor.github.io/posts/errors/" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2022-05-05T00:00:00+00:00" />
-<meta property="article:modified_time" content="2022-05-05T00:00:00+00:00" />
+  <meta itemprop="description" content="Error measures provide a way to quantify the quality of a forecasting algorithm (*e.g.*, performance). We briefly introduce time series and the fundamental terms of forecasting. We will then introduce the most commonly used error measures and give some examples. We provide an example of how to use error metrics in a real-life forecasting scenario.">
+  <meta itemprop="datePublished" content="2022-05-05T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2022-05-05T00:00:00+00:00">
+  <meta itemprop="wordCount" content="2932">
+  <meta itemprop="keywords" content="Mean Squared Error,MSE,MAE,Mean Absolute Error,Time Series,R2,Coefficient of Determination"><meta property="og:url" content="https://gdetor.github.io/posts/errors/">
+  <meta property="og:site_name" content="GID">
+  <meta property="og:title" content="Time series forecasting error metrics">
+  <meta property="og:description" content="Error measures provide a way to quantify the quality of a forecasting algorithm (*e.g.*, performance). We briefly introduce time series and the fundamental terms of forecasting. We will then introduce the most commonly used error measures and give some examples. We provide an example of how to use error metrics in a real-life forecasting scenario.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-05-05T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-05-05T00:00:00+00:00">
+    <meta property="article:tag" content="Mean Squared Error">
+    <meta property="article:tag" content="MSE">
+    <meta property="article:tag" content="MAE">
+    <meta property="article:tag" content="Mean Absolute Error">
+    <meta property="article:tag" content="Time Series">
+    <meta property="article:tag" content="R2">
 
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Time series forecasting error metrics">
+  <meta name="twitter:description" content="Error measures provide a way to quantify the quality of a forecasting algorithm (*e.g.*, performance). We briefly introduce time series and the fundamental terms of forecasting. We will then introduce the most commonly used error measures and give some examples. We provide an example of how to use error metrics in a real-life forecasting scenario.">
 
-  
-  <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Time series forecasting error metrics"/>
-<meta name="twitter:description" content="Error measures provide a way to quantify the quality of a forecasting algorithm (*e.g.*, performance). We briefly introduce time series and the fundamental terms of forecasting. We will then introduce the most commonly used error measures and give some examples. We provide an example of how to use error metrics in a real-life forecasting scenario."/>
-
-  
-  
-  
   <link rel="canonical" href="https://gdetor.github.io/posts/errors/" />
-  
-  
 </head>
-
-  <body class="text-black duration-200 ease-out dark:text-white">
-    
-    
-    <script src="/js/copybutton.js"></script>
-    
-
-    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
-  <div class="relative z-50 mr-auto flex items-center">
+<body
+    class="bg-(--bg) text-black antialiased duration-200 ease-out [-webkit-tap-highlight-color:transparent] dark:text-white"
+  ><header
+  class="mx-auto flex h-[4.5rem] max-w-(--w) px-8 whitespace-nowrap lg:justify-center"
+>
+  <div class="relative z-50 flex items-center ltr:mr-auto rtl:ml-auto">
     <a
-      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
-      href="https://gdetor.github.io"
+      class="-translate-y-[1px] text-2xl font-medium"
+      href="https://gdetor.github.io/"
       >GID</a
     >
     <div
-      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
       role="button"
       aria-label="Dark"
     ></div>
   </div>
 
   <div
-    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    class="btn-menu relative z-50 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden ltr:-mr-8 rtl:-ml-8"
     role="button"
     aria-label="Menu"
   ></div>
-
-  
 
   <script>
     
@@ -266,101 +186,58 @@ What is a time series A time series is a series of data points indexed in time o
   </script>
 
   <div
-    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
-  >
-    
-    
-    <nav class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-6">
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full flex-col justify-center bg-(--bg) pb-16 duration-200 select-none lg:static lg:h-auto lg:flex-row lg:bg-transparent! lg:pb-0 lg:transition-none"
+  ><nav
+      class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-10 rtl:space-x-reverse"
+    ><a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
         href="/about/"
         >About</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+      ><a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
         href="/research/"
         >Research</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+      ><a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
         href="/software/"
         >Software</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+      ><a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
         href="/publications/"
         >Publications</a
-      >
-      
-      <a
-        class="block text-center text-2xl leading-[5rem] lg:text-base lg:font-normal"
+      ><a
+        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
         href="/artwork/"
         >Artwork</a
-      >
-      
-    </nav>
-    
-
-    
-    <nav
-      class="mt-12 flex justify-center space-x-10 dark:invert lg:ml-12 lg:mt-0 lg:items-center lg:space-x-6"
+      ></nav><nav
+      class="mt-12 flex justify-center space-x-10 lg:mt-0 lg:items-center ltr:lg:ml-14 rtl:space-x-reverse rtl:lg:mr-14 dark:invert"
     >
-      
       <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
         style="--url: url(./github.svg)"
         href="https://github.com/gdetor"
         target="_blank"
         rel="me"
-      >
-        github
-      </a>
-      
+      >github</a>
       <a
-        class="h-8 w-8 text-[0] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
         style="--url: url(./linkedin.svg)"
         href="https://linkedin.com/in/georgiosdetorakis"
         target="_blank"
         rel="me"
-      >
-        linkedin
-      </a>
-      
+      >linkedin</a>
     </nav>
-    
   </div>
 </header>
-
-
-    <main
-      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
-    >
-      
-
-<article>
-  <header class="mb-16">
-    <h1 class="!my-0 pb-2.5">Time series forecasting error metrics</h1>
-
-    
-    <div class="text-sm antialiased opacity-60">
-      
-      <time>May 5, 2022</time>
-      
-      
-      
-      
-      <span class="mx-1">&middot;</span>
+<main
+      class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"
+    ><article>
+  <header class="mb-14">
+    <h1 class="my-0! pb-2.5">Time series forecasting error metrics</h1><div class="text-xs antialiased opacity-60"><time>May 5, 2022</time><span class="mx-1">&middot;</span>
       <span>Georgios Is. Detorakis</span>
       <span class="mx-1">&middot;</span>
-      <span class="inline-item reading">14 minutes read</span>
-      
-    </div>
-    
-  </header>
+      <span>14&nbsp minutes read &nbsp / &nbsp2932&nbsp words</span>
+    </div></header>
 
   <section><div style="text-align: justify;">
 <p>In this post, we will explore the basic error measures
@@ -384,9 +261,9 @@ A few examples of time series are</p>
 to September 1960. You can download the data from Kaggle
 <a href="https://www.kaggle.com/datasets/rakannimer/air-passengers">here</a>.</p>
 <figure><img src="/images/passengers.png"
-         alt="Figure 1. An example of a time series showing the number of air passengers per month."/><figcaption>
-            <p>Figure 1. An example of a time series showing the number of air passengers per month.</p>
-        </figcaption>
+    alt="Figure 1. An example of a time series showing the number of air passengers per month."><figcaption>
+      <p>Figure 1. An example of a time series showing the number of air passengers per month.</p>
+    </figcaption>
 </figure>
 <p>A more rigorous definition of a time series found in [1] (Chapter 1, pg 1)
 is given below:</p>
@@ -409,8 +286,7 @@ is finite,</li>
 <blockquote>
 <p>From now on and for simplicity&rsquo;s sake we will use the following notation for
 a time series: $ y[1], y[2], \ldots , y[N] $, where
-$ N \in \mathbb{N} $ or $ y[t] $, where $t=1, \ldots , N $.</p>
-</blockquote>
+$ N \in \mathbb{N} $ or $ y[t] $, where $t=1, \ldots , N $.</p></blockquote>
 <h2 id="more-terminology">More terminology</h2>
 <p>Before we dive into the post, let&rsquo;s give some valuable terminology for the
 unfamiliar reader.</p>
@@ -474,9 +350,9 @@ passenger data (brown line). The blue line represents the naive predictor,
 the green line represents the seasonal predictor, the orange line represents
 the average predictor, and the pink line indicates the drift predictor.</p>
 <figure><img src="/images/naive_predictors.png"
-         alt="Figure 2. Forecasts of montly air passengers. Naive predictor (blue line), naive seasonal (green), average (orange), drift (pink)."/><figcaption>
-            <p>Figure 2. Forecasts of montly air passengers. Naive predictor (blue line), naive seasonal (green), average (orange), drift (pink).</p>
-        </figcaption>
+    alt="Figure 2. Forecasts of montly air passengers. Naive predictor (blue line), naive seasonal (green), average (orange), drift (pink)."><figcaption>
+      <p>Figure 2. Forecasts of montly air passengers. Naive predictor (blue line), naive seasonal (green), average (orange), drift (pink).</p>
+    </figcaption>
 </figure>
 <h2 id="forecasting-error-measures">Forecasting error measures</h2>
 <p>So why do we need error measures? The general idea is to quantify the distance
@@ -502,8 +378,7 @@ that $ y[t] $ is the time series value at time index $ t $.
 A similar way would be $ y_t $, where $ t $ is the time index.</p>
 <blockquote>
 <p><strong>Reminder</strong> $ y[t] $ is the target signal, $ \hat{y}[t] $ the prediction
-signal and $ \epsilon[t] $ the error signal.</p>
-</blockquote>
+signal and $ \epsilon[t] $ the error signal.</p></blockquote>
 <p>And now, we are ready to introduce the error measures and some examples
 demonstrating their behavior.</p>
 <h4 id="example">Example</h4>
@@ -513,14 +388,13 @@ custom implementation of the error measure and a Sklearn one. The reader should
 rely more on the Sklearn [7] implementation since it’s generic and optimized.
 We provide a custom implementation so the reader can better understand the
 mathematical formulas.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
-np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>seed(<span style="color:#ae81ff">13</span>)
-
-y_true <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1.5</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">2.5</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>])        <span style="color:#75715e"># This is y (target)</span>
-
-y_pred <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.3</span>, <span style="color:#ae81ff">2.6</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2.4</span>, <span style="color:#ae81ff">1.2</span>])      <span style="color:#75715e"># This is y_hat (prediction)</span>
-
-</code></pre></div><h3 id="mean-absolute-error-mae">Mean Absolute Error (MAE)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py3" data-lang="py3"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">1</span><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">2</span><span>np<span style="color:#f92672">.</span>random<span style="color:#f92672">.</span>seed(<span style="color:#ae81ff">13</span>)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">3</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">4</span><span>y_true <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1.5</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">2.5</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>])        <span style="color:#75715e"># This is y (target)</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">5</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">6</span><span>y_pred <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>array([<span style="color:#ae81ff">1</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.3</span>, <span style="color:#ae81ff">2.6</span>, <span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2.4</span>, <span style="color:#ae81ff">1.2</span>])      <span style="color:#75715e"># This is y_hat (prediction)</span></span></span></code></pre></div>
+<h3 id="mean-absolute-error-mae">Mean Absolute Error (MAE)</h3>
 <p>The MAE is the most straightforward error measure, and as its
 name signifies, it is just the difference between a target (or desired)
 value and model&rsquo;s prediction. MAE is defined as:</p>
@@ -530,19 +404,19 @@ scale-dependent, meaning that both signals, target and prediction,
 must be of the same scale. However, MAE is robust to outliers.
 (see [8, 9] for ways to handle outliers and fix related issues).</p>
 <h4 id="example-1">Example</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> mean_absolute_error
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">MAE</span>(y_true, y_pred):
-    N <span style="color:#f92672">=</span> len(y_true)
-    error <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>abs(y_true <span style="color:#f92672">-</span> y_pred)<span style="color:#f92672">.</span>sum()
-    <span style="color:#66d9ef">return</span> error <span style="color:#f92672">/</span> N
-
-print(MAE(y, y_hat))
-<span style="color:#ae81ff">0.2333333333333333</span>
-
-print(mean_absolute_error(y, y_hat))
-<span style="color:#ae81ff">0.2333333333333333</span>
-</code></pre></div><h3 id="mean-absolute-percentage-error-mape">Mean Absolute Percentage Error (MAPE)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-py3" data-lang="py3"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> mean_absolute_error
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex; background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">MAE</span>(y_true, y_pred):
+</span></span><span style="display:flex; background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>    N <span style="color:#f92672">=</span> len(y_true)
+</span></span><span style="display:flex; background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>    error <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>abs(y_true <span style="color:#f92672">-</span> y_pred)<span style="color:#f92672">.</span>sum()
+</span></span><span style="display:flex; background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#66d9ef">return</span> error <span style="color:#f92672">/</span> N
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>print(MAE(y, y_hat))
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#ae81ff">0.2333333333333333</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>print(mean_absolute_error(y, y_hat))
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span><span style="color:#ae81ff">0.2333333333333333</span></span></span></code></pre></div>
+<h3 id="mean-absolute-percentage-error-mape">Mean Absolute Percentage Error (MAPE)</h3>
 <p>MAPE computes the error between a target and a prediction signal
 as a ratio of the error $ \epsilon[t] $ and the target signal. More
 precisely,</p>
@@ -557,19 +431,20 @@ is close to zero or zero, the MAPE is too large or cannot be defined.
 Moreover, MAPE is susceptible to skewness since the term $ \frac{1}{y[t]} $
 depends only on the observed data (not on the model&rsquo;s predictions).</p>
 <h4 id="example-2">Example</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> mean_absolute_percentage_error
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">MAPE</span>(y_true, y_pred):
-    N <span style="color:#f92672">=</span> len(y_true)
-    error <span style="color:#f92672">=</span> (np<span style="color:#f92672">.</span>abs(y_true <span style="color:#f92672">-</span> y_pred) <span style="color:#f92672">/</span> np<span style="color:#f92672">.</span>abs(y_true))<span style="color:#f92672">.</span>sum()
-    <span style="color:#66d9ef">return</span> (<span style="color:#ae81ff">100.0</span> <span style="color:#f92672">/</span> N) <span style="color:#f92672">*</span> error
-
-print(MAPE(y, y_hat))
-<span style="color:#ae81ff">19.5555555555555557</span>                 <span style="color:#75715e"># this is because we multiply by 100</span>
-    
-print(mean_absolute_percentage_error(y, y_hat))
-<span style="color:#ae81ff">0.19555555555555554</span>                 
-</code></pre></div><h3 id="mean-squared-error-mse">Mean Squared Error (MSE)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-py3" data-lang="py3"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> mean_absolute_percentage_error
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex; background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">MAPE</span>(y_true, y_pred):
+</span></span><span style="display:flex; background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>    N <span style="color:#f92672">=</span> len(y_true)
+</span></span><span style="display:flex; background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>    error <span style="color:#f92672">=</span> (np<span style="color:#f92672">.</span>abs(y_true <span style="color:#f92672">-</span> y_pred) <span style="color:#f92672">/</span> np<span style="color:#f92672">.</span>abs(y_true))<span style="color:#f92672">.</span>sum()
+</span></span><span style="display:flex; background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#66d9ef">return</span> (<span style="color:#ae81ff">100.0</span> <span style="color:#f92672">/</span> N) <span style="color:#f92672">*</span> error
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>print(MAPE(y, y_hat))
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#ae81ff">19.5555555555555557</span>                 <span style="color:#75715e"># this is because we multiply by 100</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>print(mean_absolute_percentage_error(y, y_hat))
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span><span style="color:#ae81ff">0.19555555555555554</span>                 
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span> </span></span></code></pre></div>
+<h3 id="mean-squared-error-mse">Mean Squared Error (MSE)</h3>
 <p>The MSE is one of the most used error measures in Machine and
 Deep learning. It computes the average of the square of the errors
 between target and prediction signals. We define the MSE as:</p>
@@ -596,19 +471,19 @@ between bias and variance. That&rsquo;s why sometimes we have to penalize
 our model during training using regularization techniques (this is
 out of the scope of the present post).</p>
 <h4 id="example-3">Example</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> mean_squared_error
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">MSE</span>(y_true, y_pred):
-    N <span style="color:#f92672">=</span> len(y_true)
-    error <span style="color:#f92672">=</span> ((y_true <span style="color:#f92672">-</span> y_pred)<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>)<span style="color:#f92672">.</span>sum()
-    <span style="color:#66d9ef">return</span> error <span style="color:#f92672">/</span> N
-
-print(MSE(y_true, y_pred))
-<span style="color:#ae81ff">0.08333333333333333</span>
-    
-print(mean_squared_error(y_true, y_pred))
-<span style="color:#ae81ff">0.08333333333333333</span>
-</code></pre></div><h3 id="symmetric-mean-absolute-percentage-error-smape">Symmetric Mean Absolute Percentage Error (SMAPE)</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-py3" data-lang="py3"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> mean_squared_error
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span>
+</span></span><span style="display:flex; background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">MSE</span>(y_true, y_pred):
+</span></span><span style="display:flex; background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span>    N <span style="color:#f92672">=</span> len(y_true)
+</span></span><span style="display:flex; background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>    error <span style="color:#f92672">=</span> ((y_true <span style="color:#f92672">-</span> y_pred)<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>)<span style="color:#f92672">.</span>sum()
+</span></span><span style="display:flex; background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    <span style="color:#66d9ef">return</span> error <span style="color:#f92672">/</span> N
+</span></span><span style="display:flex; background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>print(MSE(y_true, y_pred))
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span><span style="color:#ae81ff">0.08333333333333333</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>print(mean_squared_error(y_true, y_pred))
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span><span style="color:#ae81ff">0.08333333333333333</span></span></span></code></pre></div>
+<h3 id="symmetric-mean-absolute-percentage-error-smape">Symmetric Mean Absolute Percentage Error (SMAPE)</h3>
 <p>SMAPE computes the error between the target and the prediction signals
 as a ratio of the error with the sum of the absolute values of actual
 and prediction values.
@@ -668,31 +543,31 @@ of $ R^2 $, we see a direct relation between $ R^2 $ and MSE. While
 the $ R^2 $ increases, the MSE tends to approach zero. When we have
 an ideal predictor, $ MSE = 0 $ and $ r^2 = 1 $.</p>
 <h4 id="example-4">Example</h4>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> r2_score
-<span style="color:#f92672">from</span> numpy <span style="color:#f92672">import</span> var
-
-<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">R2</span>(y_true, y_pred):
-    mse <span style="color:#f92672">=</span> MSE(y_true, y_pred)
-    variance <span style="color:#f92672">=</span> var(y_true)
-    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> (mse <span style="color:#f92672">/</span> var)
-
-print(R2(y_true, y_pred))
-<span style="color:#ae81ff">0.9351351351351351</span>
-    
-print(r2_score(y_true, y_pred))
-<span style="color:#ae81ff">0.9351351351351351</span>
-</code></pre></div><h2 id="summary">Summary</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;display:grid;"><code class="language-py3" data-lang="py3"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#f92672">from</span> sklearn.metrics <span style="color:#f92672">import</span> r2_score
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2</span><span><span style="color:#f92672">from</span> numpy <span style="color:#f92672">import</span> var
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3</span><span>
+</span></span><span style="display:flex; background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4</span><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">R2</span>(y_true, y_pred):
+</span></span><span style="display:flex; background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5</span><span>    mse <span style="color:#f92672">=</span> MSE(y_true, y_pred)
+</span></span><span style="display:flex; background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6</span><span>    variance <span style="color:#f92672">=</span> var(y_true)
+</span></span><span style="display:flex; background-color:#3c3d38"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7</span><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1.0</span> <span style="color:#f92672">-</span> (mse <span style="color:#f92672">/</span> var)
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8</span><span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9</span><span>print(R2(y_true, y_pred))
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10</span><span><span style="color:#ae81ff">0.9351351351351351</span>
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>    
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>print(r2_score(y_true, y_pred))
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span><span style="color:#ae81ff">0.9351351351351351</span></span></span></code></pre></div>
+<h2 id="summary">Summary</h2>
 <p>In this post, we briefly introduced the concept of time series and the most frequently used error measures in forecasting. We described the pros and cons of each measure so the reader can decide which one best suits their needs. If you find any typos or errors, or you have any other comments, please feel free to report them (you can find contact information <a href="/about">here</a>).</p>
 </div>
 <h3 id="cited-as">Cited as:</h3>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-latex" data-lang="latex">@article{detorakis2022errors-timeseries,
-  title   = &#34;Time series and forecasting error measures&#34;,
-  author  = &#34;Georgios Is. Detorakis&#34;,
-  journal = &#34;gdetor.github.io&#34;,
-  year    = &#34;2022&#34;,
-  url     = &#34;https://gdetor.github.io/posts/errors&#34;
-}
-</code></pre></div><h3 id="references">References</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-latex" data-lang="latex"><span style="display:flex;"><span>@article{detorakis2022errors-timeseries,
+</span></span><span style="display:flex;"><span>  title   = &#34;Time series and forecasting error measures&#34;,
+</span></span><span style="display:flex;"><span>  author  = &#34;Georgios Is. Detorakis&#34;,
+</span></span><span style="display:flex;"><span>  journal = &#34;gdetor.github.io&#34;,
+</span></span><span style="display:flex;"><span>  year    = &#34;2022&#34;,
+</span></span><span style="display:flex;"><span>  url     = &#34;https://gdetor.github.io/posts/errors&#34;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="references">References</h3>
 <ol>
 <li>J. Beran, <em>Mathematical Foundations of Time Series Analysis A Concise
 Introduction</em>, Springer, 2017.</li>
@@ -723,112 +598,56 @@ New York: Springer, 2006.</li>
 </ol>
 </section>
 
-  
-  
-  <footer class="mt-12 flex flex-wrap">
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+  <footer class="mt-12 flex flex-wrap"><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
       href="https://gdetor.github.io/tags/mean-squared-error"
       >mean squared error</a
-    >
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
       href="https://gdetor.github.io/tags/mse"
       >MSE</a
-    >
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
       href="https://gdetor.github.io/tags/mae"
       >MAE</a
-    >
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
       href="https://gdetor.github.io/tags/mean-absolute-error"
       >mean absolute error</a
-    >
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
       href="https://gdetor.github.io/tags/time-series"
       >time series</a
-    >
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
       href="https://gdetor.github.io/tags/r2"
       >R2</a
-    >
-     
-    <a
-      class="mb-1.5 mr-1.5 rounded-lg bg-black/[3%] px-5 py-1.5 no-underline dark:bg-white/[8%]"
+    ><a
+      class="mb-1.5 rounded-lg bg-black/[3%] px-5 py-1 no-underline hover:bg-black/[6%] ltr:mr-1.5 rtl:ml-1.5 dark:bg-white/[8%] dark:hover:bg-white/[12%]"
       href="https://gdetor.github.io/tags/coefficient-of-determination"
       >coefficient of determination</a
-    >
-    
-  </footer>
-  
-
-  
-  
-  
-  
-  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
-    
-    <a
-      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+    ></footer><nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg leading-[1.2]! *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  ><a class="ltr:pr-3 rtl:pl-3" href="https://gdetor.github.io/posts/acf_pacf/"
+      ><span class="ltr:mr-1.5 rtl:ml-1.5">←</span><span>Autocorrelation Functions for Time Series</span></a
+    ><a
+      class="justify-end pl-3 ltr:ml-auto rtl:mr-auto"
       href="https://gdetor.github.io/posts/normalization/"
-      ><span class="mr-1.5">←</span><span>Useful data transformations</span></a
-    >
-    
-    
-    <a
-      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
-      href="https://gdetor.github.io/posts/genetic_algorithms/"
-      ><span>Genetic Algorithms &amp; Island Models</span><span class="ml-1.5">→</span></a
-    >
-    
-  </nav>
-  
-  
-
-  
-  
-
-  
-  
-
-  
-
-
-  
-</article>
-
-
-    </main>
-	
-    <footer
-  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+      ><span>Useful data transformations</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    ></nav></article></main><footer
+  class="mx-auto flex h-[4.5rem] max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
 >
-  <div class="mr-auto">
-    &copy; 2025
-    <a class="link" href="https://gdetor.github.io">GID</a>
-  </div>
+  <div class="mr-auto">Copyright © 2024, Georgios Is. Detorakis.</div>
   <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
-    >Powered by Hugo️️</a
+    >powered by hugo️️</a
   >️
   <a
     class="link"
     href="https://github.com/nanxiaobei/hugo-paper"
     rel="noopener"
     target="_blank"
-    >✎ Paper</a
+    >hugo-paper</a
   >
 </footer>
-
-    
-  </body>
+</body>
 </html>
