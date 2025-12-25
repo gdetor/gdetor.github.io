@@ -25,15 +25,8 @@
   
   <meta name="theme-color" />
 
-  <meta name="description" content="
-In this post, we explore genetic algorithms (GAs) and the so-called
-island model (IM). GAs and the IM are optimization methods used to
-maximize or minimize a cost function.
-What is Optimization?
-Let&rsquo;s see an example of an optimization problem we all face every day. Let&rsquo;s
-assume you&rsquo;d like to go and grab a couple of coffee from your favorite coffee
-shop. Typically, you ask Google to find the fastest way to the store from your
-current location. But let&rsquo;s forget about technology for now." />
+  <meta name="description" content="In this post, we explore genetic algorithms (GAs) and the so-called island model (IM). GAs and the IM are optimization methods used to maximize or minimize a cost function.
+What is Optimization? Let&rsquo;s see an example of an optimization problem we all face every day. Let&rsquo;s assume you&rsquo;d like to go and grab a couple of coffee from your favorite coffee shop. Typically, you ask Google to find the fastest way to the store from your current location." />
   <meta name="author" content="Georgios Is. Detorakis" /><link rel="preload stylesheet" as="style" href="https://gdetor.github.io/main.min.css" />
 
   
@@ -90,29 +83,19 @@ current location. But let&rsquo;s forget about technology for now." />
     href="https://gdetor.github.io/apple-touch-icon.png"
   />
 
-  <meta name="generator" content="Hugo 0.147.2">
-  <meta itemprop="name" content="Genetic Algorithms & Island Models">
-  <meta itemprop="description" content="Genetic algorithms (GAs) are a family of optimization algorithms that can solve constrained and unconstrained optimization problems by mimicking biological evolution. In this post, we introduce the fundamental concepts of GAs and the Island Model, an extension of GAs.">
-  <meta itemprop="datePublished" content="2022-04-28T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2022-04-28T00:00:00+00:00">
-  <meta itemprop="wordCount" content="3401">
-  <meta itemprop="keywords" content="Genetic Algorithms,GAIM,Island Model,Optimization"><meta property="og:url" content="https://gdetor.github.io/posts/genetic_algorithms/">
-  <meta property="og:site_name" content="GID">
-  <meta property="og:title" content="Genetic Algorithms & Island Models">
-  <meta property="og:description" content="Genetic algorithms (GAs) are a family of optimization algorithms that can solve constrained and unconstrained optimization problems by mimicking biological evolution. In this post, we introduce the fundamental concepts of GAs and the Island Model, an extension of GAs.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2022-04-28T00:00:00+00:00">
-    <meta property="article:modified_time" content="2022-04-28T00:00:00+00:00">
-    <meta property="article:tag" content="Genetic Algorithms">
-    <meta property="article:tag" content="GAIM">
-    <meta property="article:tag" content="Island Model">
-    <meta property="article:tag" content="Optimization">
+  <meta name="generator" content="Hugo 0.123.7"><meta itemprop="name" content="Genetic Algorithms &amp; Island Models">
+<meta itemprop="description" content="Genetic algorithms (GAs) are a family of optimization algorithms that can solve constrained and unconstrained optimization problems by mimicking biological evolution. In this post, we introduce the fundamental concepts of GAs and the Island Model, an extension of GAs."><meta itemprop="datePublished" content="2022-04-28T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-04-28T00:00:00+00:00" />
+<meta itemprop="wordCount" content="3401">
+<meta itemprop="keywords" content="genetic algorithms,GAIM,island model,optimization," /><meta property="og:title" content="Genetic Algorithms &amp; Island Models" />
+<meta property="og:description" content="Genetic algorithms (GAs) are a family of optimization algorithms that can solve constrained and unconstrained optimization problems by mimicking biological evolution. In this post, we introduce the fundamental concepts of GAs and the Island Model, an extension of GAs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gdetor.github.io/posts/genetic_algorithms/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-04-28T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-04-28T00:00:00+00:00" />
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Genetic Algorithms & Island Models">
-  <meta name="twitter:description" content="Genetic algorithms (GAs) are a family of optimization algorithms that can solve constrained and unconstrained optimization problems by mimicking biological evolution. In this post, we introduce the fundamental concepts of GAs and the Island Model, an extension of GAs.">
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Genetic Algorithms &amp; Island Models"/>
+<meta name="twitter:description" content="Genetic algorithms (GAs) are a family of optimization algorithms that can solve constrained and unconstrained optimization problems by mimicking biological evolution. In this post, we introduce the fundamental concepts of GAs and the Island Model, an extension of GAs."/>
 
   <link rel="canonical" href="https://gdetor.github.io/posts/genetic_algorithms/" />
 </head>
@@ -232,10 +215,7 @@ current location. But let&rsquo;s forget about technology for now." />
     ><article>
   <header class="mb-14">
     <h1 class="my-0! pb-2.5">Genetic Algorithms &amp; Island Models</h1><div class="text-xs antialiased opacity-60"><time>Apr 28, 2022</time><span class="mx-1">&middot;</span>
-      <span>Georgios Is. Detorakis</span>
-      <span class="mx-1">&middot;</span>
-      <span>16&nbsp minutes read &nbsp / &nbsp3401&nbsp words</span>
-    </div></header>
+      <span>Georgios Is. Detorakis</span></div></header>
 
   <section><div style="text-align: justify;">
 <p>In this post, we explore genetic algorithms (GAs) and the so-called
@@ -274,9 +254,9 @@ one dimension. It is evident that this function has multiple local minima
 (<em>e.g.,</em>, magenta disc)  and maxima (green disc) as well as one global minimum
 at $(0, 0)$ (black disc).</p>
 <figure><img src="/images/fun_extremes.png"
-    alt="Figure 1. Global and local extremes for (A) $f(x)=x^2$, where the magenta disc indicates the global minimum at $(0, 0)$. (B) For Rastrigin $f(x) = 10 &#43; x^2-10\cos(2\pi x)$, there is a global mimimum at $(0, 0)$ and many local mimima and maxima (for instance see the magenta and green discs, respectively)."><figcaption>
-      <p>Figure 1. Global and local extremes for (A) $f(x)=x^2$, where the magenta disc indicates the global minimum at $(0, 0)$. (B) For Rastrigin $f(x) = 10 + x^2-10\cos(2\pi x)$, there is a global mimimum at $(0, 0)$ and many local mimima and maxima (for instance see the magenta and green discs, respectively).</p>
-    </figcaption>
+         alt="Figure 1. Global and local extremes for (A) $f(x)=x^2$, where the magenta disc indicates the global minimum at $(0, 0)$. (B) For Rastrigin $f(x) = 10 &#43; x^2-10\cos(2\pi x)$, there is a global mimimum at $(0, 0)$ and many local mimima and maxima (for instance see the magenta and green discs, respectively)."/><figcaption>
+            <p>Figure 1. Global and local extremes for (A) $f(x)=x^2$, where the magenta disc indicates the global minimum at $(0, 0)$. (B) For Rastrigin $f(x) = 10 + x^2-10\cos(2\pi x)$, there is a global mimimum at $(0, 0)$ and many local mimima and maxima (for instance see the magenta and green discs, respectively).</p>
+        </figcaption>
 </figure>
 <p>Sometimes, it&rsquo;s easier to solve a minimization problem from a computational
 standpoint. In that case, we would minimize the function $ -f $.</p>
@@ -334,9 +314,9 @@ operands are different. This means that if $ X = 1 $ (or $ X = 0 $) and $ Y = 0
 $ (or $ Y = 1 $) then $ X \oplus Y = 1 $ (same when ). If both $ X $ and $ Y $
 are zeros or ones, then $ X \oplus Y = 0 $.</p>
 <figure><img src="/images/xor_net.png"
-    alt="Figure 2. XOR neural networ."><figcaption>
-      <p>Figure 2. XOR neural networ.</p>
-    </figcaption>
+         alt="Figure 2. XOR neural networ."/><figcaption>
+            <p>Figure 2. XOR neural networ.</p>
+        </figcaption>
 </figure>
 <p>Our neural network will consist of two input units (since the XOR operator is a
 binary one), two hidden units, and one output unit. Please see <a href="https://dev.to/jbahire/demystifying-the-xor-problem-1blk">here</a> for more details on why we choose such an architecture.
@@ -423,9 +403,9 @@ second observation is that we could have used only $500$ generations for this
 particular instance. The difficulty of the problem at hand usually determines
 the number of generations and the initial values of the genome.</p>
 <figure><img src="/images/bsf_avg_fit.png"
-    alt="Figure 3. BSF and average fitness for the optimization of the XOR fitness function."><figcaption>
-      <p>Figure 3. BSF and average fitness for the optimization of the XOR fitness function.</p>
-    </figcaption>
+         alt="Figure 3. BSF and average fitness for the optimization of the XOR fitness function."/><figcaption>
+            <p>Figure 3. BSF and average fitness for the optimization of the XOR fitness function.</p>
+        </figcaption>
 </figure>
 <p>Bellow, you can find the source code of the Python script we used to optimize
 the XOR problem. As you can see, we combine Pytorch and PyGAIM to build
@@ -446,8 +426,8 @@ of our optimization process.</p>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11</span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12</span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13</span><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">XOR_NET</span>(nn<span style="color:#f92672">.</span>Module):
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">__init__</span>(self):
-</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>        super(XOR_NET, self)<span style="color:#f92672">.</span><span style="color:#a6e22e">__init__</span>()
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14</span><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15</span><span>        super(XOR_NET, self)<span style="color:#f92672">.</span>__init__()
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16</span><span>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17</span><span>        self<span style="color:#f92672">.</span>fc1 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Linear(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18</span><span>        self<span style="color:#f92672">.</span>fc2 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Linear(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1</span>)
@@ -569,9 +549,9 @@ left).</p>
 connects to all other ones, (B) ring, and (C) star topology, where one island
 serves as a communication hub [5, 6, 7].</p>
 <figure><img src="/images/island_model.png"
-    alt="Figure 4. Island model topologies. (A) all-to-all, (B) ring, (C) star."><figcaption>
-      <p>Figure 4. Island model topologies. (A) all-to-all, (B) ring, (C) star.</p>
-    </figcaption>
+         alt="Figure 4. Island model topologies. (A) all-to-all, (B) ring, (C) star."/><figcaption>
+            <p>Figure 4. Island model topologies. (A) all-to-all, (B) ring, (C) star.</p>
+        </figcaption>
 </figure>
 <p>Each island begins with a population of $N$ individuals where $$ N =
 \frac{K}{M} $$ where $ K $ is the number of all individuals, and $M$ is the

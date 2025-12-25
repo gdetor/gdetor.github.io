@@ -4,7 +4,7 @@
     <title>Mean Absolute Error on GID</title>
     <link>https://gdetor.github.io/tags/mean-absolute-error/</link>
     <description>Recent content in Mean Absolute Error on GID</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2024, Georgios Is. Detorakis.</copyright>
     <lastBuildDate>Thu, 05 May 2022 00:00:00 +0000</lastBuildDate>
@@ -14,7 +14,7 @@
       <link>https://gdetor.github.io/posts/errors/</link>
       <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
       <guid>https://gdetor.github.io/posts/errors/</guid>
-      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;In this post, we will explore the basic error measures&#xA;used in time-series forecasting. Error measures provide a way&#xA;to quantify the quality of a forecasting algorithm (&lt;em&gt;e.g.&lt;/em&gt;, the&#xA;performance). First, we briefly introduce time series and the&#xA;fundamental terms of forecasting. Second, we will introduce the&#xA;most commonly used error measures and give examples. Finally,&#xA;we provide a complete example of using errors in a real-life&#xA;forecasting scenario.&lt;/p&gt;</description>
+      <description>In this post, we will explore the basic error measures used in time-series forecasting. Error measures provide a way to quantify the quality of a forecasting algorithm (e.g., the performance). First, we briefly introduce time series and the fundamental terms of forecasting. Second, we will introduce the most commonly used error measures and give examples. Finally, we provide a complete example of using errors in a real-life forecasting scenario.</description>
     </item>
   </channel>
 </rss>

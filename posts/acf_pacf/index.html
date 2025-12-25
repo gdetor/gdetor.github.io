@@ -25,12 +25,8 @@
   
   <meta name="theme-color" />
 
-  <meta name="description" content="
-This post aims to provide some theoretical background on autocorrelation functions and how to use them to analyze time series. Furthermore, we show how to use the Autocorrelation (ACF) function and the Partial Autocorrelation (PACF) function to determine the parameters for an ARMA model.
-Brief introduction to time series
-In a previous post (see here), we
-introduced some basic definitions and terminology about time series. We repeat the
-same definitions here to avoid forcing the reader to move back and forth." />
+  <meta name="description" content="This post aims to provide some theoretical background on autocorrelation functions and how to use them to analyze time series. Furthermore, we show how to use the Autocorrelation (ACF) function and the Partial Autocorrelation (PACF) function to determine the parameters for an ARMA model.
+Brief introduction to time series In a previous post (see here), we introduced some basic definitions and terminology about time series. We repeat the same definitions here to avoid forcing the reader to move back and forth." />
   <meta name="author" content="Georgios Is. Detorakis" /><link rel="preload stylesheet" as="style" href="https://gdetor.github.io/main.min.css" />
 
   
@@ -87,30 +83,19 @@ same definitions here to avoid forcing the reader to move back and forth." />
     href="https://gdetor.github.io/apple-touch-icon.png"
   />
 
-  <meta name="generator" content="Hugo 0.147.2">
-  <meta itemprop="name" content="Autocorrelation Functions for Time Series">
-  <meta itemprop="description" content="This post provides some theoretical background on autocorrelation functions and how to use them to analyze time series. Furthermore, we show how to use the autocorrelation (ACF) function and the Partial Autocorrelation (PACF) functions to determine the parameters for an ARMA model.">
-  <meta itemprop="datePublished" content="2022-10-13T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2022-10-13T00:00:00+00:00">
-  <meta itemprop="wordCount" content="4602">
-  <meta itemprop="keywords" content="ACF,PACF,Autocorrelation,Partial Autocorrelation,Time Series"><meta property="og:url" content="https://gdetor.github.io/posts/acf_pacf/">
-  <meta property="og:site_name" content="GID">
-  <meta property="og:title" content="Autocorrelation Functions for Time Series">
-  <meta property="og:description" content="This post provides some theoretical background on autocorrelation functions and how to use them to analyze time series. Furthermore, we show how to use the autocorrelation (ACF) function and the Partial Autocorrelation (PACF) functions to determine the parameters for an ARMA model.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2022-10-13T00:00:00+00:00">
-    <meta property="article:modified_time" content="2022-10-13T00:00:00+00:00">
-    <meta property="article:tag" content="ACF">
-    <meta property="article:tag" content="PACF">
-    <meta property="article:tag" content="Autocorrelation">
-    <meta property="article:tag" content="Partial Autocorrelation">
-    <meta property="article:tag" content="Time Series">
+  <meta name="generator" content="Hugo 0.123.7"><meta itemprop="name" content="Autocorrelation Functions for Time Series">
+<meta itemprop="description" content="This post provides some theoretical background on autocorrelation functions and how to use them to analyze time series. Furthermore, we show how to use the autocorrelation (ACF) function and the Partial Autocorrelation (PACF) functions to determine the parameters for an ARMA model."><meta itemprop="datePublished" content="2022-10-13T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-10-13T00:00:00+00:00" />
+<meta itemprop="wordCount" content="4602">
+<meta itemprop="keywords" content="ACF,PACF,autocorrelation,partial autocorrelation,time series," /><meta property="og:title" content="Autocorrelation Functions for Time Series" />
+<meta property="og:description" content="This post provides some theoretical background on autocorrelation functions and how to use them to analyze time series. Furthermore, we show how to use the autocorrelation (ACF) function and the Partial Autocorrelation (PACF) functions to determine the parameters for an ARMA model." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gdetor.github.io/posts/acf_pacf/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-10-13T00:00:00+00:00" />
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Autocorrelation Functions for Time Series">
-  <meta name="twitter:description" content="This post provides some theoretical background on autocorrelation functions and how to use them to analyze time series. Furthermore, we show how to use the autocorrelation (ACF) function and the Partial Autocorrelation (PACF) functions to determine the parameters for an ARMA model.">
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Autocorrelation Functions for Time Series"/>
+<meta name="twitter:description" content="This post provides some theoretical background on autocorrelation functions and how to use them to analyze time series. Furthermore, we show how to use the autocorrelation (ACF) function and the Partial Autocorrelation (PACF) functions to determine the parameters for an ARMA model."/>
 
   <link rel="canonical" href="https://gdetor.github.io/posts/acf_pacf/" />
 </head>
@@ -230,10 +215,7 @@ same definitions here to avoid forcing the reader to move back and forth." />
     ><article>
   <header class="mb-14">
     <h1 class="my-0! pb-2.5">Autocorrelation Functions for Time Series</h1><div class="text-xs antialiased opacity-60"><time>Oct 13, 2022</time><span class="mx-1">&middot;</span>
-      <span>Georgios Is. Detorakis</span>
-      <span class="mx-1">&middot;</span>
-      <span>22&nbsp minutes read &nbsp / &nbsp4602&nbsp words</span>
-    </div></header>
+      <span>Georgios Is. Detorakis</span></div></header>
 
   <section><div style="text-align: justify;">
 <p>This post aims to provide some theoretical background on autocorrelation functions and how to use them to analyze time series. Furthermore, we show how to use the Autocorrelation (ACF) function and the Partial Autocorrelation (PACF) function to determine the parameters for an ARMA model.</p>
@@ -255,9 +237,9 @@ so if you would like to try the examples by yourself;
 you can download the data from Kaggle
 <a href="https://www.kaggle.com/datasets/rakannimer/air-passengers">here</a>.</p>
 <figure><img src="/images/passengers.png"
-    alt="Figure 1. An example of a time series showing the number of air passengers per month."><figcaption>
-      <p>Figure 1. An example of a time series showing the number of air passengers per month.</p>
-    </figcaption>
+         alt="Figure 1. An example of a time series showing the number of air passengers per month."/><figcaption>
+            <p>Figure 1. An example of a time series showing the number of air passengers per month.</p>
+        </figcaption>
 </figure>
 <p>A more rigorous definition of a time series found in [1] (Chapter 1, pg 1)
 is given below:</p>
@@ -280,7 +262,8 @@ is finite,</li>
 <blockquote>
 <p>From now on and for simplicity&rsquo;s sake we will use the following notation for
 a time series: $ \begin{Bmatrix} y[1], y[2], \ldots , y[N] \end{Bmatrix} $, where
-$ N \in \mathbb{N} $ or $ y[t] $, where $t=1, \ldots , N $.</p></blockquote>
+$ N \in \mathbb{N} $ or $ y[t] $, where $t=1, \ldots , N $.</p>
+</blockquote>
 <h2 id="what-is-autocorrelation-acf">What is autocorrelation (ACF)</h2>
 <p>The Autocorrelation function (from now on, we will refer to the autocorrelation
 function as ACF) for a given time series $ x[t] $ at times $ t_1, t_2, \ldots, t_N $
@@ -298,7 +281,8 @@ with the complex conjugate $\mathbb{E}[(x[s]-\mu_s)\bar{(x[t]-\mu_t)}] $.</p>
 <blockquote>
 <p>From the definitions above one can conclude, first, the autocovariance of
 a time series with itself is the variance of the signal (<em>i.e.</em>, $ \gamma(t, t) = \text{Var}[x[t]] $)
-and second, the autocorrelation of a time series x[t] with itself is one (<em>i.e.</em>, $ \rho(t, t) = 1 $).</p></blockquote>
+and second, the autocorrelation of a time series x[t] with itself is one (<em>i.e.</em>, $ \rho(t, t) = 1 $).</p>
+</blockquote>
 <p>Let&rsquo;s now explain the autocorrelation in layperson&rsquo;s terms and give some
 intuition on the information we obtain. Let&rsquo;s start with the
 very notion of a time series. In a time series, the data points are ordered
@@ -316,58 +300,58 @@ we exhaust the predetermined number of lags. The table below shows an example
 of a time series and its first three lagged signals. From now on, we will
 use the letter $ k $ to indicate any lag.</p>
 <table>
-  <thead>
-      <tr>
-          <th style="text-align: center">($ k = 0 $)</th>
-          <th style="text-align: center">$ k = 1 $</th>
-          <th style="text-align: center">$ k = 2 $</th>
-          <th style="text-align: center">$ k = 3 $</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td style="text-align: center">1</td>
-          <td style="text-align: center">NaN</td>
-          <td style="text-align: center">NaN</td>
-          <td style="text-align: center">NaN</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">2</td>
-          <td style="text-align: center">1</td>
-          <td style="text-align: center">NaN</td>
-          <td style="text-align: center">NaN</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">3</td>
-          <td style="text-align: center">2</td>
-          <td style="text-align: center">1</td>
-          <td style="text-align: center">NaN</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">4</td>
-          <td style="text-align: center">3</td>
-          <td style="text-align: center">2</td>
-          <td style="text-align: center">1</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">5</td>
-          <td style="text-align: center">4</td>
-          <td style="text-align: center">3</td>
-          <td style="text-align: center">2</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">6</td>
-          <td style="text-align: center">5</td>
-          <td style="text-align: center">4</td>
-          <td style="text-align: center">3</td>
-      </tr>
-      <tr>
-          <td style="text-align: center">7</td>
-          <td style="text-align: center">6</td>
-          <td style="text-align: center">5</td>
-          <td style="text-align: center">4</td>
-      </tr>
-  </tbody>
+<thead>
+<tr>
+<th style="text-align:center">($ k = 0 $)</th>
+<th style="text-align:center">$ k = 1 $</th>
+<th style="text-align:center">$ k = 2 $</th>
+<th style="text-align:center">$ k = 3 $</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">NaN</td>
+<td style="text-align:center">NaN</td>
+<td style="text-align:center">NaN</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">NaN</td>
+<td style="text-align:center">NaN</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">NaN</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">2</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">3</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">4</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">4</td>
+</tr>
+</tbody>
 </table>
 <p>Let&rsquo;s now estimate the ACF for the data given in the table above.
 First, we will write our custom ACF function in the Python programming
@@ -423,7 +407,8 @@ lags using the following formula</p>
 <p>where $ N $ is the number of observations in the time series (raw data).</p>
 <blockquote>
 <p>The ACF is often used to identify non-randomness in a time series and to
-aid in determining the parameters of a mathematical model for that time series.</p></blockquote>
+aid in determining the parameters of a mathematical model for that time series.</p>
+</blockquote>
 <h2 id="what-is-partial-autocorrelation-pacf">What is partial autocorrelation (PACF)</h2>
 <p>Partial autocorrelation, or PACF, is more challenging to understand than ACF.
 Let&rsquo;s understand the intuition behind the PACF, and then we will see how to
@@ -534,9 +519,9 @@ each point outside is considered significant ($ 95 $%
 confidence). But, whatever is within that cone is regarded
 as zero.</p>
 <figure><img src="/images/acf_pacf.png"
-    alt="Figure 2. ACF and PACF on airport passengers data set. Left panel - ACF, right panel PACF."><figcaption>
-      <p>Figure 2. ACF and PACF on airport passengers data set. Left panel - ACF, right panel PACF.</p>
-    </figcaption>
+         alt="Figure 2. ACF and PACF on airport passengers data set. Left panel - ACF, right panel PACF."/><figcaption>
+            <p>Figure 2. ACF and PACF on airport passengers data set. Left panel - ACF, right panel PACF.</p>
+        </figcaption>
 </figure>
 <p>We observe that the first component in the ACF and PACF plots is equal to one,
 as we expected (and have already discussed). A second apparent observation
@@ -587,7 +572,8 @@ backshift operator acts on a time series element and returns the previous
 element as its name reveals. For instance, if $ x[t] = \begin{Bmatrix} x[1], x[2], \ldots, \end{Bmatrix} $
 is a time series then $ Bx[t] = x[t-1] $ for each $ t &gt; 1 $. The lag
 operator $ L $ acts in the same way $ Lx[t] = x[t-1] $. Furthermore,
-we can raise both operators in integer powers, $ L^k x[t] = x[t-k] $.</p></blockquote>
+we can raise both operators in integer powers, $ L^k x[t] = x[t-k] $.</p>
+</blockquote>
 <p>Another way to write equation (4) is to use the lag operator, and thus
 $$ \Big(1 - \sum_{i=1}^{p} \phi[i] L^i \Big) x[t]  =\Big(1 + \sum_{i=1}^{q} \theta[i] L^i \Big) \epsilon[t]. $$</p>
 <blockquote>
@@ -597,14 +583,16 @@ data in Figure 1 are non-stationary since an upward trend indicates that
 the mean increases over time. However, because the variance does not change,
 we will call that time series non-stationary in the sense of mean.
 You can find more details about stationarity <a href="https://en.wikipedia.org/wiki/Stationary_process#Weak_or_wide-sense_stationarity">here</a>
-and in [1].</p></blockquote>
+and in [1].</p>
+</blockquote>
 <blockquote>
 <p><strong>Differencing</strong>
 The time series in Figure 1 are non-stationary in the sense of mean (see
 <strong>Stationarity</strong>). One way to eliminate the non-stationarity is to
 apply a differencing transform, $ x^{\prime}[t] = x[t] - x[t-1] $ (for instance,
 in Python, we could use the <code>diff()</code> function to apply the differencing
-transform on the original time series.</p></blockquote>
+transform on the original time series.</p>
+</blockquote>
 <h3 id="autoregressive-integrated-moving-average---arimap-d-q">Autoregressive Integrated Moving Average - ARIMA(p, d, q)</h3>
 <p>ARIMA(p, q, d) is a generalzation of ARMA(p, q) model. ARIMA can be seen as
 an improvement of ARMA for time series that show non-stationarity in the sense
@@ -646,9 +634,9 @@ the non-significant components (lags $ k &gt; 1 $) follow a geometric decay.
 The PACF plot in panel 3F of Figure 3 has only one strong correlation at lag $ k = 1 $,
 verifying that the data come from an AR(1) model.</p>
 <figure><img src="/images/acf_examples.png"
-    alt="Figure 3. Estimation of ACF and PACF for three models. Each row shows a white noise, an AR(1), and a MA(1) raw data, the ACF, and the PACF. The blue-shaded area indicates the confidence interval cone ($ 95 $% confidence)."><figcaption>
-      <p>Figure 3. Estimation of ACF and PACF for three models. Each row shows a white noise, an AR(1), and a MA(1) raw data, the ACF, and the PACF. The blue-shaded area indicates the confidence interval cone ($ 95 $% confidence).</p>
-    </figcaption>
+         alt="Figure 3. Estimation of ACF and PACF for three models. Each row shows a white noise, an AR(1), and a MA(1) raw data, the ACF, and the PACF. The blue-shaded area indicates the confidence interval cone ($ 95 $% confidence)."/><figcaption>
+            <p>Figure 3. Estimation of ACF and PACF for three models. Each row shows a white noise, an AR(1), and a MA(1) raw data, the ACF, and the PACF. The blue-shaded area indicates the confidence interval cone ($ 95 $% confidence).</p>
+        </figcaption>
 </figure>
 <p>Let&rsquo;s look now into a moving average model of order $ p = 1 $. In this case,
 the data shown in Figure 3G are described by the equation
@@ -760,9 +748,9 @@ although the prediction is not perfect, it captures the main pattern.</p>
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">7</span><span>ax<span style="color:#f92672">.</span>plot(test_data[:horizon], <span style="color:#e6db74">&#39;k&#39;</span>, label<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;target&#34;</span>)
 </span></span><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">8</span><span>plt<span style="color:#f92672">.</span>plot()</span></span></code></pre></div>
 <figure><img src="/images/pred_examples.png"
-    alt="Figure 4. Prediction of an AR(1) process using statsmodels AutoReg. The black curve indicates actual observations and the red one is the predictions."><figcaption>
-      <p>Figure 4. Prediction of an AR(1) process using <em>statsmodels</em> <code>AutoReg</code>. The black curve indicates actual observations and the red one is the predictions.</p>
-    </figcaption>
+         alt="Figure 4. Prediction of an AR(1) process using statsmodels AutoReg. The black curve indicates actual observations and the red one is the predictions."/><figcaption>
+            <p>Figure 4. Prediction of an AR(1) process using <em>statsmodels</em> <code>AutoReg</code>. The black curve indicates actual observations and the red one is the predictions.</p>
+        </figcaption>
 </figure>
 <h2 id="summary">Summary</h2>
 <p>In this post, we defined the autocorrelation and the partial autocorrelation

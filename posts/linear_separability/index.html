@@ -25,15 +25,11 @@
   
   <meta name="theme-color" />
 
-  <meta name="description" content="
-Two sets $ A $ and $ B $ in an $ n $ dimensional Euclidean space are linearly
-separable if there exist $ n &#43; 1 $ numbers $ w_i \in \mathbb{R} $ such that
-every point $ a \in A $ satisfies
-$$ \sum_{i=1}^{n}w_i a_i &gt; k,  $$
+  <meta name="description" content="Two sets $ A $ and $ B $ in an $ n $ dimensional Euclidean space are linearly separable if there exist $ n &#43; 1 $ numbers $ w_i \in \mathbb{R} $ such that every point $ a \in A $ satisfies
+$$ \sum_{i=1}^{n}w_i a_i &gt; k, $$
 and every point $ b \in B $ satisfies
-$$ \sum_{i=1}^{n}w_i b_i &lt; k,  $$
-where $ k \in \mathbb{R} $ defines a linear border (e.g., a line) between
-data points of the two sets." />
+$$ \sum_{i=1}^{n}w_i b_i &lt; k, $$
+where $ k \in \mathbb{R} $ defines a linear border (e." />
   <meta name="author" content="Georgios Is. Detorakis" /><link rel="preload stylesheet" as="style" href="https://gdetor.github.io/main.min.css" />
 
   
@@ -90,28 +86,19 @@ data points of the two sets." />
     href="https://gdetor.github.io/apple-touch-icon.png"
   />
 
-  <meta name="generator" content="Hugo 0.147.2">
-  <meta itemprop="name" content="How do we verify linear separability with Python?">
-  <meta itemprop="description" content="This post briefly introduces how to check if two sets are linear separable using Python.">
-  <meta itemprop="datePublished" content="2024-10-01T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2024-10-01T00:00:00+00:00">
-  <meta itemprop="wordCount" content="567">
-  <meta itemprop="keywords" content="Linear Separability,Convex Hull,Math and Python"><meta property="og:url" content="https://gdetor.github.io/posts/linear_separability/">
-  <meta property="og:site_name" content="GID">
-  <meta property="og:title" content="How do we verify linear separability with Python?">
-  <meta property="og:description" content="This post briefly introduces how to check if two sets are linear separable using Python.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-10-01T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-10-01T00:00:00+00:00">
-    <meta property="article:tag" content="Linear Separability">
-    <meta property="article:tag" content="Convex Hull">
-    <meta property="article:tag" content="Math and Python">
+  <meta name="generator" content="Hugo 0.123.7"><meta itemprop="name" content="How do we verify linear separability with Python?">
+<meta itemprop="description" content="This post briefly introduces how to check if two sets are linear separable using Python."><meta itemprop="datePublished" content="2024-10-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-10-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="567">
+<meta itemprop="keywords" content="linear separability,convex hull,math and python," /><meta property="og:title" content="How do we verify linear separability with Python?" />
+<meta property="og:description" content="This post briefly introduces how to check if two sets are linear separable using Python." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gdetor.github.io/posts/linear_separability/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-10-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-10-01T00:00:00+00:00" />
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="How do we verify linear separability with Python?">
-  <meta name="twitter:description" content="This post briefly introduces how to check if two sets are linear separable using Python.">
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="How do we verify linear separability with Python?"/>
+<meta name="twitter:description" content="This post briefly introduces how to check if two sets are linear separable using Python."/>
 
   <link rel="canonical" href="https://gdetor.github.io/posts/linear_separability/" />
 </head>
@@ -231,10 +218,7 @@ data points of the two sets." />
     ><article>
   <header class="mb-14">
     <h1 class="my-0! pb-2.5">How do we verify linear separability with Python?</h1><div class="text-xs antialiased opacity-60"><time>Oct 1, 2024</time><span class="mx-1">&middot;</span>
-      <span>Georgios Is. Detorakis</span>
-      <span class="mx-1">&middot;</span>
-      <span>3&nbsp minutes read &nbsp / &nbsp567&nbsp words</span>
-    </div></header>
+      <span>Georgios Is. Detorakis</span></div></header>
 
   <section><div style="text-align: justify;">
 <p>Two sets $ A $ and $ B $ in an $ n $ dimensional Euclidean space are linearly
@@ -315,9 +299,9 @@ In Python, we can quickly check that using the function <code>ConvexHull</code> 
 shown in Figure 1. For the blobs, the two sets are
 $hand, the moons data are not linearly separable because of their convex hull intersections.</p>
 <figure><img src="/images/convex_hulls.png"
-    alt="Figure 1. Blobs and moons data sets along with their convex hulls. The blobs are linearly separable since the convex hull of the blue set does not intersect or overlap with the convex hull of the orange data set. On the other hand, the moons data set is not linearly separable."><figcaption>
-      <p>Figure 1. Blobs and moons data sets along with their convex hulls. The blobs are linearly separable since the convex hull of the blue set does not intersect or overlap with the convex hull of the orange data set. On the other hand, the moons data set is not linearly separable.</p>
-    </figcaption>
+         alt="Figure 1. Blobs and moons data sets along with their convex hulls. The blobs are linearly separable since the convex hull of the blue set does not intersect or overlap with the convex hull of the orange data set. On the other hand, the moons data set is not linearly separable."/><figcaption>
+            <p>Figure 1. Blobs and moons data sets along with their convex hulls. The blobs are linearly separable since the convex hull of the blue set does not intersect or overlap with the convex hull of the orange data set. On the other hand, the moons data set is not linearly separable.</p>
+        </figcaption>
 </figure>
 </div>
 </section>

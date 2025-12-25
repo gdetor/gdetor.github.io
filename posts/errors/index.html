@@ -25,15 +25,7 @@
   
   <meta name="theme-color" />
 
-  <meta name="description" content="
-In this post, we will explore the basic error measures
-used in time-series forecasting. Error measures provide a way
-to quantify the quality of a forecasting algorithm (e.g., the
-performance). First, we briefly introduce time series and the
-fundamental terms of forecasting. Second, we will introduce the
-most commonly used error measures and give examples. Finally,
-we provide a complete example of using errors in a real-life
-forecasting scenario." />
+  <meta name="description" content="In this post, we will explore the basic error measures used in time-series forecasting. Error measures provide a way to quantify the quality of a forecasting algorithm (e.g., the performance). First, we briefly introduce time series and the fundamental terms of forecasting. Second, we will introduce the most commonly used error measures and give examples. Finally, we provide a complete example of using errors in a real-life forecasting scenario." />
   <meta name="author" content="Georgios Is. Detorakis" /><link rel="preload stylesheet" as="style" href="https://gdetor.github.io/main.min.css" />
 
   
@@ -90,31 +82,19 @@ forecasting scenario." />
     href="https://gdetor.github.io/apple-touch-icon.png"
   />
 
-  <meta name="generator" content="Hugo 0.147.2">
-  <meta itemprop="name" content="Time series forecasting error metrics">
-  <meta itemprop="description" content="Error measures provide a way to quantify the quality of a forecasting algorithm (*e.g.*, performance). We briefly introduce time series and the fundamental terms of forecasting. We will then introduce the most commonly used error measures and give some examples. We provide an example of how to use error metrics in a real-life forecasting scenario.">
-  <meta itemprop="datePublished" content="2022-05-05T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2022-05-05T00:00:00+00:00">
-  <meta itemprop="wordCount" content="2932">
-  <meta itemprop="keywords" content="Mean Squared Error,MSE,MAE,Mean Absolute Error,Time Series,R2,Coefficient of Determination"><meta property="og:url" content="https://gdetor.github.io/posts/errors/">
-  <meta property="og:site_name" content="GID">
-  <meta property="og:title" content="Time series forecasting error metrics">
-  <meta property="og:description" content="Error measures provide a way to quantify the quality of a forecasting algorithm (*e.g.*, performance). We briefly introduce time series and the fundamental terms of forecasting. We will then introduce the most commonly used error measures and give some examples. We provide an example of how to use error metrics in a real-life forecasting scenario.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2022-05-05T00:00:00+00:00">
-    <meta property="article:modified_time" content="2022-05-05T00:00:00+00:00">
-    <meta property="article:tag" content="Mean Squared Error">
-    <meta property="article:tag" content="MSE">
-    <meta property="article:tag" content="MAE">
-    <meta property="article:tag" content="Mean Absolute Error">
-    <meta property="article:tag" content="Time Series">
-    <meta property="article:tag" content="R2">
+  <meta name="generator" content="Hugo 0.123.7"><meta itemprop="name" content="Time series forecasting error metrics">
+<meta itemprop="description" content="Error measures provide a way to quantify the quality of a forecasting algorithm (*e.g.*, performance). We briefly introduce time series and the fundamental terms of forecasting. We will then introduce the most commonly used error measures and give some examples. We provide an example of how to use error metrics in a real-life forecasting scenario."><meta itemprop="datePublished" content="2022-05-05T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-05-05T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2932">
+<meta itemprop="keywords" content="mean squared error,MSE,MAE,mean absolute error,time series,R2,coefficient of determination," /><meta property="og:title" content="Time series forecasting error metrics" />
+<meta property="og:description" content="Error measures provide a way to quantify the quality of a forecasting algorithm (*e.g.*, performance). We briefly introduce time series and the fundamental terms of forecasting. We will then introduce the most commonly used error measures and give some examples. We provide an example of how to use error metrics in a real-life forecasting scenario." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gdetor.github.io/posts/errors/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-05-05T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-05-05T00:00:00+00:00" />
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Time series forecasting error metrics">
-  <meta name="twitter:description" content="Error measures provide a way to quantify the quality of a forecasting algorithm (*e.g.*, performance). We briefly introduce time series and the fundamental terms of forecasting. We will then introduce the most commonly used error measures and give some examples. We provide an example of how to use error metrics in a real-life forecasting scenario.">
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Time series forecasting error metrics"/>
+<meta name="twitter:description" content="Error measures provide a way to quantify the quality of a forecasting algorithm (*e.g.*, performance). We briefly introduce time series and the fundamental terms of forecasting. We will then introduce the most commonly used error measures and give some examples. We provide an example of how to use error metrics in a real-life forecasting scenario."/>
 
   <link rel="canonical" href="https://gdetor.github.io/posts/errors/" />
 </head>
@@ -234,10 +214,7 @@ forecasting scenario." />
     ><article>
   <header class="mb-14">
     <h1 class="my-0! pb-2.5">Time series forecasting error metrics</h1><div class="text-xs antialiased opacity-60"><time>May 5, 2022</time><span class="mx-1">&middot;</span>
-      <span>Georgios Is. Detorakis</span>
-      <span class="mx-1">&middot;</span>
-      <span>14&nbsp minutes read &nbsp / &nbsp2932&nbsp words</span>
-    </div></header>
+      <span>Georgios Is. Detorakis</span></div></header>
 
   <section><div style="text-align: justify;">
 <p>In this post, we will explore the basic error measures
@@ -261,9 +238,9 @@ A few examples of time series are</p>
 to September 1960. You can download the data from Kaggle
 <a href="https://www.kaggle.com/datasets/rakannimer/air-passengers">here</a>.</p>
 <figure><img src="/images/passengers.png"
-    alt="Figure 1. An example of a time series showing the number of air passengers per month."><figcaption>
-      <p>Figure 1. An example of a time series showing the number of air passengers per month.</p>
-    </figcaption>
+         alt="Figure 1. An example of a time series showing the number of air passengers per month."/><figcaption>
+            <p>Figure 1. An example of a time series showing the number of air passengers per month.</p>
+        </figcaption>
 </figure>
 <p>A more rigorous definition of a time series found in [1] (Chapter 1, pg 1)
 is given below:</p>
@@ -286,7 +263,8 @@ is finite,</li>
 <blockquote>
 <p>From now on and for simplicity&rsquo;s sake we will use the following notation for
 a time series: $ y[1], y[2], \ldots , y[N] $, where
-$ N \in \mathbb{N} $ or $ y[t] $, where $t=1, \ldots , N $.</p></blockquote>
+$ N \in \mathbb{N} $ or $ y[t] $, where $t=1, \ldots , N $.</p>
+</blockquote>
 <h2 id="more-terminology">More terminology</h2>
 <p>Before we dive into the post, let&rsquo;s give some valuable terminology for the
 unfamiliar reader.</p>
@@ -350,9 +328,9 @@ passenger data (brown line). The blue line represents the naive predictor,
 the green line represents the seasonal predictor, the orange line represents
 the average predictor, and the pink line indicates the drift predictor.</p>
 <figure><img src="/images/naive_predictors.png"
-    alt="Figure 2. Forecasts of montly air passengers. Naive predictor (blue line), naive seasonal (green), average (orange), drift (pink)."><figcaption>
-      <p>Figure 2. Forecasts of montly air passengers. Naive predictor (blue line), naive seasonal (green), average (orange), drift (pink).</p>
-    </figcaption>
+         alt="Figure 2. Forecasts of montly air passengers. Naive predictor (blue line), naive seasonal (green), average (orange), drift (pink)."/><figcaption>
+            <p>Figure 2. Forecasts of montly air passengers. Naive predictor (blue line), naive seasonal (green), average (orange), drift (pink).</p>
+        </figcaption>
 </figure>
 <h2 id="forecasting-error-measures">Forecasting error measures</h2>
 <p>So why do we need error measures? The general idea is to quantify the distance
@@ -378,7 +356,8 @@ that $ y[t] $ is the time series value at time index $ t $.
 A similar way would be $ y_t $, where $ t $ is the time index.</p>
 <blockquote>
 <p><strong>Reminder</strong> $ y[t] $ is the target signal, $ \hat{y}[t] $ the prediction
-signal and $ \epsilon[t] $ the error signal.</p></blockquote>
+signal and $ \epsilon[t] $ the error signal.</p>
+</blockquote>
 <p>And now, we are ready to introduce the error measures and some examples
 demonstrating their behavior.</p>
 <h4 id="example">Example</h4>

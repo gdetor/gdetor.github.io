@@ -25,17 +25,8 @@
   
   <meta name="theme-color" />
 
-  <meta name="description" content="
-This post briefly introduces fundamental data transformations such as mean
-subtraction (centering data), normalization, standardization, difference
-transform, and power transform. Furthermore, we provide simple examples of
-Python code for applying those transforms to real data. Moreover, we heavily
-rely on the sklearn Python package [1].
-Mean subtraction
-Let&rsquo;s assume we have some data in a vector $ {\bf x} $, and know that the
-mean value of $ {\bf x} $ is not zero. We could force the mean to be zero by
-subtracting the mean from each element in the vector $ {\bf x} $. Thus, we center
-the data when we apply the following transform:" />
+  <meta name="description" content="This post briefly introduces fundamental data transformations such as mean subtraction (centering data), normalization, standardization, difference transform, and power transform. Furthermore, we provide simple examples of Python code for applying those transforms to real data. Moreover, we heavily rely on the sklearn Python package [1].
+Mean subtraction Let&rsquo;s assume we have some data in a vector $ {\bf x} $, and know that the mean value of $ {\bf x} $ is not zero." />
   <meta name="author" content="Georgios Is. Detorakis" /><link rel="preload stylesheet" as="style" href="https://gdetor.github.io/main.min.css" />
 
   
@@ -92,31 +83,19 @@ the data when we apply the following transform:" />
     href="https://gdetor.github.io/apple-touch-icon.png"
   />
 
-  <meta name="generator" content="Hugo 0.147.2">
-  <meta itemprop="name" content="Useful data transformations">
-  <meta itemprop="description" content="Fundamental data transformations such as mean subtraction (centering data), normalization, and standardization are standard preprocessing steps for many algorithms. Therefore, in this post, we provide some information regarding different basic data transformations as well as simple examples of Python code for applying those transforms to real data.">
-  <meta itemprop="datePublished" content="2022-10-13T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2022-10-13T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1371">
-  <meta itemprop="keywords" content="Normalization,Standardize,Scaling,Centered,Difference Transform,Power Transform"><meta property="og:url" content="https://gdetor.github.io/posts/normalization/">
-  <meta property="og:site_name" content="GID">
-  <meta property="og:title" content="Useful data transformations">
-  <meta property="og:description" content="Fundamental data transformations such as mean subtraction (centering data), normalization, and standardization are standard preprocessing steps for many algorithms. Therefore, in this post, we provide some information regarding different basic data transformations as well as simple examples of Python code for applying those transforms to real data.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2022-10-13T00:00:00+00:00">
-    <meta property="article:modified_time" content="2022-10-13T00:00:00+00:00">
-    <meta property="article:tag" content="Normalization">
-    <meta property="article:tag" content="Standardize">
-    <meta property="article:tag" content="Scaling">
-    <meta property="article:tag" content="Centered">
-    <meta property="article:tag" content="Difference Transform">
-    <meta property="article:tag" content="Power Transform">
+  <meta name="generator" content="Hugo 0.123.7"><meta itemprop="name" content="Useful data transformations">
+<meta itemprop="description" content="Fundamental data transformations such as mean subtraction (centering data), normalization, and standardization are standard preprocessing steps for many algorithms. Therefore, in this post, we provide some information regarding different basic data transformations as well as simple examples of Python code for applying those transforms to real data."><meta itemprop="datePublished" content="2022-10-13T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2022-10-13T00:00:00+00:00" />
+<meta itemprop="wordCount" content="1371">
+<meta itemprop="keywords" content="normalization,standardize,scaling,centered,difference transform,power transform," /><meta property="og:title" content="Useful data transformations" />
+<meta property="og:description" content="Fundamental data transformations such as mean subtraction (centering data), normalization, and standardization are standard preprocessing steps for many algorithms. Therefore, in this post, we provide some information regarding different basic data transformations as well as simple examples of Python code for applying those transforms to real data." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gdetor.github.io/posts/normalization/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-10-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-10-13T00:00:00+00:00" />
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Useful data transformations">
-  <meta name="twitter:description" content="Fundamental data transformations such as mean subtraction (centering data), normalization, and standardization are standard preprocessing steps for many algorithms. Therefore, in this post, we provide some information regarding different basic data transformations as well as simple examples of Python code for applying those transforms to real data.">
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Useful data transformations"/>
+<meta name="twitter:description" content="Fundamental data transformations such as mean subtraction (centering data), normalization, and standardization are standard preprocessing steps for many algorithms. Therefore, in this post, we provide some information regarding different basic data transformations as well as simple examples of Python code for applying those transforms to real data."/>
 
   <link rel="canonical" href="https://gdetor.github.io/posts/normalization/" />
 </head>
@@ -236,10 +215,7 @@ the data when we apply the following transform:" />
     ><article>
   <header class="mb-14">
     <h1 class="my-0! pb-2.5">Useful data transformations</h1><div class="text-xs antialiased opacity-60"><time>Oct 13, 2022</time><span class="mx-1">&middot;</span>
-      <span>Georgios Is. Detorakis</span>
-      <span class="mx-1">&middot;</span>
-      <span>7&nbsp minutes read &nbsp / &nbsp1371&nbsp words</span>
-    </div></header>
+      <span>Georgios Is. Detorakis</span></div></header>
 
   <section><div style="text-align: justify;">
 <p>This post briefly introduces fundamental data transformations such as mean

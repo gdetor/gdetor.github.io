@@ -25,18 +25,9 @@
   
   <meta name="theme-color" />
 
-  <meta name="description" content="
-Imaging we have two matrices ${\bf A}, {\bf B}$ $\in \mathbb{R}^n$, that are
-both symmetric. Then, we know that
-both matrices have $n$ eigenvalues (multiplicity). Let&rsquo;s start now, gradually
-morphing ${\bf A}$ to ${\bf B}$ using the following formula
+  <meta name="description" content="Imaging we have two matrices ${\bf A}, {\bf B}$ $\in \mathbb{R}^n$, that are both symmetric. Then, we know that both matrices have $n$ eigenvalues (multiplicity). Let&rsquo;s start now, gradually morphing ${\bf A}$ to ${\bf B}$ using the following formula
 $$ {\bf A}[t] = (1 - t) {\bf A} &#43; t {\bf B}, $$
-where $t \in [0, 1]$.
-What will happen is that matrix ${\bf A}$ will have multiple eigenvalues with
-probability zero, given we have chosen the matrices properly from the set of
-all real symmetric matrices. In other words, there will be no time $t$ when
-matrix ${\bf A}$ won&rsquo;t have $n$ eigenvalues. We can see an example in Figure $1$
-below." />
+where $t \in [0, 1]$. What will happen is that matrix ${\bf A}$ will have multiple eigenvalues with probability zero, given we have chosen the matrices properly from the set of all real symmetric matrices." />
   <meta name="author" content="Georgios Is. Detorakis" /><link rel="preload stylesheet" as="style" href="https://gdetor.github.io/main.min.css" />
 
   
@@ -93,28 +84,19 @@ below." />
     href="https://gdetor.github.io/apple-touch-icon.png"
   />
 
-  <meta name="generator" content="Hugo 0.147.2">
-  <meta itemprop="name" content="Eigenvalue level repulsion">
-  <meta itemprop="description" content="This post briefly introduces how to compute eigenvalue level repulsion in Python.">
-  <meta itemprop="datePublished" content="2024-10-01T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2024-10-01T00:00:00+00:00">
-  <meta itemprop="wordCount" content="445">
-  <meta itemprop="keywords" content="Eigenvalues,Eigenvalues Level Repulsion,Math and Python"><meta property="og:url" content="https://gdetor.github.io/posts/eigs_level_repulsion/">
-  <meta property="og:site_name" content="GID">
-  <meta property="og:title" content="Eigenvalue level repulsion">
-  <meta property="og:description" content="This post briefly introduces how to compute eigenvalue level repulsion in Python.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-10-01T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-10-01T00:00:00+00:00">
-    <meta property="article:tag" content="Eigenvalues">
-    <meta property="article:tag" content="Eigenvalues Level Repulsion">
-    <meta property="article:tag" content="Math and Python">
+  <meta name="generator" content="Hugo 0.123.7"><meta itemprop="name" content="Eigenvalue level repulsion">
+<meta itemprop="description" content="This post briefly introduces how to compute eigenvalue level repulsion in Python."><meta itemprop="datePublished" content="2024-10-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-10-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="445">
+<meta itemprop="keywords" content="eigenvalues,eigenvalues level repulsion,math and python," /><meta property="og:title" content="Eigenvalue level repulsion" />
+<meta property="og:description" content="This post briefly introduces how to compute eigenvalue level repulsion in Python." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gdetor.github.io/posts/eigs_level_repulsion/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-10-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-10-01T00:00:00+00:00" />
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Eigenvalue level repulsion">
-  <meta name="twitter:description" content="This post briefly introduces how to compute eigenvalue level repulsion in Python.">
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Eigenvalue level repulsion"/>
+<meta name="twitter:description" content="This post briefly introduces how to compute eigenvalue level repulsion in Python."/>
 
   <link rel="canonical" href="https://gdetor.github.io/posts/eigs_level_repulsion/" />
 </head>
@@ -234,10 +216,7 @@ below." />
     ><article>
   <header class="mb-14">
     <h1 class="my-0! pb-2.5">Eigenvalue level repulsion</h1><div class="text-xs antialiased opacity-60"><time>Oct 1, 2024</time><span class="mx-1">&middot;</span>
-      <span>Georgios Is. Detorakis</span>
-      <span class="mx-1">&middot;</span>
-      <span>3&nbsp minutes read &nbsp / &nbsp445&nbsp words</span>
-    </div></header>
+      <span>Georgios Is. Detorakis</span></div></header>
 
   <section><div style="text-align: justify;">
 <p>Imaging we have two matrices ${\bf A}, {\bf B}$ $\in \mathbb{R}^n$, that are
@@ -252,9 +231,9 @@ all real symmetric matrices. In other words, there will be no time $t$ when
 matrix ${\bf A}$ won&rsquo;t have $n$ eigenvalues. We can see an example in Figure $1$
 below.</p>
 <figure><img src="/images/eig_values_repulsion.png"
-    alt="Figure 1. Eigenvalue level repulsion. Notice that as we move from $t=0$ to $t=1$ the eigenvalues of matrix ${\bf A}$ morph to those of ${\bf B}$ and at any instance matrix ${\bf A}$ has $10$ eigenvalues (see the dimension of the matrix ${\bf A}$ in the code snippet below, which is $10$)."><figcaption>
-      <p>Figure 1. Eigenvalue level repulsion. Notice that as we move from $t=0$ to $t=1$ the eigenvalues of matrix ${\bf A}$ morph to those of ${\bf B}$ and at any instance matrix ${\bf A}$ has $10$ eigenvalues (see the dimension of the matrix ${\bf A}$ in the code snippet below, which is $10$).</p>
-    </figcaption>
+         alt="Figure 1. Eigenvalue level repulsion. Notice that as we move from $t=0$ to $t=1$ the eigenvalues of matrix ${\bf A}$ morph to those of ${\bf B}$ and at any instance matrix ${\bf A}$ has $10$ eigenvalues (see the dimension of the matrix ${\bf A}$ in the code snippet below, which is $10$)."/><figcaption>
+            <p>Figure 1. Eigenvalue level repulsion. Notice that as we move from $t=0$ to $t=1$ the eigenvalues of matrix ${\bf A}$ morph to those of ${\bf B}$ and at any instance matrix ${\bf A}$ has $10$ eigenvalues (see the dimension of the matrix ${\bf A}$ in the code snippet below, which is $10$).</p>
+        </figcaption>
 </figure>
 <p>The Python code below shows how one can compute the eigenvalue level repulsion.</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-py3" data-lang="py3"><span style="display:flex;"><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1</span><span><span style="color:#f92672">import</span> numpy <span style="color:#66d9ef">as</span> np

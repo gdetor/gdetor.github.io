@@ -4,7 +4,7 @@
     <title>Linear Separability on GID</title>
     <link>https://gdetor.github.io/tags/linear-separability/</link>
     <description>Recent content in Linear Separability on GID</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2024, Georgios Is. Detorakis.</copyright>
     <lastBuildDate>Tue, 01 Oct 2024 00:00:00 +0000</lastBuildDate>
@@ -14,7 +14,7 @@
       <link>https://gdetor.github.io/posts/linear_separability/</link>
       <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
       <guid>https://gdetor.github.io/posts/linear_separability/</guid>
-      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;Two sets $ A $ and $ B $ in an $ n $ dimensional Euclidean space are linearly&#xA;separable if there exist $ n + 1 $ numbers $ w_i \in \mathbb{R} $ such that&#xA;every point $ a \in A $ satisfies&lt;/p&gt;&#xA;&lt;p&gt;$$ \sum_{i=1}^{n}w_i a_i &amp;gt; k,  $$&lt;/p&gt;&#xA;&lt;p&gt;and every point $ b \in B $ satisfies&lt;/p&gt;&#xA;&lt;p&gt;$$ \sum_{i=1}^{n}w_i b_i &amp;lt; k,  $$&lt;/p&gt;&#xA;&lt;p&gt;where $ k \in \mathbb{R} $ defines a linear border (&lt;em&gt;e.g.,&lt;/em&gt; a line) between&#xA;data points of the two sets.&lt;/p&gt;</description>
+      <description>Two sets $ A $ and $ B $ in an $ n $ dimensional Euclidean space are linearly separable if there exist $ n + 1 $ numbers $ w_i \in \mathbb{R} $ such that every point $ a \in A $ satisfies&#xA;$$ \sum_{i=1}^{n}w_i a_i &amp;gt; k, $$&#xA;and every point $ b \in B $ satisfies&#xA;$$ \sum_{i=1}^{n}w_i b_i &amp;lt; k, $$&#xA;where $ k \in \mathbb{R} $ defines a linear border (e.</description>
     </item>
   </channel>
 </rss>

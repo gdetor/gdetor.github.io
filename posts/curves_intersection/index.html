@@ -25,24 +25,8 @@
   
   <meta name="theme-color" />
 
-  <meta name="description" content="
-We often need to compute the points where two lines intersect or where a function intersects
-the x-axis (zero crossing). Here, we provide a Python script that does precisely that.
-Computes the points where two curves (lines, time series, etc.) intersect.
-Hence, we provide a simple Python code that can compute the points $(x, y)$ where
-two curves, $ f(t) $ and g(t), intersect. The first step, and the easy one, is
-to take two points, one from each curve, $ (t_1, Y_f) $, and $ (t_1, Y_g) $,
-compute their distance, and check if it is smaller than an $ \epsilon $, where
-$ \epsilon $ is a tiny number close to zero. If that&rsquo;s the case, then we are
-done and have found the intersection point being $ (t_1, Y_f) $. However, if
-the distance is larger than $ \epsilon $, we have to check for any crossing
-point. We first consider a new function $ h(t) = f(t) - g(t $, and we evaluate
-that function on the points $ (t_0, Y_f^0) $, $ (t_0, Y_g^0) $,
-$ (t_1, Y_f^1) $, and $ (t_1, Y_g^1) $.
-Thus, we obtain $ \delta_0 = Y_f^0 - Y_g^0 $ and $ \delta_1 = Y_f^1 - Y_g^1 $.
-If the product $ \delta_0 \delta_1 &lt; 0 $, then from Bolzano&rsquo;s theorem, we know
-that the two lines must intersect, and the intersection point $ (t^{\ast}, y^{\ast}) $
-is:" />
+  <meta name="description" content="We often need to compute the points where two lines intersect or where a function intersects the x-axis (zero crossing). Here, we provide a Python script that does precisely that. Computes the points where two curves (lines, time series, etc.) intersect.
+Hence, we provide a simple Python code that can compute the points $(x, y)$ where two curves, $ f(t) $ and g(t), intersect. The first step, and the easy one, is to take two points, one from each curve, $ (t_1, Y_f) $, and $ (t_1, Y_g) $, compute their distance, and check if it is smaller than an $ \epsilon $, where $ \epsilon $ is a tiny number close to zero." />
   <meta name="author" content="Georgios Is. Detorakis" /><link rel="preload stylesheet" as="style" href="https://gdetor.github.io/main.min.css" />
 
   
@@ -99,30 +83,19 @@ is:" />
     href="https://gdetor.github.io/apple-touch-icon.png"
   />
 
-  <meta name="generator" content="Hugo 0.147.2">
-  <meta itemprop="name" content="Intersection points of curves">
-  <meta itemprop="description" content="A brief tutorial on how to compute intesection points between two curves.">
-  <meta itemprop="datePublished" content="2024-10-01T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2024-10-01T00:00:00+00:00">
-  <meta itemprop="wordCount" content="758">
-  <meta itemprop="keywords" content="Intersection Points,Curves,Mathematics,Math Tips,Math and Python"><meta property="og:url" content="https://gdetor.github.io/posts/curves_intersection/">
-  <meta property="og:site_name" content="GID">
-  <meta property="og:title" content="Intersection points of curves">
-  <meta property="og:description" content="A brief tutorial on how to compute intesection points between two curves.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="article">
-    <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2024-10-01T00:00:00+00:00">
-    <meta property="article:modified_time" content="2024-10-01T00:00:00+00:00">
-    <meta property="article:tag" content="Intersection Points">
-    <meta property="article:tag" content="Curves">
-    <meta property="article:tag" content="Mathematics">
-    <meta property="article:tag" content="Math Tips">
-    <meta property="article:tag" content="Math and Python">
+  <meta name="generator" content="Hugo 0.123.7"><meta itemprop="name" content="Intersection points of curves">
+<meta itemprop="description" content="A brief tutorial on how to compute intesection points between two curves."><meta itemprop="datePublished" content="2024-10-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2024-10-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="758">
+<meta itemprop="keywords" content="intersection points,curves,mathematics,math tips,math and python," /><meta property="og:title" content="Intersection points of curves" />
+<meta property="og:description" content="A brief tutorial on how to compute intesection points between two curves." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://gdetor.github.io/posts/curves_intersection/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-10-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2024-10-01T00:00:00+00:00" />
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Intersection points of curves">
-  <meta name="twitter:description" content="A brief tutorial on how to compute intesection points between two curves.">
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Intersection points of curves"/>
+<meta name="twitter:description" content="A brief tutorial on how to compute intesection points between two curves."/>
 
   <link rel="canonical" href="https://gdetor.github.io/posts/curves_intersection/" />
 </head>
@@ -242,10 +215,7 @@ is:" />
     ><article>
   <header class="mb-14">
     <h1 class="my-0! pb-2.5">Intersection points of curves</h1><div class="text-xs antialiased opacity-60"><time>Oct 1, 2024</time><span class="mx-1">&middot;</span>
-      <span>Georgios Is. Detorakis</span>
-      <span class="mx-1">&middot;</span>
-      <span>4&nbsp minutes read &nbsp / &nbsp758&nbsp words</span>
-    </div></header>
+      <span>Georgios Is. Detorakis</span></div></header>
 
   <section><div style="text-align: justify;">
 <p>We often need to compute the points where two lines intersect or where a function intersects
@@ -269,7 +239,7 @@ is:</p>
 where $ \Delta = Y_f^0 - Y_g^0 - Y_f^1 + Y_g^1 $.
 The coordinates of the point $ (t^{\ast}, y^{\ast}) $ are derived by computing
 the following determinant(s) (which gives us the intersection point):</p>
-<figure><img src="/images/determinant.png">
+<figure><img src="/images/determinant.png"/>
 </figure>
 <p>When one runs the Python code provided in the above snippet, one obtains the
 results shown in the Figure below.</p>
@@ -361,9 +331,9 @@ results shown in the Figure below.</p>
 <p>When one runs the Python code provided in the above snippet then they obtain
 the results shown in the Figure below.</p>
 <figure><img src="/images/crossings.png"
-    alt="Figure 1. Three exampels of identifying crossing points between two curves. The orange discs indicate the crossing points."><figcaption>
-      <p>Figure 1. Three exampels of identifying crossing points between two curves. The orange discs indicate the crossing points.</p>
-    </figcaption>
+         alt="Figure 1. Three exampels of identifying crossing points between two curves. The orange discs indicate the crossing points."/><figcaption>
+            <p>Figure 1. Three exampels of identifying crossing points between two curves. The orange discs indicate the crossing points.</p>
+        </figcaption>
 </figure>
 </div>
 </section>

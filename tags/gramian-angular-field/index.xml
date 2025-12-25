@@ -4,7 +4,7 @@
     <title>Gramian Angular Field on GID</title>
     <link>https://gdetor.github.io/tags/gramian-angular-field/</link>
     <description>Recent content in Gramian Angular Field on GID</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright © 2024, Georgios Is. Detorakis.</copyright>
     <lastBuildDate>Wed, 23 Apr 2025 00:00:00 +0000</lastBuildDate>
@@ -14,7 +14,7 @@
       <link>https://gdetor.github.io/posts/gaf/</link>
       <pubDate>Wed, 23 Apr 2025 00:00:00 +0000</pubDate>
       <guid>https://gdetor.github.io/posts/gaf/</guid>
-      <description>&lt;div style=&#34;text-align: justify;&#34;&gt;&#xA;&lt;p&gt;Here, we briefly introduce the Gramian Angular Field (GAF) method proposed by [1] to convert time series into images without losing much information. Thus, we can use those images with deep neural networks and computer vision methods to analyze or classify time series.&#xA;Following [1], we present the main idea behind GAF: to obtain a matrix of similarities between temporal data points of a time series. To do so, the authors in [1] introduced the following algorithm:&lt;/p&gt;</description>
+      <description>Here, we briefly introduce the Gramian Angular Field (GAF) method proposed by [1] to convert time series into images without losing much information. Thus, we can use those images with deep neural networks and computer vision methods to analyze or classify time series. Following [1], we present the main idea behind GAF: to obtain a matrix of similarities between temporal data points of a time series. To do so, the authors in [1] introduced the following algorithm:</description>
     </item>
   </channel>
 </rss>
