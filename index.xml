@@ -133,7 +133,7 @@
       <link>https://gdetor.github.io/research/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://gdetor.github.io/research/</guid>
-      <description>Neuromorphic Computing Georgios was involved in developing neuromorphic devices capable of embedded and online learning. He was one of the core developers of the software simulator for the Neural and Synaptic Array Transceiver Framework (in collaboration with Intel Corporation Research Labs, the Universities of California Irvine, and San Diego). He investigated how natural mechanisms of biological brains can lead to more efficient and biologically plausible machine learning algorithms suitable for neuromorphic devices.</description>
+      <description>Current Research Projects Continual learning &amp;amp; neural representations Animals and humans, due to their neuroplasticity and brains’ ability to learn and adapt, can continually learn without forgetting previously acquired knowledge. How exactly biological brains solve the problem of continual learning and catastrophic forgetting remains elusive. However, with the rise of deep learning, particularly AI, researchers and engineers are developing algorithms that learn from a continuous stream of data, acquiring new knowledge or skills over time and avoiding catastrophic forgetting.</description>
     </item>
     <item>
       <title>Software</title>
