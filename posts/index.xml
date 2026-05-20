@@ -24,27 +24,6 @@
       <description>In this post, we explore genetic algorithms (GAs) and the so-called island model (IM). GAs and the IM are optimization methods used to maximize or minimize a cost function.&#xA;What is Optimization? Let&amp;rsquo;s see an example of an optimization problem we all face every day. Let&amp;rsquo;s assume you&amp;rsquo;d like to go and grab a couple of coffee from your favorite coffee shop. Typically, you ask Google to find the fastest way to the store from your current location.</description>
     </item>
     <item>
-      <title>Autocorrelation Functions for Time Series</title>
-      <link>https://gdetor.github.io/posts/acf_pacf/</link>
-      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
-      <guid>https://gdetor.github.io/posts/acf_pacf/</guid>
-      <description>This post aims to provide some theoretical background on autocorrelation functions and how to use them to analyze time series. Furthermore, we show how to use the Autocorrelation (ACF) function and the Partial Autocorrelation (PACF) function to determine the parameters for an ARMA model.&#xA;Brief introduction to time series In a previous post (see here), we introduced some basic definitions and terminology about time series. We repeat the same definitions here to avoid forcing the reader to move back and forth.</description>
-    </item>
-    <item>
-      <title>Time series forecasting error metrics</title>
-      <link>https://gdetor.github.io/posts/errors/</link>
-      <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
-      <guid>https://gdetor.github.io/posts/errors/</guid>
-      <description>In this post, we will explore the basic error measures used in time-series forecasting. Error measures provide a way to quantify the quality of a forecasting algorithm (e.g., the performance). First, we briefly introduce time series and the fundamental terms of forecasting. Second, we will introduce the most commonly used error measures and give examples. Finally, we provide a complete example of using errors in a real-life forecasting scenario.</description>
-    </item>
-    <item>
-      <title>Useful data transformations</title>
-      <link>https://gdetor.github.io/posts/normalization/</link>
-      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
-      <guid>https://gdetor.github.io/posts/normalization/</guid>
-      <description>This post briefly introduces fundamental data transformations such as mean subtraction (centering data), normalization, standardization, difference transform, and power transform. Furthermore, we provide simple examples of Python code for applying those transforms to real data. Moreover, we heavily rely on the sklearn Python package [1].&#xA;Mean subtraction Let&amp;rsquo;s assume we have some data in a vector $ {\bf x} $, and know that the mean value of $ {\bf x} $ is not zero.</description>
-    </item>
-    <item>
       <title>Organs-on-Chip-as-a-Service: A proposal bridging cloud services and scientific experiments</title>
       <link>https://gdetor.github.io/posts/cloudlab/</link>
       <pubDate>Mon, 28 Nov 2022 00:00:00 +0000</pubDate>
@@ -92,6 +71,27 @@
       <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
       <guid>https://gdetor.github.io/posts/math_tips/</guid>
       <description>In this post, you can find some helpful mathematical tips and tricks in the Python programming language.&#xA;Positive definite matrix Check if a given matrix $ \bf{A} $ is positive definite. If all the eigenvalues of matrix $ \bf{A} $ are positive then the matrix is positive definite.&#xA;1$ A = np.array([[1, 2], [2, 1]]) 2$ print(A) 3[[1 2] 4 [2 1]] 5 6$ np.all(np.linalg.eigvals(A) &amp;gt; 0) 7False # A is not a positive definite matrix 8 9$ A = np.</description>
+    </item>
+    <item>
+      <title>Autocorrelation Functions for Time Series</title>
+      <link>https://gdetor.github.io/posts/acf_pacf/</link>
+      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://gdetor.github.io/posts/acf_pacf/</guid>
+      <description>This post aims to provide some theoretical background on autocorrelation functions and how to use them to analyze time series. Furthermore, we show how to use the Autocorrelation (ACF) function and the Partial Autocorrelation (PACF) function to determine the parameters for an ARMA model.&#xA;Brief introduction to time series In a previous post (see here), we introduced some basic definitions and terminology about time series. We repeat the same definitions here to avoid forcing the reader to move back and forth.</description>
+    </item>
+    <item>
+      <title>Useful data transformations</title>
+      <link>https://gdetor.github.io/posts/normalization/</link>
+      <pubDate>Thu, 13 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>https://gdetor.github.io/posts/normalization/</guid>
+      <description>This post briefly introduces fundamental data transformations such as mean subtraction (centering data), normalization, standardization, difference transform, and power transform. Furthermore, we provide simple examples of Python code for applying those transforms to real data. Moreover, we heavily rely on the sklearn Python package [1].&#xA;Mean subtraction Let&amp;rsquo;s assume we have some data in a vector $ {\bf x} $, and know that the mean value of $ {\bf x} $ is not zero.</description>
+    </item>
+    <item>
+      <title>Time series forecasting error metrics</title>
+      <link>https://gdetor.github.io/posts/errors/</link>
+      <pubDate>Thu, 05 May 2022 00:00:00 +0000</pubDate>
+      <guid>https://gdetor.github.io/posts/errors/</guid>
+      <description>In this post, we will explore the basic error measures used in time-series forecasting. Error measures provide a way to quantify the quality of a forecasting algorithm (e.g., the performance). First, we briefly introduce time series and the fundamental terms of forecasting. Second, we will introduce the most commonly used error measures and give examples. Finally, we provide a complete example of using errors in a real-life forecasting scenario.</description>
     </item>
     <item>
       <title>Research Demos</title>
