@@ -126,7 +126,7 @@
       <link>https://gdetor.github.io/publications/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://gdetor.github.io/publications/</guid>
-      <description>Research Articles (peer-reviewed) Forensic psychiatric expertise based on articles 227/228 of Greek Law 4620/2019: A Descriptive series of fifteen cases&#xA;E. I. Koiliari, E. I. Kartsonas, G. Is. Detorakis, and E. L. Pasparakis&#xA;Accepted for publication in Psychiatriki (Journal of the Hellenic Psychiatric Association), 2026.&#xA;(Article in Greek)&#xA;Neural sampling machine with stochastic synapse allows brain-like learning and inference&#xA;S. Dutta, G. Detorakis, A. Khanna, B. Grisafe, E. Neftci, and S.</description>
+      <description>Research Articles (peer-reviewed) Mitigating Involuntary Psychiatric Admissions and Enhancing Well-Being via Long-Acting Injectables: A Six-Month Contrast of Two Cognitively Impaired Community Subcohorts&#xA;E. I. Koiliari, G. Alevizopoulos, G. Is. Detorakis, A. Vakis, and E. L. Pasparakis&#xA;Accepted for publication in psychiatry international&#xA;Forensic psychiatric expertise based on articles 227/228 of Greek Law 4620/2019: A Descriptive series of fifteen cases&#xA;E. I. Koiliari, E. I. Kartsonas, G. Is. Detorakis, and E. L.</description>
     </item>
     <item>
       <title>Research</title>
@@ -141,6 +141,13 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://gdetor.github.io/software/</guid>
       <description>Gists Here you can find some code snippets or short source code for complete programs that might interest you.&#xA;Miscellaneous omnipyseed Omnipyseed is a tiny and simple Python package that can be used to seed random number generators (RNGs) of Python, Numpy, and Pytorch.&#xA;Programming Language: Python Source Code: PyPi timeseries_imputlorer Imputlorer is a collection of scripts implementing univariate time series imputation methods relying on sklearn. In addition, the repository provides statistical tools for evaluating and comparing the performance of different imputation techniques.</description>
+    </item>
+    <item>
+      <title>Teaching</title>
+      <link>https://gdetor.github.io/teaching/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://gdetor.github.io/teaching/</guid>
+      <description>Courses Reinforcement Learning COMP64202 Crash Courses Introduction to Neuroscience (2026/2027), University of Manchester Introduction to Python (2015), CentraleSupelec Seminars Introduction to Automatic Differentiation Introduction to Neural Fields, CentraleSupelec </description>
     </item>
   </channel>
 </rss>
